@@ -1,0 +1,5 @@
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uci_hmsgs.c:45:10:getGidOid	0	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uci_hmsgs.c:268:9:uci_snd_cmd	48	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uci_hmsgs.c:245:6:uci_snd_cmd_interface	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uci_hmsgs.c:360:6:uci_proc_raw_cmd_rsp	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uci_hmsgs.c:391:6:uci_proc_proprietary_ntf	8	static

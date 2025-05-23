@@ -1,0 +1,7 @@
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/mbedtls/library/gcm.c:215:13:gcm_mult	36	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/mbedtls/library/gcm.c:87:6:mbedtls_gcm_init	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/mbedtls/library/gcm.c:161:5:mbedtls_gcm_setkey	80	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/mbedtls/library/gcm.c:271:5:mbedtls_gcm_starts	80	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/mbedtls/library/gcm.c:358:5:mbedtls_gcm_update	80	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/mbedtls/library/gcm.c:421:5:mbedtls_gcm_finish	48	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/mbedtls/library/gcm.c:540:6:mbedtls_gcm_free	8	static

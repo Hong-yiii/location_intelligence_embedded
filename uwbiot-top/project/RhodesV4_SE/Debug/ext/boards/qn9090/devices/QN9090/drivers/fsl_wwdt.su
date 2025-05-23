@@ -1,0 +1,6 @@
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_wwdt.c:51:17:WWDT_GetInstance	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_wwdt.c:92:6:WWDT_GetDefaultConfig	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_wwdt.c:135:6:WWDT_Init	16	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_wwdt.c:205:6:WWDT_Deinit	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_wwdt.c:221:6:WWDT_Refresh	0	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_wwdt.c:245:6:WWDT_ClearStatusFlags	4	static

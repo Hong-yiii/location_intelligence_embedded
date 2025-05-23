@@ -1,0 +1,2 @@
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/fwdl_provider/uwb_fwdl_ram.c:35:13:uwb_fwdl_getFwImage	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/fwdl_provider/uwb_fwdl_ram.c:48:13:uwb_fwdl_downloadFw	56	static

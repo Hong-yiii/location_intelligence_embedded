@@ -1,0 +1,4 @@
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/hal/phNxpUciHal_ext.c:165:13:hal_extns_write_rsp_timeout_cb	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/hal/phNxpUciHal_ext.c:144:11:phNxpUciHal_send_ext_cmd	40	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/hal/phNxpUciHal_ext.c:186:11:phNxpUciHal_set_board_config	24	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/hal/phNxpUciHal_ext.c:233:11:phNxpUciHal_dump_fw_crash_log	16	static

@@ -1,0 +1,4 @@
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_api/PrintUtility/SR1XX/PrintUtility_Proprietary.c:18:14:printDeviceInfo	24	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_api/PrintUtility/SR1XX/PrintUtility_Proprietary.c:94:14:printDistance_Aoa	0	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_api/PrintUtility/SR1XX/PrintUtility_Proprietary.c:120:14:printDebugParams	0	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_api/PrintUtility/SR1XX/PrintUtility_Proprietary.c:184:14:printTestLoopNtfData	0	static

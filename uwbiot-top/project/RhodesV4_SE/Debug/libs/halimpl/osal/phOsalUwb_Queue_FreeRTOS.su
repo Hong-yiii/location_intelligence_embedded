@@ -1,0 +1,5 @@
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/osal/phOsalUwb_Queue_FreeRTOS.c:48:10:phOsalUwb_msgget	16	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/osal/phOsalUwb_Queue_FreeRTOS.c:75:6:phOsalUwb_msgrelease	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/osal/phOsalUwb_Queue_FreeRTOS.c:104:11:phOsalUwb_msgsnd	16	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/osal/phOsalUwb_Queue_FreeRTOS.c:162:11:phOsalUwb_msgrcv	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/osal/phOsalUwb_Queue_FreeRTOS.c:192:5:phOsalUwb_queueSpacesAvailable	8	static

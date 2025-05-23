@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<!--
+Copyright 2020-2021 NXP
+
+This software is owned or controlled by NXP and may only be used
+strictly in accordance with the applicable license terms.  By expressly
+accepting such terms or by downloading, installing, activating and/or
+otherwise using the software, you are agreeing that you have read, and
+that you agree to comply with and are bound by, such license terms.  If
+you do not agree to be bound by the applicable license terms, then you
+may not retain, install, activate or otherwise use the software.
+
+ _   ___      _____   ___    _____
+| | | \ \    / / _ ) |_ _|__|_   _|
+| |_| |\ \/\/ /| _ \  | |/ _ \| |
+ \___/  \_/\_/ |___/ |___\___/|_|
+
+-->
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6.1. UWB API Status Codes &#8212; UWB IoT v04.06.00 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/uwb.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="6.2. UWB API Consts" href="api_uwb_const.html" />
+    <link rel="prev" title="6. APIs : UWB IoT and SR150" href="index-sr150.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+
+
+<div id="navbar" class="navbar navbar-inverse navbar-default ">
+<div class="container">
+  <div class="navbar-header">
+    <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="../toc-sr150.html"><span><img src="../../../_static/NXP_logo_JPG.jpg"></span>
+       </a>
+    <span class="navbar-text navbar-version pull-left"><b>v04.06.00</b></span>
+  </div>
+
+    <div class="collapse navbar-collapse nav-collapse">
+      <ul class="nav navbar-nav">
+      <li class="dropdown globaltoc-container"></li> 
+        
+        
+          <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../toc-sr150.html">TOC <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uwbiot/index.html">1. UWB IoT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../uwbiot/introduction.html">1.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uwbiot/acronyms.html">1.2. Acronyms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uwbiot/folder-structure.html">1.3. Folder Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#root-folder">1.3.1. Root Folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#binaries">1.3.2. <code class="docutils literal notranslate"><span class="pre">/binaries</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#boards">1.3.3. <code class="docutils literal notranslate"><span class="pre">/boards</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#demos">1.3.5. <code class="docutils literal notranslate"><span class="pre">/demos</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#docs">1.3.6. <code class="docutils literal notranslate"><span class="pre">/docs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#ext-boards">1.3.7. <code class="docutils literal notranslate"><span class="pre">/ext/boards</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#ext-freertos">1.3.8. <code class="docutils literal notranslate"><span class="pre">/ext/freertos</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#ext-tml-libuwbd">1.3.9. <code class="docutils literal notranslate"><span class="pre">/ext/TML-libuwbd</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#firmware-images">1.3.10. <code class="docutils literal notranslate"><span class="pre">/firmware_images</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#libs">1.3.11. <code class="docutils literal notranslate"><span class="pre">/libs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#libs-halimpl">1.3.12. <code class="docutils literal notranslate"><span class="pre">/libs/halimpl</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#libs-uci-core">1.3.13. <code class="docutils literal notranslate"><span class="pre">/libs/uci-core</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#libs-uwb-iot">1.3.14. <code class="docutils literal notranslate"><span class="pre">/libs/uwb-iot</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#libs-uwbradar">1.3.15. <code class="docutils literal notranslate"><span class="pre">/libs/uwbradar</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#project">1.3.16. <code class="docutils literal notranslate"><span class="pre">/project</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#scripts">1.3.17. <code class="docutils literal notranslate"><span class="pre">/scripts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#tools">1.3.18. <code class="docutils literal notranslate"><span class="pre">/tools</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/arch-block-diag.html">1.4. Block Diagram</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-block-diag.html#components">1.4.1. Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-block-diag.html#sr150-freertos">1.4.2. SR150 - FreeRTOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-block-diag.html#sr040">1.4.5. SR040</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/arch-mw-modes-index.html">1.5. Modes of operation of the MW</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-mw-standalonemode.html">1.5.1. Standalone Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-mw-pnpmode.html">1.5.2. PNP Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-mw-fira-mctt-pcttmode.html">1.5.3. FiRa / MCTT / PCTT Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/arch-dynamic.html">1.6. Dynamic View</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-dynamic.html#uwb-stack-init-sequence">1.6.1. UWB Stack Init Sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-dynamic.html#uwb-stack-deinit-sequence">1.6.2. UWB Stack DeInit Sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-dynamic.html#p2p-multicast-ranging">1.6.3. P2P, Multicast Ranging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-dynamic.html#ble-oob">1.6.4. BLE - OOB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-dynamic.html#recovery-uci-command-timeout">1.6.5. Recovery : UCI Command Timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-dynamic.html#recovery-fw-crash-handling-from-mw">1.6.6. Recovery : FW Crash Handling from MW</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changes/index-sr150.html">2. Changes &amp; Release History (SR150)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changes/current.html">2.1. Build <code class="samp docutils literal notranslate"><span class="pre">v04.06.00</span></code> (Current, NXP Internal)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#scope-of-build">2.1.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#mw-changes">2.1.2. MW Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#api-changes">2.1.3. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#folder-restructuring">2.1.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#new-features-added">2.1.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#features-removed">2.1.6. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#features-updated">2.1.7. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#build-system-changes">2.1.8. Build system changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#demo-updates">2.1.9. Demo updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#id25">2.1.10. Folder Restructuring</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v04.05.07-sr150.html">2.2. Release <code class="docutils literal notranslate"><span class="pre">v04.05.07</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#scope-of-build">2.2.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#mw-changes">2.2.2. MW Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#api-changes">2.2.3. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#folder-restructuring">2.2.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#new-features-added">2.2.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#features-removed">2.2.6. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#features-updated">2.2.7. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#build-system-changes">2.2.8. Build system changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#demo-updates">2.2.9. Demo updates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v04.04.05-sr150.html">2.3. Release <code class="docutils literal notranslate"><span class="pre">v04.04.05</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#scope-of-build">2.3.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#api-changes">2.3.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#folder-restructuring">2.3.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#new-features-added">2.3.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#features-removed">2.3.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#features-updated">2.3.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#build-system-changes">2.3.7. Build system changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#demo-updates">2.3.8. Demo updates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v04.04.03-sr150.html">2.4. Release <code class="docutils literal notranslate"><span class="pre">v04.04.03</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#firmware">2.4.1. Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#scope-of-build">2.4.2. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#api-changes">2.4.3. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#folder-restructuring">2.4.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#new-features-added">2.4.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#features-removed">2.4.6. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#features-updated">2.4.7. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#build-system-changes">2.4.8. Build system changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#demo-updates">2.4.9. Demo updates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v04.03.15-sr150.html">2.5. Release <code class="docutils literal notranslate"><span class="pre">v04.03.15</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#scope-of-build">2.5.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#api-changes">2.5.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#folder-restructuring">2.5.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#new-features-added">2.5.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#features-removed">2.5.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#features-updated">2.5.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#id1">2.5.7. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#build-system-changes">2.5.8. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v04.02.01-sr150.html">2.6. Release <code class="docutils literal notranslate"><span class="pre">v04.02.01</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#scope-of-build">2.6.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#api-changes">2.6.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#folder-restructuring">2.6.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#new-features-added">2.6.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#features-removed">2.6.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#features-updated">2.6.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#build-system-changes">2.6.7. Build system changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#demo-updates">2.6.8. Demo updates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.15.11-sr150.html">2.7. Release <code class="docutils literal notranslate"><span class="pre">v03.15.11</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#scope-of-build">2.7.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#api-changes">2.7.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#folder-restructuring">2.7.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#new-features-added">2.7.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#features-removed">2.7.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#features-updated">2.7.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#build-system-changes">2.7.7. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.15.03-sr150.html">2.8. Release <code class="docutils literal notranslate"><span class="pre">v03.15.03</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#scope-of-build">2.8.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#api-changes">2.8.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#folder-restructuring">2.8.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#new-features-added">2.8.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#features-removed">2.8.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#features-updated">2.8.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#build-system-changes">2.8.7. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.14.04-sr150.html">2.9. Release <code class="docutils literal notranslate"><span class="pre">v03.14.04</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#scope-of-build">2.9.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#api-changes">2.9.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#folder-restructuring">2.9.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#new-features-added">2.9.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#features-removed">2.9.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#features-updated">2.9.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#build-system-changes">2.9.7. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.13.03.html">2.10. Release <code class="docutils literal notranslate"><span class="pre">v03.13.03</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#scope-of-build">2.10.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#api-changes">2.10.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#tml-refactoring">2.10.3. TML Refactoring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#folder-restructuring">2.10.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#new-features-added">2.10.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#features-removed">2.10.6. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#features-updated">2.10.7. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#build-system-changes">2.10.8. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.10.02-sr150.html">2.11. Release <code class="docutils literal notranslate"><span class="pre">v03.10.02</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#scope-of-release">2.11.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#api-changes">2.11.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#folder-restructuring">2.11.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#new-features-added">2.11.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#features-removed">2.11.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#features-updated">2.11.6. Features Updated</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.09.00-sr150.html">2.12. Release <code class="docutils literal notranslate"><span class="pre">v03.09.00</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.09.00-sr150.html#scope-of-release">2.12.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.09.00-sr150.html#new-features-added">2.12.2. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.09.00-sr150.html#build-system-changes">2.12.3. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.08.01.html">2.13. Release <code class="docutils literal notranslate"><span class="pre">v03.08.01</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.08.01.html#scope-of-release">2.13.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.08.01.html#api-changes">2.13.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.08.01.html#folder-restructuring">2.13.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.08.01.html#new-features-added">2.13.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.08.01.html#features-updated">2.13.5. Features Updated</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.06.01.html">2.14. Release <code class="docutils literal notranslate"><span class="pre">v03.06.01</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#scope-of-release">2.14.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#api-changes">2.14.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#id1">2.14.3. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#folder-restructuring">2.14.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#new-features-added">2.14.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#features-updated">2.14.6. Features Updated</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.05.00-sr150.html">2.15. Release <code class="docutils literal notranslate"><span class="pre">v03.05.00</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.05.00-sr150.html#scope-of-release">2.15.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.05.00-sr150.html#new-features-added">2.15.2. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.05.00-sr150.html#features-updated">2.15.3. Features Updated</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.04.00.html">2.16. Release <code class="docutils literal notranslate"><span class="pre">v03.04.00</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#scope-of-release">2.16.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#api-changes">2.16.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#folder-restructuring">2.16.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#new-features-added">2.16.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#features-updated">2.16.5. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#build-system-changes">2.16.6. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.02.00.html">2.17. Release <code class="docutils literal notranslate"><span class="pre">v03.02.00</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.02.00.html#scope-of-release">2.17.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.02.00.html#api-changes">2.17.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.02.00.html#new-features-added">2.17.3. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.02.00.html#build-system-changes">2.17.4. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.00.01-sr150.html">2.18. Release <code class="docutils literal notranslate"><span class="pre">v03.00.01</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.00.01-sr150.html#scope-of-release">2.18.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.00.01-sr150.html#api-changes">2.18.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.00.01-sr150.html#new-features-added">2.18.3. New Features Added</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v01.04.00-nxpint.html">2.19. Build <code class="docutils literal notranslate"><span class="pre">v01.04.00</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.04.00-nxpint.html#scope-of-release">2.19.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.04.00-nxpint.html#new-features-added">2.19.2. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.04.00-nxpint.html#api-changes">2.19.3. API Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v01.00.00-nxpint.html">2.20. Release <code class="docutils literal notranslate"><span class="pre">v01.00.00</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#scope-of-release">2.20.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#validation-platforms-counterparts">2.20.2. Validation platforms / counterparts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#api-changes">2.20.3. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#folder-restructuring">2.20.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#new-features-added">2.20.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#features-removed">2.20.6. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#features-not-available">2.20.7. Features not available</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#features-with-limited-testing">2.20.8. Features with limited testing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../compiling/index.html">3. Compiling &amp; Running</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../compiling/pre-requisites.html">3.1. Pre-Requisites for compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../compiling/mcuxpresso-ide-default-projects.html">3.2. MCUXpresso IDE Projects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../project/RhodesV4_SE/sr1xx-readme.html">3.2.2. RhodesV4-SE Standalone MCUXpresso Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../compiling/segger-ide-default-projects.html">3.3. SEGGER IDE Projects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../project/Nrf52840_SR1XX/readme.html">3.3.1. NRF52840-SR1XX Standalone Segger Embedded Studio Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../compiling/build-pi-mk-shield.html">3.4. Raspberry PI + MK Shield CMake Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../compiling/pre-compiled-binaries.html">3.8. Pre Compiled binaries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../binaries/Rhodes4_SE/README.html">3.8.2. Precompiled Binaries for Rhodes V4 : SE Demos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../binaries/Rhodes4/README.html">3.8.3. Precompiled Binaries for Rhodes V4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../binaries/SE051W/README.html">3.8.4. SEMS Lite Update header files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/index-sr150.html">4. SR150 Demos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo-list-sr150.html">4.1. Demo List SR150</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../demos/demo-list-sr150.html#standalone-c-examples-for-sr150">4.1.1. Standalone C Examples for SR150</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controlee/readme.html">4.2. Demo Ranging Controlee</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controlee/readme.html#how-to-build">4.2.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controlee/readme.html#how-to-run">4.2.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controlee/readme.html#log-success">4.2.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controller/readme.html">4.3. Demo Ranging Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controller/readme.html#how-to-build">4.3.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controller/readme.html#how-to-run">4.3.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controller/readme.html#tof-2d-and-3d-aoa-modes">4.3.3. TOF, 2D and 3D AoA Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controller/readme.html#log-success">4.3.4. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html">4.4. SR150 FiraLite Initiator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#secure-ranging-on-sr150-se051w-with-firalite-applet">4.4.1. Secure Ranging on SR150-SE051W with FiRaLite Applet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#firalite-applet-version">4.4.2. FiRaLite Applet Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#prerequisites">4.4.3. Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#how-to-build">4.4.4. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#steps-to-be-followed-to-run-from-rtos-embedded-device">4.4.5. Steps to be followed to run from RTOS-embedded device:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#steps-to-be-followed-to-run-from-linux-host-like-rpi">4.4.6. Steps to be followed to run from linux host like Rpi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#log-success">4.4.7. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder/readme.html">4.5. SR150 FiraLite Responder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder/readme.html#prerequisites">4.5.1. Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder/readme.html#how-to-build">4.5.2. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder/readme.html#how-to-run">4.5.3. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder/readme.html#log-success">4.5.4. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder_iot_concurrency/readme.html">4.6. SR150 FiraLite Responder IOT Concurrency</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder_iot_concurrency/readme.html#prerequisites">4.6.1. Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder_iot_concurrency/readme.html#how-to-build">4.6.2. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder_iot_concurrency/readme.html#how-to-run">4.6.3. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder_iot_concurrency/readme.html#log-success">4.6.4. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_factory/readme.html">4.7. SR1XX OTP Storage Factory Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_factory/readme.html#prerequisites">4.7.1. Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_factory/readme.html#how-to-build">4.7.2. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_factory/readme.html#how-to-run">4.7.3. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_factory/readme.html#log-success">4.7.4. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_mainline/readme.html">4.8. SR1XX OTP Storage Mainline Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_mainline/readme.html#how-to-build">4.8.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_mainline/readme.html#how-to-run">4.8.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_mainline/readme.html#log-success">4.8.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_anchor/readme.html">4.9. TDOA Anchor UCI 2.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_anchor/readme.html#how-to-build">4.9.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_anchor/readme.html#how-to-run">4.9.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_anchor/readme.html#log-success">4.9.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_tag/readme.html">4.10. TDOA Tag</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_tag/readme.html#how-to-build">4.10.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_tag/readme.html#how-to-run">4.10.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_tag/readme.html#log-success">4.10.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_sync_anchor/readme.html">4.11. TDOA Sync Anchor UCI 2.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_sync_anchor/readme.html#how-to-build">4.11.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_sync_anchor/readme.html#how-to-run">4.11.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_sync_anchor/readme.html#log-success">4.11.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_binding/readme.html">4.12. demo_binding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_binding/readme.html#how-to-build">4.12.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_binding/readme.html#how-to-run">4.12.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_binding/readme.html#log-success">4.12.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/pnp/Rhodes4/readme.html">4.13. RV4 Plug-n-Play FW</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Rhodes4/readme.html#how-to-use">4.13.1. How to Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Rhodes4/readme.html#how-to-run-pnp-at-higher-baudrate">4.13.2. How to run PNP at higher baudrate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Rhodes4/readme.html#how-to-run-pnp-with-hardware-flow-control">4.13.3. How to run PNP with Hardware flow control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Rhodes4/readme.html#watch-dog-timer">4.13.4. Watch Dog Timer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/pnp/Socket/readme.html">4.14. Plug-n-Play FW Over Socket</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Socket/readme.html#how-to-build">4.14.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Socket/readme.html#how-to-use-on-linux-host">4.14.2. How to Use on linux host</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_initiator/readme.html">4.15. SR1XX DLTDOA Ranging Initiator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_initiator/readme.html#how-to-build">4.15.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_initiator/readme.html#how-to-run">4.15.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_initiator/readme.html#log-success">4.15.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_responder/readme.html">4.16. SR1XX DLTDOA Ranging Responder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_responder/readme.html#how-to-build">4.16.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_responder/readme.html#how-to-run">4.16.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_responder/readme.html#log-success">4.16.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_tag/readme.html">4.17. SR1XX DLTDOA Ranging Tag</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_tag/readme.html#how-to-build">4.17.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_tag/readme.html#how-to-run">4.17.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_tag/readme.html#log-success">4.17.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/mctt_pctt/readme.html">4.18. MCTT &amp; PCTT Demo (SR1XX)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/mctt_pctt/readme.html#how-to-use">4.18.1. How to Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/mctt_pctt/readme.html#how-to-build-standalone-project">4.18.2. How to Build(Standalone project)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/mctt_pctt/readme.html#how-to-build-cmake-project">4.18.3. How to Build(CMAKE project)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/mctt_pctt/readme.html#how-to-run">4.18.4. How to Run</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction/readme.html">4.19. Demo nearby interaction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction/readme.html#ios">4.19.1. IOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction/readme.html#android">4.19.2. Android</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction_client/readme.html">4.20. Demo nearby interaction Client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction_client/readme.html#android">4.20.1. Android</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction_client/readme.html#ios">4.20.2. IOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_owr_aoa_advertiser/readme.html">4.21. OWR AoA advertiser</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_owr_aoa_advertiser/readme.html#how-to-build">4.21.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_owr_aoa_advertiser/readme.html#how-to-run">4.21.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_owr_aoa_advertiser/readme.html#log-success">4.21.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_rx/readme.html">4.22. SR150 In Band Data Transfer Rx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_rx/readme.html#how-to-build">4.22.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_rx/readme.html#how-to-run">4.22.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_rx/readme.html#log-success">4.22.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_tx/readme.html">4.23. SR150 IN Band Data Transfer Tx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_tx/readme.html#prerequisites">4.23.1. Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_tx/readme.html#how-to-build">4.23.2. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_tx/readme.html#how-to-run">4.23.3. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_tx/readme.html#log-success">4.23.4. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_test_tx/readme.html">4.24. SR1XX Demo Test TX</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_tx/readme.html#how-to-build">4.24.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_tx/readme.html#how-to-run">4.24.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_tx/readme.html#log-success">4.24.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_test_rx/readme.html">4.25. SR1XX Demo Test Rx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_rx/readme.html#how-to-build">4.25.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_rx/readme.html#how-to-run">4.25.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_rx/readme.html#log-success">4.25.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controlee/readme.html">4.26. Demo Hybrid Scheduled Ranging Controlee</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controlee/readme.html#how-to-build">4.26.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controlee/readme.html#how-to-run">4.26.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controlee/readme.html#log-success">4.26.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controller/readme.html">4.27. Demo Hybrid Scheduled Ranging Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controller/readme.html#how-to-build">4.27.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controller/readme.html#how-to-run">4.27.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controller/readme.html#log-success">4.27.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_csa_controlee/readme.html">4.28. Demo CSA Controlee</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_csa_controlee/readme.html#how-to-set-wrapped-rds-optional">4.28.1. How to Set Wrapped Rds(optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_csa_controlee/readme.html#how-to-build">4.28.2. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_csa_controlee/readme.html#how-to-run">4.28.3. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_csa_controlee/readme.html#log-success">4.28.4. Log (Success)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/index-se051w.html">5. SE051W Demos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo-list-se051w.html">5.1. Demo List SE051W</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../demos/demo-list-se051w.html#standalone-c-examples-for-se051w">5.1.1. Standalone C Examples for SE051W</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/se_vcom/readme.html">5.2. se_vcom</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/se_vcom/readme.html#how-to-build">5.2.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/se_vcom/readme.html#how-to-run">5.2.2. How to Run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index-sr150.html">6. APIs : UWB IoT and SR150</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.1. UWB API Status Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_const.html">6.2. UWB API Consts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_types.html">6.3. UWB API Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_apis.html">6.4. UWB Functional APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_apis_sr1xx.html">6.5. UWB Functional APIs (SR100/SR150 Specific)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_apis_sr150.html">6.6. UWB Functional APIs (SR150 Specific)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_apis_factory.html">6.7. UWB Factory test APIs (SR100/SR150 Specific)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_porting.html">6.8. APIs for Porting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index-se051w.html">7. APIs : SE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api_se_apdu_apis.html">7.1. SE APDU APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_se_apis.html">7.2. SE Functional APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_se_firalite_apdu_apis.html">7.3. SE FiRaLite APDU APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sr1xx/index.html">8. SR1XX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sr1xx/spi.html">8.1. SR1XX SPI communication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sr1xx/spi.html#hbci-spi-write">8.1.1. HBCI SPI Write</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sr1xx/spi.html#hbci-spi-read">8.1.2. HBCI SPI Read</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sr1xx/spi.html#spi-write">8.1.3. SPI Write</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sr1xx/spi.html#spi-read">8.1.4. SPI Read</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sr1xx/hbci.html">8.2. HBCI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sr1xx/hbci.html#sr1xx-fw-download-flow">8.2.1. SR1XX FW download Flow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">9. Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basics/index.html">9.1. UWB Basics (Ongoing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/p2p_ranging.html">9.2. Peer-to-Peer ranging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/uci_command_timeout_handling.html">9.3. UCI Command timeout handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/logging-details.html">9.4. Logging Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/QN9090_reference_manual.html">9.5. QN9090 Reference Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/ExtFlash_fwDownload.html">9.6. Firmware Download From External Flash</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/ExtFlash_fwDownload.html#setup-and-steps-to-download-firmware-from-external-flash">9.6.1. Setup and Steps to Download Firmware From External Flash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/ExtFlash_fwDownload.html#firmware-download-from-external-flash-flow">9.6.2. Firmware download from External Flash Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/firalite-adf-provisioning.html">9.7. FiRaLite ADF Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/firalite-adf-provisioning.html#setup-and-steps-for-jcshell-usage">9.7.1. Setup and Steps for JCShell usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/firalite-adf-provisioning.html#usage-of-jrcpproxy">9.7.2. Usage of JRCPProxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/firalite-adf-provisioning.html#using-the-jcshell">9.7.3. Using the JCShell</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/boards/index-sr150.html">9.8. SR150 Boards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/boards/rhodes_v4.html">9.8.1. RHODES IV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/boards/nrf52840_mk_sr150.html">9.8.2. Nordic(NRF52840) + MK Shield Board (SR150)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+          
+            <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">6.1. UWB API Status Codes</a></li>
+</ul>
+</ul>
+</li>
+          
+        
+        
+          
+            
+  <li>
+    <a href="index-sr150.html" title="Previous Chapter: 6. APIs : UWB IoT and SR150"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 6. APIs : UWB...</span>
+    </a>
+  </li>
+  <li>
+    <a href="api_uwb_const.html" title="Next Chapter: 6.2. UWB API Consts"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">6.2. UWB API Consts &raquo;</span>
+    </a>
+  </li>
+          
+        
+        
+        
+        
+      </ul>
+
+      
+      
+    </div>
+</div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+
+<div class="sidebar-header">
+    <h3>UWB IoT</h3>
+</div>
+
+<div class="row">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uwbiot/index.html">1. UWB IoT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes/index-sr150.html">2. Changes &amp; Release History (SR150)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compiling/index.html">3. Compiling &amp; Running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/index-sr150.html">4. SR150 Demos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/index-se051w.html">5. SE051W Demos</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index-sr150.html">6. APIs : UWB IoT and SR150</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.1. UWB API Status Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_const.html">6.2. UWB API Consts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_types.html">6.3. UWB API Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_apis.html">6.4. UWB Functional APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_apis_sr1xx.html">6.5. UWB Functional APIs (SR100/SR150 Specific)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_apis_sr150.html">6.6. UWB Functional APIs (SR150 Specific)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_apis_factory.html">6.7. UWB Factory test APIs (SR100/SR150 Specific)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_porting.html">6.8. APIs for Porting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index-se051w.html">7. APIs : SE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sr1xx/index.html">8. SR1XX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">9. Appendix</a></li>
+</ul>
+
+</div>
+<div class="row">
+    <form class="form" action="../../../search.html" method="get">
+     <div class="form-group">
+      <label for="Search">Search:</label>
+      <input type="text" name="q" class="form-control" placeholder="Search" />
+     </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <div class="section" id="uwb-api-status-codes">
+<h1><span class="section-number">6.1. </span>UWB API Status Codes<a class="headerlink" href="#uwb-api-status-codes" title="Permalink to this headline">¶</a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__uwb__status"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">uwb_status</span></span></dt>
+<dd><p>Various Status cores returned by UWB APIs. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_LOW_POWER_ERROR">
+<span class="target" id="group__uwb__status_1gad20499aa2b3bf4f611a648d12ab6fae4"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_LOW_POWER_ERROR</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_LOW_POWER_ERROR" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Status Codes for SR040. </p>
+<p>Battery low error status </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_OK">
+<span class="target" id="group__uwb__status_1ga33d1c21bdf216f6f8708188f1c6eb895"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_OK</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_OK" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Status Codes, as per UCI. </p>
+<p>Command succeeded </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_REJECTED">
+<span class="target" id="group__uwb__status_1gaa8f70b8632e59e81b6aba66bf3bcddd2"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_REJECTED</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_REJECTED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Request is rejected </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_FAILED">
+<span class="target" id="group__uwb__status_1ga37007acff9303a8a9bd2cf0f400081fe"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_FAILED</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_FAILED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Command Failed </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_NOT_INITIALIZED">
+<span class="target" id="group__uwb__status_1ga1f4e0a7d8d153a047ff494fd6f63f8f2"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_NOT_INITIALIZED</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_NOT_INITIALIZED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>API called without UCI being initialized </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_INVALID_PARAM">
+<span class="target" id="group__uwb__status_1ga2f0de76942f6d2eecbc6c17228e710de"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_INVALID_PARAM</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_INVALID_PARAM" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid parameter provided </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_INVALID_RANGE">
+<span class="target" id="group__uwb__status_1ga57a0b7722133d1a919853ba0ab88d7cd"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_INVALID_RANGE</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_INVALID_RANGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid value range provided </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_SESSION_NOT_EXIST">
+<span class="target" id="group__uwb__status_1ga4e5324b3dc33df7fc0852e6210ca7687"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_SESSION_NOT_EXIST</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_SESSION_NOT_EXIST" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Session wrt SESSION Handle Does not exist </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_INVALID_PHASE_PARTICIPATION">
+<span class="target" id="group__uwb__status_1ga3296de0f9e3dff6eb71a0cb0a3ce3d17"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_INVALID_PHASE_PARTICIPATION</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_INVALID_PHASE_PARTICIPATION" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid Phase Participation values in SESSION_SET_HUS_CONFIG_CMD </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_SESSION_ACTIVE">
+<span class="target" id="group__uwb__status_1ga45eb34fb4a932e8559287860a38a3099"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_SESSION_ACTIVE</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_SESSION_ACTIVE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Session active </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_MAX_SESSIONS_EXCEEDED">
+<span class="target" id="group__uwb__status_1ga38ac999095f0b14f29eaf16a73d4c4d4"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_MAX_SESSIONS_EXCEEDED</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_MAX_SESSIONS_EXCEEDED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>MAX Sessions exceeded </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_SESSION_NOT_CONFIGURED">
+<span class="target" id="group__uwb__status_1ga1cf55e1be62d1d01b745a055751fccc1"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_SESSION_NOT_CONFIGURED</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_SESSION_NOT_CONFIGURED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Operation is started with out configuring required parameters for Session </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_SESSIONS_ONGOING">
+<span class="target" id="group__uwb__status_1gadeb9470e6e2383d54ab82009a883b99b"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_SESSIONS_ONGOING</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_SESSIONS_ONGOING" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sessions ongoing </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_MULTICAST_LIST_FULL">
+<span class="target" id="group__uwb__status_1ga33cc498e21ac35e78a262d74d1979e37"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_MULTICAST_LIST_FULL</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_MULTICAST_LIST_FULL" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Indicates when multicast list is full during one to many ranging </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_OK_NEGATIVE_DISTANCE_REPORT">
+<span class="target" id="group__uwb__status_1gaa3033382b2a6fa28104dab9ce306ba72"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_OK_NEGATIVE_DISTANCE_REPORT</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_OK_NEGATIVE_DISTANCE_REPORT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Negative distance was reported </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_ESE_RESET">
+<span class="target" id="group__uwb__status_1ga20fc7c5d9fbe96a8f4724370ba95db25"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_ESE_RESET</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_ESE_RESET" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>ESE Rest happened during command processing. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_DATA_TRANSFER_ERROR">
+<span class="target" id="group__uwb__status_1gac875f8c73ad274f14afcf512f1a75bea"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_DATA_TRANSFER_ERROR</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_DATA_TRANSFER_ERROR" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Unrecoverable data transfer error </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_NO_CREDIT_AVAILABLE">
+<span class="target" id="group__uwb__status_1ga6db199f2afb88176d9d4592188f3f5c0"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_NO_CREDIT_AVAILABLE</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_NO_CREDIT_AVAILABLE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Credit not available for Data Packet </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_ERROR_ROUND_INDEX_NOT_ACTIVATED">
+<span class="target" id="group__uwb__status_1ga7851ae5fb2edbbb5a9da802c0a9cfb45"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_ERROR_ROUND_INDEX_NOT_ACTIVATED</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_ERROR_ROUND_INDEX_NOT_ACTIVATED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Given round index couldn’t be activated </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_ERROR_NUMBER_OF_ACTIVE_RANGING_ROUNDS_EXCEEDED">
+<span class="target" id="group__uwb__status_1ga2992e2c8aacc1349ab714e66e7291867"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_ERROR_NUMBER_OF_ACTIVE_RANGING_ROUNDS_EXCEEDED</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_ERROR_NUMBER_OF_ACTIVE_RANGING_ROUNDS_EXCEEDED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Given round exceeds the possible number of ranging rounds </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_ERROR_ROUND_INDEX_NOT_SET_AS_INITIATOR">
+<span class="target" id="group__uwb__status_1ga50d59b8623d70e69ee8df5d62f2b4aee"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_ERROR_ROUND_INDEX_NOT_SET_AS_INITIATOR</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_ERROR_ROUND_INDEX_NOT_SET_AS_INITIATOR" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The role for the configured ranging round index is not Initiator and therefore RDM list cannot be set </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_DLTDOA_DEVICE_ADDRESS_NOT_MATCHING_IN_REPLY_TIMELIST">
+<span class="target" id="group__uwb__status_1gaba1859c0ce3cf91472046251722d3aee"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_DLTDOA_DEVICE_ADDRESS_NOT_MATCHING_IN_REPLY_TIMELIST</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_DLTDOA_DEVICE_ADDRESS_NOT_MATCHING_IN_REPLY_TIMELIST" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Device address not matching </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_BUFFER_OVERFLOW">
+<span class="target" id="group__uwb__status_1gaa98ced59b220bffdd000c24f7f769f9c"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_BUFFER_OVERFLOW</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_BUFFER_OVERFLOW" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Buffer overflow </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_PBF_PKT_SENT">
+<span class="target" id="group__uwb__status_1ga3a94504aa3613c2b76b461d93e6632cc"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_PBF_PKT_SENT</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_PBF_PKT_SENT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Status PBF=1 CMD SENT </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_HPD_WAKEUP">
+<span class="target" id="group__uwb__status_1ga046841e4691be137dd5ca3c09088c1e4"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_HPD_WAKEUP</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_HPD_WAKEUP" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Device is woken up from HPD </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_TIMEOUT">
+<span class="target" id="group__uwb__status_1gacf7518576fab34d7f360753e97fbef6c"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_TIMEOUT</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_TIMEOUT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Command failed with time out </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_ESE_ERROR">
+<span class="target" id="group__uwb__status_1ga104f8f409a0fd1528b0b648809d74edf"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_ESE_ERROR</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_ESE_ERROR" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>SE Error </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_SUSPEND">
+<span class="target" id="group__uwb__status_1gabd3929564015e536f87ca757f78285c8"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_SUSPEND</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_SUSPEND" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Ranging suspended </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_OK_DTPCM_CONFIG_SUCCESS">
+<span class="target" id="group__uwb__status_1ga2b515eebda36d8c2845c071ddf7ded78"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_OK_DTPCM_CONFIG_SUCCESS</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_OK_DTPCM_CONFIG_SUCCESS" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>DTPCM Status Ok, reported when DTPCM is configured for given MAC Address </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_ERROR_INVALID_SLOT_BITMAP">
+<span class="target" id="group__uwb__status_1gadba0f4f6d7fc6e7da23e06d85e934e15"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_ERROR_INVALID_SLOT_BITMAP</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_ERROR_INVALID_SLOT_BITMAP" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>INVALID_SLOT_BITMAP Shall be reported when configured slot bit map size exceeds RANGING_DURATION </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_ERROR_DUPLICATE_SLOT_ASSIGMENT">
+<span class="target" id="group__uwb__status_1ga3812cb5b84dab06a8b0ed5746c214376"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_ERROR_DUPLICATE_SLOT_ASSIGMENT</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_ERROR_DUPLICATE_SLOT_ASSIGMENT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>DUPLICATE_SLOT_ASSIGMENT Shall be reported when configured slot assignments is inconsistent, i.e., one slot is assigned to more than one FiRA device </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_ERROR_INVALID_MAC_ADDRESS">
+<span class="target" id="group__uwb__status_1gaac7805be610acc2f37a6659eecbf2d90"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_ERROR_INVALID_MAC_ADDRESS</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_ERROR_INVALID_MAC_ADDRESS" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>INVALID_MAC_ADDRESS Shall be reported when given MAC address is not found </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_STATUS_UNKNOWN">
+<span class="target" id="group__uwb__status_1gad17f1c51d412de117d36273a98bcf773"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_STATUS_UNKNOWN</span></span></span><a class="headerlink" href="#c.UWBAPI_STATUS_UNKNOWN" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>It is not known whether the intended operation was failed or successful. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_UCI_DEV_INIT">
+<span class="target" id="group__uwb__status_1gaa89c312777e0e59fe50532da5f7cd62b"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_UCI_DEV_INIT</span></span></span><a class="headerlink" href="#c.UWBAPI_UCI_DEV_INIT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Device Status codes, as per UCI. </p>
+<p>Device State - INIT </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_UCI_DEV_READY">
+<span class="target" id="group__uwb__status_1ga67a400d04ab5f37e3fd903b710598316"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_UCI_DEV_READY</span></span></span><a class="headerlink" href="#c.UWBAPI_UCI_DEV_READY" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Device State - READY </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_UCI_DEV_ACTIVE">
+<span class="target" id="group__uwb__status_1ga01b54e8781925633ab0e114ada399f30"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_UCI_DEV_ACTIVE</span></span></span><a class="headerlink" href="#c.UWBAPI_UCI_DEV_ACTIVE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Device State - ACTIVE </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_UCI_DEV_ERROR">
+<span class="target" id="group__uwb__status_1gae332ba47c5c45c8eddeb533f0a799b73"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_UCI_DEV_ERROR</span></span></span><a class="headerlink" href="#c.UWBAPI_UCI_DEV_ERROR" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Device State - ERROR </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_SESSION_INIT_SUCCESS">
+<span class="target" id="group__uwb__status_1ga0db83745b8d3a02093e5bc5eb804fa06"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_SESSION_INIT_SUCCESS</span></span></span><a class="headerlink" href="#c.UWBAPI_SESSION_INIT_SUCCESS" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Session State codes, as per UCI. </p>
+<p>Session State - Session Init Success </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp">
+<span class="target" id="group__uwb__status_1ga0db83745b8d3a02093e5bc5eb804fa06"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_SESSION_INIT_SUCCESS</span></span></span><br /></dt>
+<dd><p>Session State codes, as per UCI. </p>
+<p>Session State - Session Init Success </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_SESSION_DEINIT_SUCCESS">
+<span class="target" id="group__uwb__status_1gaf035ec1ba083cf06fef7c153ec7b690a"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_SESSION_DEINIT_SUCCESS</span></span></span><a class="headerlink" href="#c.UWBAPI_SESSION_DEINIT_SUCCESS" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Session State - Session DeInit Success </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_SESSION_ACTIVATED">
+<span class="target" id="group__uwb__status_1gaabc0c9d769612f27c6b7ddc418b15486"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_SESSION_ACTIVATED</span></span></span><a class="headerlink" href="#c.UWBAPI_SESSION_ACTIVATED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Session State - Session Activated </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_SESSION_IDLE">
+<span class="target" id="group__uwb__status_1ga6f1d98323faf8b985f9c574c9383ce9d"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_SESSION_IDLE</span></span></span><a class="headerlink" href="#c.UWBAPI_SESSION_IDLE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Session State - Session Idle </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_SESSION_ERROR">
+<span class="target" id="group__uwb__status_1ga84c5b313739c3676531f89463c98caad"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_SESSION_ERROR</span></span></span><a class="headerlink" href="#c.UWBAPI_SESSION_ERROR" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Session State - Error </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_DATA_TRANSFER_STATUS_REPETITION_OK">
+<span class="target" id="group__uwb__status_1gab4591b7afcf4b75fb64cc04a38ffd08c"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_DATA_TRANSFER_STATUS_REPETITION_OK</span></span></span><a class="headerlink" href="#c.UWBAPI_DATA_TRANSFER_STATUS_REPETITION_OK" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Data Transfer related status codes. </p>
+<p>Data transmission is ongoing. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_DATA_TRANSFER_STATUS_OK">
+<span class="target" id="group__uwb__status_1ga96a3bf8722c412f38eab54428545bff5"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_DATA_TRANSFER_STATUS_OK</span></span></span><a class="headerlink" href="#c.UWBAPI_DATA_TRANSFER_STATUS_OK" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Data transmission is completed. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_DATA_TRANSFER_STATUS_ERROR">
+<span class="target" id="group__uwb__status_1ga58461184a65a1e2fba605036bb1c761f"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_DATA_TRANSFER_STATUS_ERROR</span></span></span><a class="headerlink" href="#c.UWBAPI_DATA_TRANSFER_STATUS_ERROR" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Application Data could not be sent due to an unrecoverable error </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_DATA_TRANSFER_STATUS_NO_CREDIT_AVAILABLE">
+<span class="target" id="group__uwb__status_1ga9c8b6c0aee1ef5642423573cfa2a9855"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_DATA_TRANSFER_STATUS_NO_CREDIT_AVAILABLE</span></span></span><a class="headerlink" href="#c.UWBAPI_DATA_TRANSFER_STATUS_NO_CREDIT_AVAILABLE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>DATA_MESSAGE_SND is not accepted as no credit is available </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_DATA_TRANSFER_STATUS_REJECTED">
+<span class="target" id="group__uwb__status_1ga3be6ccd7c7caa9c09bff402b7fdec671"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_DATA_TRANSFER_STATUS_REJECTED</span></span></span><a class="headerlink" href="#c.UWBAPI_DATA_TRANSFER_STATUS_REJECTED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>DATA_MESSAGE_SND packet sent in wrong state or Application Data Size exceeds the maximum size that can be sent in one Ranging Round. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_DATA_TRANSFER_STATUS_TYPE_NOT_SUPPORTED">
+<span class="target" id="group__uwb__status_1gab7025162099d0fcd663a731d656bc8f7"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_DATA_TRANSFER_STATUS_TYPE_NOT_SUPPORTED</span></span></span><a class="headerlink" href="#c.UWBAPI_DATA_TRANSFER_STATUS_TYPE_NOT_SUPPORTED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Data transfer is not supported for given session type. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_DATA_TRANSFER_DATA_TRANSFER_IS_ONGOING">
+<span class="target" id="group__uwb__status_1ga0cf8558da845ca94ba110f680a489683"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_DATA_TRANSFER_DATA_TRANSFER_IS_ONGOING</span></span></span><a class="headerlink" href="#c.UWBAPI_DATA_TRANSFER_DATA_TRANSFER_IS_ONGOING" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Application Data is being transmitted and the number of configured DATA_REPETITION_COUNT transmissions is not yet completed </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UWBAPI_DATA_TRANSFER_STATUS_INVALID_FORMAT">
+<span class="target" id="group__uwb__status_1gad3ba22276edb36700c41303bcff7897c"></span><span class="sig-name descname"><span class="n"><span class="pre">UWBAPI_DATA_TRANSFER_STATUS_INVALID_FORMAT</span></span></span><a class="headerlink" href="#c.UWBAPI_DATA_TRANSFER_STATUS_INVALID_FORMAT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The format of the command DATA_MESSAGE_SND associated with this notification is incorrect (e.g, a parameter is missing, a parameter value is invalid). </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULTDOA_MESSAGE_CONTROL_MASK">
+<span class="target" id="group__uwb__status_1ga0887273cdd8d6d254ff0aaf61bda1d3b"></span><span class="sig-name descname"><span class="n"><span class="pre">ULTDOA_MESSAGE_CONTROL_MASK</span></span></span><a class="headerlink" href="#c.ULTDOA_MESSAGE_CONTROL_MASK" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>UL-TDoA related definitions. </p>
+<p>UL-TDoA Message Control Mask </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULTDOA_DEVICE_ID_16BIT_VALUE">
+<span class="target" id="group__uwb__status_1ga7cdd27dc8e78861a9cd84331125f709c"></span><span class="sig-name descname"><span class="n"><span class="pre">ULTDOA_DEVICE_ID_16BIT_VALUE</span></span></span><a class="headerlink" href="#c.ULTDOA_DEVICE_ID_16BIT_VALUE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>16-bit UL-TDoA Device ID </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULTDOA_DEVICE_ID_32BIT_VALUE">
+<span class="target" id="group__uwb__status_1gaec468a070fcc272d9c1a6950f7d3a754"></span><span class="sig-name descname"><span class="n"><span class="pre">ULTDOA_DEVICE_ID_32BIT_VALUE</span></span></span><a class="headerlink" href="#c.ULTDOA_DEVICE_ID_32BIT_VALUE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>32-bit UL-TDoA Device ID </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULTDOA_DEVICE_ID_64BIT_VALUE">
+<span class="target" id="group__uwb__status_1ga0214e8a9a685032b86ad31fb7016ad21"></span><span class="sig-name descname"><span class="n"><span class="pre">ULTDOA_DEVICE_ID_64BIT_VALUE</span></span></span><a class="headerlink" href="#c.ULTDOA_DEVICE_ID_64BIT_VALUE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>64-bit UL-TDoA Device ID </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULTDOA_DEVICE_ID_MASK">
+<span class="target" id="group__uwb__status_1gab2600bde159dc7173331d6e081a0e98b"></span><span class="sig-name descname"><span class="n"><span class="pre">ULTDOA_DEVICE_ID_MASK</span></span></span><a class="headerlink" href="#c.ULTDOA_DEVICE_ID_MASK" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>MASK for above values. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULTDOA_40BIT_TX_TIMESTAMP_MASK">
+<span class="target" id="group__uwb__status_1gad796ab4bf678b9dc6352a98ab7bc379b"></span><span class="sig-name descname"><span class="n"><span class="pre">ULTDOA_40BIT_TX_TIMESTAMP_MASK</span></span></span><a class="headerlink" href="#c.ULTDOA_40BIT_TX_TIMESTAMP_MASK" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>40-bit TX timestamp </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULTDOA_64BIT_TX_TIMESTAMP_MASK">
+<span class="target" id="group__uwb__status_1ga9025c6f0d1885c484e2595a20b310b35"></span><span class="sig-name descname"><span class="n"><span class="pre">ULTDOA_64BIT_TX_TIMESTAMP_MASK</span></span></span><a class="headerlink" href="#c.ULTDOA_64BIT_TX_TIMESTAMP_MASK" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>64-bit TX timestamp </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULTDOA_64BIT_RX_TIMESTAMP_MASK">
+<span class="target" id="group__uwb__status_1ga3c30c30d71f0527201ceb59f46977045"></span><span class="sig-name descname"><span class="n"><span class="pre">ULTDOA_64BIT_RX_TIMESTAMP_MASK</span></span></span><a class="headerlink" href="#c.ULTDOA_64BIT_RX_TIMESTAMP_MASK" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>64-bit RX timestamp </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULTDOA_16BIT_IN_BYTES">
+<span class="target" id="group__uwb__status_1ga06cd2c8c33f7419fd5711e280bdf542e"></span><span class="sig-name descname"><span class="n"><span class="pre">ULTDOA_16BIT_IN_BYTES</span></span></span><a class="headerlink" href="#c.ULTDOA_16BIT_IN_BYTES" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Length in bytes for 16-bits </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULTDOA_32BIT_IN_BYTES">
+<span class="target" id="group__uwb__status_1ga3bac403e1dfb9c8fd5871a8c91830fbb"></span><span class="sig-name descname"><span class="n"><span class="pre">ULTDOA_32BIT_IN_BYTES</span></span></span><a class="headerlink" href="#c.ULTDOA_32BIT_IN_BYTES" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Length in bytes for 32-bits </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULTDOA_40BIT_IN_BYTES">
+<span class="target" id="group__uwb__status_1gad6f4806418bf4b303d9f69eb2d071149"></span><span class="sig-name descname"><span class="n"><span class="pre">ULTDOA_40BIT_IN_BYTES</span></span></span><a class="headerlink" href="#c.ULTDOA_40BIT_IN_BYTES" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Length in bytes for 40-bits </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULTDOA_64BIT_IN_BYTES">
+<span class="target" id="group__uwb__status_1ga13bb336b9143c6efcab1395ab4d82da7"></span><span class="sig-name descname"><span class="n"><span class="pre">ULTDOA_64BIT_IN_BYTES</span></span></span><a class="headerlink" href="#c.ULTDOA_64BIT_IN_BYTES" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Length in bytes for 64-bits </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.AUTH_TAG_IN_16BYTES">
+<span class="target" id="group__uwb__status_1ga42a6b39e4fc2548342d481679a6c8ff0"></span><span class="sig-name descname"><span class="n"><span class="pre">AUTH_TAG_IN_16BYTES</span></span></span><a class="headerlink" href="#c.AUTH_TAG_IN_16BYTES" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Length in Bytes for 128-bits </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MAX_NUM_ANTENNA_PAIR">
+<span class="target" id="group__uwb__status_1ga6fb6a0c9bbd8f2be3286f89edfc84d71"></span><span class="sig-name descname"><span class="n"><span class="pre">MAX_NUM_ANTENNA_PAIR</span></span></span><a class="headerlink" href="#c.MAX_NUM_ANTENNA_PAIR" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Max number of supported rx antenna ID/pair </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.FOV_SPECIFIC_DATA_TYPE">
+<span class="target" id="group__uwb__status_1ga95b86a7bb089193fdf4a299a84ad0fed"></span><span class="sig-name descname"><span class="n"><span class="pre">FOV_SPECIFIC_DATA_TYPE</span></span></span><a class="headerlink" href="#c.FOV_SPECIFIC_DATA_TYPE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>FoV specific Vendor Data type </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv430eSESSION_STATUS_REASON_CODES_t">
+<span id="_CPPv330eSESSION_STATUS_REASON_CODES_t"></span><span id="_CPPv230eSESSION_STATUS_REASON_CODES_t"></span><span class="target" id="group__uwb__status_1ga8af4c15cf302852f38472b42e14fc118"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">eSESSION_STATUS_REASON_CODES_t</span></span></span><a class="headerlink" href="#_CPPv430eSESSION_STATUS_REASON_CODES_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Session status error reason code 0x06 - 0x1C : RFU 0x40 - 0x7F : RFU 0x80 - 0xFF : Reserved for Vendor Specific Use 0xA0 - 0xAF : Reserved for CCC Specific Use. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t25UWB_SESSION_STATE_CHANGEDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t25UWB_SESSION_STATE_CHANGEDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t25UWB_SESSION_STATE_CHANGEDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118ae588e9783bf784767589994bca5a08e0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_STATE_CHANGED</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t25UWB_SESSION_STATE_CHANGEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t38UWB_SESSION_MAX_RR_RETRY_COUNT_REACHEDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t38UWB_SESSION_MAX_RR_RETRY_COUNT_REACHEDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t38UWB_SESSION_MAX_RR_RETRY_COUNT_REACHEDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a9905bf276c3a6b5f48b9c798108797b6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_MAX_RR_RETRY_COUNT_REACHED</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t38UWB_SESSION_MAX_RR_RETRY_COUNT_REACHEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t38UWB_SESSION_MAX_RANGING_BLOCKS_REACHEDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t38UWB_SESSION_MAX_RANGING_BLOCKS_REACHEDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t38UWB_SESSION_MAX_RANGING_BLOCKS_REACHEDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a8dba99b153c053d59ff1ea3bedff077e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_MAX_RANGING_BLOCKS_REACHED</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t38UWB_SESSION_MAX_RANGING_BLOCKS_REACHEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t42UWB_SESSION_SUSPENDED_DUE_TO_INBAND_SIGNALE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t42UWB_SESSION_SUSPENDED_DUE_TO_INBAND_SIGNALE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t42UWB_SESSION_SUSPENDED_DUE_TO_INBAND_SIGNALE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a3ba893131ac83f1e2a675e4ad9fc2ddd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_SUSPENDED_DUE_TO_INBAND_SIGNAL</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t42UWB_SESSION_SUSPENDED_DUE_TO_INBAND_SIGNALE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_RESUMED_DUE_TO_INBAND_SIGNALE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_RESUMED_DUE_TO_INBAND_SIGNALE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_RESUMED_DUE_TO_INBAND_SIGNALE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a6bc631a2a04d18b2b67973c44b9bf4ae"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_RESUMED_DUE_TO_INBAND_SIGNAL</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_RESUMED_DUE_TO_INBAND_SIGNALE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_STOPPED_DUE_TO_INBAND_SIGNALE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_STOPPED_DUE_TO_INBAND_SIGNALE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_STOPPED_DUE_TO_INBAND_SIGNALE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118afce7a64a90ddb3ece76a1094b968d131"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_STOPPED_DUE_TO_INBAND_SIGNAL</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_STOPPED_DUE_TO_INBAND_SIGNALE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t41UWB_SESSION_INVALID_UL_TDOA_RANDOM_WINDOWE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t41UWB_SESSION_INVALID_UL_TDOA_RANDOM_WINDOWE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t41UWB_SESSION_INVALID_UL_TDOA_RANDOM_WINDOWE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a7cc567b15116791f582099344f15ec1e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_UL_TDOA_RANDOM_WINDOW</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t41UWB_SESSION_INVALID_UL_TDOA_RANDOM_WINDOWE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t44UWB_SESSION_MIN_RFRAMES_PER_RR_NOT_SUPPORTEDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t44UWB_SESSION_MIN_RFRAMES_PER_RR_NOT_SUPPORTEDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t44UWB_SESSION_MIN_RFRAMES_PER_RR_NOT_SUPPORTEDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a9320b6f77011bf82932970d70d79279f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_MIN_RFRAMES_PER_RR_NOT_SUPPORTED</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t44UWB_SESSION_MIN_RFRAMES_PER_RR_NOT_SUPPORTEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t34UWB_SESSION_TX_DELAY_NOT_SUPPORTEDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t34UWB_SESSION_TX_DELAY_NOT_SUPPORTEDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t34UWB_SESSION_TX_DELAY_NOT_SUPPORTEDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a028c3f7ead6a073c0909de2b395d4815"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_TX_DELAY_NOT_SUPPORTED</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t34UWB_SESSION_TX_DELAY_NOT_SUPPORTEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_SLOT_LENTGH_NOT_SUPPORTEDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_SLOT_LENTGH_NOT_SUPPORTEDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_SLOT_LENTGH_NOT_SUPPORTEDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118acf62043f2a903523a9979bb3c816ca88"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_SLOT_LENTGH_NOT_SUPPORTED</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_SLOT_LENTGH_NOT_SUPPORTEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_SLOTS_PER_RR_NOT_SUFFICIENTE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_SLOTS_PER_RR_NOT_SUFFICIENTE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_SLOTS_PER_RR_NOT_SUFFICIENTE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118af8b649f4abf60b9fd40b93a12a36db8c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_SLOTS_PER_RR_NOT_SUFFICIENT</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_SLOTS_PER_RR_NOT_SUFFICIENTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t42UWB_SESSION_MAC_ADDRESS_MODE_NOT_SUPPORTEDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t42UWB_SESSION_MAC_ADDRESS_MODE_NOT_SUPPORTEDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t42UWB_SESSION_MAC_ADDRESS_MODE_NOT_SUPPORTEDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a356473e0d99438fe154d81df60497873"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_MAC_ADDRESS_MODE_NOT_SUPPORTED</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t42UWB_SESSION_MAC_ADDRESS_MODE_NOT_SUPPORTEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t36UWB_SESSION_INVALID_RANGING_DURATIONE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t36UWB_SESSION_INVALID_RANGING_DURATIONE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t36UWB_SESSION_INVALID_RANGING_DURATIONE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118ae3df0a35f8c489142689386e936ed94b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_RANGING_DURATION</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t36UWB_SESSION_INVALID_RANGING_DURATIONE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t30UWB_SESSION_INVALID_STS_CONFIGE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t30UWB_SESSION_INVALID_STS_CONFIGE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t30UWB_SESSION_INVALID_STS_CONFIGE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a8a81ed2799cf1b585a253905440e4dd5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_STS_CONFIG</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t30UWB_SESSION_INVALID_STS_CONFIGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_HUS_INVALID_RFRAME_CONFIGE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_HUS_INVALID_RFRAME_CONFIGE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_HUS_INVALID_RFRAME_CONFIGE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a9ae32fa419d2a9b23060239697e418b4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_HUS_INVALID_RFRAME_CONFIG</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_HUS_INVALID_RFRAME_CONFIGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t32UWB_SESSION_HUS_NOT_ENOUGH_SLOTSE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t32UWB_SESSION_HUS_NOT_ENOUGH_SLOTSE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t32UWB_SESSION_HUS_NOT_ENOUGH_SLOTSE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118ae29c064cd132e0f0c0b18e033f214c41"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_HUS_NOT_ENOUGH_SLOTS</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t32UWB_SESSION_HUS_NOT_ENOUGH_SLOTSE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_HUS_CFP_PHASE_TOO_SHORTE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_HUS_CFP_PHASE_TOO_SHORTE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_HUS_CFP_PHASE_TOO_SHORTE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118af2210a44a845eaf1d06b48c5d17c00e3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_HUS_CFP_PHASE_TOO_SHORT</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_HUS_CFP_PHASE_TOO_SHORTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_HUS_CAP_PHASE_TOO_SHORTE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_HUS_CAP_PHASE_TOO_SHORTE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_HUS_CAP_PHASE_TOO_SHORTE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a79eac1778010b52022bbc7a7a4b730f9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_HUS_CAP_PHASE_TOO_SHORT</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_HUS_CAP_PHASE_TOO_SHORTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t22UWB_SESSION_HUS_OTHERSE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t22UWB_SESSION_HUS_OTHERSE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t22UWB_SESSION_HUS_OTHERSE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a87703f9faf87107e2c7dcc27b12771e2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_HUS_OTHERS</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t22UWB_SESSION_HUS_OTHERSE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_STATUS_SESSION_KEY_NOT_FOUNDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_STATUS_SESSION_KEY_NOT_FOUNDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_STATUS_SESSION_KEY_NOT_FOUNDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a7ded19fa4a1849899f186f44a446e145"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_STATUS_SESSION_KEY_NOT_FOUND</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_STATUS_SESSION_KEY_NOT_FOUNDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t44UWB_SESSION_STATUS_SUB_SESSION_KEY_NOT_FOUNDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t44UWB_SESSION_STATUS_SUB_SESSION_KEY_NOT_FOUNDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t44UWB_SESSION_STATUS_SUB_SESSION_KEY_NOT_FOUNDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118ae22a6b19c5f8174333178fa9ee00387c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_STATUS_SUB_SESSION_KEY_NOT_FOUND</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t44UWB_SESSION_STATUS_SUB_SESSION_KEY_NOT_FOUNDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_INVALID_PREAMBLE_CODE_INDEXE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_INVALID_PREAMBLE_CODE_INDEXE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_INVALID_PREAMBLE_CODE_INDEXE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a40e58fd1199fa208ef2bc16dbc670e98"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_PREAMBLE_CODE_INDEX</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_INVALID_PREAMBLE_CODE_INDEXE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t26UWB_SESSION_INVALID_SFD_IDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t26UWB_SESSION_INVALID_SFD_IDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t26UWB_SESSION_INVALID_SFD_IDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a23773e7ce50d501d9522b641d2e495f3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_SFD_ID</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t26UWB_SESSION_INVALID_SFD_IDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t34UWB_SESSION_INVALID_PSDU_DATA_RATEE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t34UWB_SESSION_INVALID_PSDU_DATA_RATEE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t34UWB_SESSION_INVALID_PSDU_DATA_RATEE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a299c1b39e59a7c27a9a78a8d270a570a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_PSDU_DATA_RATE</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t34UWB_SESSION_INVALID_PSDU_DATA_RATEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t33UWB_SESSION_INVALID_PHR_DATA_RATEE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t33UWB_SESSION_INVALID_PHR_DATA_RATEE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t33UWB_SESSION_INVALID_PHR_DATA_RATEE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a88e8faafad471fa7bebcdf3ffdd8dc6a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_PHR_DATA_RATE</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t33UWB_SESSION_INVALID_PHR_DATA_RATEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_INVALID_PREAMBLE_DURATIONE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_INVALID_PREAMBLE_DURATIONE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_INVALID_PREAMBLE_DURATIONE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118aefde5405a144b15876eed40c6c350e3b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_PREAMBLE_DURATION</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_INVALID_PREAMBLE_DURATIONE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t30UWB_SESSION_INVALID_STS_LENGTHE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t30UWB_SESSION_INVALID_STS_LENGTHE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t30UWB_SESSION_INVALID_STS_LENGTHE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a4f528477de1be72e1a31c732e14c34ca"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_STS_LENGTH</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t30UWB_SESSION_INVALID_STS_LENGTHE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_INVALID_NUM_OF_STS_SEGMENTSE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_INVALID_NUM_OF_STS_SEGMENTSE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_INVALID_NUM_OF_STS_SEGMENTSE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a5b3256838294c29004575046cd59bb32"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_NUM_OF_STS_SEGMENTS</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_INVALID_NUM_OF_STS_SEGMENTSE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_INVALID_NUM_OF_CONTROLEESE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_INVALID_NUM_OF_CONTROLEESE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_INVALID_NUM_OF_CONTROLEESE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a9041be9e6d16da121fad85770b5f83d3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_NUM_OF_CONTROLEES</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_INVALID_NUM_OF_CONTROLEESE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t43UWB_SESSION_MAX_RANGING_REPLY_TIME_EXCEEDEDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t43UWB_SESSION_MAX_RANGING_REPLY_TIME_EXCEEDEDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t43UWB_SESSION_MAX_RANGING_REPLY_TIME_EXCEEDEDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118adbbc7f868876436fa72ab1885c958e1e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_MAX_RANGING_REPLY_TIME_EXCEEDED</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t43UWB_SESSION_MAX_RANGING_REPLY_TIME_EXCEEDEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t36UWB_SESSION_INVALID_DST_ADDRESS_LISTE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t36UWB_SESSION_INVALID_DST_ADDRESS_LISTE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t36UWB_SESSION_INVALID_DST_ADDRESS_LISTE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a65b9a4beab82ac6fa0cf46e7f8aa09bb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_DST_ADDRESS_LIST</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t36UWB_SESSION_INVALID_DST_ADDRESS_LISTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t47UWB_SESSION_INVALID_OR_NOT_FOUND_SUB_SESSION_IDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t47UWB_SESSION_INVALID_OR_NOT_FOUND_SUB_SESSION_IDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t47UWB_SESSION_INVALID_OR_NOT_FOUND_SUB_SESSION_IDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a12133a15d720bc1f2c9fb85fc9395d3f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_OR_NOT_FOUND_SUB_SESSION_ID</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t47UWB_SESSION_INVALID_OR_NOT_FOUND_SUB_SESSION_IDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_INVALID_RESULT_REPORT_CONFIGE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_INVALID_RESULT_REPORT_CONFIGE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_INVALID_RESULT_REPORT_CONFIGE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a81c24a028db7b4a7af022728358c9751"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_RESULT_REPORT_CONFIG</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t40UWB_SESSION_INVALID_RESULT_REPORT_CONFIGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t48UWB_SESSION_INVALID_RANGING_ROUND_CONTROL_CONFIGE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t48UWB_SESSION_INVALID_RANGING_ROUND_CONTROL_CONFIGE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t48UWB_SESSION_INVALID_RANGING_ROUND_CONTROL_CONFIGE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a53093d18f814156e657f4c179326c58f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_RANGING_ROUND_CONTROL_CONFIG</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t48UWB_SESSION_INVALID_RANGING_ROUND_CONTROL_CONFIGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_INVALID_RANGING_ROUND_USAGEE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_INVALID_RANGING_ROUND_USAGEE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_INVALID_RANGING_ROUND_USAGEE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a40e0119006d97afdd3381198a79f6c58"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_RANGING_ROUND_USAGE</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t39UWB_SESSION_INVALID_RANGING_ROUND_USAGEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_INVALID_MULTI_NODE_MODEE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_INVALID_MULTI_NODE_MODEE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_INVALID_MULTI_NODE_MODEE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a3a09bbfcc98b94bedefe78fe98b54865"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_MULTI_NODE_MODE</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_INVALID_MULTI_NODE_MODEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t29UWB_SESSION_RDS_FETCH_FAILUREE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t29UWB_SESSION_RDS_FETCH_FAILUREE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t29UWB_SESSION_RDS_FETCH_FAILUREE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118acb08eafb72d6091d0ff75efa9734de76"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_RDS_FETCH_FAILURE</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t29UWB_SESSION_RDS_FETCH_FAILUREE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t26UWB_SESSION_DOES_NOT_EXISTE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t26UWB_SESSION_DOES_NOT_EXISTE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t26UWB_SESSION_DOES_NOT_EXISTE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118af392b6e1b8d027c52bd84570e1db33c2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_DOES_NOT_EXIST</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t26UWB_SESSION_DOES_NOT_EXISTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_RANGING_DURATION_MISMATCHE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_RANGING_DURATION_MISMATCHE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_RANGING_DURATION_MISMATCHE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a7b85995c1c77642f688255aeeac51d7c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_RANGING_DURATION_MISMATCH</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_RANGING_DURATION_MISMATCHE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t31UWB_SESSION_INVALID_OFFSET_TIMEE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t31UWB_SESSION_INVALID_OFFSET_TIMEE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t31UWB_SESSION_INVALID_OFFSET_TIMEE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118ab879b5ec260a20df8aeacd4de48a989f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_OFFSET_TIME</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t31UWB_SESSION_INVALID_OFFSET_TIMEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t16UWB_SESSION_LOSTE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t16UWB_SESSION_LOSTE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t16UWB_SESSION_LOSTE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a2405752fcde07023ab69c725cea7d25b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_LOST</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t16UWB_SESSION_LOSTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t51UWB_SESSION_DT_ANCHOR_RANGING_ROUNDS_NOT_CONFIGUREDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t51UWB_SESSION_DT_ANCHOR_RANGING_ROUNDS_NOT_CONFIGUREDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t51UWB_SESSION_DT_ANCHOR_RANGING_ROUNDS_NOT_CONFIGUREDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a0cb0f58372bfb579f7474390703389e9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_DT_ANCHOR_RANGING_ROUNDS_NOT_CONFIGURED</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t51UWB_SESSION_DT_ANCHOR_RANGING_ROUNDS_NOT_CONFIGUREDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t48UWB_SESSION_DT_TAG_RANGING_ROUNDS_NOT_CONFIGUREDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t48UWB_SESSION_DT_TAG_RANGING_ROUNDS_NOT_CONFIGUREDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t48UWB_SESSION_DT_TAG_RANGING_ROUNDS_NOT_CONFIGUREDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a1b7cc489debc9b0997b35ef8a92bc5bb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_DT_TAG_RANGING_ROUNDS_NOT_CONFIGURED</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t48UWB_SESSION_DT_TAG_RANGING_ROUNDS_NOT_CONFIGUREDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_ERROR_INVALID_ANTENNA_CFGE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_ERROR_INVALID_ANTENNA_CFGE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_ERROR_INVALID_ANTENNA_CFGE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a9d05c811a8b43265e4128a06ac8f41ff"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_ERROR_INVALID_ANTENNA_CFG</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_ERROR_INVALID_ANTENNA_CFGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t26UWB_SESSION_BASEBAND_ERRORE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t26UWB_SESSION_BASEBAND_ERRORE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t26UWB_SESSION_BASEBAND_ERRORE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a2d0d21360ff9a289fa9f49de16d60c9d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_BASEBAND_ERROR</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t26UWB_SESSION_BASEBAND_ERRORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t31UWB_SESSION_TESTMODE_TERMINATEDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t31UWB_SESSION_TESTMODE_TERMINATEDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t31UWB_SESSION_TESTMODE_TERMINATEDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a64bb63be63bad85a759c5ada7d28fc9a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_TESTMODE_TERMINATED</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t31UWB_SESSION_TESTMODE_TERMINATEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t38UWB_SESSION_INVALID_DATA_TRANSFER_MODEE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t38UWB_SESSION_INVALID_DATA_TRANSFER_MODEE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t38UWB_SESSION_INVALID_DATA_TRANSFER_MODEE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a4a9d8e425b0b86c5fe9b86ab2c29bc73"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_DATA_TRANSFER_MODE</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t38UWB_SESSION_INVALID_DATA_TRANSFER_MODEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t27UWB_SESSION_INVALID_MAC_CFGE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t27UWB_SESSION_INVALID_MAC_CFGE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t27UWB_SESSION_INVALID_MAC_CFGE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118aa5ef1236345a7fe0decdd40cb2036562"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_MAC_CFG</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t27UWB_SESSION_INVALID_MAC_CFGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t46UWB_SESSION_INVALID_ADAPTIVE_HOPPING_THRESHOLDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t46UWB_SESSION_INVALID_ADAPTIVE_HOPPING_THRESHOLDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t46UWB_SESSION_INVALID_ADAPTIVE_HOPPING_THRESHOLDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a6295951a7efe99fdd7328ae997a2cd49"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_ADAPTIVE_HOPPING_THRESHOLD</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t46UWB_SESSION_INVALID_ADAPTIVE_HOPPING_THRESHOLDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_UNSUPPORTED_RANGING_LIMITE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_UNSUPPORTED_RANGING_LIMITE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_UNSUPPORTED_RANGING_LIMITE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118ac3bd19e98d6d9470502ec8ea9cf205e4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_UNSUPPORTED_RANGING_LIMIT</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t37UWB_SESSION_UNSUPPORTED_RANGING_LIMITE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_RNG_INVALID_DEVICE_ROLEE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_RNG_INVALID_DEVICE_ROLEE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_RNG_INVALID_DEVICE_ROLEE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a4e9c9c614f247145a261e3ddf9b385a5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_RNG_INVALID_DEVICE_ROLE</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_RNG_INVALID_DEVICE_ROLEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t51UWB_SESSION_INVALID_ANTENNA_PAIR_SWAP_CONFIGURATIONE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t51UWB_SESSION_INVALID_ANTENNA_PAIR_SWAP_CONFIGURATIONE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t51UWB_SESSION_INVALID_ANTENNA_PAIR_SWAP_CONFIGURATIONE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a3d83b3d2c933e33b1cc84bd5788318af"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_INVALID_ANTENNA_PAIR_SWAP_CONFIGURATION</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t51UWB_SESSION_INVALID_ANTENNA_PAIR_SWAP_CONFIGURATIONE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t24UWB_SESSION_URSK_EXPIREDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t24UWB_SESSION_URSK_EXPIREDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t24UWB_SESSION_URSK_EXPIREDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118ae2c8ba592499a4650c8cce4f31d97f7b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_URSK_EXPIRED</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t24UWB_SESSION_URSK_EXPIREDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t34UWB_SESSION_TERMINATION_ON_MAX_STSE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t34UWB_SESSION_TERMINATION_ON_MAX_STSE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t34UWB_SESSION_TERMINATION_ON_MAX_STSE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118aa0bb0edd8c3e8524cdbd868f67b18f08"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_TERMINATION_ON_MAX_STS</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t34UWB_SESSION_TERMINATION_ON_MAX_STSE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_RADAR_FCC_LIMIT_REACHEDE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_RADAR_FCC_LIMIT_REACHEDE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_RADAR_FCC_LIMIT_REACHEDE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118ad752cf6464ce5778719629d68234a8a6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_RADAR_FCC_LIMIT_REACHED</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t35UWB_SESSION_RADAR_FCC_LIMIT_REACHEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30eSESSION_STATUS_REASON_CODES_t27UWB_SESSION_CSA_INVALID_CFGE">
+<span id="_CPPv3N30eSESSION_STATUS_REASON_CODES_t27UWB_SESSION_CSA_INVALID_CFGE"></span><span id="_CPPv2N30eSESSION_STATUS_REASON_CODES_t27UWB_SESSION_CSA_INVALID_CFGE"></span><span class="target" id="group__uwb__status_1gga8af4c15cf302852f38472b42e14fc118a997c7a26e28667abe337f7f0eedcb9a1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWB_SESSION_CSA_INVALID_CFG</span></span></span><a class="headerlink" href="#_CPPv4N30eSESSION_STATUS_REASON_CODES_t27UWB_SESSION_CSA_INVALID_CFGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020-2021 NXP.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

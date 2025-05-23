@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<!--
+Copyright 2020-2021 NXP
+
+This software is owned or controlled by NXP and may only be used
+strictly in accordance with the applicable license terms.  By expressly
+accepting such terms or by downloading, installing, activating and/or
+otherwise using the software, you are agreeing that you have read, and
+that you agree to comply with and are bound by, such license terms.  If
+you do not agree to be bound by the applicable license terms, then you
+may not retain, install, activate or otherwise use the software.
+
+ _   ___      _____   ___    _____
+| | | \ \    / / _ ) |_ _|__|_   _|
+| |_| |\ \/\/ /| _ \  | |/ _ \| |
+ \___/  \_/\_/ |___/ |___\___/|_|
+
+-->
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.6. Dynamic View &#8212; UWB IoT v04.06.00 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/uwb.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="2. Changes &amp; Release History (SR150)" href="../changes/index-sr150.html" />
+    <link rel="prev" title="1.5.3. FiRa / MCTT / PCTT Mode" href="arch-mw-fira-mctt-pcttmode.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+
+
+<div id="navbar" class="navbar navbar-inverse navbar-default ">
+<div class="container">
+  <div class="navbar-header">
+    <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="../toc-sr150.html"><span><img src="../../../_static/NXP_logo_JPG.jpg"></span>
+       </a>
+    <span class="navbar-text navbar-version pull-left"><b>v04.06.00</b></span>
+  </div>
+
+    <div class="collapse navbar-collapse nav-collapse">
+      <ul class="nav navbar-nav">
+      <li class="dropdown globaltoc-container"></li> 
+        
+        
+          <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../toc-sr150.html">TOC <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../uwbiot/index.html">1. UWB IoT</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../uwbiot/introduction.html">1.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uwbiot/acronyms.html">1.2. Acronyms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uwbiot/folder-structure.html">1.3. Folder Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#root-folder">1.3.1. Root Folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#binaries">1.3.2. <code class="docutils literal notranslate"><span class="pre">/binaries</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#boards">1.3.3. <code class="docutils literal notranslate"><span class="pre">/boards</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#demos">1.3.5. <code class="docutils literal notranslate"><span class="pre">/demos</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#docs">1.3.6. <code class="docutils literal notranslate"><span class="pre">/docs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#ext-boards">1.3.7. <code class="docutils literal notranslate"><span class="pre">/ext/boards</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#ext-freertos">1.3.8. <code class="docutils literal notranslate"><span class="pre">/ext/freertos</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#ext-tml-libuwbd">1.3.9. <code class="docutils literal notranslate"><span class="pre">/ext/TML-libuwbd</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#firmware-images">1.3.10. <code class="docutils literal notranslate"><span class="pre">/firmware_images</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#libs">1.3.11. <code class="docutils literal notranslate"><span class="pre">/libs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#libs-halimpl">1.3.12. <code class="docutils literal notranslate"><span class="pre">/libs/halimpl</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#libs-uci-core">1.3.13. <code class="docutils literal notranslate"><span class="pre">/libs/uci-core</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#libs-uwb-iot">1.3.14. <code class="docutils literal notranslate"><span class="pre">/libs/uwb-iot</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#libs-uwbradar">1.3.15. <code class="docutils literal notranslate"><span class="pre">/libs/uwbradar</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#project">1.3.16. <code class="docutils literal notranslate"><span class="pre">/project</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#scripts">1.3.17. <code class="docutils literal notranslate"><span class="pre">/scripts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#tools">1.3.18. <code class="docutils literal notranslate"><span class="pre">/tools</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arch-block-diag.html">1.4. Block Diagram</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arch-block-diag.html#components">1.4.1. Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arch-block-diag.html#sr150-freertos">1.4.2. SR150 - FreeRTOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arch-block-diag.html#sr040">1.4.5. SR040</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arch-mw-modes-index.html">1.5. Modes of operation of the MW</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arch-mw-standalonemode.html">1.5.1. Standalone Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arch-mw-pnpmode.html">1.5.2. PNP Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arch-mw-fira-mctt-pcttmode.html">1.5.3. FiRa / MCTT / PCTT Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.6. Dynamic View</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#uwb-stack-init-sequence">1.6.1. UWB Stack Init Sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uwb-stack-deinit-sequence">1.6.2. UWB Stack DeInit Sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#p2p-multicast-ranging">1.6.3. P2P, Multicast Ranging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ble-oob">1.6.4. BLE - OOB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recovery-uci-command-timeout">1.6.5. Recovery : UCI Command Timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recovery-fw-crash-handling-from-mw">1.6.6. Recovery : FW Crash Handling from MW</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changes/index-sr150.html">2. Changes &amp; Release History (SR150)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changes/current.html">2.1. Build <code class="samp docutils literal notranslate"><span class="pre">v04.06.00</span></code> (Current, NXP Internal)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#scope-of-build">2.1.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#mw-changes">2.1.2. MW Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#api-changes">2.1.3. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#folder-restructuring">2.1.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#new-features-added">2.1.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#features-removed">2.1.6. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#features-updated">2.1.7. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#build-system-changes">2.1.8. Build system changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#demo-updates">2.1.9. Demo updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#id25">2.1.10. Folder Restructuring</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v04.05.07-sr150.html">2.2. Release <code class="docutils literal notranslate"><span class="pre">v04.05.07</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#scope-of-build">2.2.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#mw-changes">2.2.2. MW Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#api-changes">2.2.3. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#folder-restructuring">2.2.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#new-features-added">2.2.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#features-removed">2.2.6. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#features-updated">2.2.7. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#build-system-changes">2.2.8. Build system changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#demo-updates">2.2.9. Demo updates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v04.04.05-sr150.html">2.3. Release <code class="docutils literal notranslate"><span class="pre">v04.04.05</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#scope-of-build">2.3.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#api-changes">2.3.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#folder-restructuring">2.3.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#new-features-added">2.3.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#features-removed">2.3.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#features-updated">2.3.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#build-system-changes">2.3.7. Build system changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#demo-updates">2.3.8. Demo updates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v04.04.03-sr150.html">2.4. Release <code class="docutils literal notranslate"><span class="pre">v04.04.03</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#firmware">2.4.1. Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#scope-of-build">2.4.2. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#api-changes">2.4.3. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#folder-restructuring">2.4.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#new-features-added">2.4.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#features-removed">2.4.6. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#features-updated">2.4.7. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#build-system-changes">2.4.8. Build system changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#demo-updates">2.4.9. Demo updates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v04.03.15-sr150.html">2.5. Release <code class="docutils literal notranslate"><span class="pre">v04.03.15</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#scope-of-build">2.5.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#api-changes">2.5.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#folder-restructuring">2.5.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#new-features-added">2.5.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#features-removed">2.5.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#features-updated">2.5.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#id1">2.5.7. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#build-system-changes">2.5.8. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v04.02.01-sr150.html">2.6. Release <code class="docutils literal notranslate"><span class="pre">v04.02.01</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#scope-of-build">2.6.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#api-changes">2.6.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#folder-restructuring">2.6.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#new-features-added">2.6.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#features-removed">2.6.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#features-updated">2.6.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#build-system-changes">2.6.7. Build system changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#demo-updates">2.6.8. Demo updates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.15.11-sr150.html">2.7. Release <code class="docutils literal notranslate"><span class="pre">v03.15.11</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#scope-of-build">2.7.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#api-changes">2.7.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#folder-restructuring">2.7.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#new-features-added">2.7.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#features-removed">2.7.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#features-updated">2.7.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#build-system-changes">2.7.7. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.15.03-sr150.html">2.8. Release <code class="docutils literal notranslate"><span class="pre">v03.15.03</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#scope-of-build">2.8.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#api-changes">2.8.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#folder-restructuring">2.8.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#new-features-added">2.8.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#features-removed">2.8.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#features-updated">2.8.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#build-system-changes">2.8.7. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.14.04-sr150.html">2.9. Release <code class="docutils literal notranslate"><span class="pre">v03.14.04</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#scope-of-build">2.9.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#api-changes">2.9.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#folder-restructuring">2.9.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#new-features-added">2.9.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#features-removed">2.9.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#features-updated">2.9.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#build-system-changes">2.9.7. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.13.03.html">2.10. Release <code class="docutils literal notranslate"><span class="pre">v03.13.03</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#scope-of-build">2.10.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#api-changes">2.10.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#tml-refactoring">2.10.3. TML Refactoring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#folder-restructuring">2.10.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#new-features-added">2.10.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#features-removed">2.10.6. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#features-updated">2.10.7. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#build-system-changes">2.10.8. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.10.02-sr150.html">2.11. Release <code class="docutils literal notranslate"><span class="pre">v03.10.02</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#scope-of-release">2.11.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#api-changes">2.11.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#folder-restructuring">2.11.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#new-features-added">2.11.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#features-removed">2.11.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#features-updated">2.11.6. Features Updated</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.09.00-sr150.html">2.12. Release <code class="docutils literal notranslate"><span class="pre">v03.09.00</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.09.00-sr150.html#scope-of-release">2.12.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.09.00-sr150.html#new-features-added">2.12.2. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.09.00-sr150.html#build-system-changes">2.12.3. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.08.01.html">2.13. Release <code class="docutils literal notranslate"><span class="pre">v03.08.01</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.08.01.html#scope-of-release">2.13.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.08.01.html#api-changes">2.13.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.08.01.html#folder-restructuring">2.13.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.08.01.html#new-features-added">2.13.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.08.01.html#features-updated">2.13.5. Features Updated</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.06.01.html">2.14. Release <code class="docutils literal notranslate"><span class="pre">v03.06.01</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#scope-of-release">2.14.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#api-changes">2.14.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#id1">2.14.3. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#folder-restructuring">2.14.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#new-features-added">2.14.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#features-updated">2.14.6. Features Updated</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.05.00-sr150.html">2.15. Release <code class="docutils literal notranslate"><span class="pre">v03.05.00</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.05.00-sr150.html#scope-of-release">2.15.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.05.00-sr150.html#new-features-added">2.15.2. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.05.00-sr150.html#features-updated">2.15.3. Features Updated</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.04.00.html">2.16. Release <code class="docutils literal notranslate"><span class="pre">v03.04.00</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#scope-of-release">2.16.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#api-changes">2.16.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#folder-restructuring">2.16.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#new-features-added">2.16.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#features-updated">2.16.5. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#build-system-changes">2.16.6. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.02.00.html">2.17. Release <code class="docutils literal notranslate"><span class="pre">v03.02.00</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.02.00.html#scope-of-release">2.17.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.02.00.html#api-changes">2.17.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.02.00.html#new-features-added">2.17.3. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.02.00.html#build-system-changes">2.17.4. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.00.01-sr150.html">2.18. Release <code class="docutils literal notranslate"><span class="pre">v03.00.01</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.00.01-sr150.html#scope-of-release">2.18.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.00.01-sr150.html#api-changes">2.18.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.00.01-sr150.html#new-features-added">2.18.3. New Features Added</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v01.04.00-nxpint.html">2.19. Build <code class="docutils literal notranslate"><span class="pre">v01.04.00</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.04.00-nxpint.html#scope-of-release">2.19.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.04.00-nxpint.html#new-features-added">2.19.2. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.04.00-nxpint.html#api-changes">2.19.3. API Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v01.00.00-nxpint.html">2.20. Release <code class="docutils literal notranslate"><span class="pre">v01.00.00</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#scope-of-release">2.20.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#validation-platforms-counterparts">2.20.2. Validation platforms / counterparts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#api-changes">2.20.3. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#folder-restructuring">2.20.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#new-features-added">2.20.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#features-removed">2.20.6. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#features-not-available">2.20.7. Features not available</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#features-with-limited-testing">2.20.8. Features with limited testing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../compiling/index.html">3. Compiling &amp; Running</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../compiling/pre-requisites.html">3.1. Pre-Requisites for compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../compiling/mcuxpresso-ide-default-projects.html">3.2. MCUXpresso IDE Projects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../project/RhodesV4_SE/sr1xx-readme.html">3.2.2. RhodesV4-SE Standalone MCUXpresso Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../compiling/segger-ide-default-projects.html">3.3. SEGGER IDE Projects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../project/Nrf52840_SR1XX/readme.html">3.3.1. NRF52840-SR1XX Standalone Segger Embedded Studio Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../compiling/build-pi-mk-shield.html">3.4. Raspberry PI + MK Shield CMake Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../compiling/pre-compiled-binaries.html">3.8. Pre Compiled binaries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../binaries/Rhodes4_SE/README.html">3.8.2. Precompiled Binaries for Rhodes V4 : SE Demos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../binaries/Rhodes4/README.html">3.8.3. Precompiled Binaries for Rhodes V4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../binaries/SE051W/README.html">3.8.4. SEMS Lite Update header files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/index-sr150.html">4. SR150 Demos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo-list-sr150.html">4.1. Demo List SR150</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../demos/demo-list-sr150.html#standalone-c-examples-for-sr150">4.1.1. Standalone C Examples for SR150</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controlee/readme.html">4.2. Demo Ranging Controlee</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controlee/readme.html#how-to-build">4.2.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controlee/readme.html#how-to-run">4.2.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controlee/readme.html#log-success">4.2.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controller/readme.html">4.3. Demo Ranging Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controller/readme.html#how-to-build">4.3.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controller/readme.html#how-to-run">4.3.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controller/readme.html#tof-2d-and-3d-aoa-modes">4.3.3. TOF, 2D and 3D AoA Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controller/readme.html#log-success">4.3.4. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html">4.4. SR150 FiraLite Initiator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#secure-ranging-on-sr150-se051w-with-firalite-applet">4.4.1. Secure Ranging on SR150-SE051W with FiRaLite Applet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#firalite-applet-version">4.4.2. FiRaLite Applet Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#prerequisites">4.4.3. Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#how-to-build">4.4.4. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#steps-to-be-followed-to-run-from-rtos-embedded-device">4.4.5. Steps to be followed to run from RTOS-embedded device:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#steps-to-be-followed-to-run-from-linux-host-like-rpi">4.4.6. Steps to be followed to run from linux host like Rpi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#log-success">4.4.7. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder/readme.html">4.5. SR150 FiraLite Responder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder/readme.html#prerequisites">4.5.1. Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder/readme.html#how-to-build">4.5.2. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder/readme.html#how-to-run">4.5.3. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder/readme.html#log-success">4.5.4. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder_iot_concurrency/readme.html">4.6. SR150 FiraLite Responder IOT Concurrency</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder_iot_concurrency/readme.html#prerequisites">4.6.1. Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder_iot_concurrency/readme.html#how-to-build">4.6.2. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder_iot_concurrency/readme.html#how-to-run">4.6.3. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder_iot_concurrency/readme.html#log-success">4.6.4. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_factory/readme.html">4.7. SR1XX OTP Storage Factory Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_factory/readme.html#prerequisites">4.7.1. Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_factory/readme.html#how-to-build">4.7.2. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_factory/readme.html#how-to-run">4.7.3. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_factory/readme.html#log-success">4.7.4. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_mainline/readme.html">4.8. SR1XX OTP Storage Mainline Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_mainline/readme.html#how-to-build">4.8.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_mainline/readme.html#how-to-run">4.8.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_mainline/readme.html#log-success">4.8.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_anchor/readme.html">4.9. TDOA Anchor UCI 2.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_anchor/readme.html#how-to-build">4.9.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_anchor/readme.html#how-to-run">4.9.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_anchor/readme.html#log-success">4.9.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_tag/readme.html">4.10. TDOA Tag</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_tag/readme.html#how-to-build">4.10.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_tag/readme.html#how-to-run">4.10.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_tag/readme.html#log-success">4.10.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_sync_anchor/readme.html">4.11. TDOA Sync Anchor UCI 2.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_sync_anchor/readme.html#how-to-build">4.11.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_sync_anchor/readme.html#how-to-run">4.11.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_sync_anchor/readme.html#log-success">4.11.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_binding/readme.html">4.12. demo_binding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_binding/readme.html#how-to-build">4.12.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_binding/readme.html#how-to-run">4.12.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_binding/readme.html#log-success">4.12.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/pnp/Rhodes4/readme.html">4.13. RV4 Plug-n-Play FW</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Rhodes4/readme.html#how-to-use">4.13.1. How to Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Rhodes4/readme.html#how-to-run-pnp-at-higher-baudrate">4.13.2. How to run PNP at higher baudrate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Rhodes4/readme.html#how-to-run-pnp-with-hardware-flow-control">4.13.3. How to run PNP with Hardware flow control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Rhodes4/readme.html#watch-dog-timer">4.13.4. Watch Dog Timer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/pnp/Socket/readme.html">4.14. Plug-n-Play FW Over Socket</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Socket/readme.html#how-to-build">4.14.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Socket/readme.html#how-to-use-on-linux-host">4.14.2. How to Use on linux host</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_initiator/readme.html">4.15. SR1XX DLTDOA Ranging Initiator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_initiator/readme.html#how-to-build">4.15.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_initiator/readme.html#how-to-run">4.15.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_initiator/readme.html#log-success">4.15.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_responder/readme.html">4.16. SR1XX DLTDOA Ranging Responder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_responder/readme.html#how-to-build">4.16.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_responder/readme.html#how-to-run">4.16.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_responder/readme.html#log-success">4.16.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_tag/readme.html">4.17. SR1XX DLTDOA Ranging Tag</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_tag/readme.html#how-to-build">4.17.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_tag/readme.html#how-to-run">4.17.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_tag/readme.html#log-success">4.17.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/mctt_pctt/readme.html">4.18. MCTT &amp; PCTT Demo (SR1XX)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/mctt_pctt/readme.html#how-to-use">4.18.1. How to Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/mctt_pctt/readme.html#how-to-build-standalone-project">4.18.2. How to Build(Standalone project)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/mctt_pctt/readme.html#how-to-build-cmake-project">4.18.3. How to Build(CMAKE project)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/mctt_pctt/readme.html#how-to-run">4.18.4. How to Run</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction/readme.html">4.19. Demo nearby interaction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction/readme.html#ios">4.19.1. IOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction/readme.html#android">4.19.2. Android</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction_client/readme.html">4.20. Demo nearby interaction Client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction_client/readme.html#android">4.20.1. Android</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction_client/readme.html#ios">4.20.2. IOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_owr_aoa_advertiser/readme.html">4.21. OWR AoA advertiser</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_owr_aoa_advertiser/readme.html#how-to-build">4.21.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_owr_aoa_advertiser/readme.html#how-to-run">4.21.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_owr_aoa_advertiser/readme.html#log-success">4.21.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_rx/readme.html">4.22. SR150 In Band Data Transfer Rx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_rx/readme.html#how-to-build">4.22.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_rx/readme.html#how-to-run">4.22.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_rx/readme.html#log-success">4.22.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_tx/readme.html">4.23. SR150 IN Band Data Transfer Tx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_tx/readme.html#prerequisites">4.23.1. Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_tx/readme.html#how-to-build">4.23.2. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_tx/readme.html#how-to-run">4.23.3. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_tx/readme.html#log-success">4.23.4. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_test_tx/readme.html">4.24. SR1XX Demo Test TX</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_tx/readme.html#how-to-build">4.24.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_tx/readme.html#how-to-run">4.24.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_tx/readme.html#log-success">4.24.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_test_rx/readme.html">4.25. SR1XX Demo Test Rx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_rx/readme.html#how-to-build">4.25.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_rx/readme.html#how-to-run">4.25.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_rx/readme.html#log-success">4.25.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controlee/readme.html">4.26. Demo Hybrid Scheduled Ranging Controlee</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controlee/readme.html#how-to-build">4.26.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controlee/readme.html#how-to-run">4.26.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controlee/readme.html#log-success">4.26.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controller/readme.html">4.27. Demo Hybrid Scheduled Ranging Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controller/readme.html#how-to-build">4.27.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controller/readme.html#how-to-run">4.27.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controller/readme.html#log-success">4.27.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_csa_controlee/readme.html">4.28. Demo CSA Controlee</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_csa_controlee/readme.html#how-to-set-wrapped-rds-optional">4.28.1. How to Set Wrapped Rds(optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_csa_controlee/readme.html#how-to-build">4.28.2. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_csa_controlee/readme.html#how-to-run">4.28.3. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_csa_controlee/readme.html#log-success">4.28.4. Log (Success)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/index-se051w.html">5. SE051W Demos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo-list-se051w.html">5.1. Demo List SE051W</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../demos/demo-list-se051w.html#standalone-c-examples-for-se051w">5.1.1. Standalone C Examples for SE051W</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/se_vcom/readme.html">5.2. se_vcom</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/se_vcom/readme.html#how-to-build">5.2.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/se_vcom/readme.html#how-to-run">5.2.2. How to Run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../apis/index-sr150.html">6. APIs : UWB IoT and SR150</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../apis/api_uwb_status.html">6.1. UWB API Status Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apis/api_uwb_const.html">6.2. UWB API Consts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apis/api_uwb_types.html">6.3. UWB API Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apis/api_uwb_apis.html">6.4. UWB Functional APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apis/api_uwb_apis_sr1xx.html">6.5. UWB Functional APIs (SR100/SR150 Specific)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apis/api_uwb_apis_sr150.html">6.6. UWB Functional APIs (SR150 Specific)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apis/api_uwb_apis_factory.html">6.7. UWB Factory test APIs (SR100/SR150 Specific)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apis/api_porting.html">6.8. APIs for Porting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../apis/index-se051w.html">7. APIs : SE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../apis/api_se_apdu_apis.html">7.1. SE APDU APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apis/api_se_apis.html">7.2. SE Functional APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apis/api_se_firalite_apdu_apis.html">7.3. SE FiRaLite APDU APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sr1xx/index.html">8. SR1XX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sr1xx/spi.html">8.1. SR1XX SPI communication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sr1xx/spi.html#hbci-spi-write">8.1.1. HBCI SPI Write</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sr1xx/spi.html#hbci-spi-read">8.1.2. HBCI SPI Read</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sr1xx/spi.html#spi-write">8.1.3. SPI Write</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sr1xx/spi.html#spi-read">8.1.4. SPI Read</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sr1xx/hbci.html">8.2. HBCI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sr1xx/hbci.html#sr1xx-fw-download-flow">8.2.1. SR1XX FW download Flow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">9. Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basics/index.html">9.1. UWB Basics (Ongoing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/p2p_ranging.html">9.2. Peer-to-Peer ranging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/uci_command_timeout_handling.html">9.3. UCI Command timeout handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/logging-details.html">9.4. Logging Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/QN9090_reference_manual.html">9.5. QN9090 Reference Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/ExtFlash_fwDownload.html">9.6. Firmware Download From External Flash</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/ExtFlash_fwDownload.html#setup-and-steps-to-download-firmware-from-external-flash">9.6.1. Setup and Steps to Download Firmware From External Flash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/ExtFlash_fwDownload.html#firmware-download-from-external-flash-flow">9.6.2. Firmware download from External Flash Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/firalite-adf-provisioning.html">9.7. FiRaLite ADF Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/firalite-adf-provisioning.html#setup-and-steps-for-jcshell-usage">9.7.1. Setup and Steps for JCShell usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/firalite-adf-provisioning.html#usage-of-jrcpproxy">9.7.2. Usage of JRCPProxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/firalite-adf-provisioning.html#using-the-jcshell">9.7.3. Using the JCShell</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/boards/index-sr150.html">9.8. SR150 Boards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/boards/rhodes_v4.html">9.8.1. RHODES IV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/boards/nrf52840_mk_sr150.html">9.8.2. Nordic(NRF52840) + MK Shield Board (SR150)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+          
+            <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">1.6. Dynamic View</a><ul>
+<li><a class="reference internal" href="#uwb-stack-init-sequence">1.6.1. UWB Stack Init Sequence</a></li>
+<li><a class="reference internal" href="#uwb-stack-deinit-sequence">1.6.2. UWB Stack DeInit Sequence</a></li>
+<li><a class="reference internal" href="#p2p-multicast-ranging">1.6.3. P2P, Multicast Ranging</a></li>
+<li><a class="reference internal" href="#ble-oob">1.6.4. BLE - OOB</a></li>
+<li><a class="reference internal" href="#recovery-uci-command-timeout">1.6.5. Recovery : UCI Command Timeout</a></li>
+<li><a class="reference internal" href="#recovery-fw-crash-handling-from-mw">1.6.6. Recovery : FW Crash Handling from MW</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+          
+        
+        
+          
+            
+  <li>
+    <a href="arch-mw-fira-mctt-pcttmode.html" title="Previous Chapter: 1.5.3. FiRa / MCTT / PCTT Mode"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 1.5.3. FiRa /...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../changes/index-sr150.html" title="Next Chapter: 2. Changes & Release History (SR150)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">2. Changes & ... &raquo;</span>
+    </a>
+  </li>
+          
+        
+        
+        
+        
+      </ul>
+
+      
+      
+    </div>
+</div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+
+<div class="sidebar-header">
+    <h3>UWB IoT</h3>
+</div>
+
+<div class="row">
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../uwbiot/index.html">1. UWB IoT</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../uwbiot/introduction.html">1.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uwbiot/acronyms.html">1.2. Acronyms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uwbiot/folder-structure.html">1.3. Folder Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arch-block-diag.html">1.4. Block Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arch-mw-modes-index.html">1.5. Modes of operation of the MW</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.6. Dynamic View</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changes/index-sr150.html">2. Changes &amp; Release History (SR150)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compiling/index.html">3. Compiling &amp; Running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/index-sr150.html">4. SR150 Demos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/index-se051w.html">5. SE051W Demos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apis/index-sr150.html">6. APIs : UWB IoT and SR150</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apis/index-se051w.html">7. APIs : SE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sr1xx/index.html">8. SR1XX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">9. Appendix</a></li>
+</ul>
+
+</div>
+<div class="row">
+    <form class="form" action="../../../search.html" method="get">
+     <div class="form-group">
+      <label for="Search">Search:</label>
+      <input type="text" name="q" class="form-control" placeholder="Search" />
+     </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <div class="section" id="dynamic-view">
+<span id="arch-dynamic"></span><h1><a class="toc-backref" href="#id1"><span class="section-number">1.6. </span>Dynamic View</a><a class="headerlink" href="#dynamic-view" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#dynamic-view" id="id1">Dynamic View</a></p>
+<ul>
+<li><p><a class="reference internal" href="#uwb-stack-init-sequence" id="id2">UWB Stack Init Sequence</a></p></li>
+<li><p><a class="reference internal" href="#uwb-stack-deinit-sequence" id="id3">UWB Stack DeInit Sequence</a></p></li>
+<li><p><a class="reference internal" href="#p2p-multicast-ranging" id="id4">P2P, Multicast Ranging</a></p></li>
+<li><p><a class="reference internal" href="#ble-oob" id="id5">BLE - OOB</a></p></li>
+<li><p><a class="reference internal" href="#recovery-uci-command-timeout" id="id6">Recovery : UCI Command Timeout</a></p></li>
+<li><p><a class="reference internal" href="#recovery-fw-crash-handling-from-mw" id="id7">Recovery : FW Crash Handling from MW</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="uwb-stack-init-sequence">
+<h2><a class="toc-backref" href="#id2"><span class="section-number">1.6.1. </span>UWB Stack Init Sequence</a><a class="headerlink" href="#uwb-stack-init-sequence" title="Permalink to this headline">¶</a></h2>
+<p>As a part of UWB Stack Init following things are done.</p>
+<ol class="arabic simple">
+<li><p>All required tasks are created and initialized.</p></li>
+<li><p>Transport layer initialization.</p></li>
+<li><p>HBCI FW download is done to initialize Helios.</p></li>
+<li><p>Board variant is set as per Host setup.</p></li>
+<li><p>All default configs are applied.</p></li>
+</ol>
+<img alt="../../../_images/image-uwb-init.png" src="../../../_images/image-uwb-init.png" />
+</div>
+<div class="section" id="uwb-stack-deinit-sequence">
+<h2><a class="toc-backref" href="#id3"><span class="section-number">1.6.2. </span>UWB Stack DeInit Sequence</a><a class="headerlink" href="#uwb-stack-deinit-sequence" title="Permalink to this headline">¶</a></h2>
+<p>As a part of UWB Stack DeInit following things are done.</p>
+<ol class="arabic simple">
+<li><p>Check if there are any active sessions created.</p></li>
+<li><p>If active session count is more than Zero, de-initialize all active
+sessions.</p></li>
+<li><p>MW stack de-init and memory cleanup.</p></li>
+</ol>
+<img alt="../../../_images/image-uwb-de-init.png" src="../../../_images/image-uwb-de-init.png" />
+</div>
+<div class="section" id="p2p-multicast-ranging">
+<h2><a class="toc-backref" href="#id4"><span class="section-number">1.6.3. </span>P2P, Multicast Ranging</a><a class="headerlink" href="#p2p-multicast-ranging" title="Permalink to this headline">¶</a></h2>
+<p>As a part of P2P, Multicast ranging following operations are performed.</p>
+<ol class="arabic simple">
+<li><p>Before starting ranging UWB Stack should be in initialized state.</p></li>
+<li><p>Below sequence is same for initiator and responder:</p>
+<ol class="arabic simple">
+<li><p>Session is
+created for Ranging with 4 bytes unique session ID and session type
+<code class="docutils literal notranslate"><span class="pre">0x00</span></code></p></li>
+<li><p>Same session ID should be used by both Initiator and
+responder.</p></li>
+<li><p>All default session configs are applied at the time of
+session creation.</p></li>
+<li><p>Application specific ranging configs are
+applied.</p></li>
+<li><p>Ranging is started.</p></li>
+<li><p>At the end ranging is stopped and session is de-initialized.</p></li>
+</ol>
+</li>
+</ol>
+<img alt="../../../_images/image-ranging-session.png" src="../../../_images/image-ranging-session.png" />
+</div>
+<div class="section" id="ble-oob">
+<h2><a class="toc-backref" href="#id5"><span class="section-number">1.6.4. </span>BLE - OOB</a><a class="headerlink" href="#ble-oob" title="Permalink to this headline">¶</a></h2>
+<p>An out of the bounds setup for ranging with BLE would use the following
+sequence.</p>
+<img alt="../../../_images/image-ble-oob.png" src="../../../_images/image-ble-oob.png" />
+</div>
+<div class="section" id="recovery-uci-command-timeout">
+<h2><a class="toc-backref" href="#id6"><span class="section-number">1.6.5. </span>Recovery : UCI Command Timeout</a><a class="headerlink" href="#recovery-uci-command-timeout" title="Permalink to this headline">¶</a></h2>
+<p>Following steps are performed from MW to handle UCI command timeout</p>
+<ul class="simple">
+<li><p>API is invoked from Application Task, UCI command is sent to Helios
+as apart of API</p></li>
+<li><p>If response is not received command retry is attempted. If response
+is not received for the second time as well UCI Timeout status is
+notified to upper layers.</p></li>
+<li><p>API gets unblocked with status UCI timeout. Same status is returned
+to Application.</p></li>
+<li><p>Applications post message to Exception handling task or start
+recovery timer.</p></li>
+<li><p>Application tasks waits for recovery.</p></li>
+<li><p>Exception handling task/ or in the context of timeout, Recovery API
+is invoked. Recovery API performs certain operations are shown in the
+flow diagram.</p></li>
+<li><p>After recovery All session state context is deleted, and application
+task is restarted.</p></li>
+</ul>
+<img alt="../../../_images/image-uwb-recovery-task.png" src="../../../_images/image-uwb-recovery-task.png" />
+</div>
+<div class="section" id="recovery-fw-crash-handling-from-mw">
+<h2><a class="toc-backref" href="#id7"><span class="section-number">1.6.6. </span>Recovery : FW Crash Handling from MW</a><a class="headerlink" href="#recovery-fw-crash-handling-from-mw" title="Permalink to this headline">¶</a></h2>
+<p>Following steps are performed from MW to handle FW Crash</p>
+<ul class="simple">
+<li><p>During active ranging session FW can be crashed.</p></li>
+<li><p>FW Crash notification is sent to upper layers. (App callback)</p></li>
+<li><p>App callback posts message to Exception handling task or starts
+recovery timer.</p></li>
+<li><p>Application tasks waits for recovery.</p></li>
+<li><p>Exception handling tasks/ or in the context of timeout Recovery API
+is invoked. Recovery API performs certain operations are shown in the
+flow diagram.</p></li>
+</ul>
+<p>After recovery All session state context is deleted, and application
+task is restarted</p>
+<img alt="../../../_images/image-uwb-crash-handling.png" src="../../../_images/image-uwb-crash-handling.png" />
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020-2021 NXP.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

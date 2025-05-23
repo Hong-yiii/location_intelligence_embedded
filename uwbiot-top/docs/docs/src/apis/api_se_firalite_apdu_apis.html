@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<!--
+Copyright 2020-2021 NXP
+
+This software is owned or controlled by NXP and may only be used
+strictly in accordance with the applicable license terms.  By expressly
+accepting such terms or by downloading, installing, activating and/or
+otherwise using the software, you are agreeing that you have read, and
+that you agree to comply with and are bound by, such license terms.  If
+you do not agree to be bound by the applicable license terms, then you
+may not retain, install, activate or otherwise use the software.
+
+ _   ___      _____   ___    _____
+| | | \ \    / / _ ) |_ _|__|_   _|
+| |_| |\ \/\/ /| _ \  | |/ _ \| |
+ \___/  \_/\_/ |___/ |___\___/|_|
+
+-->
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.3. SE FiRaLite APDU APIs &#8212; UWB IoT v04.06.00 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/uwb.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="8. SR1XX" href="../sr1xx/index.html" />
+    <link rel="prev" title="7.2. SE Functional APIs" href="api_se_apis.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+
+
+<div id="navbar" class="navbar navbar-inverse navbar-default ">
+<div class="container">
+  <div class="navbar-header">
+    <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="../toc-sr150.html"><span><img src="../../../_static/NXP_logo_JPG.jpg"></span>
+       </a>
+    <span class="navbar-text navbar-version pull-left"><b>v04.06.00</b></span>
+  </div>
+
+    <div class="collapse navbar-collapse nav-collapse">
+      <ul class="nav navbar-nav">
+      <li class="dropdown globaltoc-container"></li> 
+        
+        
+          <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../toc-sr150.html">TOC <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uwbiot/index.html">1. UWB IoT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../uwbiot/introduction.html">1.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uwbiot/acronyms.html">1.2. Acronyms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uwbiot/folder-structure.html">1.3. Folder Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#root-folder">1.3.1. Root Folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#binaries">1.3.2. <code class="docutils literal notranslate"><span class="pre">/binaries</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#boards">1.3.3. <code class="docutils literal notranslate"><span class="pre">/boards</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#demos">1.3.5. <code class="docutils literal notranslate"><span class="pre">/demos</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#docs">1.3.6. <code class="docutils literal notranslate"><span class="pre">/docs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#ext-boards">1.3.7. <code class="docutils literal notranslate"><span class="pre">/ext/boards</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#ext-freertos">1.3.8. <code class="docutils literal notranslate"><span class="pre">/ext/freertos</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#ext-tml-libuwbd">1.3.9. <code class="docutils literal notranslate"><span class="pre">/ext/TML-libuwbd</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#firmware-images">1.3.10. <code class="docutils literal notranslate"><span class="pre">/firmware_images</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#libs">1.3.11. <code class="docutils literal notranslate"><span class="pre">/libs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#libs-halimpl">1.3.12. <code class="docutils literal notranslate"><span class="pre">/libs/halimpl</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#libs-uci-core">1.3.13. <code class="docutils literal notranslate"><span class="pre">/libs/uci-core</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#libs-uwb-iot">1.3.14. <code class="docutils literal notranslate"><span class="pre">/libs/uwb-iot</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#libs-uwbradar">1.3.15. <code class="docutils literal notranslate"><span class="pre">/libs/uwbradar</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#project">1.3.16. <code class="docutils literal notranslate"><span class="pre">/project</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#scripts">1.3.17. <code class="docutils literal notranslate"><span class="pre">/scripts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uwbiot/folder-structure.html#tools">1.3.18. <code class="docutils literal notranslate"><span class="pre">/tools</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/arch-block-diag.html">1.4. Block Diagram</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-block-diag.html#components">1.4.1. Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-block-diag.html#sr150-freertos">1.4.2. SR150 - FreeRTOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-block-diag.html#sr040">1.4.5. SR040</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/arch-mw-modes-index.html">1.5. Modes of operation of the MW</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-mw-standalonemode.html">1.5.1. Standalone Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-mw-pnpmode.html">1.5.2. PNP Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-mw-fira-mctt-pcttmode.html">1.5.3. FiRa / MCTT / PCTT Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/arch-dynamic.html">1.6. Dynamic View</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-dynamic.html#uwb-stack-init-sequence">1.6.1. UWB Stack Init Sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-dynamic.html#uwb-stack-deinit-sequence">1.6.2. UWB Stack DeInit Sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-dynamic.html#p2p-multicast-ranging">1.6.3. P2P, Multicast Ranging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-dynamic.html#ble-oob">1.6.4. BLE - OOB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-dynamic.html#recovery-uci-command-timeout">1.6.5. Recovery : UCI Command Timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arch/arch-dynamic.html#recovery-fw-crash-handling-from-mw">1.6.6. Recovery : FW Crash Handling from MW</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changes/index-sr150.html">2. Changes &amp; Release History (SR150)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changes/current.html">2.1. Build <code class="samp docutils literal notranslate"><span class="pre">v04.06.00</span></code> (Current, NXP Internal)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#scope-of-build">2.1.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#mw-changes">2.1.2. MW Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#api-changes">2.1.3. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#folder-restructuring">2.1.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#new-features-added">2.1.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#features-removed">2.1.6. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#features-updated">2.1.7. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#build-system-changes">2.1.8. Build system changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#demo-updates">2.1.9. Demo updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/current.html#id25">2.1.10. Folder Restructuring</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v04.05.07-sr150.html">2.2. Release <code class="docutils literal notranslate"><span class="pre">v04.05.07</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#scope-of-build">2.2.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#mw-changes">2.2.2. MW Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#api-changes">2.2.3. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#folder-restructuring">2.2.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#new-features-added">2.2.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#features-removed">2.2.6. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#features-updated">2.2.7. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#build-system-changes">2.2.8. Build system changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.05.07-sr150.html#demo-updates">2.2.9. Demo updates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v04.04.05-sr150.html">2.3. Release <code class="docutils literal notranslate"><span class="pre">v04.04.05</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#scope-of-build">2.3.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#api-changes">2.3.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#folder-restructuring">2.3.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#new-features-added">2.3.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#features-removed">2.3.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#features-updated">2.3.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#build-system-changes">2.3.7. Build system changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.05-sr150.html#demo-updates">2.3.8. Demo updates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v04.04.03-sr150.html">2.4. Release <code class="docutils literal notranslate"><span class="pre">v04.04.03</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#firmware">2.4.1. Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#scope-of-build">2.4.2. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#api-changes">2.4.3. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#folder-restructuring">2.4.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#new-features-added">2.4.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#features-removed">2.4.6. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#features-updated">2.4.7. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#build-system-changes">2.4.8. Build system changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.04.03-sr150.html#demo-updates">2.4.9. Demo updates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v04.03.15-sr150.html">2.5. Release <code class="docutils literal notranslate"><span class="pre">v04.03.15</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#scope-of-build">2.5.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#api-changes">2.5.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#folder-restructuring">2.5.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#new-features-added">2.5.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#features-removed">2.5.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#features-updated">2.5.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#id1">2.5.7. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.03.15-sr150.html#build-system-changes">2.5.8. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v04.02.01-sr150.html">2.6. Release <code class="docutils literal notranslate"><span class="pre">v04.02.01</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#scope-of-build">2.6.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#api-changes">2.6.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#folder-restructuring">2.6.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#new-features-added">2.6.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#features-removed">2.6.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#features-updated">2.6.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#build-system-changes">2.6.7. Build system changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v04.02.01-sr150.html#demo-updates">2.6.8. Demo updates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.15.11-sr150.html">2.7. Release <code class="docutils literal notranslate"><span class="pre">v03.15.11</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#scope-of-build">2.7.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#api-changes">2.7.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#folder-restructuring">2.7.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#new-features-added">2.7.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#features-removed">2.7.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#features-updated">2.7.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.11-sr150.html#build-system-changes">2.7.7. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.15.03-sr150.html">2.8. Release <code class="docutils literal notranslate"><span class="pre">v03.15.03</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#scope-of-build">2.8.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#api-changes">2.8.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#folder-restructuring">2.8.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#new-features-added">2.8.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#features-removed">2.8.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#features-updated">2.8.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.15.03-sr150.html#build-system-changes">2.8.7. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.14.04-sr150.html">2.9. Release <code class="docutils literal notranslate"><span class="pre">v03.14.04</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#scope-of-build">2.9.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#api-changes">2.9.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#folder-restructuring">2.9.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#new-features-added">2.9.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#features-removed">2.9.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#features-updated">2.9.6. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.14.04-sr150.html#build-system-changes">2.9.7. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.13.03.html">2.10. Release <code class="docutils literal notranslate"><span class="pre">v03.13.03</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#scope-of-build">2.10.1. Scope of Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#api-changes">2.10.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#tml-refactoring">2.10.3. TML Refactoring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#folder-restructuring">2.10.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#new-features-added">2.10.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#features-removed">2.10.6. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#features-updated">2.10.7. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.13.03.html#build-system-changes">2.10.8. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.10.02-sr150.html">2.11. Release <code class="docutils literal notranslate"><span class="pre">v03.10.02</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#scope-of-release">2.11.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#api-changes">2.11.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#folder-restructuring">2.11.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#new-features-added">2.11.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#features-removed">2.11.5. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.10.02-sr150.html#features-updated">2.11.6. Features Updated</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.09.00-sr150.html">2.12. Release <code class="docutils literal notranslate"><span class="pre">v03.09.00</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.09.00-sr150.html#scope-of-release">2.12.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.09.00-sr150.html#new-features-added">2.12.2. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.09.00-sr150.html#build-system-changes">2.12.3. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.08.01.html">2.13. Release <code class="docutils literal notranslate"><span class="pre">v03.08.01</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.08.01.html#scope-of-release">2.13.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.08.01.html#api-changes">2.13.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.08.01.html#folder-restructuring">2.13.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.08.01.html#new-features-added">2.13.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.08.01.html#features-updated">2.13.5. Features Updated</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.06.01.html">2.14. Release <code class="docutils literal notranslate"><span class="pre">v03.06.01</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#scope-of-release">2.14.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#api-changes">2.14.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#id1">2.14.3. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#folder-restructuring">2.14.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#new-features-added">2.14.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.06.01.html#features-updated">2.14.6. Features Updated</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.05.00-sr150.html">2.15. Release <code class="docutils literal notranslate"><span class="pre">v03.05.00</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.05.00-sr150.html#scope-of-release">2.15.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.05.00-sr150.html#new-features-added">2.15.2. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.05.00-sr150.html#features-updated">2.15.3. Features Updated</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.04.00.html">2.16. Release <code class="docutils literal notranslate"><span class="pre">v03.04.00</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#scope-of-release">2.16.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#api-changes">2.16.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#folder-restructuring">2.16.3. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#new-features-added">2.16.4. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#features-updated">2.16.5. Features Updated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.04.00.html#build-system-changes">2.16.6. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.02.00.html">2.17. Release <code class="docutils literal notranslate"><span class="pre">v03.02.00</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.02.00.html#scope-of-release">2.17.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.02.00.html#api-changes">2.17.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.02.00.html#new-features-added">2.17.3. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.02.00.html#build-system-changes">2.17.4. Build system changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v03.00.01-sr150.html">2.18. Release <code class="docutils literal notranslate"><span class="pre">v03.00.01</span></code> (SR150)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.00.01-sr150.html#scope-of-release">2.18.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.00.01-sr150.html#api-changes">2.18.2. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v03.00.01-sr150.html#new-features-added">2.18.3. New Features Added</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v01.04.00-nxpint.html">2.19. Build <code class="docutils literal notranslate"><span class="pre">v01.04.00</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.04.00-nxpint.html#scope-of-release">2.19.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.04.00-nxpint.html#new-features-added">2.19.2. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.04.00-nxpint.html#api-changes">2.19.3. API Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changes/v01.00.00-nxpint.html">2.20. Release <code class="docutils literal notranslate"><span class="pre">v01.00.00</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#scope-of-release">2.20.1. Scope of Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#validation-platforms-counterparts">2.20.2. Validation platforms / counterparts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#api-changes">2.20.3. API Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#folder-restructuring">2.20.4. Folder Restructuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#new-features-added">2.20.5. New Features Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#features-removed">2.20.6. Features Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#features-not-available">2.20.7. Features not available</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changes/v01.00.00-nxpint.html#features-with-limited-testing">2.20.8. Features with limited testing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../compiling/index.html">3. Compiling &amp; Running</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../compiling/pre-requisites.html">3.1. Pre-Requisites for compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../compiling/mcuxpresso-ide-default-projects.html">3.2. MCUXpresso IDE Projects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../project/RhodesV4_SE/sr1xx-readme.html">3.2.2. RhodesV4-SE Standalone MCUXpresso Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../compiling/segger-ide-default-projects.html">3.3. SEGGER IDE Projects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../project/Nrf52840_SR1XX/readme.html">3.3.1. NRF52840-SR1XX Standalone Segger Embedded Studio Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../compiling/build-pi-mk-shield.html">3.4. Raspberry PI + MK Shield CMake Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../compiling/pre-compiled-binaries.html">3.8. Pre Compiled binaries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../binaries/Rhodes4_SE/README.html">3.8.2. Precompiled Binaries for Rhodes V4 : SE Demos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../binaries/Rhodes4/README.html">3.8.3. Precompiled Binaries for Rhodes V4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../binaries/SE051W/README.html">3.8.4. SEMS Lite Update header files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/index-sr150.html">4. SR150 Demos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo-list-sr150.html">4.1. Demo List SR150</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../demos/demo-list-sr150.html#standalone-c-examples-for-sr150">4.1.1. Standalone C Examples for SR150</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controlee/readme.html">4.2. Demo Ranging Controlee</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controlee/readme.html#how-to-build">4.2.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controlee/readme.html#how-to-run">4.2.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controlee/readme.html#log-success">4.2.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controller/readme.html">4.3. Demo Ranging Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controller/readme.html#how-to-build">4.3.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controller/readme.html#how-to-run">4.3.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controller/readme.html#tof-2d-and-3d-aoa-modes">4.3.3. TOF, 2D and 3D AoA Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ranging_controller/readme.html#log-success">4.3.4. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html">4.4. SR150 FiraLite Initiator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#secure-ranging-on-sr150-se051w-with-firalite-applet">4.4.1. Secure Ranging on SR150-SE051W with FiRaLite Applet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#firalite-applet-version">4.4.2. FiRaLite Applet Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#prerequisites">4.4.3. Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#how-to-build">4.4.4. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#steps-to-be-followed-to-run-from-rtos-embedded-device">4.4.5. Steps to be followed to run from RTOS-embedded device:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#steps-to-be-followed-to-run-from-linux-host-like-rpi">4.4.6. Steps to be followed to run from linux host like Rpi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_initiator/readme.html#log-success">4.4.7. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder/readme.html">4.5. SR150 FiraLite Responder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder/readme.html#prerequisites">4.5.1. Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder/readme.html#how-to-build">4.5.2. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder/readme.html#how-to-run">4.5.3. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder/readme.html#log-success">4.5.4. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder_iot_concurrency/readme.html">4.6. SR150 FiraLite Responder IOT Concurrency</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder_iot_concurrency/readme.html#prerequisites">4.6.1. Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder_iot_concurrency/readme.html#how-to-build">4.6.2. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder_iot_concurrency/readme.html#how-to-run">4.6.3. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_fl_responder_iot_concurrency/readme.html#log-success">4.6.4. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_factory/readme.html">4.7. SR1XX OTP Storage Factory Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_factory/readme.html#prerequisites">4.7.1. Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_factory/readme.html#how-to-build">4.7.2. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_factory/readme.html#how-to-run">4.7.3. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_factory/readme.html#log-success">4.7.4. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_mainline/readme.html">4.8. SR1XX OTP Storage Mainline Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_mainline/readme.html#how-to-build">4.8.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_mainline/readme.html#how-to-run">4.8.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_otp_storage_mainline/readme.html#log-success">4.8.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_anchor/readme.html">4.9. TDOA Anchor UCI 2.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_anchor/readme.html#how-to-build">4.9.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_anchor/readme.html#how-to-run">4.9.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_anchor/readme.html#log-success">4.9.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_tag/readme.html">4.10. TDOA Tag</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_tag/readme.html#how-to-build">4.10.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_tag/readme.html#how-to-run">4.10.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_tag/readme.html#log-success">4.10.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_sync_anchor/readme.html">4.11. TDOA Sync Anchor UCI 2.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_sync_anchor/readme.html#how-to-build">4.11.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_sync_anchor/readme.html#how-to-run">4.11.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_ultdoa_sync_anchor/readme.html#log-success">4.11.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_binding/readme.html">4.12. demo_binding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_binding/readme.html#how-to-build">4.12.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_binding/readme.html#how-to-run">4.12.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR150_SE051W/demo_binding/readme.html#log-success">4.12.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/pnp/Rhodes4/readme.html">4.13. RV4 Plug-n-Play FW</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Rhodes4/readme.html#how-to-use">4.13.1. How to Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Rhodes4/readme.html#how-to-run-pnp-at-higher-baudrate">4.13.2. How to run PNP at higher baudrate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Rhodes4/readme.html#how-to-run-pnp-with-hardware-flow-control">4.13.3. How to run PNP with Hardware flow control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Rhodes4/readme.html#watch-dog-timer">4.13.4. Watch Dog Timer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/pnp/Socket/readme.html">4.14. Plug-n-Play FW Over Socket</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Socket/readme.html#how-to-build">4.14.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/pnp/Socket/readme.html#how-to-use-on-linux-host">4.14.2. How to Use on linux host</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_initiator/readme.html">4.15. SR1XX DLTDOA Ranging Initiator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_initiator/readme.html#how-to-build">4.15.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_initiator/readme.html#how-to-run">4.15.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_initiator/readme.html#log-success">4.15.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_responder/readme.html">4.16. SR1XX DLTDOA Ranging Responder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_responder/readme.html#how-to-build">4.16.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_responder/readme.html#how-to-run">4.16.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_responder/readme.html#log-success">4.16.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_tag/readme.html">4.17. SR1XX DLTDOA Ranging Tag</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_tag/readme.html#how-to-build">4.17.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_tag/readme.html#how-to-run">4.17.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_dltdoa_tag/readme.html#log-success">4.17.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/mctt_pctt/readme.html">4.18. MCTT &amp; PCTT Demo (SR1XX)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/mctt_pctt/readme.html#how-to-use">4.18.1. How to Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/mctt_pctt/readme.html#how-to-build-standalone-project">4.18.2. How to Build(Standalone project)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/mctt_pctt/readme.html#how-to-build-cmake-project">4.18.3. How to Build(CMAKE project)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/mctt_pctt/readme.html#how-to-run">4.18.4. How to Run</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction/readme.html">4.19. Demo nearby interaction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction/readme.html#ios">4.19.1. IOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction/readme.html#android">4.19.2. Android</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction_client/readme.html">4.20. Demo nearby interaction Client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction_client/readme.html#android">4.20.1. Android</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_nearby_interaction_client/readme.html#ios">4.20.2. IOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_owr_aoa_advertiser/readme.html">4.21. OWR AoA advertiser</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_owr_aoa_advertiser/readme.html#how-to-build">4.21.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_owr_aoa_advertiser/readme.html#how-to-run">4.21.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_owr_aoa_advertiser/readme.html#log-success">4.21.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_rx/readme.html">4.22. SR150 In Band Data Transfer Rx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_rx/readme.html#how-to-build">4.22.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_rx/readme.html#how-to-run">4.22.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_rx/readme.html#log-success">4.22.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_tx/readme.html">4.23. SR150 IN Band Data Transfer Tx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_tx/readme.html#prerequisites">4.23.1. Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_tx/readme.html#how-to-build">4.23.2. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_tx/readme.html#how-to-run">4.23.3. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_inband_data_transfer_tx/readme.html#log-success">4.23.4. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_test_tx/readme.html">4.24. SR1XX Demo Test TX</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_tx/readme.html#how-to-build">4.24.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_tx/readme.html#how-to-run">4.24.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_tx/readme.html#log-success">4.24.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_test_rx/readme.html">4.25. SR1XX Demo Test Rx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_rx/readme.html#how-to-build">4.25.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_rx/readme.html#how-to-run">4.25.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_test_rx/readme.html#log-success">4.25.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controlee/readme.html">4.26. Demo Hybrid Scheduled Ranging Controlee</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controlee/readme.html#how-to-build">4.26.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controlee/readme.html#how-to-run">4.26.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controlee/readme.html#log-success">4.26.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controller/readme.html">4.27. Demo Hybrid Scheduled Ranging Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controller/readme.html#how-to-build">4.27.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controller/readme.html#how-to-run">4.27.2. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_hybrid_ranging_controller/readme.html#log-success">4.27.3. Log (Success)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/SR1XX/demo_csa_controlee/readme.html">4.28. Demo CSA Controlee</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_csa_controlee/readme.html#how-to-set-wrapped-rds-optional">4.28.1. How to Set Wrapped Rds(optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_csa_controlee/readme.html#how-to-build">4.28.2. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_csa_controlee/readme.html#how-to-run">4.28.3. How to Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/SR1XX/demo_csa_controlee/readme.html#log-success">4.28.4. Log (Success)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/index-se051w.html">5. SE051W Demos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/demo-list-se051w.html">5.1. Demo List SE051W</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../demos/demo-list-se051w.html#standalone-c-examples-for-se051w">5.1.1. Standalone C Examples for SE051W</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/se_vcom/readme.html">5.2. se_vcom</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/se_vcom/readme.html#how-to-build">5.2.1. How to Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../demos/se_vcom/readme.html#how-to-run">5.2.2. How to Run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index-sr150.html">6. APIs : UWB IoT and SR150</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_status.html">6.1. UWB API Status Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_const.html">6.2. UWB API Consts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_types.html">6.3. UWB API Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_apis.html">6.4. UWB Functional APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_apis_sr1xx.html">6.5. UWB Functional APIs (SR100/SR150 Specific)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_apis_sr150.html">6.6. UWB Functional APIs (SR150 Specific)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_uwb_apis_factory.html">6.7. UWB Factory test APIs (SR100/SR150 Specific)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_porting.html">6.8. APIs for Porting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index-se051w.html">7. APIs : SE</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api_se_apdu_apis.html">7.1. SE APDU APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_se_apis.html">7.2. SE Functional APIs</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.3. SE FiRaLite APDU APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sr1xx/index.html">8. SR1XX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sr1xx/spi.html">8.1. SR1XX SPI communication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sr1xx/spi.html#hbci-spi-write">8.1.1. HBCI SPI Write</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sr1xx/spi.html#hbci-spi-read">8.1.2. HBCI SPI Read</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sr1xx/spi.html#spi-write">8.1.3. SPI Write</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sr1xx/spi.html#spi-read">8.1.4. SPI Read</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sr1xx/hbci.html">8.2. HBCI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sr1xx/hbci.html#sr1xx-fw-download-flow">8.2.1. SR1XX FW download Flow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">9. Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basics/index.html">9.1. UWB Basics (Ongoing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/p2p_ranging.html">9.2. Peer-to-Peer ranging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/uci_command_timeout_handling.html">9.3. UCI Command timeout handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/logging-details.html">9.4. Logging Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/QN9090_reference_manual.html">9.5. QN9090 Reference Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/ExtFlash_fwDownload.html">9.6. Firmware Download From External Flash</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/ExtFlash_fwDownload.html#setup-and-steps-to-download-firmware-from-external-flash">9.6.1. Setup and Steps to Download Firmware From External Flash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/ExtFlash_fwDownload.html#firmware-download-from-external-flash-flow">9.6.2. Firmware download from External Flash Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/firalite-adf-provisioning.html">9.7. FiRaLite ADF Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/firalite-adf-provisioning.html#setup-and-steps-for-jcshell-usage">9.7.1. Setup and Steps for JCShell usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/firalite-adf-provisioning.html#usage-of-jrcpproxy">9.7.2. Usage of JRCPProxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/firalite-adf-provisioning.html#using-the-jcshell">9.7.3. Using the JCShell</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/boards/index-sr150.html">9.8. SR150 Boards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/boards/rhodes_v4.html">9.8.1. RHODES IV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/boards/nrf52840_mk_sr150.html">9.8.2. Nordic(NRF52840) + MK Shield Board (SR150)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+          
+            <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">7.3. SE FiRaLite APDU APIs</a></li>
+</ul>
+</ul>
+</li>
+          
+        
+        
+          
+            
+  <li>
+    <a href="api_se_apis.html" title="Previous Chapter: 7.2. SE Functional APIs"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 7.2. SE Funct...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../sr1xx/index.html" title="Next Chapter: 8. SR1XX"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">8. SR1XX &raquo;</span>
+    </a>
+  </li>
+          
+        
+        
+        
+        
+      </ul>
+
+      
+      
+    </div>
+</div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+
+<div class="sidebar-header">
+    <h3>UWB IoT</h3>
+</div>
+
+<div class="row">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uwbiot/index.html">1. UWB IoT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes/index-sr150.html">2. Changes &amp; Release History (SR150)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compiling/index.html">3. Compiling &amp; Running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/index-sr150.html">4. SR150 Demos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/index-se051w.html">5. SE051W Demos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index-sr150.html">6. APIs : UWB IoT and SR150</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index-se051w.html">7. APIs : SE</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api_se_apdu_apis.html">7.1. SE APDU APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_se_apis.html">7.2. SE Functional APIs</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.3. SE FiRaLite APDU APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sr1xx/index.html">8. SR1XX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">9. Appendix</a></li>
+</ul>
+
+</div>
+<div class="row">
+    <form class="form" action="../../../search.html" method="get">
+     <div class="form-group">
+      <label for="Search">Search:</label>
+      <input type="text" name="q" class="form-control" placeholder="Search" />
+     </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <div class="section" id="se-firalite-apdu-apis">
+<h1><span class="section-number">7.3. </span>SE FiRaLite APDU APIs<a class="headerlink" href="#se-firalite-apdu-apis" title="Permalink to this headline">¶</a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__se__firalite__apdu__apis"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">se_firalite_apdu_apis</span></span></dt>
+<dd><p>SE051 UWB FiRaLite APDU Apis. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv426se_firalite_route_target_t">
+<span id="_CPPv326se_firalite_route_target_t"></span><span id="_CPPv226se_firalite_route_target_t"></span><span class="target" id="group__se__firalite__apdu__apis_1ga398a11656350b9044e73af5fbf78523b"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_firalite_route_target_t</span></span></span><a class="headerlink" href="#_CPPv426se_firalite_route_target_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>FiraLite route target </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26se_firalite_route_target_t20se_firalite_route_NAE">
+<span id="_CPPv3N26se_firalite_route_target_t20se_firalite_route_NAE"></span><span id="_CPPv2N26se_firalite_route_target_t20se_firalite_route_NAE"></span><span class="target" id="group__se__firalite__apdu__apis_1gga398a11656350b9044e73af5fbf78523bafbecafdc03536928679c8e3ccd38ec77"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_firalite_route_NA</span></span></span><a class="headerlink" href="#_CPPv4N26se_firalite_route_target_t20se_firalite_route_NAE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26se_firalite_route_target_t32se_firalite_route_firaLiteAppletE">
+<span id="_CPPv3N26se_firalite_route_target_t32se_firalite_route_firaLiteAppletE"></span><span id="_CPPv2N26se_firalite_route_target_t32se_firalite_route_firaLiteAppletE"></span><span class="target" id="group__se__firalite__apdu__apis_1gga398a11656350b9044e73af5fbf78523baef810156bfba37309012c202af6f9b0c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_firalite_route_firaLiteApplet</span></span></span><a class="headerlink" href="#_CPPv4N26se_firalite_route_target_t32se_firalite_route_firaLiteAppletE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Route to App in FiraLite Applet </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26se_firalite_route_target_t22se_firalite_route_hostE">
+<span id="_CPPv3N26se_firalite_route_target_t22se_firalite_route_hostE"></span><span id="_CPPv2N26se_firalite_route_target_t22se_firalite_route_hostE"></span><span class="target" id="group__se__firalite__apdu__apis_1gga398a11656350b9044e73af5fbf78523bab813e99576fdd764a821d92b64058eb4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_firalite_route_host</span></span></span><a class="headerlink" href="#_CPPv4N26se_firalite_route_target_t22se_firalite_route_hostE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Route to App in host </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv419se_firalite_optsa_t">
+<span id="_CPPv319se_firalite_optsa_t"></span><span id="_CPPv219se_firalite_optsa_t"></span><span class="target" id="group__se__firalite__apdu__apis_1ga9e34ddfc8703df661ecf3aadeafd4ec1"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_firalite_optsa_t</span></span></span><a class="headerlink" href="#_CPPv419se_firalite_optsa_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>FiraLite optsA crypto parameter </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19se_firalite_optsa_t29se_firalite_optsa_symm_cryptoE">
+<span id="_CPPv3N19se_firalite_optsa_t29se_firalite_optsa_symm_cryptoE"></span><span id="_CPPv2N19se_firalite_optsa_t29se_firalite_optsa_symm_cryptoE"></span><span class="target" id="group__se__firalite__apdu__apis_1gga9e34ddfc8703df661ecf3aadeafd4ec1a1b2e5dc8ef6fe6dc7042b4a9451712c8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_firalite_optsa_symm_crypto</span></span></span><a class="headerlink" href="#_CPPv4N19se_firalite_optsa_t29se_firalite_optsa_symm_cryptoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Support symmetric crypto </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422se_FiRaLite_API_Select15pSe05xSession_t7uint8_t">
+<span id="_CPPv322se_FiRaLite_API_Select15pSe05xSession_t7uint8_t"></span><span id="_CPPv222se_FiRaLite_API_Select15pSe05xSession_t7uint8_t"></span><span id="se_FiRaLite_API_Select__pSe05xSession_t.uint8_t"></span><span class="target" id="group__se__firalite__apdu__apis_1gae9ea71613657f9d7b87781b7b69ee152"></span><span class="n"><span class="pre">smStatus_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_FiRaLite_API_Select</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">pSe05xSession_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">session_ctx</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">logical_channel</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422se_FiRaLite_API_Select15pSe05xSession_t7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>se_FiRaLite_API_Select This selects FiRalite applet on channel 1. </p>
+<p><em>Selects FiRalite Applet</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session_ctx</strong> – <strong>[in]</strong> The smcom session context </p></li>
+<li><p><strong>logical_channel</strong> – <strong>[in]</strong> The logical channel to be opened.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The select Status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425se_FiRaLite_API_SelectADF15pSe05xSession_tK19se_firalite_optsa_tP21se_firelite_oid_entryK6size_tP7uint8_tP6size_t">
+<span id="_CPPv325se_FiRaLite_API_SelectADF15pSe05xSession_tK19se_firalite_optsa_tP21se_firelite_oid_entryK6size_tP7uint8_tP6size_t"></span><span id="_CPPv225se_FiRaLite_API_SelectADF15pSe05xSession_tK19se_firalite_optsa_tP21se_firelite_oid_entryK6size_tP7uint8_tP6size_t"></span><span id="se_FiRaLite_API_SelectADF__pSe05xSession_t.se_firalite_optsa_tC.se_firelite_oid_entryP.sC.uint8_tP.sP"></span><span class="target" id="group__se__firalite__apdu__apis_1gaaba5984478b3835a786e20ed885284de"></span><span class="n"><span class="pre">smStatus_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_FiRaLite_API_SelectADF</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">pSe05xSession_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">session_ctx</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419se_firalite_optsa_t" title="se_firalite_optsa_t"><span class="n"><span class="pre">se_firalite_optsa_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">optsA</span></span>, <a class="reference internal" href="#_CPPv421se_firelite_oid_entry" title="se_firelite_oid_entry"><span class="n"><span class="pre">se_firelite_oid_entry</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">oid_entries</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">oid_entries_count</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pRspData</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pRspDataLen</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425se_FiRaLite_API_SelectADF15pSe05xSession_tK19se_firalite_optsa_tP21se_firelite_oid_entryK6size_tP7uint8_tP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>se_FiRaLite_API_SelectADF The SELECT ADF command is used to select and route subsequent commands to a specific ADF </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session_ctx</strong> – <strong>[in]</strong> The smcom session context </p></li>
+<li><p><strong>optsA</strong> – <strong>[in]</strong> Crypto Type </p></li>
+<li><p><strong>oid_entries</strong> – <strong>[in]</strong> reference to OID entries </p></li>
+<li><p><strong>oid_entries_count</strong> – <strong>[in]</strong> number of OID entries </p></li>
+<li><p><strong>pRspData</strong> – <strong>[out]</strong> Response data </p></li>
+<li><p><strong>pRspDataLen</strong> – <strong>[out]</strong> Response data Length</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The APDU Transceive Status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv435se_FiRaLite_API_InitiateTransaction15pSe05xSession_tP21se_firelite_oid_entryK6size_tP7uint8_tK6size_tP7uint8_tP6size_t">
+<span id="_CPPv335se_FiRaLite_API_InitiateTransaction15pSe05xSession_tP21se_firelite_oid_entryK6size_tP7uint8_tK6size_tP7uint8_tP6size_t"></span><span id="_CPPv235se_FiRaLite_API_InitiateTransaction15pSe05xSession_tP21se_firelite_oid_entryK6size_tP7uint8_tK6size_tP7uint8_tP6size_t"></span><span id="se_FiRaLite_API_InitiateTransaction__pSe05xSession_t.se_firelite_oid_entryP.sC.uint8_tP.sC.uint8_tP.sP"></span><span class="target" id="group__se__firalite__apdu__apis_1ga19e76d327f6da116acbcb79ad313eb4a"></span><span class="n"><span class="pre">smStatus_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_FiRaLite_API_InitiateTransaction</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">pSe05xSession_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">session_ctx</span></span>, <a class="reference internal" href="#_CPPv421se_firelite_oid_entry" title="se_firelite_oid_entry"><span class="n"><span class="pre">se_firelite_oid_entry</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">oid_entries</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">oid_entries_count</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pSessionId</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sessionIdLen</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pRspData</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pRspDataLen</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv435se_FiRaLite_API_InitiateTransaction15pSe05xSession_tP21se_firelite_oid_entryK6size_tP7uint8_tK6size_tP7uint8_tP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>se_FiRaLite_API_InitiateTransaction The INITIATE TRANSACTION command is issued to begin a transaction with the counterpart device </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session_ctx</strong> – <strong>[in]</strong> The smcom session context </p></li>
+<li><p><strong>oid_entries</strong> – <strong>[in]</strong> reference to OID entries </p></li>
+<li><p><strong>oid_entries_count</strong> – <strong>[in]</strong> number of OID entries </p></li>
+<li><p><strong>pSessionId</strong> – <strong>[in]</strong> reference to the UWB session id </p></li>
+<li><p><strong>sessionIdLen</strong> – <strong>[in]</strong> length of the UWB session id </p></li>
+<li><p><strong>pRspData</strong> – <strong>[out]</strong> Response data </p></li>
+<li><p><strong>pRspDataLen</strong> – <strong>[out]</strong> Response data Length</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The APDU Transceive Status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424se_FiRaLite_API_Dispatch15pSe05xSession_tP7uint8_tK6size_tP7uint8_tP6size_t">
+<span id="_CPPv324se_FiRaLite_API_Dispatch15pSe05xSession_tP7uint8_tK6size_tP7uint8_tP6size_t"></span><span id="_CPPv224se_FiRaLite_API_Dispatch15pSe05xSession_tP7uint8_tK6size_tP7uint8_tP6size_t"></span><span id="se_FiRaLite_API_Dispatch__pSe05xSession_t.uint8_tP.sC.uint8_tP.sP"></span><span class="target" id="group__se__firalite__apdu__apis_1gae75c4721db485826beac2bd60e260245"></span><span class="n"><span class="pre">smStatus_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_FiRaLite_API_Dispatch</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">pSe05xSession_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">session_ctx</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pCmdData</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cmdDataLen</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pRspData</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pRspDataLen</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424se_FiRaLite_API_Dispatch15pSe05xSession_tP7uint8_tK6size_tP7uint8_tP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>se_FiRaLite_API_Dispatch The DISPATCH command is used to transfer command/responses to the FiRaLite Applet. Any command received over an out-of-band channel, shall be passed on to the FiRaLite applet using the DISPATCH command </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session_ctx</strong> – <strong>[in]</strong> The smcom session context </p></li>
+<li><p><strong>pCmdData</strong> – <strong>[in]</strong> command Buffer </p></li>
+<li><p><strong>cmdDataLen</strong> – <strong>[in]</strong> command Buffer length </p></li>
+<li><p><strong>pRspData</strong> – <strong>[out]</strong> Response data </p></li>
+<li><p><strong>pRspDataLen</strong> – <strong>[out]</strong> Response data Length</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The APDU Transceive Status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422se_FiRaLite_API_Tunnel15pSe05xSession_tP7uint8_tK6size_tP7uint8_tP6size_t">
+<span id="_CPPv322se_FiRaLite_API_Tunnel15pSe05xSession_tP7uint8_tK6size_tP7uint8_tP6size_t"></span><span id="_CPPv222se_FiRaLite_API_Tunnel15pSe05xSession_tP7uint8_tK6size_tP7uint8_tP6size_t"></span><span id="se_FiRaLite_API_Tunnel__pSe05xSession_t.uint8_tP.sC.uint8_tP.sP"></span><span class="target" id="group__se__firalite__apdu__apis_1ga97037d23818c2534848e3b70471a4cda"></span><span class="n"><span class="pre">smStatus_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_FiRaLite_API_Tunnel</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">pSe05xSession_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">session_ctx</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pCmdData</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cmdDataLen</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pRspData</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pRspDataLen</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422se_FiRaLite_API_Tunnel15pSe05xSession_tP7uint8_tK6size_tP7uint8_tP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>se_FiRaLite_API_Tunnel The TUNNEL command is used to wrap application specific data that is exchanged over an OoB channel. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session_ctx</strong> – <strong>[in]</strong> The smcom session context </p></li>
+<li><p><strong>pCmdData</strong> – <strong>[in]</strong> command Buffer </p></li>
+<li><p><strong>cmdDataLen</strong> – <strong>[in]</strong> command Buffer length </p></li>
+<li><p><strong>pRspData</strong> – <strong>[out]</strong> Response data </p></li>
+<li><p><strong>pRspDataLen</strong> – <strong>[out]</strong> Response data Length</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The APDU Transceive Status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429se_FiRaLite_API_RemoteGetDataPK7uint8_tK6size_tP7uint8_tP6size_t">
+<span id="_CPPv329se_FiRaLite_API_RemoteGetDataPK7uint8_tK6size_tP7uint8_tP6size_t"></span><span id="_CPPv229se_FiRaLite_API_RemoteGetDataPK7uint8_tK6size_tP7uint8_tP6size_t"></span><span id="se_FiRaLite_API_RemoteGetData__uint8_tCP.sC.uint8_tP.sP"></span><span class="target" id="group__se__firalite__apdu__apis_1gadf1b0811390176c399e06962c90a00e8"></span><span class="n"><span class="pre">smStatus_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_FiRaLite_API_RemoteGetData</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pInBuf</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inBufLen</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pRspData</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pRspDataLen</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429se_FiRaLite_API_RemoteGetDataPK7uint8_tK6size_tP7uint8_tP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>se_FiRaLite_API_RemoteGetData GET DATA is used to read one or more data elements from the currently selected ADF data structure from remote device. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pInBuf</strong> – <strong>[in]</strong> command Buffer </p></li>
+<li><p><strong>inBufLen</strong> – <strong>[in]</strong> command Buffer length </p></li>
+<li><p><strong>pRspData</strong> – <strong>[out]</strong> Response data </p></li>
+<li><p><strong>pRspDataLen</strong> – <strong>[out]</strong> Response data Length</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The operation status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429se_FiRaLite_API_RemotePutDataPK7uint8_tK6size_tP7uint8_tP6size_t">
+<span id="_CPPv329se_FiRaLite_API_RemotePutDataPK7uint8_tK6size_tP7uint8_tP6size_t"></span><span id="_CPPv229se_FiRaLite_API_RemotePutDataPK7uint8_tK6size_tP7uint8_tP6size_t"></span><span id="se_FiRaLite_API_RemotePutData__uint8_tCP.sC.uint8_tP.sP"></span><span class="target" id="group__se__firalite__apdu__apis_1ga494a505bb79f7b32e33e18ecff474d56"></span><span class="n"><span class="pre">smStatus_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_FiRaLite_API_RemotePutData</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pInBuf</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inBufLen</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pRspData</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pRspDataLen</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429se_FiRaLite_API_RemotePutDataPK7uint8_tK6size_tP7uint8_tP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>se_FiRaLite_API_RemotePutData The PUT DATA command is used to write one data element into the currently selected ADF data for remote device. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pInBuf</strong> – <strong>[in]</strong> command Buffer </p></li>
+<li><p><strong>inBufLen</strong> – <strong>[in]</strong> command Buffer length </p></li>
+<li><p><strong>pRspData</strong> – <strong>[out]</strong> Response data </p></li>
+<li><p><strong>pRspDataLen</strong> – <strong>[out]</strong> Response data Length</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The operation status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428se_FiRaLite_API_LocalGetData15pSe05xSession_t7uint8_t7uint8_tP7uint8_tP6size_t">
+<span id="_CPPv328se_FiRaLite_API_LocalGetData15pSe05xSession_t7uint8_t7uint8_tP7uint8_tP6size_t"></span><span id="_CPPv228se_FiRaLite_API_LocalGetData15pSe05xSession_t7uint8_t7uint8_tP7uint8_tP6size_t"></span><span id="se_FiRaLite_API_LocalGetData__pSe05xSession_t.uint8_t.uint8_t.uint8_tP.sP"></span><span class="target" id="group__se__firalite__apdu__apis_1gaa53c09ee34519a6a21c4fd3c87dcf0ff"></span><span class="n"><span class="pre">smStatus_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_FiRaLite_API_LocalGetData</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">pSe05xSession_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">session_ctx</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">tagMSB</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">tagLSB</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pRspData</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pRspDataLen</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428se_FiRaLite_API_LocalGetData15pSe05xSession_t7uint8_t7uint8_tP7uint8_tP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>se_FiRaLite_API_LocalGetData The GET DATA command is used to get data from FiraLite Applet for local device. It cannot be used to read ADF data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session_ctx</strong> – <strong>[in]</strong> The smcom session context </p></li>
+<li><p><strong>tagMSB</strong> – <strong>[in]</strong> P1 Value </p></li>
+<li><p><strong>tagLSB</strong> – <strong>[in]</strong> P2 Value </p></li>
+<li><p><strong>pRspData</strong> – <strong>[out]</strong> Response data </p></li>
+<li><p><strong>pRspDataLen</strong> – <strong>[out]</strong> Response data Length</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The operation status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428se_FiRaLite_API_LocalPutData15pSe05xSession_tPK7uint8_tK6size_t">
+<span id="_CPPv328se_FiRaLite_API_LocalPutData15pSe05xSession_tPK7uint8_tK6size_t"></span><span id="_CPPv228se_FiRaLite_API_LocalPutData15pSe05xSession_tPK7uint8_tK6size_t"></span><span id="se_FiRaLite_API_LocalPutData__pSe05xSession_t.uint8_tCP.sC"></span><span class="target" id="group__se__firalite__apdu__apis_1ga0f1ab85a953c6217361c5859567744a3"></span><span class="n"><span class="pre">smStatus_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_FiRaLite_API_LocalPutData</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">pSe05xSession_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">session_ctx</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pInBuf</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inBufLen</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428se_FiRaLite_API_LocalPutData15pSe05xSession_tPK7uint8_tK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>se_FiRaLite_API_LocalPutData The PUT DATA command is used to put data structure for currently selected ADF for local SE. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session_ctx</strong> – <strong>[in]</strong> The smcom session context </p></li>
+<li><p><strong>pInBuf</strong> – <strong>[in]</strong> command Buffer </p></li>
+<li><p><strong>inBufLen</strong> – <strong>[in]</strong> command Buffer length</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The operation status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv421se_firelite_oid_entry">
+<span id="_CPPv321se_firelite_oid_entry"></span><span id="_CPPv221se_firelite_oid_entry"></span><span id="se_firelite_oid_entry"></span><span class="target" id="structse__firelite__oid__entry"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_firelite_oid_entry</span></span></span><a class="headerlink" href="#_CPPv421se_firelite_oid_entry" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;se_FiRaLite_API.h&gt;</em></div>
+<p>FiraLite OID descriptor </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21se_firelite_oid_entry8pOIDDataE">
+<span id="_CPPv3N21se_firelite_oid_entry8pOIDDataE"></span><span id="_CPPv2N21se_firelite_oid_entry8pOIDDataE"></span><span id="se_firelite_oid_entry::pOIDData__uint8_tP"></span><span class="target" id="structse__firelite__oid__entry_1aa26ac018d87102a6b9bf05a12bf3eb54"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pOIDData</span></span></span><a class="headerlink" href="#_CPPv4N21se_firelite_oid_entry8pOIDDataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Reference to OID data </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21se_firelite_oid_entry10OIDDataLenE">
+<span id="_CPPv3N21se_firelite_oid_entry10OIDDataLenE"></span><span id="_CPPv2N21se_firelite_oid_entry10OIDDataLenE"></span><span id="se_firelite_oid_entry::OIDDataLen__s"></span><span class="target" id="structse__firelite__oid__entry_1a9d115339b5af01f415cde910c516f181"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OIDDataLen</span></span></span><a class="headerlink" href="#_CPPv4N21se_firelite_oid_entry10OIDDataLenE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>length of OID data </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv431se_firelite_selectadf_reponse_t">
+<span id="_CPPv331se_firelite_selectadf_reponse_t"></span><span id="_CPPv231se_firelite_selectadf_reponse_t"></span><span id="se_firelite_selectadf_reponse_t"></span><span class="target" id="structse__firelite__selectadf__reponse__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_firelite_selectadf_reponse_t</span></span></span><a class="headerlink" href="#_CPPv431se_firelite_selectadf_reponse_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;se_FiRaLite_API.h&gt;</em></div>
+<p>FiraLite SelectADF response </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31se_firelite_selectadf_reponse_t4pAidE">
+<span id="_CPPv3N31se_firelite_selectadf_reponse_t4pAidE"></span><span id="_CPPv2N31se_firelite_selectadf_reponse_t4pAidE"></span><span id="se_firelite_selectadf_reponse_t::pAid__uint8_tA"></span><span class="target" id="structse__firelite__selectadf__reponse__t_1a116da7260c78632133d210b0ced04a1c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pAid</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N31se_firelite_selectadf_reponse_t4pAidE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>AID data </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31se_firelite_selectadf_reponse_t6aidLenE">
+<span id="_CPPv3N31se_firelite_selectadf_reponse_t6aidLenE"></span><span id="_CPPv2N31se_firelite_selectadf_reponse_t6aidLenE"></span><span id="se_firelite_selectadf_reponse_t::aidLen__s"></span><span class="target" id="structse__firelite__selectadf__reponse__t_1a3a04e9b4c696b92cc6bed8d426e4fa35"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">aidLen</span></span></span><a class="headerlink" href="#_CPPv4N31se_firelite_selectadf_reponse_t6aidLenE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>length of AID </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31se_firelite_selectadf_reponse_t18is_privacy_enabledE">
+<span id="_CPPv3N31se_firelite_selectadf_reponse_t18is_privacy_enabledE"></span><span id="_CPPv2N31se_firelite_selectadf_reponse_t18is_privacy_enabledE"></span><span id="se_firelite_selectadf_reponse_t::is_privacy_enabled__b"></span><span class="target" id="structse__firelite__selectadf__reponse__t_1a4a007e310ae0db341021e74e9a5acfea"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_privacy_enabled</span></span></span><a class="headerlink" href="#_CPPv4N31se_firelite_selectadf_reponse_t18is_privacy_enabledE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>indicates whether proprietary info is used </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31se_firelite_selectadf_reponse_t9pPropInfoE">
+<span id="_CPPv3N31se_firelite_selectadf_reponse_t9pPropInfoE"></span><span id="_CPPv2N31se_firelite_selectadf_reponse_t9pPropInfoE"></span><span id="se_firelite_selectadf_reponse_t::pPropInfo__uint8_tA"></span><span class="target" id="structse__firelite__selectadf__reponse__t_1a2cfb5a401a315e7d75dcd95db8deb938"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pPropInfo</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">32</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N31se_firelite_selectadf_reponse_t9pPropInfoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>proprietary info </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv433se_firalite_secure_ranging_info_t">
+<span id="_CPPv333se_firalite_secure_ranging_info_t"></span><span id="_CPPv233se_firalite_secure_ranging_info_t"></span><span id="se_firalite_secure_ranging_info_t"></span><span class="target" id="structse__firalite__secure__ranging__info__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_firalite_secure_ranging_info_t</span></span></span><a class="headerlink" href="#_CPPv433se_firalite_secure_ranging_info_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;se_FiRaLite_API.h&gt;</em></div>
+<p>Firalite secure ranging info </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33se_firalite_secure_ranging_info_t14pUWBSessionKeyE">
+<span id="_CPPv3N33se_firalite_secure_ranging_info_t14pUWBSessionKeyE"></span><span id="_CPPv2N33se_firalite_secure_ranging_info_t14pUWBSessionKeyE"></span><span id="se_firalite_secure_ranging_info_t::pUWBSessionKey__uint8_tP"></span><span class="target" id="structse__firalite__secure__ranging__info__t_1a886ab808aae3b10a50e73ae4a14cffe3"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pUWBSessionKey</span></span></span><a class="headerlink" href="#_CPPv4N33se_firalite_secure_ranging_info_t14pUWBSessionKeyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Firalite session key info </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33se_firalite_secure_ranging_info_t16UWBSessionKeyLenE">
+<span id="_CPPv3N33se_firalite_secure_ranging_info_t16UWBSessionKeyLenE"></span><span id="_CPPv2N33se_firalite_secure_ranging_info_t16UWBSessionKeyLenE"></span><span id="se_firalite_secure_ranging_info_t::UWBSessionKeyLen__uint8_t"></span><span class="target" id="structse__firalite__secure__ranging__info__t_1a86ec3eb55d08de9bbc29e539227850ed"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWBSessionKeyLen</span></span></span><a class="headerlink" href="#_CPPv4N33se_firalite_secure_ranging_info_t16UWBSessionKeyLenE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Firalite session key length </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33se_firalite_secure_ranging_info_t17pUWBSubSessionKeyE">
+<span id="_CPPv3N33se_firalite_secure_ranging_info_t17pUWBSubSessionKeyE"></span><span id="_CPPv2N33se_firalite_secure_ranging_info_t17pUWBSubSessionKeyE"></span><span id="se_firalite_secure_ranging_info_t::pUWBSubSessionKey__uint8_tP"></span><span class="target" id="structse__firalite__secure__ranging__info__t_1afe0d37c1dc632553337a5c14acb214be"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pUWBSubSessionKey</span></span></span><a class="headerlink" href="#_CPPv4N33se_firalite_secure_ranging_info_t17pUWBSubSessionKeyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Firalite sub session key info </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33se_firalite_secure_ranging_info_t19UWBSubSessionKeyLenE">
+<span id="_CPPv3N33se_firalite_secure_ranging_info_t19UWBSubSessionKeyLenE"></span><span id="_CPPv2N33se_firalite_secure_ranging_info_t19UWBSubSessionKeyLenE"></span><span id="se_firalite_secure_ranging_info_t::UWBSubSessionKeyLen__uint8_t"></span><span class="target" id="structse__firalite__secure__ranging__info__t_1ab591ca0e5b1cd507217bc915f20275a0"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UWBSubSessionKeyLen</span></span></span><a class="headerlink" href="#_CPPv4N33se_firalite_secure_ranging_info_t19UWBSubSessionKeyLenE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Firalite sub session key length </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33se_firalite_secure_ranging_info_t12subSessionIdE">
+<span id="_CPPv3N33se_firalite_secure_ranging_info_t12subSessionIdE"></span><span id="_CPPv2N33se_firalite_secure_ranging_info_t12subSessionIdE"></span><span id="se_firalite_secure_ranging_info_t::subSessionId__uint32_t"></span><span class="target" id="structse__firalite__secure__ranging__info__t_1a1dfc61ae599c67a684a367506ad5d319"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">subSessionId</span></span></span><a class="headerlink" href="#_CPPv4N33se_firalite_secure_ranging_info_t12subSessionIdE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Firalite session key Id </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33se_firalite_secure_ranging_info_t16makeRDSAvailableE">
+<span id="_CPPv3N33se_firalite_secure_ranging_info_t16makeRDSAvailableE"></span><span id="_CPPv2N33se_firalite_secure_ranging_info_t16makeRDSAvailableE"></span><span id="se_firalite_secure_ranging_info_t::makeRDSAvailable__uint8_t"></span><span class="target" id="structse__firalite__secure__ranging__info__t_1a94650599058a8263dc71a70b2b1ec452"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">makeRDSAvailable</span></span></span><a class="headerlink" href="#_CPPv4N33se_firalite_secure_ranging_info_t16makeRDSAvailableE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Firalite rds flag </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv430se_firalite_cmd_routing_info_t">
+<span id="_CPPv330se_firalite_cmd_routing_info_t"></span><span id="_CPPv230se_firalite_cmd_routing_info_t"></span><span id="se_firalite_cmd_routing_info_t"></span><span class="target" id="structse__firalite__cmd__routing__info__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">se_firalite_cmd_routing_info_t</span></span></span><a class="headerlink" href="#_CPPv430se_firalite_cmd_routing_info_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;se_FiRaLite_API.h&gt;</em></div>
+<p>Firalite command routing info </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30se_firalite_cmd_routing_info_t6targetE">
+<span id="_CPPv3N30se_firalite_cmd_routing_info_t6targetE"></span><span id="_CPPv2N30se_firalite_cmd_routing_info_t6targetE"></span><span id="se_firalite_cmd_routing_info_t::target__se_firalite_route_target_t"></span><span class="target" id="structse__firalite__cmd__routing__info__t_1a4f91ad33ef4611b5e6b68b65b49e7c98"></span><a class="reference internal" href="#_CPPv426se_firalite_route_target_t" title="se_firalite_route_target_t"><span class="n"><span class="pre">se_firalite_route_target_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">target</span></span></span><a class="headerlink" href="#_CPPv4N30se_firalite_cmd_routing_info_t6targetE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Firalite command route target </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30se_firalite_cmd_routing_info_t4pCmdE">
+<span id="_CPPv3N30se_firalite_cmd_routing_info_t4pCmdE"></span><span id="_CPPv2N30se_firalite_cmd_routing_info_t4pCmdE"></span><span id="se_firalite_cmd_routing_info_t::pCmd__uint8_tP"></span><span class="target" id="structse__firalite__cmd__routing__info__t_1a4e84a0098cbf07587d275cc84d70a434"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pCmd</span></span></span><a class="headerlink" href="#_CPPv4N30se_firalite_cmd_routing_info_t4pCmdE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Firalite command buffer </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30se_firalite_cmd_routing_info_t6CmdLenE">
+<span id="_CPPv3N30se_firalite_cmd_routing_info_t6CmdLenE"></span><span id="_CPPv2N30se_firalite_cmd_routing_info_t6CmdLenE"></span><span id="se_firalite_cmd_routing_info_t::CmdLen__uint8_t"></span><span class="target" id="structse__firalite__cmd__routing__info__t_1ae94350b8bad9eee0b2a4bb5253998037"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CmdLen</span></span></span><a class="headerlink" href="#_CPPv4N30se_firalite_cmd_routing_info_t6CmdLenE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Firalite command buffer length </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020-2021 NXP.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

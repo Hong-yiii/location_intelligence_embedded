@@ -1,0 +1,6 @@
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/boards/Rhodes4_SPI/i2c_rhodesv4.c:72:20:kinetisI2cStatusToAxStatus	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/boards/Rhodes4_SPI/i2c_rhodesv4.c:59:6:axI2CResetBackoffDelay	0	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/boards/Rhodes4_SPI/i2c_rhodesv4.c:121:13:axI2CInit	24	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/boards/Rhodes4_SPI/i2c_rhodesv4.c:147:6:axI2CTerm	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/boards/Rhodes4_SPI/i2c_rhodesv4.c:160:14:axI2CWrite	40	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/boards/Rhodes4_SPI/i2c_rhodesv4.c:188:14:axI2CRead	40	static

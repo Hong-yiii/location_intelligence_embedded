@@ -1,0 +1,5 @@
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uwa_sys_main.c:51:6:uwa_sys_init	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uwa_sys_main.c:66:6:uwa_sys_event	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uwa_sys_main.c:100:6:uwa_sys_register	0	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uwa_sys_main.c:120:6:uwa_sys_disable_subsystems	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uwa_sys_main.c:143:6:uwa_sys_sendmsg	8	static

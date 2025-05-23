@@ -1,0 +1,11 @@
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/hal/phNxpUciHal.c:115:30:phNxpUciHal_client_thread	40	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/hal/phNxpUciHal.c:461:13:phNxpUciHal_read_complete	16	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/hal/phNxpUciHal.c:207:5:phNxpUciHal_open	64	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/hal/phNxpUciHal.c:336:6:phNxpUciHal_register_appdata_callback	0	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/hal/phNxpUciHal.c:379:10:phNxpUciHal_write_unlocked	16	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/hal/phNxpUciHal.c:352:5:phNxpUciHal_write	16	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/hal/phNxpUciHal.c:572:5:phNxpUciHal_close	16	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/hal/phNxpUciHal.c:659:5:phNxpUciHal_ioctl	32	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/hal/phNxpUciHal.c:728:5:phNxpUciHal_applyVendorConfig	32	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/hal/phNxpUciHal.c:760:5:phNxpUciHal_uwbDeviceInit	32	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/hal/phNxpUciHal.c:938:6:phNxpUciHal_SetOperatingMode	0	static

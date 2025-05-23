@@ -1,0 +1,6 @@
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uwa_dm_api.c:51:6:UWA_Init	16	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uwa_dm_api.c:86:13:UWA_Enable	16	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uwa_dm_api.c:144:13:UWA_Disable	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uwa_dm_api.c:172:13:UWA_RegisterExtCallback	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uwa_dm_api.c:205:13:UWA_SendUciCommand	24	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uwa_dm_api.c:239:13:UWA_SendRawCommand	24	static

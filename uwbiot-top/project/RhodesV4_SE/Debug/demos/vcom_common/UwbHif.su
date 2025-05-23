@@ -1,0 +1,11 @@
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/vcom_common/UwbHif.c:39:9:UWB_Socket_Init	0	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/vcom_common/UwbHif.c:43:6:UWB_Socket_DeInit	0	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/vcom_common/UwbHif.c:46:10:UWB_Socket_SendRsp	0	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/vcom_common/UwbHif.c:52:6:HifSetMode	0	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/vcom_common/UwbHif.c:58:13:HifGetMode	0	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/vcom_common/UwbHif.c:63:10:UWB_Hif_SendRsp	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/vcom_common/UwbHif.c:73:10:getUciPktSize	0	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/vcom_common/UwbHif.c:114:6:Uwb_Hif_ReadDataCb	40	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/vcom_common/UwbHif.c:88:23:UWB_HIFTask	24	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/vcom_common/UwbHif.c:156:6:HifInit	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/vcom_common/UwbHif.c:191:6:HifDeInit	8	static

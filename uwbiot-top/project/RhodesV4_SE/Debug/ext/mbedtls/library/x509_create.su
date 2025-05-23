@@ -1,0 +1,5 @@
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/mbedtls/library/x509_create.c:123:5:mbedtls_x509_string_to_names	304	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/mbedtls/library/x509_create.c:208:5:mbedtls_x509_set_extension	24	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/mbedtls/library/x509_create.c:269:5:mbedtls_x509_write_names	48	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/mbedtls/library/x509_create.c:289:5:mbedtls_x509_write_sig	40	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/mbedtls/library/x509_create.c:358:5:mbedtls_x509_write_extensions	40	static

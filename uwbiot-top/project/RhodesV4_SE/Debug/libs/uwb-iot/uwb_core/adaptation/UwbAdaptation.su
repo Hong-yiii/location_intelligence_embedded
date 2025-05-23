@@ -1,0 +1,14 @@
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_core/adaptation/UwbAdaptation.c:157:13:HalApplyVendorConfigs	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_core/adaptation/UwbAdaptation.c:237:13:HalIoctl	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_core/adaptation/UwbAdaptation.c:202:6:HalWrite	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_core/adaptation/UwbAdaptation.c:188:6:HalClose	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_core/adaptation/UwbAdaptation.c:174:6:HalOpen	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_core/adaptation/UwbAdaptation.c:49:10:StartUwbTask	40	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_core/adaptation/UwbAdaptation.c:68:6:phUwb_OSAL_send_msg	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_core/adaptation/UwbAdaptation.c:103:6:Initialize	16	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_core/adaptation/UwbAdaptation.c:122:6:Finalize	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_core/adaptation/UwbAdaptation.c:142:23:GetHalEntryFuncs	0	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_core/adaptation/UwbAdaptation.c:216:6:HalRegisterAppCallback	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_core/adaptation/UwbAdaptation.c:253:13:UwbDeviceInit	8	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_core/adaptation/UwbAdaptation.c:269:6:isCmdRespPending	0	static
+/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_core/adaptation/UwbAdaptation.c:285:6:Hal_setOperationMode	8	static
