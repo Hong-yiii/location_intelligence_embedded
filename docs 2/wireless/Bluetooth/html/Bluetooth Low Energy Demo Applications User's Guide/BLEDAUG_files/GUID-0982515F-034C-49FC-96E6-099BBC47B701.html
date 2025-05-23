@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="copyright" content="(C) Copyright 2005"/>
+<meta name="DC.rights.owner" content="(C) Copyright 2005"/>
+<meta name="DC.Type" content="topic"/>
+<meta name="DC.Title" content="QN9090 and K32W061 end of OTA image transfer"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-1494FED7-7DDB-4D3A-BA98-891523F88506.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-0982515F-034C-49FC-96E6-099BBC47B701"/>
+<meta name="DC.Language" content="en-us"/>
+<link rel="stylesheet" type="text/css" href="commonltr.css"/>
+<title>QN9090 and K32W061 end of OTA image transfer</title>
+</head>
+<body id="GUID-0982515F-034C-49FC-96E6-099BBC47B701">
+
+
+    <h1 class="title topictitle1">QN9090 and K32W061 end of OTA image transfer</h1>
+
+    <div class="body">
+     
+        
+        <div class="section" id="GUID-0982515F-034C-49FC-96E6-099BBC47B701__GUID-7453B425-E586-4320-ADDC-D0C9694308EB"><p class="p">For OTA upgrade in internal flash (default behavior of the OTAP client demo
+                application), the flash remapping mechanism is used. At the end of an image transfer
+                the OTA Support will indicate to the ROM code to select the second partition. At the
+                next reboot, the new image will be chosen. In order to support the OTA in internal
+                fiash, the two regions containing the application and the update section must have a
+                granularity of 8 KB. </p>
+
+                </div>
+    <div class="section" id="GUID-0982515F-034C-49FC-96E6-099BBC47B701__GUID-F8FCED00-8912-440E-B334-7D20A21ED68F">
+                    <p class="p">On QN9090 and K32W061, it is also possible to support storage of the updated image in the external flash. To support OTA on
+                external flash a Secondary Stage Bootloader (SSBL) is required. When OTA in external
+                flash is used, at the end of an image transfer, the OTA Support will store
+                information in the PSECT to indicate to the SSBL that a new image is available in
+                the external flash. At the next reboot, the SSBL will overse some checks of the
+                image stored on the external flash before copying the image to its targeted
+                location.</p>
+</div>
+
+            
+        
+    </div>
+
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-1494FED7-7DDB-4D3A-BA98-891523F88506.html">Over the Air Programming (OTAP)</a></div>
+</div>
+</div>
+
+</body>
+</html>

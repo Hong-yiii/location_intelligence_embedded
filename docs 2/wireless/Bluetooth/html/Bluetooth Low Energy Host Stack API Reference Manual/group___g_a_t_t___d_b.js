@@ -1,0 +1,47 @@
+var group___g_a_t_t___d_b =
+[
+    [ "gattDbAttribute_t", "group___g_a_t_t___d_b.html#structgatt_db_attribute__t", [
+      [ "handle", "group___g_a_t_t___d_b.html#a87faa13682dc52883f38ae94b576f3ee", null ],
+      [ "permissions", "group___g_a_t_t___d_b.html#acd438b3e54d9aed71702883edb6faecd", null ],
+      [ "uuid", "group___g_a_t_t___d_b.html#ac515183c660bd3163dde2915e987b428", null ],
+      [ "pValue", "group___g_a_t_t___d_b.html#a228fcfc72756712301c7cb089dd1704c", null ],
+      [ "valueLength", "group___g_a_t_t___d_b.html#ad4bc1a66ddf193b5b14f491b5a75b03c", null ],
+      [ "uuidType", "group___g_a_t_t___d_b.html#ae3401dfb72b4be1ff371b82a78ca57fd", null ],
+      [ "maxVariableValueLength", "group___g_a_t_t___d_b.html#a57a829e0f7ce6ddabd4e4e536eba83bd", null ]
+    ] ],
+    [ "gGattDbInvalidHandleIndex_d", "group___g_a_t_t___d_b.html#ga76b9f94c5974a9d3503a77ebb2926daa", null ],
+    [ "gGattDbInvalidHandle_d", "group___g_a_t_t___d_b.html#gaf2e13258ee09eb3c134db6cbba5529dc", null ],
+    [ "gPermissionNone_c", "group___g_a_t_t___d_b.html#gab6fe9c69130b1bb050fef582ef3418ac", null ],
+    [ "gPermissionFlagReadable_c", "group___g_a_t_t___d_b.html#gaf26e07a87bd09727656c4c278b1419c9", null ],
+    [ "gPermissionFlagReadWithEncryption_c", "group___g_a_t_t___d_b.html#gadf066242e90103a4c1c8ecb40442d7c0", null ],
+    [ "gPermissionFlagReadWithAuthentication_c", "group___g_a_t_t___d_b.html#ga636500ef908cfd21f19ff35232c2fc96", null ],
+    [ "gPermissionFlagReadWithAuthorization_c", "group___g_a_t_t___d_b.html#ga78473238689586ced8a0ac1bb8e4e6fe", null ],
+    [ "gPermissionFlagWritable_c", "group___g_a_t_t___d_b.html#gac66d8bfd3f3e3dea125b33304006db29", null ],
+    [ "gPermissionFlagWriteWithEncryption_c", "group___g_a_t_t___d_b.html#ga65847678518a2e828ffb8b2514634bae", null ],
+    [ "gPermissionFlagWriteWithAuthentication_c", "group___g_a_t_t___d_b.html#ga280a4131370518409462610e35656e86", null ],
+    [ "gPermissionFlagWriteWithAuthorization_c", "group___g_a_t_t___d_b.html#ga00c1c5f2eeff21ec7034fb3910bd3880", null ],
+    [ "gattCharacteristicPropertiesBitFields_t", "group___g_a_t_t___d_b.html#ga8a83c39cb7862122da54c9ecd14dd615", null ],
+    [ "gattAttributePermissionsBitFields_t", "group___g_a_t_t___d_b.html#ga0a5c893fb9bbd2b592902dd383459668", null ],
+    [ "gattCharacteristicPropertiesBitFields_tag", "group___g_a_t_t___d_b.html#gabf20d0b5806384b86f001ccb4ae91e38", [
+      [ "gGattCharPropNone_c", "group___g_a_t_t___d_b.html#ggabf20d0b5806384b86f001ccb4ae91e38a1873bf3a26e8909b37e423ba1d87524e", null ],
+      [ "gGattCharPropBroadcast_c", "group___g_a_t_t___d_b.html#ggabf20d0b5806384b86f001ccb4ae91e38a1e5c6afe3405a298f93133091cf62f89", null ],
+      [ "gGattCharPropRead_c", "group___g_a_t_t___d_b.html#ggabf20d0b5806384b86f001ccb4ae91e38a1937d09e86c2c53425cd6819d24d6231", null ],
+      [ "gGattCharPropWriteWithoutRsp_c", "group___g_a_t_t___d_b.html#ggabf20d0b5806384b86f001ccb4ae91e38ac4ed032e761246177af549fb69ad55b0", null ],
+      [ "gGattCharPropWrite_c", "group___g_a_t_t___d_b.html#ggabf20d0b5806384b86f001ccb4ae91e38a8addf8029b0e081bde304ec42c68cb7d", null ],
+      [ "gGattCharPropNotify_c", "group___g_a_t_t___d_b.html#ggabf20d0b5806384b86f001ccb4ae91e38a7570f6a9dd798b9e758aab7a76879299", null ],
+      [ "gGattCharPropIndicate_c", "group___g_a_t_t___d_b.html#ggabf20d0b5806384b86f001ccb4ae91e38ae3141c68a8daa0838772ea0345d5d22d", null ],
+      [ "gGattCharPropAuthSignedWrites_c", "group___g_a_t_t___d_b.html#ggabf20d0b5806384b86f001ccb4ae91e38a913633f338e2f06ef5c85828aae3aefb", null ],
+      [ "gGattCharPropExtendedProperties_c", "group___g_a_t_t___d_b.html#ggabf20d0b5806384b86f001ccb4ae91e38a752369181dbeaf4ed30fcb313690d38d", null ]
+    ] ],
+    [ "gattDbAccessType_t", "group___g_a_t_t___d_b.html#ga226755c7f043e79f20eae0c6229ab67f", null ],
+    [ "GattDb_GetIndexOfHandle", "group___g_a_t_t___d_b.html#gaf31c4246d1b5c3fe7cf66333aac2bff1", null ],
+    [ "GattDb_Init", "group___g_a_t_t___d_b.html#gad1a3c23e3caa74e0dd2a65722ece0f68", null ],
+    [ "GattDb_WriteAttribute", "group___g_a_t_t___d_b.html#gabc0d99e65e28fbf29cf7d7cd804458b2", null ],
+    [ "GattDb_ReadAttribute", "group___g_a_t_t___d_b.html#ga46c1e72e133a3be792494312f6a720c9", null ],
+    [ "GattDb_FindServiceHandle", "group___g_a_t_t___d_b.html#gae08ee1ec1b0602adcb359580d98bebe4", null ],
+    [ "GattDb_FindCharValueHandleInService", "group___g_a_t_t___d_b.html#ga212a689469de08af1117cfe775f98cb2", null ],
+    [ "GattDb_FindCccdHandleForCharValueHandle", "group___g_a_t_t___d_b.html#ga0106fca6ec9eaff705946d0c91635d00", null ],
+    [ "GattDb_FindDescriptorHandleForCharValueHandle", "group___g_a_t_t___d_b.html#ga9ea1e7de5d0cb9ae076aa7fc9e5f6588", null ],
+    [ "gGattDbAttributeCount_c", "group___g_a_t_t___d_b.html#ga80fc7ad1834f76aea3156b029463e633", null ],
+    [ "gattDatabase", "group___g_a_t_t___d_b.html#gaebc9cc113b8cfc28c11c9945ad8c722e", null ]
+];

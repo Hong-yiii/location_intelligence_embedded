@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="copyright" content="(C) Copyright 2005"/>
+<meta name="DC.rights.owner" content="(C) Copyright 2005"/>
+<meta name="DC.Type" content="topic"/>
+<meta name="DC.Title" content="User interface"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-DDFBEE49-41A5-4BB3-BD86-02D9B630ABB8.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-7C95D4EE-9560-430C-8285-3FDE6FD5CB1E"/>
+<meta name="DC.Language" content="en-us"/>
+<link rel="stylesheet" type="text/css" href="commonltr.css"/>
+<title>User interface</title>
+</head>
+<body id="GUID-7C95D4EE-9560-430C-8285-3FDE6FD5CB1E">
+
+
+    <h1 class="title topictitle1">User interface</h1>
+
+    <div class="body">
+        <p class="p">After flashing the board, if cPWR_FullPowerDownMode is enabled, the device
+            enters into power down mode (STLED1, STLED2 are off). To switch to the next work mode,
+            press MODESW button. </p>
+
+        <p class="p">There are 5 different work modes for the Power Profiling, and user can use MODESW button
+            to change work mode of QN9090.</p>
+
+        <div class="note note"><span class="notetitle">Note:</span> If using QN9090/K32W061, see application note AN12708. This application
+            note includes guidance on modification required to achieve the lowest power
+            consumption.</div>
+
+        <p class="p">See details below for four power mode.</p>
+
+        
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-7C95D4EE-9560-430C-8285-3FDE6FD5CB1E__GUID-39C84F96-317F-43A1-A525-EC0C5D00F93D" class="table" frame="border" border="1" rules="all">
+                
+                <thead class="thead" align="left">
+                    <tr class="row">
+                        <th class="entry" valign="top" id="d8235e35">Work Mode</th>
+
+                        <th class="entry" valign="top" id="d8235e38">Description</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody class="tbody">
+                 
+                    <tr class="row">
+                        <td class="entry" valign="top" headers="d8235e35 ">Mode 0</td>
+
+                        <td class="entry" valign="top" headers="d8235e38 ">Power down RAM Off OSC On</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" headers="d8235e35 ">Mode 1</td>
+
+                        <td class="entry" valign="top" headers="d8235e38 ">Deep power down RAM Off OSC Off</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" headers="d8235e35 ">Mode 2</td>
+
+                        <td class="entry" valign="top" headers="d8235e38 ">Bluetooth LE LL active, MCU sleep</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" headers="d8235e35 ">Mode 3</td>
+
+                        <td class="entry" valign="top" headers="d8235e38 ">Bluetooth LE LL active, MCU active</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" headers="d8235e35 ">Mode 4</td>
+
+                        <td class="entry" valign="top" headers="d8235e38 ">Power Down RAM Retention OSC On</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+</div>
+
+        <p class="p"> </p>
+
+        <p class="p">When it enters mode 4, the power profiling application is in connectable
+            advertising state, with a 1s advertising interval. Between advertising events, the
+            systems goes to power-down mode, which implies RAM retention, with 36 kbytes of RAM
+            held. See details below for hardware references.</p>
+
+        
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-7C95D4EE-9560-430C-8285-3FDE6FD5CB1E__GUID-4CBA46B2-8EC7-4DE1-81E4-64C184C10C0C" class="table" frame="border" border="1" rules="all">
+                
+                
+                
+                <thead class="thead" align="left">
+                    <tr class="row">
+                        <th class="entry" valign="top" id="d8235e115">Platform</th>
+
+                        <th class="entry" valign="top" id="d8235e118">MODESW</th>
+
+                        <th class="entry" valign="top" id="d8235e121">STLED1</th>
+
+                        <th class="entry" valign="top" id="d8235e124">STLED2</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody class="tbody">
+                   
+                    <tr class="row">
+                        <td class="entry" valign="top" headers="d8235e115 ">QN9090/K32W061</td>
+
+                        <td class="entry" valign="top" headers="d8235e118 ">USERINTERFACE</td>
+
+                        <td class="entry" valign="top" headers="d8235e121 ">DS2</td>
+
+                        <td class="entry" valign="top" headers="d8235e124 ">DS3</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+</div>
+
+    </div>
+
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-DDFBEE49-41A5-4BB3-BD86-02D9B630ABB8.html">Power Profiling</a></div>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en-us" lang="en-us" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="copyright" content="(C) Copyright 2005"/>
+<meta name="DC.rights.owner" content="(C) Copyright 2005"/>
+<meta name="DC.Type" content="topic"/>
+<meta name="DC.Title" content="User interface"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+<meta name="DC.Relation" scheme="URI" content="GUID-2C62D02E-23B8-4012-A26B-CD7DA2DFDE6D.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-91A741FA-4B89-4DA0-824F-095714C1D25F"/>
+<meta name="DC.Language" content="en-us"/>
+<link rel="stylesheet" type="text/css" href="commonltr.css"/>
+<title>User interface</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">52MFTYTJJKHE-1077661536-6584</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">9cf46893-c5ef-4c1a-9361-51e305f48f00</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://nxp1.sharepoint.com/sites/dngpm/infodev/_layouts/15/DocIdRedir.aspx?ID=52MFTYTJJKHE-1077661536-6584, 52MFTYTJJKHE-1077661536-6584</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body id="GUID-91A741FA-4B89-4DA0-824F-095714C1D25F">
+
+<h1 class="title topictitle1">User interface</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">After flashing the board<span class="ph"> and pressing the ADVSW button</span>, the sensor is put in deep sleep (all LEDs are off). Also, any attached debugger loses its connection. To flash the board in case the sensor is put in deep sleep, press ADVSW or RESET. The application default configuration enables low power, which disables LED support. The user can manually change this configuration and enable LED support, otherwise all subsequent LED behavior references are ignored. To wake up and start advertising, press the <strong class="ph b">ADVSW</strong> button. When in GAP Discoverable Mode, the <strong class="ph b">CONNLED</strong> is on. When the central node connects to the peripheral, the <strong class="ph b">CONNLED</strong> remains solid. The heart rate measurement values are generated randomly in the interval 40 to 200 bpm. The heart rate value format is set to 8 bits and the contact status is on.</p>
+<p class="p"><span class="ph">For FRDM-KW38 board, the default enabled low-power modes are 1 and 5. This means that the MCU is put into VLLS2 or VLLS3 stop mode. In this mode, the LED module operation is not implemented.</span></p>
+<p class="p">See details below for hardware references.</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="GUID-91A741FA-4B89-4DA0-824F-095714C1D25F__GUID-F29BEB1F-286B-44D0-9BBA-936393E7165F" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1. Hardware references</span></caption><thead class="thead" align="left"><tr class="row"><th class="entry" align="center" valign="top" id="d13957e39">Platform</th>
+<th class="entry" align="center" valign="top" id="d13957e41">ADVSW</th>
+<th class="entry" align="center" valign="top" id="d13957e43">CONNLED</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" align="center" valign="top" headers="d13957e39 ">FRDM-KW41Z</td>
+<td class="entry" align="center" valign="top" headers="d13957e41 ">SW4</td>
+<td class="entry" align="center" valign="top" headers="d13957e43 ">LED4</td>
+</tr>
+<tr class="row"><td class="entry" align="center" valign="top" headers="d13957e39 ">QN9080CDK</td>
+<td class="entry" align="center" valign="top" headers="d13957e41 ">BUTTON1</td>
+<td class="entry" align="center" valign="top" headers="d13957e43 ">D5-RED</td>
+</tr>
+<tr class="row"><td class="entry" align="center" valign="top" headers="d13957e39 ">FRDM-KW36</td>
+<td class="entry" align="center" valign="top" headers="d13957e41 ">SW3</td>
+<td class="entry" align="center" valign="top" headers="d13957e43 ">LED3</td>
+</tr>
+<tr class="row"><td class="entry" align="center" valign="top" headers="d13957e39 ">K32W0/QN9090</td>
+<td class="entry" align="center" valign="top" headers="d13957e41 ">USERINTERFACE</td>
+<td class="entry" align="center" valign="top" headers="d13957e43 ">DS2</td>
+</tr>
+<tr class="row"><td class="entry" align="center" valign="top" headers="d13957e39 ">FRDM-KW38</td>
+<td class="entry" align="center" valign="top" headers="d13957e41 ">SW3</td>
+<td class="entry" align="center" valign="top" headers="d13957e43 ">LED3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-2C62D02E-23B8-4012-A26B-CD7DA2DFDE6D.html">Heart rate sensor</a></div>
+</div>
+</div>
+
+</body>
+</html>
