@@ -74,6 +74,8 @@
 								</option>
 								<option id="gnu.cpp.compiler.option.preprocessor.undef.1175260049" name="Undefined symbols (-U)" superClass="gnu.cpp.compiler.option.preprocessor.undef" useByScannerDiscovery="false"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.compiler.option.include.paths.884555419" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="../../../my_custom_app/inc"/>
+									<listOptionValue builtIn="false" value="../../../my_custom_app/src"/>
 									<listOptionValue builtIn="false" value="../../../libs/uci-core/inc"/>
 									<listOptionValue builtIn="false" value="../../../demos/SR1XX/demo_nearby_interaction/inc/"/>
 									<listOptionValue builtIn="false" value="../../../demos/SR1XX/demo_nearby_interaction_client/inc/"/>
@@ -283,6 +285,8 @@
 								<option id="gnu.c.compiler.option.preprocessor.preprocess.13840986" name="Preprocess only (-E)" superClass="gnu.c.compiler.option.preprocessor.preprocess" useByScannerDiscovery="false"/>
 								<option id="gnu.c.compiler.option.preprocessor.undef.symbol.1954432932" name="Undefined symbols (-U)" superClass="gnu.c.compiler.option.preprocessor.undef.symbol" useByScannerDiscovery="false"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.1358085816" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="../../../my_custom_app/inc"/>
+									<listOptionValue builtIn="false" value="../../../my_custom_app/src"/>
 									<listOptionValue builtIn="false" value="../../../demos/SR1XX/demo_nearby_interaction/inc/"/>
 									<listOptionValue builtIn="false" value="../../../demos/SR1XX/demo_nearby_interaction_client/inc/"/>
 									<listOptionValue builtIn="false" value="../../../demos/SR1XX/demo_nearby_interaction_client/src/"/>
@@ -674,6 +678,8 @@
 								</option>
 								<option id="gnu.cpp.compiler.option.preprocessor.undef.1099493504" name="Undefined symbols (-U)" superClass="gnu.cpp.compiler.option.preprocessor.undef" useByScannerDiscovery="false"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.compiler.option.include.paths.1456798558" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="../../../my_custom_app/inc"/>
+									<listOptionValue builtIn="false" value="../../../my_custom_app/src"/>
 									<listOptionValue builtIn="false" value="../../../libs/uci-core/inc"/>
 									<listOptionValue builtIn="false" value="../../../demos/SR1XX/demo_nearby_interaction/inc/"/>
 									<listOptionValue builtIn="false" value="../../../demos/SR1XX/demo_nearby_interaction_client/inc/"/>
@@ -883,6 +889,8 @@
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.undef.symbol.1670138834" name="Undefined symbols (-U)" superClass="gnu.c.compiler.option.preprocessor.undef.symbol" useByScannerDiscovery="false"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.1014356110" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="../../../my_custom_app/inc"/>
+									<listOptionValue builtIn="false" value="../../../my_custom_app/src"/>
 									<listOptionValue builtIn="false" value="../../../demos/SR1XX/demo_nearby_interaction/inc/"/>
 									<listOptionValue builtIn="false" value="../../../demos/SR1XX/demo_nearby_interaction_client/inc/"/>
 									<listOptionValue builtIn="false" value="../../../demos/SR1XX/demo_nearby_interaction_client/src/"/>
