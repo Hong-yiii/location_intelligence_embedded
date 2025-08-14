@@ -1,11 +1,11 @@
 libs/uwb-iot/uwb_api/PrintUtility/PrintUtility_RfTest.o \
  libs/uwb-iot/uwb_api/PrintUtility/PrintUtility_RfTest.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_api/PrintUtility/PrintUtility_RfTest.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/libs/uwb-iot/uwb_api/PrintUtility/PrintUtility_RfTest.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../libs/uwb-iot/uwb_api/Api/PrintUtility_RfTest.h \
  ../../../libs/uwb-iot/uwb_api/Api/PrintUtility.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../libs/halimpl/inc/phUwb_BuildConfig.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
  ../../../libs/uwb-iot/uwb_api/Api/UwbApi_Types.h \
@@ -90,7 +90,7 @@ libs/uwb-iot/uwb_api/PrintUtility/PrintUtility_RfTest.o \
 ../../../libs/uwb-iot/uwb_api/Api/PrintUtility_RfTest.h:
 ../../../libs/uwb-iot/uwb_api/Api/PrintUtility.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../libs/halimpl/inc/phUwb_BuildConfig.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
 ../../../libs/uwb-iot/uwb_api/Api/UwbApi_Types.h:

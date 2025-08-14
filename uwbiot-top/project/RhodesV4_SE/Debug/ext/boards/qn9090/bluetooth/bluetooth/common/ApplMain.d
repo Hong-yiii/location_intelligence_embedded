@@ -1,6 +1,6 @@
 ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.o \
  ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../ext/boards/qn9090/bluetooth/framework/LED/interface/LED.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h \
@@ -67,7 +67,7 @@ ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../ext/boards/qn9090/bluetooth/framework/MemManager/interface/MemManager.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Lists/interface/GenericList.h \
  ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h \
@@ -82,7 +82,7 @@ ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.o \
  ../../../ext/boards/qn9090/bluetooth/framework/PDM/interface/PDM.h \
  ../../../ext/freertos/include/task.h \
  ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Keyboard/interface/Keyboard.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/l2ca_cb_interface.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_general.h \
@@ -102,7 +102,7 @@ ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.o \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_interface.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_client_interface.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gap_interface.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ble_init.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ble_init.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_general.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/controller/interface/controller_interface.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_constants.h \
@@ -174,7 +174,7 @@ ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../ext/boards/qn9090/bluetooth/framework/MemManager/interface/MemManager.h:
 ../../../ext/boards/qn9090/bluetooth/framework/Lists/interface/GenericList.h:
 ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h:
@@ -189,7 +189,7 @@ ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.o \
 ../../../ext/boards/qn9090/bluetooth/framework/PDM/interface/PDM.h:
 ../../../ext/freertos/include/task.h:
 ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.h:
 ../../../ext/boards/qn9090/bluetooth/framework/Keyboard/interface/Keyboard.h:
 ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/l2ca_cb_interface.h:
 ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_general.h:
@@ -209,7 +209,7 @@ ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.o \
 ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_interface.h:
 ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_client_interface.h:
 ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gap_interface.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ble_init.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ble_init.h:
 ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_general.h:
 ../../../ext/boards/qn9090/bluetooth/bluetooth/controller/interface/controller_interface.h:
 ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_constants.h:

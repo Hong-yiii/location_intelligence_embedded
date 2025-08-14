@@ -1,10 +1,10 @@
 se_mw/sss/ex/src/ex_sss_boot_connectstring.o \
  se_mw/sss/ex/src/ex_sss_boot_connectstring.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/sss/ex/src/ex_sss_boot_connectstring.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/ex/src/ex_sss_boot_connectstring.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../se_mw/sss/ex/inc/ex_sss_boot.h \
  ../../../se_mw/sss/ex/inc/ex_sss.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
  ../../../se_mw/sss/inc/fsl_sss_api.h \
  ../../../se_mw/sss/inc/fsl_sss_config.h \
  ../../../se_mw/sss/inc/fsl_sss_policy.h \
@@ -80,7 +80,7 @@ se_mw/sss/ex/src/ex_sss_boot_connectstring.o \
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../se_mw/sss/ex/inc/ex_sss_boot.h:
 ../../../se_mw/sss/ex/inc/ex_sss.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
 ../../../se_mw/sss/inc/fsl_sss_api.h:
 ../../../se_mw/sss/inc/fsl_sss_config.h:
 ../../../se_mw/sss/inc/fsl_sss_policy.h:

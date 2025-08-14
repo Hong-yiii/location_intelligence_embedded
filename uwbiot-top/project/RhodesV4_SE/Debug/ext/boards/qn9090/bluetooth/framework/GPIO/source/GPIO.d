@@ -1,6 +1,6 @@
 ext/boards/qn9090/bluetooth/framework/GPIO/source/GPIO.o \
  ext/boards/qn9090/bluetooth/framework/GPIO/source/GPIO.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/framework/GPIO/source/GPIO.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/GPIO/source/GPIO.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../ext/boards/qn9090/bluetooth/framework/GPIO/interface/GPIO.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h \
@@ -67,7 +67,7 @@ ext/boards/qn9090/bluetooth/framework/GPIO/source/GPIO.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h \
  ../../../boards/Host/Rhodes4/driver_config.h \
  ../../../ext/boards/qn9090/bluetooth/framework/GPIO/interface/GPIO_Adapter.h \
@@ -139,7 +139,7 @@ ext/boards/qn9090/bluetooth/framework/GPIO/source/GPIO.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h:
 ../../../boards/Host/Rhodes4/driver_config.h:
 ../../../ext/boards/qn9090/bluetooth/framework/GPIO/interface/GPIO_Adapter.h:

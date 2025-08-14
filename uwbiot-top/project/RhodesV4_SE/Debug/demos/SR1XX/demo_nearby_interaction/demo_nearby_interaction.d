@@ -1,10 +1,10 @@
 demos/SR1XX/demo_nearby_interaction/demo_nearby_interaction.o \
  demos/SR1XX/demo_nearby_interaction/demo_nearby_interaction.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/SR1XX/demo_nearby_interaction/demo_nearby_interaction.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/SR1XX/demo_nearby_interaction/demo_nearby_interaction.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../libs/halimpl/inc/phUwb_BuildConfig.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../libs/uwb-iot/uwb_api/Api/UwbApi.h \
  ../../../boards/Host/Rhodes4/uwb_board.h \
  ../../../boards/Rhodes4_SPI/peripherals.h \
@@ -90,7 +90,7 @@ demos/SR1XX/demo_nearby_interaction/demo_nearby_interaction.o \
  ../../../libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.h \
  ../../../libs/uwb-iot/uwb_api/Api/SE_Wrapper.h \
  ../../../se_mw/se_hostlib/hostLib/fira/inc/sus_APDU.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
  ../../../se_mw/se_hostlib/hostLib/inc/se05x_tlv.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h \
  ../../../se_mw/se_hostlib/hostLib/inc/se05x_enums.h \
@@ -149,44 +149,11 @@ demos/SR1XX/demo_nearby_interaction/demo_nearby_interaction.o \
  ../../../libs/halimpl/inc/phNxpLogDefault.h \
  ../../../libs/halimpl/inc/uwbiot_ver.h \
  ../../../demos/common/Demo_Common_Config.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/UWBIOT_APP_BUILD.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.h \
- ../../../ext/boards/qn9090/bluetooth/framework/Keyboard/interface/Keyboard.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/l2ca_cb_interface.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_general.h \
- ../../../ext/boards/qn9090/bluetooth/framework/FunctionLib/interface/FunctionLib.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_constants.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_sig_defines.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_utils.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/l2ca_types.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/config/ble_config.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_interface.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_types.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/att_errors.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/att_types.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_database.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gap_types.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_server_interface.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_interface.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_client_interface.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gap_interface.h \
- ../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib.h \
- ../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib_ecp256.h \
- ../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/common/ble_init.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_general.h \
- ../../../boards/Rhodes4_SPI/board.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/controller/interface/controller_interface.h \
- ../../../ext/boards/qn9090/bluetooth/framework/Panic/interface/Panic.h \
- ../../../ext/boards/qn9090/bluetooth/framework/Flash/Flash_Adapter.h \
- ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_constants.h \
- ../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Interface.h \
- ../../../demos/SR1XX/demo_nearby_interaction/inc/TLV_Types_i.h \
- ../../../demos/SR1XX/demo_nearby_interaction/inc/demo_device_config_i.h
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/UWBIOT_APP_BUILD.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../libs/halimpl/inc/phUwb_BuildConfig.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../libs/uwb-iot/uwb_api/Api/UwbApi.h:
 ../../../boards/Host/Rhodes4/uwb_board.h:
 ../../../boards/Rhodes4_SPI/peripherals.h:
@@ -272,7 +239,7 @@ demos/SR1XX/demo_nearby_interaction/demo_nearby_interaction.o \
 ../../../libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.h:
 ../../../libs/uwb-iot/uwb_api/Api/SE_Wrapper.h:
 ../../../se_mw/se_hostlib/hostLib/fira/inc/sus_APDU.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
 ../../../se_mw/se_hostlib/hostLib/inc/se05x_tlv.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h:
 ../../../se_mw/se_hostlib/hostLib/inc/se05x_enums.h:
@@ -331,37 +298,4 @@ demos/SR1XX/demo_nearby_interaction/demo_nearby_interaction.o \
 ../../../libs/halimpl/inc/phNxpLogDefault.h:
 ../../../libs/halimpl/inc/uwbiot_ver.h:
 ../../../demos/common/Demo_Common_Config.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/UWBIOT_APP_BUILD.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.h:
-../../../ext/boards/qn9090/bluetooth/framework/Keyboard/interface/Keyboard.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/l2ca_cb_interface.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_general.h:
-../../../ext/boards/qn9090/bluetooth/framework/FunctionLib/interface/FunctionLib.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_constants.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_sig_defines.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_utils.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/l2ca_types.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/config/ble_config.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_interface.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_types.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/att_errors.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/att_types.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_database.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gap_types.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_server_interface.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_interface.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gatt_client_interface.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gap_interface.h:
-../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib.h:
-../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib_ecp256.h:
-../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/common/ble_init.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_general.h:
-../../../boards/Rhodes4_SPI/board.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/controller/interface/controller_interface.h:
-../../../ext/boards/qn9090/bluetooth/framework/Panic/interface/Panic.h:
-../../../ext/boards/qn9090/bluetooth/framework/Flash/Flash_Adapter.h:
-../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_constants.h:
-../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Interface.h:
-../../../demos/SR1XX/demo_nearby_interaction/inc/TLV_Types_i.h:
-../../../demos/SR1XX/demo_nearby_interaction/inc/demo_device_config_i.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/UWBIOT_APP_BUILD.h:

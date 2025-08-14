@@ -1,8 +1,8 @@
 ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.o \
  ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
  ../../../ext/freertos/include/FreeRTOS.h \
  ../../../boards/Host/Rhodes4/FreeRTOSConfig.h \
  ../../../ext/freertos/include/projdefs.h \
@@ -15,7 +15,7 @@ ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.o \
  ../../../ext/freertos/include/queue.h \
  ../../../ext/freertos/include/task.h \
  ../../../ext/freertos/include/list.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
  ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h \
  ../../../ext/boards/qn9090/devices/QN9090/QN9090.h \
  ../../../ext/boards/qn9090/CMSIS/Include/core_cm4.h \
@@ -25,11 +25,11 @@ ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.o \
  ../../../ext/boards/qn9090/CMSIS/Include/mpu_armv7.h \
  ../../../ext/boards/qn9090/devices/QN9090/system_QN9090.h \
  ../../../ext/boards/qn9090/devices/QN9090/QN9090_features.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
 ../../../ext/freertos/include/FreeRTOS.h:
 ../../../boards/Host/Rhodes4/FreeRTOSConfig.h:
 ../../../ext/freertos/include/projdefs.h:
@@ -42,7 +42,7 @@ ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.o \
 ../../../ext/freertos/include/queue.h:
 ../../../ext/freertos/include/task.h:
 ../../../ext/freertos/include/list.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
 ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h:
 ../../../ext/boards/qn9090/devices/QN9090/QN9090.h:
 ../../../ext/boards/qn9090/CMSIS/Include/core_cm4.h:
@@ -52,6 +52,6 @@ ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.o \
 ../../../ext/boards/qn9090/CMSIS/Include/mpu_armv7.h:
 ../../../ext/boards/qn9090/devices/QN9090/system_QN9090.h:
 ../../../ext/boards/qn9090/devices/QN9090/QN9090_features.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h:

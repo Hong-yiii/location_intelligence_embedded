@@ -1,10 +1,10 @@
 libs/halimpl/transport/SPI/SR1XX/uwb_uwbs_tml_interface.o \
  libs/halimpl/transport/SPI/SR1XX/uwb_uwbs_tml_interface.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/transport/SPI/SR1XX/uwb_uwbs_tml_interface.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/libs/halimpl/transport/SPI/SR1XX/uwb_uwbs_tml_interface.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../libs/halimpl/inc/uwb_uwbs_tml_interface.h \
  ../../../libs/uwb-iot/uwb_api/Api/SR1XX/uwb_uwbs_tml_io.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../libs/halimpl/inc/uwb_bus_interface.h \
  ../../../boards/Rhodes4_SPI/uwb_bus_board.h \
  ../../../boards/Rhodes4_SPI/board.h \
@@ -104,7 +104,7 @@ libs/halimpl/transport/SPI/SR1XX/uwb_uwbs_tml_interface.o \
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../libs/halimpl/inc/uwb_uwbs_tml_interface.h:
 ../../../libs/uwb-iot/uwb_api/Api/SR1XX/uwb_uwbs_tml_io.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../libs/halimpl/inc/uwb_bus_interface.h:
 ../../../boards/Rhodes4_SPI/uwb_bus_board.h:
 ../../../boards/Rhodes4_SPI/board.h:

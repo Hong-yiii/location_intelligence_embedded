@@ -1,6 +1,6 @@
 ext/freertos/portable/GCC/ARM_CM4FQN9090/port.o \
  ext/freertos/portable/GCC/ARM_CM4FQN9090/port.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/freertos/portable/GCC/ARM_CM4FQN9090/port.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/freertos/portable/GCC/ARM_CM4FQN9090/port.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../ext/freertos/include/FreeRTOS.h \
  ../../../boards/Host/Rhodes4/FreeRTOSConfig.h \

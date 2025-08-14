@@ -1,6 +1,6 @@
 se_mw/se_hostlib/hostLib/platform/ksdk/timer_kinetis.o \
  se_mw/se_hostlib/hostLib/platform/ksdk/timer_kinetis.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/se_hostlib/hostLib/platform/ksdk/timer_kinetis.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/se_hostlib/hostLib/platform/ksdk/timer_kinetis.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../se_mw/se_hostlib/hostLib/platform/inc/sm_timer.h \
  ../../../boards/Rhodes4_SPI/board.h \
@@ -67,7 +67,7 @@ se_mw/se_hostlib/hostLib/platform/ksdk/timer_kinetis.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../se_mw/se_hostlib/hostLib/platform/inc/sm_timer.h:
 ../../../boards/Rhodes4_SPI/board.h:
@@ -134,4 +134,4 @@ se_mw/se_hostlib/hostLib/platform/ksdk/timer_kinetis.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:

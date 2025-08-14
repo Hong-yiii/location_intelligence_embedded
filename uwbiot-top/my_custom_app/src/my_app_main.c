@@ -7,6 +7,7 @@
 #include "UwbApi.h"
 #include <AppInternal.h> // For UWBIOT_EXAMPLE_END, PRINT_APP_NAME etc.
 #include "phOsalUwb.h"
+#include "phUwbStatus.h" // For UWBSTATUS_SUCCESS and other generic status codes
 // Add other necessary headers for your application (drivers, custom logic headers, etc.)
 // e.g., #include "my_custom_logic.h"
 
@@ -32,7 +33,7 @@ OSAL_TASK_RETURN_TYPE MyCustomApp_Task(void *args)
     // ... more init steps ...
 
     NXPLOG_APP_I("My Custom Application Initialized Successfully.");
-    status = UWBAPI_STATUS_SUCCESS;
+    status = UWBSTATUS_SUCCESS;
 
     // --- Your Custom Application Main Loop ---
     while (1)
@@ -46,7 +47,7 @@ OSAL_TASK_RETURN_TYPE MyCustomApp_Task(void *args)
 
 // end: // Optional label for cleanup if needed
     UWBIOT_EXAMPLE_END(status); // Macro to signify end, might print status
-    return OSAL_TASK_RETURN_PARAM; // Or appropriate return for your OSAL
+    return OSAL_TASK_RETURN_VALUE; // Or appropriate return for your OSAL
 }
 
 UWBOSAL_TASK_HANDLE uwb_demo_start(void)

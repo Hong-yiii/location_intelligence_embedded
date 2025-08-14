@@ -122,6 +122,7 @@ libs/uwb-iot/uwb_api/Api \
 libs/uwb-iot/uwb_api/PrintUtility \
 libs/uwb-iot/uwb_api/PrintUtility/SR1XX \
 libs/uwb-iot/uwb_core/adaptation \
+my_custom_app/src \
 se_mw/nxp_iot_agent/src/common \
 se_mw/nxp_iot_agent/src/protobuf \
 se_mw/se_hostlib/hostLib/fira/src \

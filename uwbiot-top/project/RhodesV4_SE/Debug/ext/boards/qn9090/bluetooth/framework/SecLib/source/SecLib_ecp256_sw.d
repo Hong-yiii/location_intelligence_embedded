@@ -1,6 +1,6 @@
 ext/boards/qn9090/bluetooth/framework/SecLib/source/SecLib_ecp256_sw.o \
  ext/boards/qn9090/bluetooth/framework/SecLib/source/SecLib_ecp256_sw.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/framework/SecLib/source/SecLib_ecp256_sw.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/SecLib/source/SecLib_ecp256_sw.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib_ecp256.h \
  ../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib.h \

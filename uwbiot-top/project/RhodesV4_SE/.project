@@ -53,6 +53,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>my_custom_app</name>
+			<type>2</type>
+			<location>/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/my_custom_app</location>
+		</link>
+		<link>
 			<name>scripts</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>

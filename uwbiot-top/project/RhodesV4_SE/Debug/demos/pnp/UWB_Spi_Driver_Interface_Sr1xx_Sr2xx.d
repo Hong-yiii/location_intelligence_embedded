@@ -1,11 +1,11 @@
 demos/pnp/UWB_Spi_Driver_Interface_Sr1xx_Sr2xx.o \
  demos/pnp/UWB_Spi_Driver_Interface_Sr1xx_Sr2xx.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/pnp/UWB_Spi_Driver_Interface_Sr1xx_Sr2xx.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/pnp/UWB_Spi_Driver_Interface_Sr1xx_Sr2xx.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../libs/halimpl/inc/phUwb_BuildConfig.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/pnp/UWB_Spi_Driver_Interface.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/pnp/UWB_Spi_Driver_Interface.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
  ../../../libs/halimpl/inc/phUwbStatus.h \
  ../../../libs/halimpl/inc/uwb_uwbs_tml_interface.h \
@@ -87,8 +87,8 @@ demos/pnp/UWB_Spi_Driver_Interface_Sr1xx_Sr2xx.o \
  ../../../libs/halimpl/inc/phOsalUwb_Queue.h \
  ../../../libs/halimpl/inc/phOsalUwb_Timer.h \
  ../../../libs/halimpl/inc/phUwb_BuildConfig.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/pnp/UwbPnpInternal.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/pnp/UWB_Evt_Pnp.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/pnp/UwbPnpInternal.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/pnp/UWB_Evt_Pnp.h \
  ../../../boards/Host/Rhodes4/uwb_board.h \
  ../../../boards/Rhodes4_SPI/peripherals.h \
  ../../../boards/Rhodes4_SPI/pin_mux.h \
@@ -105,8 +105,8 @@ demos/pnp/UWB_Spi_Driver_Interface_Sr1xx_Sr2xx.o \
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../libs/halimpl/inc/phUwb_BuildConfig.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/pnp/UWB_Spi_Driver_Interface.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/pnp/UWB_Spi_Driver_Interface.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
 ../../../libs/halimpl/inc/phUwbStatus.h:
 ../../../libs/halimpl/inc/uwb_uwbs_tml_interface.h:
@@ -188,8 +188,8 @@ demos/pnp/UWB_Spi_Driver_Interface_Sr1xx_Sr2xx.o \
 ../../../libs/halimpl/inc/phOsalUwb_Queue.h:
 ../../../libs/halimpl/inc/phOsalUwb_Timer.h:
 ../../../libs/halimpl/inc/phUwb_BuildConfig.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/pnp/UwbPnpInternal.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/pnp/UWB_Evt_Pnp.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/pnp/UwbPnpInternal.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/pnp/UWB_Evt_Pnp.h:
 ../../../boards/Host/Rhodes4/uwb_board.h:
 ../../../boards/Rhodes4_SPI/peripherals.h:
 ../../../boards/Rhodes4_SPI/pin_mux.h:

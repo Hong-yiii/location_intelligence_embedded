@@ -1,8 +1,8 @@
 libs/halimpl/utils/utlv.o libs/halimpl/utils/utlv.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/utils/utlv.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/libs/halimpl/utils/utlv.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../libs/halimpl/inc/utlv.h ../../../libs/halimpl/inc/phOsalUwb.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../ext/freertos/include/FreeRTOS.h \
  ../../../boards/Host/Rhodes4/FreeRTOSConfig.h \
  ../../../ext/freertos/include/projdefs.h \
@@ -94,7 +94,7 @@ libs/halimpl/utils/utlv.o libs/halimpl/utils/utlv.d: \
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../libs/halimpl/inc/utlv.h:
 ../../../libs/halimpl/inc/phOsalUwb.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../ext/freertos/include/FreeRTOS.h:
 ../../../boards/Host/Rhodes4/FreeRTOSConfig.h:
 ../../../ext/freertos/include/projdefs.h:

@@ -1,11 +1,11 @@
 libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.o \
  libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../libs/uwb-iot/uwb_api/Api/UwbApi_Internal.h \
  ../../../libs/halimpl/inc/phUwb_BuildConfig.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
  ../../../libs/uwb-iot/uwb_api/Api/UwbApi_Types.h \
  ../../../libs/uci-core/inc/uci_defs.h \
@@ -86,7 +86,7 @@ libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.o \
  ../../../libs/uwb-iot/uwb_core/include/uwb_hal_api.h \
  ../../../libs/uwb-iot/uwb_core/include/uwb_target.h \
  ../../../libs/uci-core/inc/uwb_types.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary_Internal.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary_Internal.h \
  ../../../libs/halimpl/inc/phNxpLogApis_UwbApi.h \
  ../../../libs/halimpl/inc/uwb_logging.h \
  ../../../libs/halimpl/inc/phNxpLogDefault.h \
@@ -111,7 +111,7 @@ libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.o \
  ../../../libs/uwb-iot/uwb_core/include/uwb_hal_int.h \
  ../../../libs/uwb-iot/uwb_core/include/uwb_hal_api.h \
  ../../../libs/uwb-iot/uwb_core/include/uwb_target.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_api/Api/SR1XX/AppConfigParams.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/libs/uwb-iot/uwb_api/Api/SR1XX/AppConfigParams.h \
  ../../../libs/uwb-iot/uwb_api/Api/PrintUtility.h \
  ../../../libs/uwb-iot/uwb_api/Api/SR1XX/PrintUtility_Proprietary.h \
  ../../../libs/uci-core/inc/uwa_dm_int.h \
@@ -124,7 +124,7 @@ libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.o \
  ../../../libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.h \
  ../../../libs/uwb-iot/uwb_api/Api/SE_Wrapper.h \
  ../../../se_mw/se_hostlib/hostLib/fira/inc/sus_APDU.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
  ../../../se_mw/se_hostlib/hostLib/inc/se05x_tlv.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h \
  ../../../se_mw/se_hostlib/hostLib/inc/se05x_enums.h \
@@ -171,7 +171,7 @@ libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.o \
 ../../../libs/uwb-iot/uwb_api/Api/UwbApi_Internal.h:
 ../../../libs/halimpl/inc/phUwb_BuildConfig.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
 ../../../libs/uwb-iot/uwb_api/Api/UwbApi_Types.h:
 ../../../libs/uci-core/inc/uci_defs.h:
@@ -252,7 +252,7 @@ libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.o \
 ../../../libs/uwb-iot/uwb_core/include/uwb_hal_api.h:
 ../../../libs/uwb-iot/uwb_core/include/uwb_target.h:
 ../../../libs/uci-core/inc/uwb_types.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary_Internal.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary_Internal.h:
 ../../../libs/halimpl/inc/phNxpLogApis_UwbApi.h:
 ../../../libs/halimpl/inc/uwb_logging.h:
 ../../../libs/halimpl/inc/phNxpLogDefault.h:
@@ -277,7 +277,7 @@ libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.o \
 ../../../libs/uwb-iot/uwb_core/include/uwb_hal_int.h:
 ../../../libs/uwb-iot/uwb_core/include/uwb_hal_api.h:
 ../../../libs/uwb-iot/uwb_core/include/uwb_target.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_api/Api/SR1XX/AppConfigParams.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/libs/uwb-iot/uwb_api/Api/SR1XX/AppConfigParams.h:
 ../../../libs/uwb-iot/uwb_api/Api/PrintUtility.h:
 ../../../libs/uwb-iot/uwb_api/Api/SR1XX/PrintUtility_Proprietary.h:
 ../../../libs/uci-core/inc/uwa_dm_int.h:
@@ -290,7 +290,7 @@ libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.o \
 ../../../libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.h:
 ../../../libs/uwb-iot/uwb_api/Api/SE_Wrapper.h:
 ../../../se_mw/se_hostlib/hostLib/fira/inc/sus_APDU.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
 ../../../se_mw/se_hostlib/hostLib/inc/se05x_tlv.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h:
 ../../../se_mw/se_hostlib/hostLib/inc/se05x_enums.h:

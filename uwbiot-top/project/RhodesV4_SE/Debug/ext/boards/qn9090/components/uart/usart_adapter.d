@@ -1,6 +1,6 @@
 ext/boards/qn9090/components/uart/usart_adapter.o \
  ext/boards/qn9090/components/uart/usart_adapter.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/components/uart/usart_adapter.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/components/uart/usart_adapter.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h \
  ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h \
@@ -17,7 +17,7 @@ ext/boards/qn9090/components/uart/usart_adapter.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_usart.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_flexcomm.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/components/uart/uart.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/components/uart/uart.h \
  ../../../ext/freertos/include/FreeRTOS.h \
  ../../../boards/Host/Rhodes4/FreeRTOSConfig.h \
  ../../../ext/freertos/include/projdefs.h \
@@ -41,7 +41,7 @@ ext/boards/qn9090/components/uart/usart_adapter.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_usart.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_flexcomm.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/components/uart/uart.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/components/uart/uart.h:
 ../../../ext/freertos/include/FreeRTOS.h:
 ../../../boards/Host/Rhodes4/FreeRTOSConfig.h:
 ../../../ext/freertos/include/projdefs.h:

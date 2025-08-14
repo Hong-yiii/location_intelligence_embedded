@@ -1,6 +1,6 @@
 ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console.o \
  ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../ext/freertos/include/FreeRTOS.h \
  ../../../boards/Host/Rhodes4/FreeRTOSConfig.h \
@@ -14,8 +14,8 @@ ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console.o \
  ../../../ext/freertos/include/task.h \
  ../../../ext/freertos/include/list.h \
  ../../../ext/freertos/include/task.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console_conf.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/utilities/fsl_str.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console_conf.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/utilities/fsl_str.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h \
  ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h \
  ../../../ext/boards/qn9090/devices/QN9090/QN9090.h \
@@ -32,7 +32,7 @@ ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console.o \
  ../../../ext/boards/qn9090/components/serial_manager/serial_manager.h \
  ../../../ext/boards/qn9090/components/serial_manager/serial_port_uart.h \
  ../../../ext/boards/qn9090/components/serial_manager/serial_port_swo.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console.h
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../ext/freertos/include/FreeRTOS.h:
 ../../../boards/Host/Rhodes4/FreeRTOSConfig.h:
@@ -46,8 +46,8 @@ ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console.o \
 ../../../ext/freertos/include/task.h:
 ../../../ext/freertos/include/list.h:
 ../../../ext/freertos/include/task.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console_conf.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/utilities/fsl_str.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console_conf.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/utilities/fsl_str.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h:
 ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h:
 ../../../ext/boards/qn9090/devices/QN9090/QN9090.h:
@@ -64,4 +64,4 @@ ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console.o \
 ../../../ext/boards/qn9090/components/serial_manager/serial_manager.h:
 ../../../ext/boards/qn9090/components/serial_manager/serial_port_uart.h:
 ../../../ext/boards/qn9090/components/serial_manager/serial_port_swo.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/utilities/fsl_debug_console.h:

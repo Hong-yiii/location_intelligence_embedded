@@ -1,9 +1,9 @@
 se_mw/sss/ex/src/ex_sss_se05x.o se_mw/sss/ex/src/ex_sss_se05x.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/sss/ex/src/ex_sss_se05x.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/ex/src/ex_sss_se05x.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../se_mw/sss/ex/inc/ex_sss_boot.h \
  ../../../se_mw/sss/ex/inc/ex_sss.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
  ../../../se_mw/sss/inc/fsl_sss_api.h \
  ../../../se_mw/sss/inc/fsl_sss_config.h \
  ../../../se_mw/sss/inc/fsl_sss_policy.h \
@@ -80,7 +80,7 @@ se_mw/sss/ex/src/ex_sss_se05x.o se_mw/sss/ex/src/ex_sss_se05x.d: \
  ../../../se_mw/se_hostlib/hostLib/se05x_03_xx_xx/se05x_APDU_apis.h \
  ../../../se_mw/se_hostlib/hostLib/se05x_03_xx_xx/se05x_04_xx_APDU_apis.h \
  ../../../se_mw/se_hostlib/hostLib/inc/sm_const.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/sss/ex/src/ex_sss_boot_int.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/ex/src/ex_sss_boot_int.h \
  ../../../se_mw/sss/inc/fsl_sss_se05x_apis.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/infra/app_boot.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_api.h \
@@ -92,7 +92,7 @@ se_mw/sss/ex/src/ex_sss_se05x.o se_mw/sss/ex/src/ex_sss_se05x.d: \
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../se_mw/sss/ex/inc/ex_sss_boot.h:
 ../../../se_mw/sss/ex/inc/ex_sss.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
 ../../../se_mw/sss/inc/fsl_sss_api.h:
 ../../../se_mw/sss/inc/fsl_sss_config.h:
 ../../../se_mw/sss/inc/fsl_sss_policy.h:
@@ -169,7 +169,7 @@ se_mw/sss/ex/src/ex_sss_se05x.o se_mw/sss/ex/src/ex_sss_se05x.d: \
 ../../../se_mw/se_hostlib/hostLib/se05x_03_xx_xx/se05x_APDU_apis.h:
 ../../../se_mw/se_hostlib/hostLib/se05x_03_xx_xx/se05x_04_xx_APDU_apis.h:
 ../../../se_mw/se_hostlib/hostLib/inc/sm_const.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/sss/ex/src/ex_sss_boot_int.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/ex/src/ex_sss_boot_int.h:
 ../../../se_mw/sss/inc/fsl_sss_se05x_apis.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/infra/app_boot.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_api.h:

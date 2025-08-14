@@ -1,6 +1,6 @@
 se_mw/se_hostlib/hostLib/libCommon/infra/sm_printf.o \
  se_mw/se_hostlib/hostLib/libCommon/infra/sm_printf.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/infra/sm_printf.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/infra/sm_printf.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../se_mw/se_hostlib/hostLib/platform/inc/sm_printf.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h \

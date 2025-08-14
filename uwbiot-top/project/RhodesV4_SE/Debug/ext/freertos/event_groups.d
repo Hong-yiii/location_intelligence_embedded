@@ -1,5 +1,5 @@
 ext/freertos/event_groups.o ext/freertos/event_groups.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/freertos/event_groups.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/freertos/event_groups.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../ext/freertos/include/FreeRTOS.h \
  ../../../boards/Host/Rhodes4/FreeRTOSConfig.h \

@@ -1,6 +1,6 @@
 libs/uwb-iot/uwb_api/Api/SR1XX/AppConfigParams.o \
  libs/uwb-iot/uwb_api/Api/SR1XX/AppConfigParams.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uwb-iot/uwb_api/Api/SR1XX/AppConfigParams.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/libs/uwb-iot/uwb_api/Api/SR1XX/AppConfigParams.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../libs/uwb-iot/uwb_api/Api/UwbApi.h \
  ../../../boards/Host/Rhodes4/uwb_board.h \
@@ -71,7 +71,7 @@ libs/uwb-iot/uwb_api/Api/SR1XX/AppConfigParams.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../libs/halimpl/inc/phUwb_BuildConfig.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
  ../../../libs/halimpl/inc/uwb_board_values.h \
@@ -90,7 +90,7 @@ libs/uwb-iot/uwb_api/Api/SR1XX/AppConfigParams.o \
  ../../../libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.h \
  ../../../libs/uwb-iot/uwb_api/Api/SE_Wrapper.h \
  ../../../se_mw/se_hostlib/hostLib/fira/inc/sus_APDU.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
  ../../../se_mw/se_hostlib/hostLib/inc/se05x_tlv.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h \
  ../../../se_mw/se_hostlib/hostLib/inc/se05x_enums.h \
@@ -212,7 +212,7 @@ libs/uwb-iot/uwb_api/Api/SR1XX/AppConfigParams.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../libs/halimpl/inc/phUwb_BuildConfig.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
 ../../../libs/halimpl/inc/uwb_board_values.h:
@@ -231,7 +231,7 @@ libs/uwb-iot/uwb_api/Api/SR1XX/AppConfigParams.o \
 ../../../libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.h:
 ../../../libs/uwb-iot/uwb_api/Api/SE_Wrapper.h:
 ../../../se_mw/se_hostlib/hostLib/fira/inc/sus_APDU.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
 ../../../se_mw/se_hostlib/hostLib/inc/se05x_tlv.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h:
 ../../../se_mw/se_hostlib/hostLib/inc/se05x_enums.h:

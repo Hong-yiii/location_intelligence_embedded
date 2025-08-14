@@ -1,13 +1,13 @@
 demos/pnp/UWBPnP_Common.o demos/pnp/UWBPnP_Common.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/pnp/UWBPnP_Common.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/pnp/UWBPnP_Common.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../demos/pnp/UWB_Evt_Pnp.h \
  ../../../libs/halimpl/inc/phUwb_BuildConfig.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../libs/halimpl/inc/uwbiot_ver.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/pnp/UwbPnpInternal.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/pnp/UWB_Evt_Pnp.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/pnp/UwbPnpInternal.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/pnp/UWB_Evt_Pnp.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
  ../../../libs/halimpl/inc/phOsalUwb.h \
  ../../../ext/freertos/include/FreeRTOS.h \
@@ -94,10 +94,10 @@ demos/pnp/UWBPnP_Common.o demos/pnp/UWBPnP_Common.d: \
 ../../../demos/pnp/UWB_Evt_Pnp.h:
 ../../../libs/halimpl/inc/phUwb_BuildConfig.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../libs/halimpl/inc/uwbiot_ver.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/pnp/UwbPnpInternal.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/pnp/UWB_Evt_Pnp.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/pnp/UwbPnpInternal.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/pnp/UWB_Evt_Pnp.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
 ../../../libs/halimpl/inc/phOsalUwb.h:
 ../../../ext/freertos/include/FreeRTOS.h:
