@@ -1,10 +1,10 @@
 se_mw/se_hostlib/hostLib/libCommon/smCom/smCom.o \
  se_mw/se_hostlib/hostLib/libCommon/smCom/smCom.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smCom.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smCom.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smCom.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smCom.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/apduComm.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/apduComm.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/log/nxLog_smCom.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/log/nxLog.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/log/nxLog_DefaultConfig.h \
@@ -20,9 +20,9 @@ se_mw/se_hostlib/hostLib/libCommon/smCom/smCom.o \
  ../../../ext/freertos/include/task.h \
  ../../../ext/freertos/include/list.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smCom.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smCom.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/apduComm.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/apduComm.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/log/nxLog_smCom.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/log/nxLog.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/log/nxLog_DefaultConfig.h:

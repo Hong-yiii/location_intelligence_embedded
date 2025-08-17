@@ -1,10 +1,10 @@
 demos/common/Utilities.o demos/common/Utilities.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/common/Utilities.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/common/Utilities.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../libs/halimpl/inc/phUwb_BuildConfig.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/common/Utilities.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/common/Utilities.h \
  ../../../libs/uwb-iot/uwb_api/Api/UwbApi.h \
  ../../../boards/Host/Rhodes4/uwb_board.h \
  ../../../boards/Rhodes4_SPI/peripherals.h \
@@ -90,7 +90,7 @@ demos/common/Utilities.o demos/common/Utilities.d: \
  ../../../libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.h \
  ../../../libs/uwb-iot/uwb_api/Api/SE_Wrapper.h \
  ../../../se_mw/se_hostlib/hostLib/fira/inc/sus_APDU.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
  ../../../se_mw/se_hostlib/hostLib/inc/se05x_tlv.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h \
  ../../../se_mw/se_hostlib/hostLib/inc/se05x_enums.h \
@@ -140,12 +140,12 @@ demos/common/Utilities.o demos/common/Utilities.d: \
  ../../../libs/halimpl/inc/phOsalUwb_Timer.h \
  ../../../libs/halimpl/inc/phUwb_BuildConfig.h \
  ../../../libs/uwb-iot/uwb_api/Api/SR1XX/SR150/UWB_Wrapper.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/UWBIOT_APP_BUILD.h
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/UWBIOT_APP_BUILD.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../libs/halimpl/inc/phUwb_BuildConfig.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/common/Utilities.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/common/Utilities.h:
 ../../../libs/uwb-iot/uwb_api/Api/UwbApi.h:
 ../../../boards/Host/Rhodes4/uwb_board.h:
 ../../../boards/Rhodes4_SPI/peripherals.h:
@@ -231,7 +231,7 @@ demos/common/Utilities.o demos/common/Utilities.d: \
 ../../../libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.h:
 ../../../libs/uwb-iot/uwb_api/Api/SE_Wrapper.h:
 ../../../se_mw/se_hostlib/hostLib/fira/inc/sus_APDU.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
 ../../../se_mw/se_hostlib/hostLib/inc/se05x_tlv.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h:
 ../../../se_mw/se_hostlib/hostLib/inc/se05x_enums.h:
@@ -281,4 +281,4 @@ demos/common/Utilities.o demos/common/Utilities.d: \
 ../../../libs/halimpl/inc/phOsalUwb_Timer.h:
 ../../../libs/halimpl/inc/phUwb_BuildConfig.h:
 ../../../libs/uwb-iot/uwb_api/Api/SR1XX/SR150/UWB_Wrapper.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/UWBIOT_APP_BUILD.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/UWBIOT_APP_BUILD.h:

@@ -1,6 +1,6 @@
 ext/boards/qn9090/devices/QN9090/gcc/startup_qn9090.o \
  ext/boards/qn9090/devices/QN9090/gcc/startup_qn9090.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/devices/QN9090/gcc/startup_qn9090.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/gcc/startup_qn9090.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h \
  ../../../ext/boards/qn9090/devices/QN9090/QN9090.h \

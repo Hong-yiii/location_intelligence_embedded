@@ -23,6 +23,7 @@ RM := rm -rf
 -include se_mw/se_hostlib/hostLib/fira/src/subdir.mk
 -include se_mw/nxp_iot_agent/src/protobuf/subdir.mk
 -include se_mw/nxp_iot_agent/src/common/subdir.mk
+-include my_custom_app/src/subdir.mk
 -include libs/uwb-iot/uwb_core/adaptation/subdir.mk
 -include libs/uwb-iot/uwb_api/PrintUtility/SR1XX/subdir.mk
 -include libs/uwb-iot/uwb_api/PrintUtility/subdir.mk
@@ -171,7 +172,7 @@ main-build: RhodesV4_SE.axf
 RhodesV4_SE.axf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU C++ Linker'
-	arm-none-eabi-gcc -nostdlib -L"/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/../../ext/boards/qn9090/bluetooth/libs" -Xlinker -Map="RhodesV4_SE.map" -Xlinker --defsym=__stack_size__=0x400 -Xlinker --no-wchar-size-warning -Xlinker --defsym=__app_stated_size__=0x100000 -Xlinker --defsym=__ram_vector_table__=1 -Xlinker --defsym=gUseNVMLink_d=1 -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m4 -mthumb -T QN9090_UWB_TAG_FW.ld -L ../../../boards/Rhodes4_SPI/ -o "RhodesV4_SE.axf" $(OBJS) $(USER_OBJS) $(LIBS) -l_ble_5-0_host_cm4_noFP -lPDM -lRadio -l_ble_controller -l_crypto_m4
+	arm-none-eabi-gcc -nostdlib -L"/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/../../ext/boards/qn9090/bluetooth/libs" -Xlinker -Map="RhodesV4_SE.map" -Xlinker --defsym=__stack_size__=0x400 -Xlinker --no-wchar-size-warning -Xlinker --defsym=__app_stated_size__=0x100000 -Xlinker --defsym=__ram_vector_table__=1 -Xlinker --defsym=gUseNVMLink_d=1 -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m4 -mthumb -T QN9090_UWB_TAG_FW.ld -L ../../../boards/Rhodes4_SPI/ -o "RhodesV4_SE.axf" $(OBJS) $(USER_OBJS) $(LIBS) -l_ble_5-0_host_cm4_noFP -lPDM -lRadio -l_ble_controller -l_crypto_m4
 	@echo 'Finished building target: $@'
 	@echo ' '
 

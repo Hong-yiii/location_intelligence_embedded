@@ -1,3 +1,0 @@
-/Users/hongyilin/projects/location_intelligence_embedded_code/build_uwb_firmware/CMakeFiles/UWB_firmware_project.dir
-/Users/hongyilin/projects/location_intelligence_embedded_code/build_uwb_firmware/CMakeFiles/edit_cache.dir
-/Users/hongyilin/projects/location_intelligence_embedded_code/build_uwb_firmware/CMakeFiles/rebuild_cache.dir

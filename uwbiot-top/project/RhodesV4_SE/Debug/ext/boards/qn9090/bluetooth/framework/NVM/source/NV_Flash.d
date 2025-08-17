@@ -1,9 +1,9 @@
 ext/boards/qn9090/bluetooth/framework/NVM/source/NV_Flash.o \
  ext/boards/qn9090/bluetooth/framework/NVM/source/NV_Flash.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/framework/NVM/source/NV_Flash.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/NVM/source/NV_Flash.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/framework/NVM/source/NV_Flash.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/NVM/source/NV_Flash.h \
  ../../../ext/boards/qn9090/bluetooth/framework/NVM/interface/NVM_Interface.h \
  ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h \
  ../../../ext/boards/qn9090/bluetooth/framework/RNG/interface/RNG_Interface.h \
@@ -43,7 +43,7 @@ ext/boards/qn9090/bluetooth/framework/NVM/source/NV_Flash.o \
  ../../../ext/boards/qn9090/bluetooth/framework/MemManager/interface/MemManager.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/framework/NVM/source/NV_Flash.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/NVM/source/NV_Flash.h:
 ../../../ext/boards/qn9090/bluetooth/framework/NVM/interface/NVM_Interface.h:
 ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h:
 ../../../ext/boards/qn9090/bluetooth/framework/RNG/interface/RNG_Interface.h:

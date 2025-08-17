@@ -1,8 +1,8 @@
 boards/Host/Rhodes4/UWB_GPIOExtender.o \
  boards/Host/Rhodes4/UWB_GPIOExtender.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/boards/Host/Rhodes4/UWB_GPIOExtender.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/boards/Host/Rhodes4/UWB_GPIOExtender.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/boards/Host/Rhodes4/UWB_GPIOExtender.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/boards/Host/Rhodes4/UWB_GPIOExtender.h \
  ../../../boards/Rhodes4_SPI/board.h \
  ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h \
  ../../../ext/boards/qn9090/devices/QN9090/QN9090.h \
@@ -67,7 +67,7 @@ boards/Host/Rhodes4/UWB_GPIOExtender.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../libs/halimpl/inc/phUwb_BuildConfig.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
  ../../../libs/halimpl/inc/phNxpLogApis_App.h \
@@ -81,7 +81,7 @@ boards/Host/Rhodes4/UWB_GPIOExtender.o \
  ../../../libs/halimpl/inc/phNxpLogDefault.h \
  ../../../libs/halimpl/inc/phUwbErrorCodes.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/boards/Host/Rhodes4/UWB_GPIOExtender.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/boards/Host/Rhodes4/UWB_GPIOExtender.h:
 ../../../boards/Rhodes4_SPI/board.h:
 ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h:
 ../../../ext/boards/qn9090/devices/QN9090/QN9090.h:
@@ -146,7 +146,7 @@ boards/Host/Rhodes4/UWB_GPIOExtender.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../libs/halimpl/inc/phUwb_BuildConfig.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
 ../../../libs/halimpl/inc/phNxpLogApis_App.h:

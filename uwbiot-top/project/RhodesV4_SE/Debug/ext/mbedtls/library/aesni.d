@@ -1,7 +1,7 @@
 ext/mbedtls/library/aesni.o ext/mbedtls/library/aesni.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/mbedtls/library/aesni.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/mbedtls/library/aesni.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/mbedtls/library/common.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/mbedtls/library/common.h \
  ../../../ext/mbedtls/port/ksdk/ksdk_mbedtls_config.h \
  ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h \
  ../../../ext/boards/qn9090/devices/QN9090/QN9090.h \
@@ -30,13 +30,13 @@ ext/mbedtls/library/aesni.o ext/mbedtls/library/aesni.d: \
  ../../../ext/freertos/portable/GCC/ARM_CM4FQN9090/portmacro.h \
  ../../../ext/freertos/include/mpu_wrappers.h \
  ../../../se_mw/sss/port/ksdk/sss_ksdk_mbedtls_config.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
  ../../../se_mw/sss/port/ksdk/fsl_sss_types.h \
  ../../../ext/mbedtls/include/mbedtls/check_config.h \
  ../../../ext/mbedtls/include/mbedtls/aesni.h \
  ../../../ext/mbedtls/include/mbedtls/aes.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/mbedtls/library/common.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/mbedtls/library/common.h:
 ../../../ext/mbedtls/port/ksdk/ksdk_mbedtls_config.h:
 ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h:
 ../../../ext/boards/qn9090/devices/QN9090/QN9090.h:
@@ -65,7 +65,7 @@ ext/mbedtls/library/aesni.o ext/mbedtls/library/aesni.d: \
 ../../../ext/freertos/portable/GCC/ARM_CM4FQN9090/portmacro.h:
 ../../../ext/freertos/include/mpu_wrappers.h:
 ../../../se_mw/sss/port/ksdk/sss_ksdk_mbedtls_config.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
 ../../../se_mw/sss/port/ksdk/fsl_sss_types.h:
 ../../../ext/mbedtls/include/mbedtls/check_config.h:
 ../../../ext/mbedtls/include/mbedtls/aesni.h:

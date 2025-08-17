@@ -1,11 +1,11 @@
 se_mw/se_hostlib/hostLib/libCommon/smCom/smComT1oI2C.o \
  se_mw/se_hostlib/hostLib/libCommon/smCom/smComT1oI2C.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smComT1oI2C.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smComT1oI2C.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smComT1oI2C.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smCom.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smComT1oI2C.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smCom.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/apduComm.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/apduComm.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/smCom/T1oI2C/phNxpEse_Api.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/smCom/smComT1oI2C.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/smCom/T1oI2C/phEseStatus.h \
@@ -40,10 +40,10 @@ se_mw/se_hostlib/hostLib/libCommon/smCom/smComT1oI2C.o \
  ../../../se_mw/se_hostlib/hostLib/libCommon/log/nxLog_DefaultConfig.h \
  ../../../libs/halimpl/inc/nxEnsure.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smComT1oI2C.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smCom.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smComT1oI2C.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/smCom.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/apduComm.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/se_hostlib/hostLib/libCommon/smCom/apduComm.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/smCom/T1oI2C/phNxpEse_Api.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/smCom/smComT1oI2C.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/smCom/T1oI2C/phEseStatus.h:

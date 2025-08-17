@@ -1,8 +1,8 @@
 ext/boards/qn9090/bluetooth/framework/XCVR/DK6/fsl_xcvr.o \
  ext/boards/qn9090/bluetooth/framework/XCVR/DK6/fsl_xcvr.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/framework/XCVR/DK6/fsl_xcvr.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/XCVR/DK6/fsl_xcvr.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/framework/XCVR/DK6/fsl_xcvr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/XCVR/DK6/fsl_xcvr.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h \
@@ -17,7 +17,7 @@ ext/boards/qn9090/bluetooth/framework/XCVR/DK6/fsl_xcvr.o \
  ../../../ext/boards/qn9090/devices/QN9090/QN9090_features.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/framework/XCVR/DK6/radio.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/XCVR/DK6/radio.h \
  ../../../ext/boards/qn9090/bluetooth/framework/FunctionLib/interface/FunctionLib.h \
  ../../../ext/boards/qn9090/bluetooth/framework/PDM/interface/PDM.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_power.h \
@@ -25,7 +25,7 @@ ext/boards/qn9090/bluetooth/framework/XCVR/DK6/fsl_xcvr.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/rom_common.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/rom_pmc.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/framework/XCVR/DK6/fsl_xcvr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/XCVR/DK6/fsl_xcvr.h:
 ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h:
@@ -40,7 +40,7 @@ ext/boards/qn9090/bluetooth/framework/XCVR/DK6/fsl_xcvr.o \
 ../../../ext/boards/qn9090/devices/QN9090/QN9090_features.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/framework/XCVR/DK6/radio.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/XCVR/DK6/radio.h:
 ../../../ext/boards/qn9090/bluetooth/framework/FunctionLib/interface/FunctionLib.h:
 ../../../ext/boards/qn9090/bluetooth/framework/PDM/interface/PDM.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_power.h:

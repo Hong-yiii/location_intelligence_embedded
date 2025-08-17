@@ -1,6 +1,0 @@
-tst/*
-CMakeLists.txt
-nsis/*
-scripts/*
-useCase/*
-version_info.txt

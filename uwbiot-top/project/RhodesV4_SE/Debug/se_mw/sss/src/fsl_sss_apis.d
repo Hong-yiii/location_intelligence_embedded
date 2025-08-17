@@ -1,5 +1,5 @@
 se_mw/sss/src/fsl_sss_apis.o se_mw/sss/src/fsl_sss_apis.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/se_mw/sss/src/fsl_sss_apis.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/fsl_sss_apis.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../se_mw/sss/inc/fsl_sss_api.h \
  ../../../se_mw/sss/inc/fsl_sss_config.h \
@@ -26,7 +26,7 @@ se_mw/sss/src/fsl_sss_apis.o se_mw/sss/src/fsl_sss_apis.d: \
  ../../../ext/freertos/portable/GCC/ARM_CM4FQN9090/portmacro.h \
  ../../../ext/freertos/include/mpu_wrappers.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
  ../../../se_mw/sss/inc/fsl_sss_se05x_apis.h \
  ../../../se_mw/sss/inc/fsl_sss_se05x_types.h \
  ../../../se_mw/se_hostlib/hostLib/inc/nxScp03_Types.h \
@@ -100,7 +100,7 @@ se_mw/sss/src/fsl_sss_apis.o se_mw/sss/src/fsl_sss_apis.d: \
 ../../../ext/freertos/portable/GCC/ARM_CM4FQN9090/portmacro.h:
 ../../../ext/freertos/include/mpu_wrappers.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
 ../../../se_mw/sss/inc/fsl_sss_se05x_apis.h:
 ../../../se_mw/sss/inc/fsl_sss_se05x_types.h:
 ../../../se_mw/se_hostlib/hostLib/inc/nxScp03_Types.h:

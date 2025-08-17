@@ -1,6 +1,6 @@
 ext/boards/qn9090/bluetooth/bluetooth/host/config/ble_globals.o \
  ext/boards/qn9090/bluetooth/bluetooth/host/config/ble_globals.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/host/config/ble_globals.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/host/config/ble_globals.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_general.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h \
@@ -30,7 +30,7 @@ ext/boards/qn9090/bluetooth/bluetooth/host/config/ble_globals.o \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/att_params.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/att_errors.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/att_callbacks.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/host/config/ble_config.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/host/config/ble_config.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gap_types.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Messaging/interface/Messaging.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Lists/interface/GenericList.h \
@@ -67,7 +67,7 @@ ext/boards/qn9090/bluetooth/bluetooth/host/config/ble_globals.o \
 ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/att_params.h:
 ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/att_errors.h:
 ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/att_callbacks.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/host/config/ble_config.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/host/config/ble_config.h:
 ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gap_types.h:
 ../../../ext/boards/qn9090/bluetooth/framework/Messaging/interface/Messaging.h:
 ../../../ext/boards/qn9090/bluetooth/framework/Lists/interface/GenericList.h:

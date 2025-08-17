@@ -1,6 +1,6 @@
 ext/boards/qn9090/bluetooth/bluetooth/common/gatt_db/gatt_database_dynamic.o \
  ext/boards/qn9090/bluetooth/bluetooth/common/gatt_db/gatt_database_dynamic.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/gatt_db/gatt_database_dynamic.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/gatt_db/gatt_database_dynamic.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h \
  ../../../ext/boards/qn9090/bluetooth/framework/MemManager/interface/MemManager.h \
@@ -68,8 +68,8 @@ ext/boards/qn9090/bluetooth/bluetooth/common/gatt_db/gatt_database_dynamic.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/gatt_db/gatt_database_dynamic.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/gatt_db/gatt_database_dynamic.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gap_types.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_general.h \
  ../../../ext/boards/qn9090/bluetooth/framework/FunctionLib/interface/FunctionLib.h \
@@ -145,8 +145,8 @@ ext/boards/qn9090/bluetooth/bluetooth/common/gatt_db/gatt_database_dynamic.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/gatt_db/gatt_database_dynamic.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/gatt_db/gatt_database_dynamic.h:
 ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/gap_types.h:
 ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_general.h:
 ../../../ext/boards/qn9090/bluetooth/framework/FunctionLib/interface/FunctionLib.h:

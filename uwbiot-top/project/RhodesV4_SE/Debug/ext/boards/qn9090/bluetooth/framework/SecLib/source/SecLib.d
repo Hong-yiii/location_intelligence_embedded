@@ -1,6 +1,6 @@
 ext/boards/qn9090/bluetooth/framework/SecLib/source/SecLib.o \
  ext/boards/qn9090/bluetooth/framework/SecLib/source/SecLib.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/framework/SecLib/source/SecLib.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/SecLib/source/SecLib.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../ext/boards/qn9090/bluetooth/framework/MemManager/interface/MemManager.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h \

@@ -1,6 +1,6 @@
 ext/boards/qn9090/bluetooth/bluetooth/common/ble_host_tasks.o \
  ext/boards/qn9090/bluetooth/bluetooth/common/ble_host_tasks.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ble_host_tasks.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ble_host_tasks.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_host_tasks.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Messaging/interface/Messaging.h \
@@ -23,7 +23,7 @@ ext/boards/qn9090/bluetooth/bluetooth/common/ble_host_tasks.o \
  ../../../ext/freertos/include/list.h \
  ../../../ext/freertos/include/event_groups.h \
  ../../../ext/freertos/include/timers.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ble_host_task_config.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ble_host_task_config.h \
  ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h \
  ../../../ext/boards/qn9090/devices/QN9090/QN9090.h \
  ../../../ext/boards/qn9090/CMSIS/Include/core_cm4.h \
@@ -56,7 +56,7 @@ ext/boards/qn9090/bluetooth/bluetooth/common/ble_host_tasks.o \
 ../../../ext/freertos/include/list.h:
 ../../../ext/freertos/include/event_groups.h:
 ../../../ext/freertos/include/timers.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ble_host_task_config.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ble_host_task_config.h:
 ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h:
 ../../../ext/boards/qn9090/devices/QN9090/QN9090.h:
 ../../../ext/boards/qn9090/CMSIS/Include/core_cm4.h:

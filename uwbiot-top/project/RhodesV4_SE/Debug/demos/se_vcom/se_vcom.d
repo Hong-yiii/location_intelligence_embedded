@@ -1,8 +1,8 @@
 demos/se_vcom/se_vcom.o demos/se_vcom/se_vcom.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/se_vcom/se_vcom.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/se_vcom/se_vcom.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../demos/common/AppInternal.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wwdt.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h \
  ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h \
@@ -91,7 +91,7 @@ demos/se_vcom/se_vcom.o demos/se_vcom/se_vcom.d: \
  ../../../libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.h \
  ../../../libs/uwb-iot/uwb_api/Api/SE_Wrapper.h \
  ../../../se_mw/se_hostlib/hostLib/fira/inc/sus_APDU.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h \
  ../../../se_mw/se_hostlib/hostLib/inc/se05x_tlv.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h \
  ../../../se_mw/se_hostlib/hostLib/inc/se05x_enums.h \
@@ -148,9 +148,9 @@ demos/se_vcom/se_vcom.o demos/se_vcom/se_vcom.d: \
  ../../../libs/halimpl/inc/phNxpLogDefault.h \
  ../../../libs/halimpl/inc/uwbiot_ver.h \
  ../../../demos/common/Demo_Common_Config.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/se_vcom/se_vcom.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/UWBIOT_APP_BUILD.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/se_vcom/usart.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/se_vcom/se_vcom.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/UWBIOT_APP_BUILD.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/se_vcom/usart.h \
  ../../../boards/Rhodes4_SPI/board.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/smCom/T1oI2C/phNxpEse_Internal.h \
  ../../../se_mw/se_hostlib/hostLib/libCommon/smCom/T1oI2C/phNxpEse_Api.h \
@@ -162,7 +162,7 @@ demos/se_vcom/se_vcom.o demos/se_vcom/se_vcom.d: \
  ../../../se_mw/se_hostlib/hostLib/platform/inc/i2c_a7.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../demos/common/AppInternal.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wwdt.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h:
 ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h:
@@ -251,7 +251,7 @@ demos/se_vcom/se_vcom.o demos/se_vcom/se_vcom.d: \
 ../../../libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Proprietary.h:
 ../../../libs/uwb-iot/uwb_api/Api/SE_Wrapper.h:
 ../../../se_mw/se_hostlib/hostLib/fira/inc/sus_APDU.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/fsl_sss_ftr.h:
 ../../../se_mw/se_hostlib/hostLib/inc/se05x_tlv.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/infra/sm_types.h:
 ../../../se_mw/se_hostlib/hostLib/inc/se05x_enums.h:
@@ -308,9 +308,9 @@ demos/se_vcom/se_vcom.o demos/se_vcom/se_vcom.d: \
 ../../../libs/halimpl/inc/phNxpLogDefault.h:
 ../../../libs/halimpl/inc/uwbiot_ver.h:
 ../../../demos/common/Demo_Common_Config.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/se_vcom/se_vcom.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/UWBIOT_APP_BUILD.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/demos/se_vcom/usart.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/se_vcom/se_vcom.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/UWBIOT_APP_BUILD.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/se_vcom/usart.h:
 ../../../boards/Rhodes4_SPI/board.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/smCom/T1oI2C/phNxpEse_Internal.h:
 ../../../se_mw/se_hostlib/hostLib/libCommon/smCom/T1oI2C/phNxpEse_Api.h:

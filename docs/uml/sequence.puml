@@ -1,0 +1,99 @@
+@startuml "UWB Multi-Session Sequence"
+
+' Style and theme
+!theme plain
+skinparam sequenceMessageAlign center
+skinparam monochrome true
+skinparam shadowing false
+
+' Participants
+participant "iPhone" as iPhone
+participant "NXP Board" as NXPBoard
+participant "Session Manager" as SM
+participant "iPhone Handler" as IH
+participant "NXP Handler" as NH
+participant "Resource Manager" as RM
+participant "UWB Core" as UWB
+participant "BLE Stack" as BLE
+
+' Initial iPhone Connection
+group iPhone Session Establishment
+    iPhone -> BLE: BLE Advertisement
+    BLE -> IH: Connection Request
+    activate IH
+    IH -> SM: Create Session Request
+    activate SM
+    SM -> RM: Allocate Resources
+    activate RM
+    RM --> SM: Resources Allocated
+    deactivate RM
+    SM --> IH: Session Created
+    deactivate SM
+    IH -> UWB: Initialize UWB Session
+    UWB --> IH: Session Ready
+    IH --> iPhone: Connection Established
+    deactivate IH
+end
+
+' NXP Board Connection (while iPhone session active)
+group NXP Board Session Establishment
+    NXPBoard -> NH: Direct UWB Discovery
+    activate NH
+    NH -> SM: Create Session Request
+    activate SM
+    SM -> RM: Allocate Resources
+    activate RM
+    RM -> RM: Check Channel Conflicts
+    RM -> RM: Assign Different Channel
+    RM --> SM: Resources Allocated
+    deactivate RM
+    SM --> NH: Session Created
+    deactivate SM
+    NH -> UWB: Initialize UWB Session
+    UWB --> NH: Session Ready
+    NH --> NXPBoard: Connection Established
+    deactivate NH
+end
+
+' Simultaneous Ranging
+group Simultaneous Ranging Operations
+    loop Continuous Ranging
+        ' iPhone Ranging
+        iPhone -> IH: Ranging Request
+        activate IH
+        IH -> RM: Request Time Slot
+        activate RM
+        RM --> IH: Time Slot Allocated
+        deactivate RM
+        IH -> UWB: Execute Ranging
+        UWB --> IH: Ranging Result
+        IH --> iPhone: Distance Update
+        deactivate IH
+
+        ' NXP Board Ranging (interleaved)
+        NXPBoard -> NH: Ranging Request
+        activate NH
+        NH -> RM: Request Time Slot
+        activate RM
+        RM --> NH: Time Slot Allocated
+        deactivate RM
+        NH -> UWB: Execute Ranging
+        UWB --> NH: Ranging Result
+        NH --> NXPBoard: Distance Update
+        deactivate NH
+    end
+end
+
+' Error Handling
+group Error Recovery
+    UWB -> SM: Session Error
+    activate SM
+    SM -> RM: Release Resources
+    SM -> IH: Notify Error
+    SM -> NH: Notify Error
+    SM -> SM: Attempt Recovery
+    SM --> UWB: Reset Session
+    deactivate SM
+end
+
+@enduml 

@@ -1,9 +1,9 @@
 libs/halimpl/utils/phNxpUwbConfig.o libs/halimpl/utils/phNxpUwbConfig.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/utils/phNxpUwbConfig.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/libs/halimpl/utils/phNxpUwbConfig.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../libs/halimpl/inc/phNxpUwbConfig.h \
  ../../../libs/halimpl/inc/uwb_board_values.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../libs/halimpl/inc/phNxpUciHal_CoreConfig.h \
  ../../../libs/halimpl/inc/phUwb_BuildConfig.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
@@ -97,7 +97,7 @@ libs/halimpl/utils/phNxpUwbConfig.o libs/halimpl/utils/phNxpUwbConfig.d: \
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../libs/halimpl/inc/phNxpUwbConfig.h:
 ../../../libs/halimpl/inc/uwb_board_values.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../libs/halimpl/inc/phNxpUciHal_CoreConfig.h:
 ../../../libs/halimpl/inc/phUwb_BuildConfig.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:

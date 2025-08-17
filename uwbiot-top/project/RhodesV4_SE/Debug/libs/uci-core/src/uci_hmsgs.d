@@ -1,9 +1,9 @@
 libs/uci-core/src/uci_hmsgs.o libs/uci-core/src/uci_hmsgs.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uci_hmsgs.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/libs/uci-core/src/uci_hmsgs.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../libs/uwb-iot/uwb_core/include/uwb_target.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../libs/halimpl/inc/phUwb_BuildConfig.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
  ../../../libs/uwb-iot/uwb_core/include/UwbAdaptation.h \
@@ -117,7 +117,7 @@ libs/uci-core/src/uci_hmsgs.o libs/uci-core/src/uci_hmsgs.d: \
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../libs/uwb-iot/uwb_core/include/uwb_target.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../libs/halimpl/inc/phUwb_BuildConfig.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
 ../../../libs/uwb-iot/uwb_core/include/UwbAdaptation.h:

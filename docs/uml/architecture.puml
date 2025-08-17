@@ -1,0 +1,99 @@
+@startuml
+title UWB Multi-Session Architecture
+allowmixing
+
+' Style and theme
+skinparam componentStyle uml2
+skinparam packageStyle rectangle
+skinparam monochrome true
+skinparam shadowing false
+
+' Components
+package "Application Layer" {
+    component "Session Manager" as SM
+    component "Task Scheduler" as TS
+    component "Resource Manager" as RM
+    
+    package "Session Handlers" {
+        component "iPhone Handler" as IH
+        component "NXP Board Handler" as NH
+    }
+    
+    package "Protocol Adapters" {
+        component "Nearby Interaction Adapter" as NIA
+        component "Direct UWB Adapter" as DUA
+    }
+}
+
+package "Middleware Layer" {
+    component "UWB Core API" as UWBAPI
+    component "BLE Stack" as BLE
+    component "OSAL" as OSAL
+    component "Event Manager" as EM
+}
+
+package "Hardware Abstraction Layer" {
+    component "UWB HAL" as UWBHAL
+    component "BLE HAL" as BLEHAL
+    component "Timer HAL" as TIMER
+}
+
+' Class definitions
+class SessionManager {
+    -sessions: Map<SessionId, SessionContext>
+    -resourceManager: ResourceManager
+    +createSession(deviceType: DeviceType): SessionId
+    +terminateSession(sessionId: SessionId)
+    +getSessionState(sessionId: SessionId): SessionState
+}
+
+class SessionContext {
+    -sessionId: uint32_t
+    -deviceType: DeviceType
+    -state: SessionState
+    -config: SessionConfig
+    +updateState(newState: SessionState)
+    +getConfiguration(): SessionConfig
+}
+
+class ResourceManager {
+    -channelAllocation: Map<Channel, SessionId>
+    -timingSchedule: TimingSchedule
+    +allocateChannel(sessionId: SessionId): Channel
+    +scheduleRanging(sessionId: SessionId): TimeSlot
+}
+
+class TaskScheduler {
+    -tasks: List<TaskContext>
+    +scheduleTask(task: TaskContext)
+    +suspendTask(taskId: TaskId)
+    +resumeTask(taskId: TaskId)
+}
+
+' Relationships
+SM ..> SessionManager
+RM ..> ResourceManager
+TS ..> TaskScheduler
+
+IH --> NIA
+NH --> DUA
+
+SM --> IH
+SM --> NH
+SM --> RM
+SM --> TS
+
+NIA --> UWBAPI
+DUA --> UWBAPI
+NIA --> BLE
+
+UWBAPI --> UWBHAL
+BLE --> BLEHAL
+OSAL --> TIMER
+
+' Dependencies
+SessionManager --> SessionContext
+SessionManager --> ResourceManager
+TaskScheduler --> OSAL
+
+@enduml

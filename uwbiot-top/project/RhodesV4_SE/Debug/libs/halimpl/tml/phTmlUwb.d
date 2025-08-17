@@ -1,11 +1,11 @@
 libs/halimpl/tml/phTmlUwb.o libs/halimpl/tml/phTmlUwb.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/halimpl/tml/phTmlUwb.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/libs/halimpl/tml/phTmlUwb.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../libs/halimpl/inc/phTmlUwb.h \
  ../../../libs/halimpl/inc/phNxpUciHal_utils.h \
  ../../../libs/halimpl/inc/phUwbStatus.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../libs/halimpl/inc/phUwb_BuildConfig.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
  ../../../boards/Host/Rhodes4/UWB_Assert.h \
@@ -117,7 +117,7 @@ libs/halimpl/tml/phTmlUwb.o libs/halimpl/tml/phTmlUwb.d: \
 ../../../libs/halimpl/inc/phNxpUciHal_utils.h:
 ../../../libs/halimpl/inc/phUwbStatus.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../libs/halimpl/inc/phUwb_BuildConfig.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
 ../../../boards/Host/Rhodes4/UWB_Assert.h:

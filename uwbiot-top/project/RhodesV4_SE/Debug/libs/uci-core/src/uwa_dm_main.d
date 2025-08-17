@@ -1,11 +1,11 @@
 libs/uci-core/src/uwa_dm_main.o libs/uci-core/src/uwa_dm_main.d: \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/libs/uci-core/src/uwa_dm_main.c \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/libs/uci-core/src/uwa_dm_main.c \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../libs/uci-core/inc/uwa_api.h \
  ../../../libs/uci-core/inc/uci_defs.h \
  ../../../libs/uwb-iot/uwb_core/include/uwb_hal_api.h \
  ../../../libs/halimpl/inc/phUwbTypes.h \
- /Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Types_Proprietary.h \
  ../../../libs/uwb-iot/uwb_api/Api/UwbApi_Types.h \
  ../../../libs/uci-core/inc/uci_defs.h \
@@ -115,7 +115,7 @@ libs/uci-core/src/uwa_dm_main.o libs/uci-core/src/uwa_dm_main.d: \
 ../../../libs/uci-core/inc/uci_defs.h:
 ../../../libs/uwb-iot/uwb_core/include/uwb_hal_api.h:
 ../../../libs/halimpl/inc/phUwbTypes.h:
-/Users/hongyilin/Documents/MCUXpressoIDE_24.12.148/workspace/UWBIOT_SR150_v04.06.00_MCUx/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../libs/uwb-iot/uwb_api/Api/SR1XX/UwbApi_Types_Proprietary.h:
 ../../../libs/uwb-iot/uwb_api/Api/UwbApi_Types.h:
 ../../../libs/uci-core/inc/uci_defs.h:
