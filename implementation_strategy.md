@@ -211,10 +211,3 @@ typedef struct {
 5. Add NXP board support
 6. Test simultaneous operation
 7. Optimize and refine
-
-## reccomended UML diag
-image.png
-
-
-## reccomended sequence diag
-image.png
