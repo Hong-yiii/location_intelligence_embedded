@@ -1,0 +1,76 @@
+@startuml "Original UWB Session Flow"
+
+skinparam sequenceMessageAlign center
+skinparam monochrome true
+skinparam shadowing false
+
+participant "External Device\n(iPhone/NXP)" as EXT
+participant "Demo App" as APP
+participant "UWB API" as API
+participant "UCI Core" as UCI
+participant "Event Handler" as EH
+participant "Hardware" as HW
+
+group Initialization
+    APP -> API: init(callback)
+    activate API
+    API -> UCI: initialize
+    UCI --> API: initialized
+    API --> APP: success
+    deactivate API
+end
+
+group Session Setup
+    EXT -> APP: connection request
+    activate APP
+    APP -> API: sessionInit(params)
+    activate API
+    API -> UCI: create session
+    UCI -> HW: configure
+    HW --> UCI: configured
+    UCI --> API: session created
+    API --> APP: session handle
+    APP --> EXT: ready
+    deactivate API
+    deactivate APP
+end
+
+group Single Ranging Session
+    EXT -> APP: start ranging
+    activate APP
+    APP -> API: startRanging(sessionId)
+    activate API
+    API -> UCI: start ranging
+    UCI -> HW: start UWB
+    
+    loop Ranging Cycle
+        HW -> UCI: ranging data
+        UCI -> EH: process data
+        EH -> APP: ranging callback
+        APP -> EXT: distance update
+    end
+    
+    EXT -> APP: stop ranging
+    APP -> API: stopRanging(sessionId)
+    API -> UCI: stop ranging
+    UCI -> HW: stop UWB
+    HW --> UCI: stopped
+    UCI --> API: ranging stopped
+    API --> APP: success
+    APP --> EXT: stopped
+    deactivate API
+    deactivate APP
+end
+
+group Error Handling
+    HW -> UCI: error event
+    UCI -> EH: process error
+    EH -> APP: error callback
+    activate APP
+    APP -> API: stopRanging(sessionId)
+    APP -> APP: reset state
+    APP --> EXT: error notification
+    deactivate APP
+end
+
+@enduml 

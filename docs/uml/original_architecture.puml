@@ -1,0 +1,82 @@
+@startuml
+title Original UWB Architecture
+allowmixing
+
+skinparam componentStyle uml2
+skinparam packageStyle rectangle
+skinparam monochrome true
+skinparam shadowing false
+
+package "Application Layer" {
+    component "Demo Application" as DEMO
+    package "Demo Types" {
+        component "Nearby Interaction Demo" as NI
+        component "Ranging Demo" as RD
+        component "MCTT/PCTT Demo" as MD
+    }
+}
+
+package "Core UWB Stack" {
+    component "UWB API" as API
+    component "UCI Core" as UCI
+    component "Event Handler" as EH
+    component "BLE Stack" as BLE
+}
+
+package "Platform Layer" {
+    component "OSAL" as OSAL
+    component "FreeRTOS" as RTOS
+    component "Hardware Drivers" as DRV
+}
+
+package "Hardware Layer" {
+    component "UWB Hardware" as UWBHW
+    component "BLE Hardware" as BLEHW
+    component "System Hardware" as SYSHW
+}
+
+class DemoApp {
+    -sessionHandle: uint32_t
+    -deviceRole: DeviceRole
+    +initializeStack()
+    +handleEvent(event: UwbEvent)
+    +startRanging()
+    +stopRanging()
+}
+
+class UwbApi {
+    +init(callback: AppCallback)
+    +sessionInit(params: SessionParams)
+    +startRanging(sessionId: uint32_t)
+    +stopRanging(sessionId: uint32_t)
+}
+
+class EventHandler {
+    +handleRangingData(data: RangingData)
+    +handleSessionStatus(status: SessionStatus)
+    +handleError(error: ErrorCode)
+}
+
+' --- Relationships ---
+DEMO ..> DemoApp
+API ..> UwbApi
+EH ..> EventHandler
+
+NI --> DEMO
+RD --> DEMO
+MD --> DEMO
+
+DEMO --> API
+API --> UCI
+UCI --> EH
+API --> BLE
+
+UCI --> OSAL
+OSAL --> RTOS
+RTOS --> DRV
+
+DRV --> UWBHW
+DRV --> BLEHW
+DRV --> SYSHW
+
+@enduml
