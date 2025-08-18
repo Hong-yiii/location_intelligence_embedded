@@ -1,0 +1,70 @@
+@startuml "UWB Discovery Protocol"
+
+' Style and theme
+!theme plain
+skinparam sequenceMessageAlign center
+skinparam monochrome true
+skinparam shadowing false
+
+' Participants
+participant "Node A" as NodeA
+participant "Node B" as NodeB
+participant "Session Manager" as SM
+participant "Discovery Manager" as DM
+participant "UWB Core" as UWB
+
+' Discovery Phase
+group Discovery Phase
+    NodeA -> DM: Start Discovery
+    NodeB -> DM: Start Discovery
+    
+    group Role Alternation Window (8s Controller)
+        NodeA -> DM: Switch to Controller
+        NodeB -> DM: Switch to Controlee
+        
+        NodeA -> UWB: Broadcast Discovery
+        UWB -> NodeB: Discovery Signal
+        NodeB -> NodeA: Response
+        NodeA -> SM: Match Found
+        NodeB -> SM: Match Found
+    end
+    
+    alt Failed to Match
+        group Role Alternation Window (5s Controlee)
+            NodeA -> DM: Switch to Controlee
+            NodeB -> DM: Switch to Controller
+            NodeB -> UWB: Broadcast Discovery
+            UWB -> NodeA: Discovery Signal
+            NodeA -> NodeB: Response
+        end
+    end
+end
+
+' Session Establishment
+group Session Establishment
+    NodeA -> SM: Request Session
+    NodeB -> SM: Accept Session
+    
+    SM -> UWB: Initialize DS-TWR Session
+    
+    note right of SM
+        Session parameters:
+        - Unique Session ID
+        - MAC Addresses
+        - Channel Assignment
+    end
+    
+    UWB --> NodeA: Session Ready
+    UWB --> NodeB: Session Ready
+end
+
+' Ranging Operation
+group Ranging Operation
+    loop Continuous Ranging
+        NodeA <-> NodeB: DS-TWR Exchange
+        NodeA -> NodeA: Calculate Distance
+        NodeB -> NodeB: Calculate Distance
+    end
+end
+
+@enduml 
