@@ -9,7 +9,7 @@
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:7084:19:sss_se05x_channel_txn	48	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:2633:16:CheckIfKeyIdExists	16	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:315:14:sss_se05x_session_create	0	static
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:342:14:sss_se05x_session_open	168	static
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:342:14:sss_se05x_session_open	160	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:758:14:sss_se05x_refresh_session	280	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:792:14:sss_se05x_session_prop_get_u32	0	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:841:14:sss_se05x_session_prop_get_au8	48	static
@@ -55,7 +55,7 @@
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:5471:14:sss_se05x_asymmetric_verify	0	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:5590:6:sss_se05x_asymmetric_context_free	8	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:5601:14:sss_se05x_symmetric_context_init	0	static
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:5616:14:sss_se05x_cipher_one_go	48	static
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:5616:14:sss_se05x_cipher_one_go	56	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:5656:14:sss_se05x_cipher_one_go_v2	56	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:5697:14:sss_se05x_cipher_init	1072	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:5785:14:sss_se05x_cipher_update	64	static
@@ -88,7 +88,7 @@
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:6962:14:sss_se05x_tunnel	0	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:6979:6:sss_se05x_tunnel_context_free	8	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:7147:14:sss_se05x_key_store_create_curve	8	static
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:7162:14:sss_se05x_set_feature	72	static
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:7162:14:sss_se05x_set_feature	64	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:7891:20:se05x_get_sha_algo	0	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:1305:14:sss_se05x_derive_key_go	1088	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/se_mw/sss/src/se05x/fsl_sss_se05x_apis.c:1362:14:sss_se05x_derive_key_one_go	1104	static

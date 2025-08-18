@@ -1,0 +1,31 @@
+ext/boards/qn9090/devices/QN9090/drivers/fsl_rng.o \
+ ext/boards/qn9090/devices/QN9090/drivers/fsl_rng.d: \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_rng.c \
+ ../../../boards/Host/Rhodes4/app_preinclude.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_rng.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h \
+ ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h \
+ ../../../ext/boards/qn9090/devices/QN9090/QN9090.h \
+ ../../../ext/boards/qn9090/CMSIS/Include/core_cm4.h \
+ ../../../ext/boards/qn9090/CMSIS/Include/cmsis_version.h \
+ ../../../ext/boards/qn9090/CMSIS/Include/cmsis_compiler.h \
+ ../../../ext/boards/qn9090/CMSIS/Include/cmsis_gcc.h \
+ ../../../ext/boards/qn9090/CMSIS/Include/mpu_armv7.h \
+ ../../../ext/boards/qn9090/devices/QN9090/system_QN9090.h \
+ ../../../ext/boards/qn9090/devices/QN9090/QN9090_features.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h \
+ /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h
+../../../boards/Host/Rhodes4/app_preinclude.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_rng.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h:
+../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h:
+../../../ext/boards/qn9090/devices/QN9090/QN9090.h:
+../../../ext/boards/qn9090/CMSIS/Include/core_cm4.h:
+../../../ext/boards/qn9090/CMSIS/Include/cmsis_version.h:
+../../../ext/boards/qn9090/CMSIS/Include/cmsis_compiler.h:
+../../../ext/boards/qn9090/CMSIS/Include/cmsis_gcc.h:
+../../../ext/boards/qn9090/CMSIS/Include/mpu_armv7.h:
+../../../ext/boards/qn9090/devices/QN9090/system_QN9090.h:
+../../../ext/boards/qn9090/devices/QN9090/QN9090_features.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h:
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h:

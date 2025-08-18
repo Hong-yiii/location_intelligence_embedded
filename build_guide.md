@@ -50,17 +50,6 @@ graph TD
 # Navigate to project directory
 cd uwbiot-top/project/RhodesV4_SE/Debug
 
-# Build the project
-make clean && make -j10
-
-# ✅ Your custom multi-session UWB application files will compile successfully:
-# ✅ my_custom_app/src/board_adapter.o
-# ✅ my_custom_app/src/discovery_manager.o  
-# ✅ my_custom_app/src/iphone_adapter.o
-# ✅ my_custom_app/src/my_app_main.o
-# ✅ my_custom_app/src/resource_manager.o
-# ✅ my_custom_app/src/session_manager.o
-
 # Clean build
 make clean
 
