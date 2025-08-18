@@ -85,7 +85,84 @@ typedef struct {
    - Session management
    - Based on demo_ranging_controller/controlee
 
-### 3. Resource Management
+### 3. Bidirectional Communication Strategy
+
+1. **Single Session Approach (DS-TWR)**
+   - Uses Double-Sided Two-Way Ranging (DS-TWR)
+   - Single session handles both transmission and reception
+   - Advantages:
+     * More efficient resource usage
+     * Simpler session management
+     * Lower overhead
+   - Limitations:
+     * Fixed controller/controlee roles
+     * Less flexible for dynamic role changes
+     * Limited to point-to-point communication
+
+2. **Dual Session Approach**
+   - Separate sessions for controller and controlee roles
+   - Advantages:
+     * More flexible role management
+     * Supports multiple simultaneous peers
+     * Independent session control
+   - Limitations:
+     * Uses more session slots (2 per peer)
+     * More complex resource management
+     * Higher overhead
+
+3. **Implementation Decision**
+   - Recommended: Start with DS-TWR (Single Session)
+   - Rationale:
+     * More efficient resource usage
+     * Sufficient for basic bidirectional needs
+     * Can upgrade to dual sessions if needed
+   - Migration path to dual sessions if required
+
+### 4. Session Management Strategy
+
+1. **Session Allocation**
+   ```c
+   typedef enum {
+       SESSION_TYPE_DS_TWR = 0,      // Single bidirectional session
+       SESSION_TYPE_CONTROLLER = 1,   // Separate controller session
+       SESSION_TYPE_CONTROLEE = 2,    // Separate controlee session
+       SESSION_TYPE_IPHONE_NI = 3     // iPhone Nearby Interaction
+   } SessionType;
+   ```
+
+2. **Session Priority Management**
+   - Out of the 5 sessions, 1 will always be reserved for the iPhone NI session (refer to the Sample code on how this is implemented) 
+   - Medium Priority: DS-TWR sessions
+
+3. **Resource Allocation Strategy**
+   ```c
+   typedef struct {
+       uint8_t totalSessions;
+       uint8_t availableSessions;
+       SessionType sessionTypes[MAXIMUM_SESSION_COUNT];
+       uint8_t channelAssignment[MAXIMUM_SESSION_COUNT];
+       bool isActive[MAXIMUM_SESSION_COUNT];
+   } SessionManager;
+   ```
+
+4. **Session Creation Rules**
+   - Reserve one slot for iPhone NI
+   - Prefer DS-TWR for board-to-board when possible
+   - Max 5 sessions
+
+5. **Dynamic Session Management**
+   ```c
+   typedef struct {
+       uint32_t sessionId;
+       SessionType type;
+       uint8_t channel;
+       uint16_t interval;
+       uint8_t priority;
+       SessionConfig config;
+   } SessionContext;
+   ```
+
+### 5. Resource Management
 
 1. **UWB Channel Allocation**
    - iPhone sessions: Default channels
@@ -102,7 +179,7 @@ typedef struct {
    - Dynamic allocation for session data
    - Resource pools for common objects
 
-### 4. Implementation Phases
+### 6. Implementation Phases
 
 #### Phase 1: Infrastructure Setup
 1. Create session management framework
@@ -112,7 +189,7 @@ typedef struct {
 
 #### Phase 2: iPhone Integration
 1. Port nearby_interaction demo code
-2. Integrate BLE handling
+2. Integrate BLE handling (it can be implemented exactly the same way for now)
 3. Implement session management
 4. Add error handling and recovery
 
@@ -128,7 +205,7 @@ typedef struct {
 3. Test multiple sessions
 4. Optimize performance
 
-### 5. Error Handling & Recovery
+### 7. Error Handling & Recovery
 
 1. **Session-Level Errors**
    - Connection loss
@@ -142,65 +219,6 @@ typedef struct {
    - Stack overflow
    - Watchdog integration
 
-### 6. Testing Strategy
-
-1. **Unit Testing**
-   - Session management
-   - Task coordination
-   - Resource allocation
-   - Error handling
-
-2. **Integration Testing**
-   - Multiple iPhone connections
-   - Multiple NXP board connections
-   - Mixed device scenarios
-   - Resource conflict scenarios
-
-3. **Performance Testing**
-   - Ranging accuracy
-   - Timing measurements
-   - Resource utilization
-   - Power consumption
-
-## 🔍 Key Considerations
-
-1. **Performance**
-   - Monitor ranging accuracy
-   - Track timing consistency
-   - Measure power consumption
-   - Resource utilization
-
-2. **Reliability**
-   - Session stability
-   - Error recovery
-   - Resource availability
-   - State consistency
-
-3. **Scalability**
-   - Session limit handling
-   - Resource scaling
-   - Performance degradation
-   - Memory usage
-
-## 📈 Success Metrics
-
-1. **Functional Metrics**
-   - Successful simultaneous sessions
-   - Ranging accuracy maintained
-   - Error recovery rate
-   - Session stability
-
-2. **Performance Metrics**
-   - Response times
-   - Power consumption
-   - Resource utilization
-   - Memory usage
-
-3. **Quality Metrics**
-   - Code coverage
-   - Error rates
-   - Recovery success
-   - System stability
 
 ## 🚀 Next Steps
 

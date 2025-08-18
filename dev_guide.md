@@ -210,11 +210,3 @@ void handleResourceConflict(SessionId id1, SessionId id2) {
 3. **Testing Tools**
    - MCTT/PCTT Test Framework
    - UWB Certification Tools
-
-## 📞 Support
-
-- Technical Issues: [Link to Issue Tracker]
-- Documentation: [Link to Wiki]
-- Team Contact: [Contact Information]
-
-Would you like me to expand on any particular section or add more specific details about certain components?

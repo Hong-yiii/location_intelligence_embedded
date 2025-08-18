@@ -1,0 +1,75 @@
+@startuml "UWB Session Initialization"
+
+' Style and theme
+!theme plain
+skinparam sequenceMessageAlign center
+skinparam monochrome true
+skinparam shadowing false
+
+' Participants
+participant "Application" as App
+participant "UWB API" as API
+participant "Session Manager" as SM
+participant "UWB Core" as Core
+participant "Hardware" as HW
+
+' Initialize UWB Stack
+group UWB Stack Initialization
+    App -> API: UwbApi_Init_New()
+    activate API
+    API -> Core: Initialize Core
+    Core -> HW: Configure Hardware
+    HW --> Core: Hardware Ready
+    Core --> API: Core Initialized
+    API --> App: Stack Ready
+    deactivate API
+end
+
+' Session Initialization
+group Session Creation
+    App -> API: UwbApi_SessionInit(sessionId, type)
+    activate API
+    API -> SM: Create Session
+    activate SM
+    SM -> Core: Allocate Session Resources
+    Core --> SM: Resources Allocated
+    SM -> SM: Initialize Session State
+    SM --> API: Session Handle
+    API --> App: Session Handle
+    deactivate API
+    deactivate SM
+end
+
+' Configure Session
+group Session Configuration
+    App -> API: UwbApi_SetRangingParams()
+    activate API
+    API -> SM: Configure Session
+    activate SM
+    SM -> Core: Set Parameters
+    Core -> HW: Apply Configuration
+    HW --> Core: Configuration Applied
+    Core --> SM: Parameters Set
+    SM --> API: Configuration Complete
+    API --> App: Status OK
+    deactivate API
+    deactivate SM
+end
+
+' Start Session
+group Session Start
+    App -> API: UwbApi_StartRangingSession()
+    activate API
+    API -> SM: Start Session
+    activate SM
+    SM -> Core: Initialize Hardware
+    Core -> HW: Start UWB Engine
+    HW --> Core: Engine Started
+    Core --> SM: Session Active
+    SM --> API: Session Started
+    API --> App: Status OK
+    deactivate API
+    deactivate SM
+end
+
+@enduml 

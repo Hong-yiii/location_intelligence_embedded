@@ -1,0 +1,94 @@
+@startuml "UWB Ranging Methods Comparison"
+
+' Style and theme
+!theme plain
+skinparam sequenceMessageAlign center
+skinparam monochrome true
+skinparam shadowing false
+
+' Participants
+participant "Device A" as DevA
+participant "UWB API A" as APIA
+participant "Core A" as CoreA
+participant "Device B" as DevB
+participant "UWB API B" as APIB
+participant "Core B" as CoreB
+
+' Single Session DS-TWR
+group "Single Session DS-TWR"
+    note over DevA, CoreB: Double-Sided Two-Way Ranging (One Session)
+    DevA -> APIA: Initialize Session
+    activate APIA
+    APIA -> CoreA: Configure DS-TWR
+    CoreA -> CoreB: Discovery Signal
+    CoreB -> APIB: Detect Device
+    APIB -> DevB: Connection Request
+    DevB --> APIB: Accept
+    APIB --> CoreB: Start Ranging
+    
+    loop Ranging Rounds
+        CoreA -> CoreB: Poll Message
+        CoreB -> CoreA: Response Message
+        CoreA -> CoreB: Final Message
+        CoreB -> CoreA: Report Message
+        CoreA -> APIA: Calculate Distance
+        CoreB -> APIB: Calculate Distance
+        APIA -> DevA: Distance Update
+        APIB -> DevB: Distance Update
+    end
+    deactivate APIA
+end
+
+' Dual Session Approach
+group "Dual Independent Sessions"
+    note over DevA, CoreB: Two Separate Sessions (Controller + Controlee)
+    DevA -> APIA: Init Controller Session
+    activate APIA
+    DevB -> APIB: Init Controlee Session
+    activate APIB
+    
+    ' Session 1: A->B
+    APIA -> CoreA: Configure Controller
+    CoreA -> CoreB: Discovery
+    CoreB -> APIB: Detect Controller
+    APIB -> DevB: Controller Found
+    
+    ' Session 2: B->A
+    APIB -> CoreB: Configure Controller
+    CoreB -> CoreA: Discovery
+    CoreA -> APIA: Detect Controller
+    APIA -> DevA: Controller Found
+    
+    loop Parallel Ranging
+        ' Session 1 Ranging
+        CoreA -> CoreB: Session 1 Range
+        CoreB --> CoreA: Response
+        ' Session 2 Ranging
+        CoreB -> CoreA: Session 2 Range
+        CoreA --> CoreB: Response
+        
+        APIA -> DevA: Combined Update
+        APIB -> DevB: Combined Update
+    end
+    deactivate APIA
+    deactivate APIB
+end
+
+' One-Way Ranging
+group "One-Way Ranging (For Comparison)"
+    note over DevA, CoreB: Simpler but Less Accurate
+    DevA -> APIA: Init Transmitter
+    activate APIA
+    DevB -> APIB: Init Receiver
+    activate APIB
+    
+    loop Ranging Rounds
+        CoreA -> CoreB: Beacon Signal
+        CoreB -> APIB: Time of Arrival
+        APIB -> DevB: Distance Estimate
+    end
+    deactivate APIA
+    deactivate APIB
+end
+
+@enduml 
