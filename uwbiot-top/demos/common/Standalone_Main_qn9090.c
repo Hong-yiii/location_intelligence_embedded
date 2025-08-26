@@ -61,6 +61,8 @@ uint8_t __attribute__((section(".bss.$SRAM1"))) ucHeap[configTOTAL_HEAP_SIZE];
  */
 int main(void)
 {
+    PRINTF("main: Starting...\r\n");
+    
     /* Init board hardware. */
 #if UWBFTR_SE_SE051W
     ex_sss_main_ksdk_bm();
@@ -68,20 +70,28 @@ int main(void)
     hardware_init();
 #endif // UWBFTR_SE_SE051W
 
+    PRINTF("main: Initializing LED...\r\n");
     LED_Init();
+    
+    PRINTF("main: Initializing GPIO timer...\r\n");
     GPIO_InitTimer();
 
+    PRINTF("main: Initializing UWB demo...\r\n");
     UWBDemo_Init();
 
+    PRINTF("main: Starting app recovery task...\r\n");
     Start_AppRecoveryTask();
 
 #if UWBIOT_UWBD_SR040
     /* Configure accelerometer */
+    PRINTF("main: Configuring accelerometer...\r\n");
     ACCEL_Configure();
 #endif // UWBIOT_UWBD_SR040
 
+    PRINTF("main: Starting UWB demo task...\r\n");
     testTaskHandle = uwb_demo_start();
 
+    PRINTF("main: Starting FreeRTOS scheduler...\r\n");
     phOsalUwb_TaskStartScheduler();
     return 0;
 }

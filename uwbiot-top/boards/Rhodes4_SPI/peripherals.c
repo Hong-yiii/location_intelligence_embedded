@@ -24,5 +24,7 @@ product: Peripherals v1.0
  */
 void BOARD_InitBootPeripherals(void)
 {
+    PRINTF("BOARD_InitBootPeripherals: Starting...\r\n");
     /* The user initialization should be placed here */
+    PRINTF("BOARD_InitBootPeripherals: Complete\r\n");
 }

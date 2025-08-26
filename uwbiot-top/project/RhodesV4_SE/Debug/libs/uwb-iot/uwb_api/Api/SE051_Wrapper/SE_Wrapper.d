@@ -23,6 +23,7 @@ libs/uwb-iot/uwb_api/Api/SE051_Wrapper/SE_Wrapper.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h \
  ../../../ext/freertos/include/FreeRTOS.h \
  ../../../boards/Host/Rhodes4/FreeRTOSConfig.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h \
  ../../../ext/freertos/include/projdefs.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/freertos/include/deprecated_definitions.h \
@@ -105,6 +106,7 @@ libs/uwb-iot/uwb_api/Api/SE051_Wrapper/SE_Wrapper.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
+ ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h \
  ../../../libs/halimpl/inc/uwb_board_values.h \
  ../../../libs/halimpl/inc/phNxpLogDefault.h \
  ../../../libs/uwb-iot/uwb_api/Api/SE_Wrapper.h \
@@ -155,6 +157,7 @@ libs/uwb-iot/uwb_api/Api/SE051_Wrapper/SE_Wrapper.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h:
 ../../../ext/freertos/include/FreeRTOS.h:
 ../../../boards/Host/Rhodes4/FreeRTOSConfig.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:
 ../../../ext/freertos/include/projdefs.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/freertos/include/deprecated_definitions.h:
@@ -237,6 +240,7 @@ libs/uwb-iot/uwb_api/Api/SE051_Wrapper/SE_Wrapper.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
+../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h:
 ../../../libs/halimpl/inc/uwb_board_values.h:
 ../../../libs/halimpl/inc/phNxpLogDefault.h:
 ../../../libs/uwb-iot/uwb_api/Api/SE_Wrapper.h:

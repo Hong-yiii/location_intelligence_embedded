@@ -50,6 +50,7 @@ se_mw/se_hostlib/hostLib/platform/ksdk/timer_kinetis_freertos.o \
  ../../../ext/boards/qn9090/bluetooth/framework/OSAbstraction/interface/fsl_os_abstraction_free_rtos.h \
  ../../../ext/freertos/include/FreeRTOS.h \
  ../../../boards/Host/Rhodes4/FreeRTOSConfig.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h \
  ../../../ext/freertos/include/projdefs.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/freertos/include/deprecated_definitions.h \
@@ -67,6 +68,7 @@ se_mw/se_hostlib/hostLib/platform/ksdk/timer_kinetis_freertos.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
+ ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h \
  /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../ext/freertos/include/task.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
@@ -118,6 +120,7 @@ se_mw/se_hostlib/hostLib/platform/ksdk/timer_kinetis_freertos.o \
 ../../../ext/boards/qn9090/bluetooth/framework/OSAbstraction/interface/fsl_os_abstraction_free_rtos.h:
 ../../../ext/freertos/include/FreeRTOS.h:
 ../../../boards/Host/Rhodes4/FreeRTOSConfig.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:
 ../../../ext/freertos/include/projdefs.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/freertos/include/deprecated_definitions.h:
@@ -135,5 +138,6 @@ se_mw/se_hostlib/hostLib/platform/ksdk/timer_kinetis_freertos.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
+../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h:
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../ext/freertos/include/task.h:

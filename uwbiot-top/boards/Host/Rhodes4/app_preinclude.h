@@ -56,9 +56,9 @@
 #define KEY_PRESS_CHECK_500MS 500
 
 /* Debug only */
-#define gLoggingActive_d   0
-#define DBG_PWR            0
-#define DBG_TMR            0
+#define gLoggingActive_d   1  /* Enable logging */
+#define DBG_PWR            1  /* Enable power debug */
+#define DBG_TMR            1  /* Enable timer debug */
 #define PostStepTickAssess 1
 #define SYSTICK_DBG        0
 
@@ -140,8 +140,8 @@
  * Need cPWR_UsePowerDownMode to be set to 1 first
  */
 
-#define cPWR_UsePowerDownMode  1
-#define cPWR_FullPowerDownMode 1
+#define cPWR_UsePowerDownMode  0  /* Disable power down for high baud rate */
+#define cPWR_FullPowerDownMode 0  /* Disable full power down for high baud rate */
 /* doc:end:disable-lpm */
 
 /* doc:start:enable-HW-flow */
@@ -153,7 +153,7 @@
 */
 
 /* Rhodes 4 HW flow control support */
-#define HW_FLOW_CONTROL_SUPPORT 0
+#define HW_FLOW_CONTROL_SUPPORT 1  /* Enable HW flow control for high baud rate */
 /* doc:end:enable-HW-flow */
 
 /*if Power down mode is disabled Need mAppIdleHook_c to be set to 1*/

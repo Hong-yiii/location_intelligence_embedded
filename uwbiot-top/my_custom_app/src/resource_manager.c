@@ -18,17 +18,23 @@ bool ResourceManager_Init(void) {
         return true;
     }
     
-    // Initialize channel allocations
+    NXPLOG_APP_I("Initializing resource manager context...");
     memset(&gResourceManager, 0, sizeof(ResourceManager));
     
+    NXPLOG_APP_I("Initializing %d UWB channels...", MAX_CHANNELS);
     for (int i = 0; i < MAX_CHANNELS; i++) {
         gResourceManager.channels[i].channel = availableChannels[i];
         gResourceManager.channels[i].inUse = false;
         gResourceManager.channels[i].sessionIndex = -1;
         gResourceManager.channels[i].sessionId = 0;
+        
+        NXPLOG_APP_I("  Channel %d: UWB Channel %d (%s)", 
+                     i, availableChannels[i],
+                     availableChannels[i] == IPHONE_PREFERRED_CHANNEL ? "iPhone Preferred" :
+                     availableChannels[i] == UWB_CHANNEL_9 ? "iPhone Alternate" : "Board Channel");
     }
     
-    // Initialize time slots
+    NXPLOG_APP_I("Initializing %d time slots...", MAX_TIME_SLOTS);
     for (int i = 0; i < MAX_TIME_SLOTS; i++) {
         gResourceManager.timeSlots[i].startTime = 0;
         gResourceManager.timeSlots[i].duration = 0;
@@ -365,14 +371,26 @@ bool ResourceManager_ResolveResourceConflict(int sessionIndex1, int sessionIndex
 
 void ResourceManager_OptimizeResourceAllocation(void) {
     if (!gResourceManager.isInitialized) {
+        NXPLOG_APP_W("Cannot optimize resources - manager not initialized");
         return;
     }
     
     // Basic optimization - could be enhanced
-    NXPLOG_APP_D("Optimizing resource allocation...");
+    NXPLOG_APP_I("Starting resource optimization...");
     
     // Update current time
-    gResourceManager.currentTime = 0; // Could get actual timestamp
+    uint32_t oldTime = gResourceManager.currentTime;
+    phOsalUwb_GetTickCount((unsigned long*)&gResourceManager.currentTime);
+    
+    NXPLOG_APP_I("Time delta: %lu ms", gResourceManager.currentTime - oldTime);
+    
+    // Count active resources
+    int activeChannels = MAX_CHANNELS - ResourceManager_GetAvailableChannelCount();
+    int activeTimeSlots = MAX_TIME_SLOTS - ResourceManager_GetAvailableTimeSlotCount();
+    
+    NXPLOG_APP_I("Current resource usage: %d/%d channels, %d/%d time slots",
+                 activeChannels, MAX_CHANNELS,
+                 activeTimeSlots, MAX_TIME_SLOTS);
     
     // Could implement more sophisticated optimization here
     // For now, just log current status
@@ -423,36 +441,54 @@ void ResourceManager_RebalanceResources(void) {
 
 void ResourceManager_PrintResourceStatus(void) {
     if (!gResourceManager.isInitialized) {
+        NXPLOG_APP_W("Cannot print status - manager not initialized");
         return;
     }
     
     NXPLOG_APP_I("=== Resource Manager Status ===");
     
     // Print channel status
-    NXPLOG_APP_I("Channels:");
+    NXPLOG_APP_I("UWB Channels:");
     for (int i = 0; i < MAX_CHANNELS; i++) {
         ChannelAllocation* ch = &gResourceManager.channels[i];
-        NXPLOG_APP_I("  Channel %d: %s (Session %d)", 
-                     ch->channel,
-                     ch->inUse ? "USED" : "FREE",
-                     ch->inUse ? ch->sessionIndex : -1);
-    }
-    
-    // Print time slot status
-    NXPLOG_APP_I("Time Slots:");
-    int activeSlots = 0;
-    for (int i = 0; i < MAX_TIME_SLOTS; i++) {
-        if (gResourceManager.timeSlots[i].isActive) {
-            TimeSlot* ts = &gResourceManager.timeSlots[i];
-            NXPLOG_APP_I("  Slot %d: Session %d, Start=%lu, Duration=%lu", 
-                         i, ts->sessionIndex, ts->startTime, ts->duration);
-            activeSlots++;
+        const char* channelType = 
+            ch->channel == IPHONE_PREFERRED_CHANNEL ? "iPhone Preferred" :
+            ch->channel == UWB_CHANNEL_9 ? "iPhone Alternate" : "Board Channel";
+        
+        NXPLOG_APP_I("  Channel %d (UWB %d): %s", 
+                     i, ch->channel, channelType);
+        if (ch->inUse) {
+            NXPLOG_APP_I("    Status: IN USE (Session %d, ID=0x%08X)", 
+                         ch->sessionIndex, ch->sessionId);
+        } else {
+            NXPLOG_APP_I("    Status: AVAILABLE");
         }
     }
     
-    NXPLOG_APP_I("Available: %d channels, %d time slots", 
-                 ResourceManager_GetAvailableChannelCount(),
-                 ResourceManager_GetAvailableTimeSlotCount());
+    // Print time slot status
+    NXPLOG_APP_I("\nTime Slots:");
+    int activeSlots = 0;
+    for (int i = 0; i < MAX_TIME_SLOTS; i++) {
+        TimeSlot* ts = &gResourceManager.timeSlots[i];
+        if (ts->isActive) {
+            NXPLOG_APP_I("  Slot %d: ACTIVE", i);
+            NXPLOG_APP_I("    Session: %d", ts->sessionIndex);
+            NXPLOG_APP_I("    Start: %lu ms", ts->startTime);
+            NXPLOG_APP_I("    Duration: %lu ms", ts->duration);
+            activeSlots++;
+        } else {
+            NXPLOG_APP_I("  Slot %d: AVAILABLE", i);
+        }
+    }
+    
+    int availableChannels = ResourceManager_GetAvailableChannelCount();
+    int availableSlots = ResourceManager_GetAvailableTimeSlotCount();
+    
+    NXPLOG_APP_I("\nResource Summary:");
+    NXPLOG_APP_I("  Channels: %d used, %d available", 
+                 MAX_CHANNELS - availableChannels, availableChannels);
+    NXPLOG_APP_I("  Time Slots: %d used, %d available", 
+                 MAX_TIME_SLOTS - availableSlots, availableSlots);
     
     NXPLOG_APP_I("==============================");
 }

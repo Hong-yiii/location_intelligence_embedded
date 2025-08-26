@@ -16,7 +16,7 @@
 #include "discovery_manager.h"
 
 // Task configuration
-#define MULTI_SESSION_TASK_SIZE 1024
+#define MULTI_SESSION_TASK_SIZE 2048  /* Increased for high baud rate logging */
 #define MULTI_SESSION_TASK_NAME "MultiSessionUWB"
 #define MULTI_SESSION_TASK_PRIO 4
 
@@ -111,15 +111,20 @@ OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
         goto exit;
     }
     
+    NXPLOG_APP_I("Entering main application loop...");
+    
     // Main application loop
     while (gAppState.isRunning) {
         // Process session manager events
+        NXPLOG_APP_D("Processing session manager events...");
         SessionManager_ProcessEvents();
         
         // Process iPhone adapter events
+        NXPLOG_APP_D("Processing iPhone adapter events...");
         iPhoneAdapter_ProcessBLEEvents();
         
         // Process board adapter events
+        NXPLOG_APP_D("Processing board adapter events...");
         BoardAdapter_ProcessDiscoveryEvents();
         
         // Print status periodically (every 10 seconds)
@@ -154,6 +159,8 @@ static bool initializeApplication(void) {
     phUwbappContext_t appCtx = {0};
     tUWBAPI_STATUS status;
     
+    NXPLOG_APP_I("Initializing UWB stack...");
+    
     // Initialize UWB stack
     appCtx.fwImageCtx.fwMode = MAINLINE_FW;
     appCtx.pCallback = MultiSessionAppCallback;
@@ -161,41 +168,55 @@ static bool initializeApplication(void) {
     appCtx.pMcttCallback = NULL;
     appCtx.seHandle = NULL;
     
+    NXPLOG_APP_I("UWB stack configuration complete, calling UwbApi_Init_New...");
+    
     status = UwbApi_Init_New(&appCtx);
     if (status != UWBAPI_STATUS_OK) {
         NXPLOG_APP_E("UwbApi_Init_New failed: 0x%02X", status);
         return false;
     }
     
+    NXPLOG_APP_I("UWB stack initialized successfully");
+    
     // Initialize resource manager
+    NXPLOG_APP_I("Initializing resource manager...");
     if (!ResourceManager_Init()) {
         NXPLOG_APP_E("ResourceManager_Init failed");
         return false;
     }
+    NXPLOG_APP_I("Resource manager initialized successfully");
     
     // Initialize session manager
+    NXPLOG_APP_I("Initializing session manager...");
     if (!SessionManager_Init()) {
         NXPLOG_APP_E("SessionManager_Init failed");
         return false;
     }
+    NXPLOG_APP_I("Session manager initialized successfully");
     
     // Initialize iPhone adapter
+    NXPLOG_APP_I("Initializing iPhone adapter...");
     if (!iPhoneAdapter_Init()) {
         NXPLOG_APP_E("iPhoneAdapter_Init failed");
         return false;
     }
+    NXPLOG_APP_I("iPhone adapter initialized successfully");
     
     // Initialize board adapter
+    NXPLOG_APP_I("Initializing board adapter...");
     if (!BoardAdapter_Init()) {
         NXPLOG_APP_E("BoardAdapter_Init failed");
         return false;
     }
+    NXPLOG_APP_I("Board adapter initialized successfully");
     
     // Initialize discovery manager
+    NXPLOG_APP_I("Initializing discovery manager...");
     DiscoveryManager_Init();
     
     // Register callbacks
     DiscoveryManager_RegisterCallback(BoardAdapter_OnDiscoveryMatch);
+    NXPLOG_APP_I("Discovery manager initialized successfully");
     
     gAppState.isInitialized = true;
     return true;
@@ -259,23 +280,36 @@ static void printApplicationStatus(void) {
     NXPLOG_APP_I("===============================");
 }
 
-// Task creation interface
-UWBOSAL_TASK_HANDLE uwb_demo_start(void) {
+    // Task creation interface
+    UWBOSAL_TASK_HANDLE uwb_demo_start(void) {
+    NXPLOG_APP_I("=== Starting Multi-Session UWB Application ===");
+    NXPLOG_APP_I("Build: %s %s", __DATE__, __TIME__);
+    NXPLOG_APP_I("Task Size: %d bytes, Priority: %d", MULTI_SESSION_TASK_SIZE, MULTI_SESSION_TASK_PRIO);
+    
     phOsalUwb_ThreadCreationParams_t threadparams;
-    UWBOSAL_TASK_HANDLE taskHandle;
+    UWBOSAL_TASK_HANDLE taskHandle = NULL;
     int pthread_create_status = 0;
     
+    // Initialize thread parameters
+    memset(&threadparams, 0, sizeof(phOsalUwb_ThreadCreationParams_t));
     threadparams.stackdepth = MULTI_SESSION_TASK_SIZE;
     PHOSALUWB_SET_TASKNAME(threadparams, MULTI_SESSION_TASK_NAME);
     threadparams.pContext = NULL;
     threadparams.priority = MULTI_SESSION_TASK_PRIO;
     
+    NXPLOG_APP_I("Creating task '%s'...", MULTI_SESSION_TASK_NAME);
+    
     pthread_create_status = phOsalUwb_Thread_Create(
         (void **)&taskHandle, &MultiSessionTask, &threadparams);
     
     if (0 != pthread_create_status) {
-        NXPLOG_APP_E("Failed to create task %s", threadparams.taskname);
+        NXPLOG_APP_E("Failed to create task '%s' (error: %d)", 
+                     MULTI_SESSION_TASK_NAME, pthread_create_status);
+        return NULL;
     }
+    
+    NXPLOG_APP_I("Task created successfully (handle: 0x%08X)", (uint32_t)taskHandle);
+    NXPLOG_APP_I("=======================================");
     
     return taskHandle;
 } 

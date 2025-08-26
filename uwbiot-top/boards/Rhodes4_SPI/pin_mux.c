@@ -304,9 +304,13 @@ RV4_Init_UARTPins:
 /* Function assigned for the Cortex-M4 */
 void RV4_Init_UARTPins(void)
 {
+    PRINTF("RV4_Init_UARTPins: Starting...\r\n");
+    
     /* Enables the clock for the I/O controller block. 0: Disable. 1: Enable.: 0x01u */
+    PRINTF("RV4_Init_UARTPins: Enabling IOCON clock...\r\n");
     CLOCK_EnableClock(kCLOCK_Iocon);
 
+    PRINTF("RV4_Init_UARTPins: Configuring TX pin (PIO0_8)...\r\n");
     IOCON->PIO[0][8] = ((IOCON->PIO[0][8] &
                             /* Mask bits to zero which are setting */
                             (~(IOCON_PIO_FUNC_MASK | IOCON_PIO_DIGIMODE_MASK)))
@@ -318,7 +322,9 @@ void RV4_Init_UARTPins(void)
                         /* Select Analog/Digital Mode.
                          * : Digital mode. */
                         | IOCON_PIO_DIGIMODE(PIO0_8_DIGIMODE_DIGITAL));
+    PRINTF("RV4_Init_UARTPins: TX pin configured (PIO0_8 = 0x%08X)\r\n", IOCON->PIO[0][8]);
 
+    PRINTF("RV4_Init_UARTPins: Configuring RX pin (PIO0_9)...\r\n");
     IOCON->PIO[0][9] = ((IOCON->PIO[0][9] &
                             /* Mask bits to zero which are setting */
                             (~(IOCON_PIO_FUNC_MASK | IOCON_PIO_MODE_MASK | IOCON_PIO_DIGIMODE_MASK))) // added MODE mask
@@ -330,6 +336,9 @@ void RV4_Init_UARTPins(void)
                         /* Select Analog/Digital Mode.
                          * : Digital mode. */
                         | IOCON_PIO_DIGIMODE(PIO0_9_DIGIMODE_DIGITAL));
+    PRINTF("RV4_Init_UARTPins: RX pin configured (PIO0_9 = 0x%08X)\r\n", IOCON->PIO[0][9]);
+    
+    PRINTF("RV4_Init_UARTPins: UART pin initialization complete\r\n");
 }
 
 /* clang-format off */
@@ -611,9 +620,13 @@ RV4_Init_HW_FlowPins:
 #if HW_FLOW_CONTROL_SUPPORT
 void RV4_Init_HW_FlowPins(void)
 {
+    PRINTF("RV4_Init_HW_FlowPins: Starting...\r\n");
+    
     /* Enables the clock for the I/O controller block. 0: Disable. 1: Enable.: 0x01u */
+    PRINTF("RV4_Init_HW_FlowPins: Enabling IOCON clock...\r\n");
     CLOCK_EnableClock(kCLOCK_Iocon);
 
+    PRINTF("RV4_Init_HW_FlowPins: Configuring RTS pin (PIO0_6)...\r\n");
     IOCON->PIO[0][6] = ((IOCON->PIO[0][6] &
                             /* Mask bits to zero which are setting */
                             (~(IOCON_PIO_FUNC_MASK | IOCON_PIO_DIGIMODE_MASK)))
@@ -625,7 +638,9 @@ void RV4_Init_HW_FlowPins(void)
                         /* Select Analog/Digital Mode.
                          * : Digital mode. */
                         | IOCON_PIO_DIGIMODE(PIO0_6_DIGIMODE_DIGITAL));
+    PRINTF("RV4_Init_HW_FlowPins: RTS pin configured (PIO0_6 = 0x%08X)\r\n", IOCON->PIO[0][6]);
 
+    PRINTF("RV4_Init_HW_FlowPins: Configuring CTS pin (PIO0_7)...\r\n");
     IOCON->PIO[0][7] = ((IOCON->PIO[0][7] &
                             /* Mask bits to zero which are setting */
                             (~(IOCON_PIO_FUNC_MASK | IOCON_PIO_DIGIMODE_MASK)))
@@ -637,6 +652,9 @@ void RV4_Init_HW_FlowPins(void)
                         /* Select Analog/Digital Mode.
                          * : Digital mode. */
                         | IOCON_PIO_DIGIMODE(PIO0_7_DIGIMODE_DIGITAL));
+    PRINTF("RV4_Init_HW_FlowPins: CTS pin configured (PIO0_7 = 0x%08X)\r\n", IOCON->PIO[0][7]);
+    
+    PRINTF("RV4_Init_HW_FlowPins: Hardware flow control initialization complete\r\n");
 }
 #endif
 

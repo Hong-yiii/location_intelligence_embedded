@@ -48,9 +48,13 @@ void BOARD_InitClocks(void)
 
 void hardware_init(void)
 {
+    /* Initialize hardware before we can use PRINTF */
     BOARD_common_hw_init();
     BOARD_Get_Rhodes4Version();
     GPIOExtenderInit();
+
+    /* Now we can use PRINTF */
+    PRINTF("Hardware initialization complete\r\n");
 }
 
 /*!

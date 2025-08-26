@@ -97,6 +97,8 @@ sources:
  ******************************************************************************/
 void BOARD_BootClockRUN(void)
 {
+    PRINTF("BOARD_BootClockRUN: Starting clock configuration...\r\n");
+    
     /*!< Set up the clock sources */
     CLOCK_EnableClock(kCLOCK_Fro32M); /*!< Ensure FRO 32MHz is on */
     CLOCK_EnableClock(kCLOCK_Fro32M); /*!< Ensure FRO 32MHz is on */
@@ -126,7 +128,9 @@ void BOARD_BootClockRUN(void)
     CLOCK_AttachClk(kMAIN_CLK_to_ASYNC_APB); /*!< Switch ASYNC_APB to MAIN_CLK */
     CLOCK_AttachClk(kFRO32M_to_OSC32M_CLK);  /*!< Switch OSC32M_CLK to FRO32M */
     CLOCK_AttachClk(kFRO32K_to_OSC32K_CLK);  /*!< Switch OSC32K_CLK to FRO32K */
-    CLOCK_AttachClk(kOSC32M_to_USART_CLK);   /*!< Switch USART_CLK to OSC32M */
+    PRINTF("BOARD_BootClockRUN: Configuring USART clock (FRO48M for high baud rate)...\r\n");
+    CLOCK_AttachClk(kFRO48M_to_USART_CLK);   /*!< Switch USART_CLK to FRO48M for high baud rate */
+    PRINTF("BOARD_BootClockRUN: USART clock configured\r\n");
     CLOCK_AttachClk(kMAIN_CLK_to_DMI_CLK);   /*!< Switch DMI_CLK to MAIN_CLK */
     CLOCK_AttachClk(kOSC32K_to_WDT_CLK);     /*!< Switch WDT_CLK to OSC32K */
     CLOCK_AttachClk(kOSC32M_to_SPI_CLK);     /*!< Switch SPI_CLK to OSC32M */
@@ -134,4 +138,7 @@ void BOARD_BootClockRUN(void)
 
     /*!< Set SystemCoreClock variable. */
     SystemCoreClock = BOARD_BOOTCLOCKRUN_CORE_CLOCK;
+    
+    PRINTF("BOARD_BootClockRUN: Clock configuration complete\r\n");
+    PRINTF("BOARD_BootClockRUN: SystemCoreClock = %lu Hz\r\n", SystemCoreClock);
 }

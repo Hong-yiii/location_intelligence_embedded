@@ -20,6 +20,8 @@ bool iPhoneAdapter_Init(void) {
     memset(&gIPhoneAdapter, 0, sizeof(iPhoneAdapter));
     memset(&gIPhoneSession, 0, sizeof(iPhoneSessionContext));
     
+    NXPLOG_APP_I("Initializing iPhone session context...");
+    
     // Initialize iPhone session context (based on demo pattern)
     gIPhoneSession.sessionIndex = 0; // iPhone gets slot 0
     gIPhoneSession.sessionId = IPHONE_SESSION_ID_BASE;
@@ -28,9 +30,21 @@ bool iPhoneAdapter_Init(void) {
     gIPhoneSession.rangingInterval = IPHONE_DEFAULT_RANGING_INTERVAL;
     gIPhoneSession.isConnected = false;
     
+    NXPLOG_APP_I("iPhone session: Index=%d, ID=0x%08X, Channel=%d, Interval=%d ms",
+                 gIPhoneSession.sessionIndex,
+                 gIPhoneSession.sessionId,
+                 gIPhoneSession.channel,
+                 gIPhoneSession.rangingInterval);
+    
+    NXPLOG_APP_I("Initializing BLE advertising parameters...");
+    
     // Initialize BLE advertising parameters (simplified)
     gIPhoneAdapter.bleAdvInterval = 100; // 100ms
     gIPhoneAdapter.bleAdvTimeout = 30000; // 30 seconds
+    
+    NXPLOG_APP_I("BLE parameters: Interval=%d ms, Timeout=%d ms",
+                 gIPhoneAdapter.bleAdvInterval,
+                 gIPhoneAdapter.bleAdvTimeout);
     
     gIPhoneAdapter.isInitialized = true;
     gIPhoneAdapter.isAdvertising = false;
@@ -107,6 +121,8 @@ void iPhoneAdapter_StopAdvertising(void) {
 
 void iPhoneAdapter_ProcessBLEEvents(void) {
     if (!gIPhoneAdapter.isInitialized || !gIPhoneAdapter.isAdvertising) {
+        NXPLOG_APP_D("Skipping BLE event processing (initialized: %d, advertising: %d)",
+                     gIPhoneAdapter.isInitialized, gIPhoneAdapter.isAdvertising);
         return;
     }
     
@@ -129,8 +145,15 @@ void iPhoneAdapter_ProcessBLEEvents(void) {
         // Simulate iPhone connection detection (for MVP testing)
         if (gIPhoneSession.state == IPHONE_STATE_BLE_ADVERTISING) {
             // In real implementation, this would be triggered by actual BLE events
-            // For now, just log that we're ready for iPhone connection
-            NXPLOG_APP_D("Ready for iPhone connection...");
+            NXPLOG_APP_I("iPhone adapter state: %s", 
+                        gIPhoneSession.state == IPHONE_STATE_DISCONNECTED ? "DISCONNECTED" :
+                        gIPhoneSession.state == IPHONE_STATE_BLE_ADVERTISING ? "ADVERTISING" :
+                        gIPhoneSession.state == IPHONE_STATE_BLE_CONNECTED ? "BLE_CONNECTED" :
+                        gIPhoneSession.state == IPHONE_STATE_UWB_ACTIVE ? "UWB_ACTIVE" : "ERROR");
+            
+            NXPLOG_APP_I("Advertising active for %d ms, timeout in %d ms", 
+                        currentTime - lastCheckTime,
+                        gIPhoneAdapter.bleAdvTimeout - (currentTime - lastCheckTime));
         }
     }
 }

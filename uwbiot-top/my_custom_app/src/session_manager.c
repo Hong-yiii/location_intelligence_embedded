@@ -19,9 +19,10 @@ bool SessionManager_Init(void) {
         return true;
     }
     
-    // Initialize session contexts
+    NXPLOG_APP_I("Initializing session manager context...");
     memset(&gSessionManager, 0, sizeof(SessionManager));
     
+    NXPLOG_APP_I("Initializing %d session slots...", MAX_SESSIONS);
     for (int i = 0; i < MAX_SESSIONS; i++) {
         gSessionManager.sessions[i].sessionId = 0;
         gSessionManager.sessions[i].sessionHandle = 0;
@@ -32,7 +33,9 @@ bool SessionManager_Init(void) {
         gSessionManager.sessions[i].channel = 0;
         gSessionManager.sessions[i].rangingInterval = 0;
         gSessionManager.sessions[i].lastDistance = 0.0f;
-    }
+        
+        NXPLOG_APP_I("  Slot %d: Reserved=%s", i, 
+                     i == IPHONE_SESSION_RESERVED_SLOT ? "iPhone" : "Board");
     
     // Create mutex for thread safety
     if (phOsalUwb_CreateMutex(&gSessionManager.rangingMutex) != UWBSTATUS_SUCCESS) {
@@ -374,7 +377,10 @@ void SessionManager_ProcessEvents(void) {
     
     lastProcessTime = currentTime;
     
+    NXPLOG_APP_D("Processing session events...");
+    
     // Check for session timeouts or health issues
+    int activeCount = 0;
     for (int i = 0; i < MAX_SESSIONS; i++) {
         SessionContext* session = &gSessionManager.sessions[i];
         
@@ -382,13 +388,23 @@ void SessionManager_ProcessEvents(void) {
             continue;
         }
         
+        activeCount++;
+        NXPLOG_APP_D("Session %d: Type=%s, State=%s, LastRanging=%lu ms ago", 
+                     i,
+                     SessionManager_GetSessionTypeString(session->type),
+                     SessionManager_GetSessionStateString(session->state),
+                     session->lastRangingTime > 0 ? currentTime - session->lastRangingTime : 0);
+        
         // Check for ranging timeout (no data for 10 seconds)
         if (session->lastRangingTime > 0 && 
             (currentTime - session->lastRangingTime) > 10000) {
-            NXPLOG_APP_W("Session %d ranging timeout", i);
+            NXPLOG_APP_W("Session %d ranging timeout - no data for %lu ms", 
+                        i, currentTime - session->lastRangingTime);
             // Could trigger recovery here
         }
     }
+    
+    NXPLOG_APP_D("Active sessions: %d/%d", activeCount, MAX_SESSIONS);
 }
 
 bool SessionManager_ValidateSessionIndex(int sessionIndex) {

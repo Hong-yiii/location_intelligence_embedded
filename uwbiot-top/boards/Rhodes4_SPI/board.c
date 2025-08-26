@@ -510,11 +510,17 @@ status_t BOARD_InitDebugConsole(void)
 #if gUartDebugConsole_d | gUartAppConsole_d
     uint32_t uartClkSrcFreq = BOARD_DEBUG_UART_CLK_FREQ;
 
-    result = DbgConsole_Init(
-        DEBUG_SERIAL_INTERFACE_INSTANCE, BOARD_DEBUG_UART_BAUDRATE, BOARD_DEBUG_UART_TYPE, uartClkSrcFreq);
-    //BOARD_InitHostInterface();
+    /* Initialize UART pins first */
     RV4_Init_UARTPins();
     RV4_Init_SWDPins();
+
+    /* Initialize debug console */
+    result = DbgConsole_Init(
+        DEBUG_SERIAL_INTERFACE_INSTANCE, BOARD_DEBUG_UART_BAUDRATE, BOARD_DEBUG_UART_TYPE, uartClkSrcFreq);
+
+    /* Now we can use PRINTF */
+    PRINTF("BOARD_InitDebugConsole: Debug console initialized with baudrate %d, result = %d\r\n", 
+           BOARD_DEBUG_UART_BAUDRATE, result);
 #endif
     return result;
 }
@@ -1418,6 +1424,9 @@ void BOARD_common_hw_init(void)
     BOARD_SetPinsForRunMode();
 #if gUartDebugConsole_d
     BOARD_InitDebugConsole();
+    
+    /* Now we can use PRINTF */
+    PRINTF("BOARD_common_hw_init: Hardware initialization started\r\n");
 #endif
 
 #if gDbgUseRfDiagIos

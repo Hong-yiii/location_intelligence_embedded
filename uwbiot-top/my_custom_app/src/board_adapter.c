@@ -29,10 +29,11 @@ bool BoardAdapter_Init(void) {
     
     NXPLOG_APP_I("Initializing Board Adapter...");
     
-    // Initialize discovery context
+    NXPLOG_APP_I("Initializing discovery context...");
     memset(&gBoardDiscovery, 0, sizeof(BoardDiscoveryContext));
     
     // Initialize board contexts
+    NXPLOG_APP_I("Initializing board contexts...");
     for (int i = 0; i < MAX_BOARD_SESSIONS; i++) {
         gBoardDiscovery.boards[i].sessionIndex = i + 1; // Reserve slot 0 for iPhone
         gBoardDiscovery.boards[i].sessionId = BOARD_SESSION_ID_BASE + i;
@@ -40,6 +41,8 @@ bool BoardAdapter_Init(void) {
         gBoardDiscovery.boards[i].currentRole = BOARD_ROLE_CONTROLLER; // Default role
         gBoardDiscovery.boards[i].channel = UWB_CHANNEL_6 + (i % 2); // Alternate channels 6,8
         gBoardDiscovery.boards[i].isDiscovered = false;
+        NXPLOG_APP_I("  Board %d: Session ID=0x%08X, Channel=%d", 
+                     i, gBoardDiscovery.boards[i].sessionId, gBoardDiscovery.boards[i].channel);
     }
     
     // Initialize discovery manager
@@ -139,16 +142,18 @@ void BoardAdapter_ProcessDiscoveryEvents(void) {
         return;
     }
     
-    // Process any discovery events (placeholder)
-    // In real implementation, this would handle discovery protocol events
+    // Process any discovery events
+    NXPLOG_APP_D("Processing discovery events...");
     
     // Check for discovered boards that need session creation
     for (int i = 0; i < MAX_BOARD_SESSIONS; i++) {
         BoardContext* board = &gBoardDiscovery.boards[i];
         
         if (board->state == BOARD_STATE_DISCOVERED) {
-            NXPLOG_APP_I("Attempting to connect to discovered board %d (MAC: 0x%04X)", 
-                         i, *(uint16_t*)board->macAddr);
+            NXPLOG_APP_I("Board %d discovered (MAC: 0x%04X, Role: %s)", 
+                         i, *(uint16_t*)board->macAddr,
+                         board->currentRole == BOARD_ROLE_CONTROLLER ? "CONTROLLER" : "CONTROLEE");
+            NXPLOG_APP_I("Attempting to create UWB session...");
             
             // Create session for discovered board
             if (SessionManager_CreateSession(DEVICE_TYPE_NXP_BOARD,
@@ -185,9 +190,14 @@ void BoardAdapter_PrintDiscoveryStatus(void) {
 }
 
 void BoardAdapter_OnDiscoveryMatch(const uint8_t* peerMacAddr, bool isController) {
+    NXPLOG_APP_I("Discovery match callback - MAC: 0x%04X, Role: %s",
+                 *(uint16_t*)peerMacAddr, isController ? "CONTROLLER" : "CONTROLEE");
+    
     // Find an available board slot
     for (int i = 0; i < MAX_BOARD_SESSIONS; i++) {
         if (gBoardDiscovery.boards[i].state == BOARD_STATE_DISCOVERING) {
+            NXPLOG_APP_I("Found available slot %d for discovered board", i);
+            
             // Copy MAC address
             memcpy(gBoardDiscovery.boards[i].macAddr, peerMacAddr, BOARD_MAC_ADDR_LEN);
             gBoardDiscovery.boards[i].state = BOARD_STATE_DISCOVERED;
@@ -195,9 +205,8 @@ void BoardAdapter_OnDiscoveryMatch(const uint8_t* peerMacAddr, bool isController
             gBoardDiscovery.boards[i].isDiscovered = true;
             gBoardDiscovery.discoveredBoards++;
             
-            NXPLOG_APP_I("Board discovered: MAC=0x%04X, Role=%s", 
-                         *(uint16_t*)peerMacAddr,
-                         isController ? "CONTROLLER" : "CONTROLEE");
+            NXPLOG_APP_I("Board registered in slot %d (Total discovered: %d/%d)", 
+                         i, gBoardDiscovery.discoveredBoards, MAX_BOARD_SESSIONS);
             break;
         }
     }
