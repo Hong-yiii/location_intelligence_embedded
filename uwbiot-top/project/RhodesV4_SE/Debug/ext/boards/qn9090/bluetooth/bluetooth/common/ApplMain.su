@@ -1,4 +1,4 @@
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.c:2304:13:BLE_SignalFromISRCallback	8	static
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.c:2304:13:BLE_SignalFromISRCallback	0	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.c:1666:23:App_ConnectionCallback	24	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.c:1790:23:App_AdvertisingCallback	8	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.c:1824:23:App_ScanningCallback	16	static
@@ -28,5 +28,3 @@
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.c:1294:6:App_NvmWrite	32	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.c:1372:6:App_NvmRead	32	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.c:1441:6:SafeActions_on_RamOff	0	static
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.c:2380:6:vPortSetupTimerInterrupt	8	static
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/bluetooth/common/ApplMain.c:2402:6:vPortSuppressTicksAndSleep	40	static

@@ -5,6 +5,7 @@ ext/boards/qn9090/bluetooth/framework/LowPower/source/PWR.o \
  ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h \
  ../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Configuration.h \
  ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h \
  /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/LowPower/source/PWRLib.h \
  ../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Interface.h \
  ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h \
@@ -70,6 +71,7 @@ ext/boards/qn9090/bluetooth/framework/LowPower/source/PWR.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
+ ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h \
  /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../boards/Rhodes4_SPI/board_utility.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_general.h \
@@ -79,7 +81,6 @@ ext/boards/qn9090/bluetooth/framework/LowPower/source/PWR.o \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_utils.h \
  ../../../ext/boards/qn9090/bluetooth/bluetooth/controller/interface/controller_interface.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Panic/interface/Panic.h \
- ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_fmeas.h \
  ../../../ext/boards/qn9090/bluetooth/framework/GPIO/interface/GPIO_Adapter.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_iocon.h \
@@ -88,6 +89,7 @@ ext/boards/qn9090/bluetooth/framework/LowPower/source/PWR.o \
 ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h:
 ../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Configuration.h:
 ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/LowPower/source/PWRLib.h:
 ../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Interface.h:
 ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h:
@@ -153,6 +155,7 @@ ext/boards/qn9090/bluetooth/framework/LowPower/source/PWR.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
+../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h:
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../boards/Rhodes4_SPI/board_utility.h:
 ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_general.h:
@@ -162,7 +165,6 @@ ext/boards/qn9090/bluetooth/framework/LowPower/source/PWR.o \
 ../../../ext/boards/qn9090/bluetooth/bluetooth/host/interface/ble_utils.h:
 ../../../ext/boards/qn9090/bluetooth/bluetooth/controller/interface/controller_interface.h:
 ../../../ext/boards/qn9090/bluetooth/framework/Panic/interface/Panic.h:
-../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_fmeas.h:
 ../../../ext/boards/qn9090/bluetooth/framework/GPIO/interface/GPIO_Adapter.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_iocon.h:

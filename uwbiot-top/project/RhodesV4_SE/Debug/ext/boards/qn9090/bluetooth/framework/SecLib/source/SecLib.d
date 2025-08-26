@@ -7,6 +7,7 @@ ext/boards/qn9090/bluetooth/framework/SecLib/source/SecLib.o \
  ../../../ext/boards/qn9090/bluetooth/framework/Lists/interface/GenericList.h \
  ../../../ext/boards/qn9090/bluetooth/framework/FunctionLib/interface/FunctionLib.h \
  ../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h \
  ../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib_ecp256.h \
  ../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib.h \
  ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h \
@@ -41,14 +42,14 @@ ext/boards/qn9090/bluetooth/framework/SecLib/source/SecLib.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h \
- ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_sha.h \
- ../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Interface.h
+ ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_sha.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../ext/boards/qn9090/bluetooth/framework/MemManager/interface/MemManager.h:
 ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h:
 ../../../ext/boards/qn9090/bluetooth/framework/Lists/interface/GenericList.h:
 ../../../ext/boards/qn9090/bluetooth/framework/FunctionLib/interface/FunctionLib.h:
 ../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:
 ../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib_ecp256.h:
 ../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib.h:
 ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h:
@@ -84,4 +85,3 @@ ext/boards/qn9090/bluetooth/framework/SecLib/source/SecLib.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_sha.h:
-../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Interface.h:

@@ -17,10 +17,10 @@ static BoardDiscoveryContext gBoardDiscovery = {0};
 // Event callback
 static BoardEventCallback gBoardEventCallback = NULL;
 
-// Forward declarations
-static void onBoardDiscovered(uint16_t macAddr, BoardRole role);
-static void handleBoardSessionEvent(uint32_t sessionId, int eventType, void* pData);
-static void initializeBoardSession(int sessionIndex, uint16_t macAddr, BoardRole role);
+// Forward declarations of internal functions
+static void updateBoardState(int sessionIndex, BoardState newState);
+static void handleDiscoveryTimeout(void);
+static void cleanupBoardSession(int sessionIndex);
 
 bool BoardAdapter_Init(void) {
     if (gBoardDiscovery.isActive) {

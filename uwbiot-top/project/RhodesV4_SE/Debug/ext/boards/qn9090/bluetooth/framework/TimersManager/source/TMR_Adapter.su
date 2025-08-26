@@ -7,13 +7,13 @@
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:251:10:Timestamp_Get_uSec	8	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:260:10:Timestamp_Get_mSec	8	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:276:6:StackTimer_Init	16	static
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:349:5:StackTimer_ReInit	8	static
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:367:6:StackTimer_Enable	0	static
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:384:6:StackTimer_Disable	0	static
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:401:10:StackTimer_GetInputFrequency	0	static
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:455:10:StackTimer_GetCounterValue	0	static
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:475:6:StackTimer_SetOffsetTicks	0	static
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:494:10:StackTimer_ClearIntFlag	0	static
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:349:5:StackTimer_ReInit	24	static
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:367:6:StackTimer_Enable	8	static
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:384:6:StackTimer_Disable	8	static
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:401:10:StackTimer_GetInputFrequency	8	static
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:455:10:StackTimer_GetCounterValue	8	static
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:475:6:StackTimer_SetOffsetTicks	8	static
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:494:10:StackTimer_ClearIntFlag	8	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:1027:6:StackTimer_ConsumeIrq	0	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:1172:22:TMR_eScheduleActivity32kTicksAndGetCurrentTimestampValue	24	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:1144:22:TMR_eScheduleActivity32kTicks	8	static
@@ -35,5 +35,5 @@
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:2100:10:TMR_Convert32kTicks2Us	8	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:2110:10:TMR_ConvertUsToTicks	8	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:2119:10:TMR_GetTimestampUs	16	static
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:2016:10:FRO32K_CompleteCalibration	16	static
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:2016:10:FRO32K_CompleteCalibration	32	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.c:1916:6:FRO32K_Init	16	static

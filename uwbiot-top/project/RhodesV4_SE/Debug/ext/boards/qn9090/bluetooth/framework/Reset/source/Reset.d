@@ -15,7 +15,8 @@ ext/boards/qn9090/bluetooth/framework/Reset/source/Reset.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h \
- ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h
+ ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h:
 ../../../ext/boards/qn9090/devices/QN9090/QN9090.h:
@@ -31,3 +32,4 @@ ext/boards/qn9090/bluetooth/framework/Reset/source/Reset.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:

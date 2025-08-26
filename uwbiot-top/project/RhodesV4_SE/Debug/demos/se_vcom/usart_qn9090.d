@@ -48,6 +48,7 @@ demos/se_vcom/usart_qn9090.o demos/se_vcom/usart_qn9090.d: \
  ../../../ext/boards/qn9090/bluetooth/framework/OSAbstraction/interface/fsl_os_abstraction_free_rtos.h \
  ../../../ext/freertos/include/FreeRTOS.h \
  ../../../boards/Host/Rhodes4/FreeRTOSConfig.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h \
  ../../../ext/freertos/include/projdefs.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/freertos/include/deprecated_definitions.h \
@@ -65,6 +66,7 @@ demos/se_vcom/usart_qn9090.o demos/se_vcom/usart_qn9090.d: \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
+ ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h \
  /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_usart.h \
  /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/se_vcom/usart.h \
@@ -132,6 +134,7 @@ demos/se_vcom/usart_qn9090.o demos/se_vcom/usart_qn9090.d: \
 ../../../ext/boards/qn9090/bluetooth/framework/OSAbstraction/interface/fsl_os_abstraction_free_rtos.h:
 ../../../ext/freertos/include/FreeRTOS.h:
 ../../../boards/Host/Rhodes4/FreeRTOSConfig.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:
 ../../../ext/freertos/include/projdefs.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/freertos/include/deprecated_definitions.h:
@@ -149,6 +152,7 @@ demos/se_vcom/usart_qn9090.o demos/se_vcom/usart_qn9090.d: \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
+../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h:
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_usart.h:
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/se_vcom/usart.h:

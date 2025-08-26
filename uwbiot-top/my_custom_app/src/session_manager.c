@@ -8,6 +8,18 @@
 static SessionManager gSessionManager = {0};
 static SessionEventCallback gSessionCallback = NULL;
 
+// Forward declarations of static functions
+static uint32_t generateSessionId(DeviceType deviceType, int sessionIndex);
+static bool SessionManager_ValidateSessionIndex(int sessionIndex);
+static const char* SessionManager_GetSessionTypeString(SessionType type);
+static const char* SessionManager_GetSessionStateString(SessionState state);
+static bool SessionManager_AllocateResources(int sessionIndex);
+static void SessionManager_ReleaseResources(int sessionIndex);
+// Forward declarations of static functions
+static uint32_t generateSessionId(DeviceType deviceType, int sessionIndex);
+static const char* SessionManager_GetSessionTypeString(SessionType type);
+static const char* SessionManager_GetSessionStateString(SessionState state);
+
 // Session ID generation
 static uint32_t generateSessionId(DeviceType deviceType, int sessionIndex) {
     uint32_t baseId = (deviceType == DEVICE_TYPE_IPHONE) ? 0x11223340 : 0x22334400;
@@ -36,6 +48,8 @@ bool SessionManager_Init(void) {
         
         NXPLOG_APP_I("  Slot %d: Reserved=%s", i, 
                      i == IPHONE_SESSION_RESERVED_SLOT ? "iPhone" : "Board");
+    
+    }
     
     // Create mutex for thread safety
     if (phOsalUwb_CreateMutex(&gSessionManager.rangingMutex) != UWBSTATUS_SUCCESS) {
@@ -272,13 +286,12 @@ void SessionManager_UpdateSessionState(int sessionIndex, SessionState newState) 
     }
     
     SessionContext* session = &gSessionManager.sessions[sessionIndex];
-    // SessionState oldState = session->state;
-    session->state = newState;
-    
     NXPLOG_APP_D("Session %d state: %s -> %s", 
                  sessionIndex,
-                 SessionManager_GetSessionStateString(oldState),
+                 SessionManager_GetSessionStateString(session->state),
                  SessionManager_GetSessionStateString(newState));
+    
+    session->state = newState;
     
     // Notify callback if registered
     if (gSessionCallback) {
@@ -323,7 +336,7 @@ void SessionManager_HandleSessionError(int sessionIndex, uint32_t errorCode) {
     // TODO: Implement error recovery logic
 }
 
-bool SessionManager_AllocateResources(int sessionIndex) {
+static bool SessionManager_AllocateResources(int sessionIndex) {
     if (!SessionManager_ValidateSessionIndex(sessionIndex)) {
         return false;
     }
@@ -351,7 +364,7 @@ bool SessionManager_AllocateResources(int sessionIndex) {
     return true;
 }
 
-void SessionManager_ReleaseResources(int sessionIndex) {
+static void SessionManager_ReleaseResources(int sessionIndex) {
     if (!SessionManager_ValidateSessionIndex(sessionIndex)) {
         return;
     }
@@ -407,7 +420,7 @@ void SessionManager_ProcessEvents(void) {
     NXPLOG_APP_D("Active sessions: %d/%d", activeCount, MAX_SESSIONS);
 }
 
-bool SessionManager_ValidateSessionIndex(int sessionIndex) {
+static bool SessionManager_ValidateSessionIndex(int sessionIndex) {
     if (sessionIndex < 0 || sessionIndex >= MAX_SESSIONS) {
         NXPLOG_APP_E("Invalid session index: %d", sessionIndex);
         return false;
@@ -415,7 +428,7 @@ bool SessionManager_ValidateSessionIndex(int sessionIndex) {
     return true;
 }
 
-const char* SessionManager_GetSessionTypeString(SessionType type) {
+static const char* SessionManager_GetSessionTypeString(SessionType type) {
     switch (type) {
     case SESSION_TYPE_NONE: return "None";
     case SESSION_TYPE_IPHONE_NI: return "iPhone-NI";
@@ -424,7 +437,7 @@ const char* SessionManager_GetSessionTypeString(SessionType type) {
     }
 }
 
-const char* SessionManager_GetSessionStateString(SessionState state) {
+static const char* SessionManager_GetSessionStateString(SessionState state) {
     switch (state) {
     case SESSION_STATE_IDLE: return "Idle";
     case SESSION_STATE_DISCOVERING: return "Discovering";

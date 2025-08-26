@@ -60,6 +60,7 @@ libs/halimpl/fwd/SR1XX/phNxpUciHal_fwd.o \
  ../../../ext/boards/qn9090/bluetooth/framework/OSAbstraction/interface/fsl_os_abstraction_free_rtos.h \
  ../../../ext/freertos/include/FreeRTOS.h \
  ../../../boards/Host/Rhodes4/FreeRTOSConfig.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h \
  ../../../ext/freertos/include/projdefs.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/freertos/include/deprecated_definitions.h \
@@ -77,6 +78,7 @@ libs/halimpl/fwd/SR1XX/phNxpUciHal_fwd.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
+ ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h \
  ../../../libs/halimpl/inc/uwb_board_values.h \
  ../../../libs/halimpl/inc/phNxpLogDefault.h \
  ../../../boards/Host/Rhodes4/driver_config.h \
@@ -168,6 +170,7 @@ libs/halimpl/fwd/SR1XX/phNxpUciHal_fwd.o \
 ../../../ext/boards/qn9090/bluetooth/framework/OSAbstraction/interface/fsl_os_abstraction_free_rtos.h:
 ../../../ext/freertos/include/FreeRTOS.h:
 ../../../boards/Host/Rhodes4/FreeRTOSConfig.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:
 ../../../ext/freertos/include/projdefs.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/freertos/include/deprecated_definitions.h:
@@ -185,6 +188,7 @@ libs/halimpl/fwd/SR1XX/phNxpUciHal_fwd.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
+../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h:
 ../../../libs/halimpl/inc/uwb_board_values.h:
 ../../../libs/halimpl/inc/phNxpLogDefault.h:
 ../../../boards/Host/Rhodes4/driver_config.h:

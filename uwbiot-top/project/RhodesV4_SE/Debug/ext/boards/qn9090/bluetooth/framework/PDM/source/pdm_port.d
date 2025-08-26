@@ -20,6 +20,7 @@ ext/boards/qn9090/bluetooth/framework/PDM/source/pdm_port.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h \
  ../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h \
  ../../../ext/boards/qn9090/bluetooth/framework/OSAbstraction/interface/fsl_os_abstraction.h \
  ../../../ext/boards/qn9090/bluetooth/framework/OSAbstraction/interface/fsl_os_abstraction_config.h \
  ../../../ext/boards/qn9090/bluetooth/framework/OSAbstraction/interface/fsl_os_abstraction_free_rtos.h \
@@ -62,6 +63,7 @@ ext/boards/qn9090/bluetooth/framework/PDM/source/pdm_port.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h:
 ../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:
 ../../../ext/boards/qn9090/bluetooth/framework/OSAbstraction/interface/fsl_os_abstraction.h:
 ../../../ext/boards/qn9090/bluetooth/framework/OSAbstraction/interface/fsl_os_abstraction_config.h:
 ../../../ext/boards/qn9090/bluetooth/framework/OSAbstraction/interface/fsl_os_abstraction_free_rtos.h:

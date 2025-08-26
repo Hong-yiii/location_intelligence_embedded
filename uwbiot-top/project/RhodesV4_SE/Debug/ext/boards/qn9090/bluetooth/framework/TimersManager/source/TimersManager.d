@@ -5,6 +5,7 @@ ext/boards/qn9090/bluetooth/framework/TimersManager/source/TimersManager.o \
  ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h \
  /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TimersManagerInternal.h \
  ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h \
  /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.h \
  ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h \
  ../../../ext/boards/qn9090/devices/QN9090/QN9090.h \
@@ -69,6 +70,7 @@ ext/boards/qn9090/bluetooth/framework/TimersManager/source/TimersManager.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
+ ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h \
  /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Panic/interface/Panic.h \
  ../../../boards/Rhodes4_SPI/pin_mux.h \
@@ -77,6 +79,7 @@ ext/boards/qn9090/bluetooth/framework/TimersManager/source/TimersManager.o \
 ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h:
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TimersManagerInternal.h:
 ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.h:
 ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h:
 ../../../ext/boards/qn9090/devices/QN9090/QN9090.h:
@@ -141,6 +144,7 @@ ext/boards/qn9090/bluetooth/framework/TimersManager/source/TimersManager.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
+../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h:
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/project/RhodesV4_SE/uwb_iot_ftr.h:
 ../../../ext/boards/qn9090/bluetooth/framework/Panic/interface/Panic.h:
 ../../../boards/Rhodes4_SPI/pin_mux.h:

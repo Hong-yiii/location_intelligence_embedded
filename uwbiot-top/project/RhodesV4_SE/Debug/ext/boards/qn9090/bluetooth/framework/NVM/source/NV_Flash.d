@@ -5,6 +5,7 @@ ext/boards/qn9090/bluetooth/framework/NVM/source/NV_Flash.o \
  ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h \
  /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/NVM/source/NV_Flash.h \
  ../../../ext/boards/qn9090/bluetooth/framework/NVM/interface/NVM_Interface.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h \
  ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h \
  ../../../ext/boards/qn9090/bluetooth/framework/RNG/interface/RNG_Interface.h \
  ../../../ext/boards/qn9090/bluetooth/framework/FunctionLib/interface/FunctionLib.h \
@@ -45,6 +46,7 @@ ext/boards/qn9090/bluetooth/framework/NVM/source/NV_Flash.o \
 ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h:
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/ext/boards/qn9090/bluetooth/framework/NVM/source/NV_Flash.h:
 ../../../ext/boards/qn9090/bluetooth/framework/NVM/interface/NVM_Interface.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:
 ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h:
 ../../../ext/boards/qn9090/bluetooth/framework/RNG/interface/RNG_Interface.h:
 ../../../ext/boards/qn9090/bluetooth/framework/FunctionLib/interface/FunctionLib.h:

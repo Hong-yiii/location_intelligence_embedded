@@ -1,4 +1,4 @@
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/boards/Rhodes4_SPI/hardware_init.c:16:6:BOARD_InitClocks	8	static
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/boards/Rhodes4_SPI/hardware_init.c:49:6:hardware_init	8	static
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/boards/Rhodes4_SPI/hardware_init.c:59:6:RTOS_AppConfigureTimerForRuntimeStats	8	static
-/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/boards/Rhodes4_SPI/hardware_init.c:70:10:RTOS_AppGetRuntimeCounterValue	8	static
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/boards/Rhodes4_SPI/hardware_init.c:63:6:RTOS_AppConfigureTimerForRuntimeStats	8	static
+/Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/boards/Rhodes4_SPI/hardware_init.c:74:10:RTOS_AppGetRuntimeCounterValue	8	static

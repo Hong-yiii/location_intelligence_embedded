@@ -49,6 +49,8 @@ pin_labels:
 #include "fsl_gpio.h"
 #include "fsl_inputmux.h"
 #include "pin_mux.h"
+#include "fsl_debug_console.h"
+#include "uwb_logging.h"
 
 /* FUNCTION ************************************************************************************************************
  *

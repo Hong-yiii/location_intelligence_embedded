@@ -24,6 +24,7 @@ ext/mbedtls/library/ssl_cache.o ext/mbedtls/library/ssl_cache.d: \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_sha.h \
  ../../../ext/freertos/include/FreeRTOS.h \
  ../../../boards/Host/Rhodes4/FreeRTOSConfig.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h \
  ../../../ext/freertos/include/projdefs.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/freertos/include/deprecated_definitions.h \
@@ -81,6 +82,7 @@ ext/mbedtls/library/ssl_cache.o ext/mbedtls/library/ssl_cache.d: \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_sha.h:
 ../../../ext/freertos/include/FreeRTOS.h:
 ../../../boards/Host/Rhodes4/FreeRTOSConfig.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:
 ../../../ext/freertos/include/projdefs.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/freertos/include/deprecated_definitions.h:

@@ -9,6 +9,7 @@ demos/vcom_common/UwbHif.o demos/vcom_common/UwbHif.d: \
  ../../../libs/halimpl/inc/phOsalUwb.h \
  ../../../ext/freertos/include/FreeRTOS.h \
  ../../../boards/Host/Rhodes4/FreeRTOSConfig.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h \
  ../../../ext/freertos/include/projdefs.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/freertos/include/deprecated_definitions.h \
@@ -87,6 +88,7 @@ demos/vcom_common/UwbHif.o demos/vcom_common/UwbHif.d: \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
+ ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h \
  ../../../libs/halimpl/inc/uwb_board_values.h \
  /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/vcom_common/usart_vcom_qn9090.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_usart.h \
@@ -169,6 +171,7 @@ demos/vcom_common/UwbHif.o demos/vcom_common/UwbHif.d: \
 ../../../libs/halimpl/inc/phOsalUwb.h:
 ../../../ext/freertos/include/FreeRTOS.h:
 ../../../boards/Host/Rhodes4/FreeRTOSConfig.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:
 ../../../ext/freertos/include/projdefs.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/freertos/include/deprecated_definitions.h:
@@ -247,6 +250,7 @@ demos/vcom_common/UwbHif.o demos/vcom_common/UwbHif.d: \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
+../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h:
 ../../../libs/halimpl/inc/uwb_board_values.h:
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/demos/vcom_common/usart_vcom_qn9090.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_usart.h:

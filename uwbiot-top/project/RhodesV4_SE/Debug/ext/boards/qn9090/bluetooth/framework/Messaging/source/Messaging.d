@@ -11,6 +11,7 @@ ext/boards/qn9090/bluetooth/framework/Messaging/source/Messaging.o \
  ../../../ext/boards/qn9090/bluetooth/framework/OSAbstraction/interface/fsl_os_abstraction_free_rtos.h \
  ../../../ext/freertos/include/FreeRTOS.h \
  ../../../boards/Host/Rhodes4/FreeRTOSConfig.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h \
  ../../../ext/freertos/include/projdefs.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/freertos/include/deprecated_definitions.h \
@@ -32,6 +33,7 @@ ext/boards/qn9090/bluetooth/framework/Messaging/source/Messaging.o \
 ../../../ext/boards/qn9090/bluetooth/framework/OSAbstraction/interface/fsl_os_abstraction_free_rtos.h:
 ../../../ext/freertos/include/FreeRTOS.h:
 ../../../boards/Host/Rhodes4/FreeRTOSConfig.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:
 ../../../ext/freertos/include/projdefs.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/freertos/include/deprecated_definitions.h:

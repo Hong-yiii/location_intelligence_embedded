@@ -4,6 +4,7 @@ ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.o \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h \
  ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h \
@@ -73,11 +74,11 @@ ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.o \
  ../../../ext/freertos/include/task.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_rtc.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_fmeas.h \
- ../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Interface.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_inputmux_connections.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h:
 ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h:
 ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h:
@@ -147,5 +148,4 @@ ext/boards/qn9090/bluetooth/framework/TimersManager/source/TMR_Adapter.o \
 ../../../ext/freertos/include/task.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_rtc.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_fmeas.h:
-../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Interface.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_inputmux_connections.h:

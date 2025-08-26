@@ -3,6 +3,7 @@ boards/Host/Rhodes4/UWBT_PowerMode.o boards/Host/Rhodes4/UWBT_PowerMode.d: \
  ../../../boards/Host/Rhodes4/app_preinclude.h \
  ../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Interface.h \
  ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h \
  /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/boards/Host/Rhodes4/UWBT_PowerMode.h \
  ../../../libs/halimpl/inc/phTmlUwb_transport.h \
  ../../../libs/halimpl/inc/phTmlUwb.h \
@@ -93,12 +94,14 @@ boards/Host/Rhodes4/UWBT_PowerMode.o boards/Host/Rhodes4/UWBT_PowerMode.d: \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h \
  ../../../ext/freertos/include/portable.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h \
+ ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h \
  ../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Configuration.h \
  ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h \
  ../../../boards/Rhodes4_SPI/board.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Interface.h:
 ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:
 /Users/hongyilin/projects/location_intelligence_embedded_code/uwbiot-top/boards/Host/Rhodes4/UWBT_PowerMode.h:
 ../../../libs/halimpl/inc/phTmlUwb_transport.h:
 ../../../libs/halimpl/inc/phTmlUwb.h:
@@ -189,6 +192,7 @@ boards/Host/Rhodes4/UWBT_PowerMode.o boards/Host/Rhodes4/UWBT_PowerMode.d: \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c_freertos.h:
 ../../../ext/freertos/include/portable.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_i2c.h:
+../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_wtimer.h:
 ../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Configuration.h:
 ../../../ext/boards/qn9090/bluetooth/framework/TimersManager/interface/TimersManager.h:
 ../../../boards/Rhodes4_SPI/board.h:

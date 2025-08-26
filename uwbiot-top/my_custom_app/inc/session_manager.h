@@ -81,26 +81,11 @@ void SessionManager_UpdateSessionState(int sessionIndex, SessionState newState);
 void SessionManager_HandleRangingData(int sessionIndex, phRangingData_t* rangingData);
 void SessionManager_HandleSessionError(int sessionIndex, uint32_t errorCode);
 
-// Discovery management
-bool SessionManager_StartDiscovery(void);
-void SessionManager_StopDiscovery(void);
-bool SessionManager_IsDiscoveryActive(void);
-
-// Resource coordination
-bool SessionManager_AllocateResources(int sessionIndex);
-void SessionManager_ReleaseResources(int sessionIndex);
-
 // Task management
-void SessionManager_Task(void* args);
 void SessionManager_ProcessEvents(void);
-
-// Utility functions
-bool SessionManager_ValidateSessionIndex(int sessionIndex);
-const char* SessionManager_GetSessionTypeString(SessionType type);
-const char* SessionManager_GetSessionStateString(SessionState state);
 
 // Callback registration
 typedef void (*SessionEventCallback)(int sessionIndex, SessionState state, void* data);
 void SessionManager_RegisterCallback(SessionEventCallback callback);
 
-#endif // SESSION_MANAGER_H 
+#endif // SESSION_MANAGER_H

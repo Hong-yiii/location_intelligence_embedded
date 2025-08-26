@@ -6,6 +6,7 @@ ext/boards/qn9090/bluetooth/framework/RNG/source/RNG.o \
  ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h \
  ../../../ext/boards/qn9090/bluetooth/framework/FunctionLib/interface/FunctionLib.h \
  ../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib.h \
+ ../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h \
  ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h \
  ../../../ext/boards/qn9090/devices/QN9090/QN9090.h \
  ../../../ext/boards/qn9090/CMSIS/Include/core_cm4.h \
@@ -35,13 +36,13 @@ ext/boards/qn9090/bluetooth/framework/RNG/source/RNG.o \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h \
- ../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Interface.h \
  ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_rng.h
 ../../../boards/Host/Rhodes4/app_preinclude.h:
 ../../../ext/boards/qn9090/bluetooth/framework/RNG/interface/RNG_Interface.h:
 ../../../ext/boards/qn9090/bluetooth/framework/Common/EmbeddedTypes.h:
 ../../../ext/boards/qn9090/bluetooth/framework/FunctionLib/interface/FunctionLib.h:
 ../../../ext/boards/qn9090/bluetooth/framework/SecLib/interface/SecLib.h:
+../../../ext/boards/qn9090/bluetooth/framework/Logging/interface/dbg_logging.h:
 ../../../ext/boards/qn9090/devices/QN9090/fsl_device_registers.h:
 ../../../ext/boards/qn9090/devices/QN9090/QN9090.h:
 ../../../ext/boards/qn9090/CMSIS/Include/core_cm4.h:
@@ -71,5 +72,4 @@ ext/boards/qn9090/bluetooth/framework/RNG/source/RNG.o \
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_clock.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_common.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_reset.h:
-../../../ext/boards/qn9090/bluetooth/framework/LowPower/interface/PWR_Interface.h:
 ../../../ext/boards/qn9090/devices/QN9090/drivers/fsl_rng.h:

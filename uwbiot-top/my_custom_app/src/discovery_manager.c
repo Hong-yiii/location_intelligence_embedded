@@ -1,6 +1,7 @@
 #include "discovery_manager.h"
 #include "phOsalUwb.h"
 #include "UwbApi.h"
+#include "phNxpLogApis_App.h"
 
 // Discovery session ID and constants
 #define DISCOVERY_SESSION_ID 0xAABBCCDD
