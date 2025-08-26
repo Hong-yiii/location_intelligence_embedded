@@ -7,6 +7,7 @@
 #include "UwbApi.h"
 #include "AppInternal.h"
 #include "phOsalUwb.h"
+#include "my_app_config.h"
 
 // Application headers
 #include "session_manager.h"
@@ -162,6 +163,10 @@ static bool initializeApplication(void) {
     NXPLOG_APP_I("Initializing UWB stack...");
     
     // Initialize UWB stack
+#if UWB_BLD_CFG_FW_DNLD_DIRECTLY_FROM_HOST
+    appCtx.fwImageCtx.fwImage = (uint8_t *)&heliosEncryptedMainlineFwImage[0];
+    appCtx.fwImageCtx.fwImgSize = heliosEncryptedMainlineFwImageLen;
+#endif
     appCtx.fwImageCtx.fwMode = MAINLINE_FW;
     appCtx.pCallback = MultiSessionAppCallback;
     appCtx.pCdcCallback = NULL;
