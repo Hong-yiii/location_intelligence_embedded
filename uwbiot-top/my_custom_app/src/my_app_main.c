@@ -122,7 +122,7 @@ OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
     // Initialize additional hardware components (like demo does)
     RTOS_AppConfigureTimerForRuntimeStats();
 
-    // 2. Initialize TLV components (required for all communication)
+    // 2. Initialize TLV components FIRST (required for BLE communication)
     NXPLOG_APP_I("Initializing TLV components...");
     if (!tlvBuilderInit()) {
         NXPLOG_APP_E("Failed to initialize TLV builder");
@@ -135,7 +135,16 @@ OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
     }
     NXPLOG_APP_I("TLV components initialized successfully");
 
-    // 3. Initialize UWB stack
+    // 3. Initialize GATT database FIRST (required before BLE stack)
+    GattDb_Init();
+    NXPLOG_APP_I("GATT database initialized");
+
+    // 4. Initialize BLE stack and start advertising FIRST (CRITICAL)
+    BleApp_Init();
+    BleApp_Start();
+    NXPLOG_APP_I("BLE advertising started - ready for iPhone connection");
+
+    // 5. Initialize UWB stack AFTER BLE
     NXPLOG_APP_I("Initializing UWB stack...");
     phUwbappContext_t appCtx = {0};
     appCtx.pCallback = MultiSessionAppCallback;
@@ -149,7 +158,7 @@ OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
         goto exit_demo;
     }
 
-    // 4. Configure UWB parameters
+    // 6. Configure UWB parameters
     status = configureUwbParams();
     if (status != UWBAPI_STATUS_OK) {
         NXPLOG_APP_E("UWB configuration failed: 0x%02X", status);
@@ -158,21 +167,12 @@ OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
     gAppState.isInitialized = true;
     NXPLOG_APP_I("UWB stack initialized successfully");
 
-    // 5. Initialize application components
+    // 7. Initialize application components
     if (!initializeApplication()) {
         NXPLOG_APP_E("Failed to initialize application components");
         status = UWBAPI_STATUS_FAILED;
         goto exit_demo;
     }
-
-    // 6. Initialize GATT database (bootstrapped from demo)
-    GattDb_Init();
-    NXPLOG_APP_I("GATT database initialized");
-
-    // 7. Initialize BLE stack and start advertising
-    BleApp_Init();
-    BleApp_Start();
-    NXPLOG_APP_I("BLE advertising started - ready for iPhone connection");
 
     // 8. Start board discovery
     if (!BoardAdapter_StartDiscovery(MAX_BOARD_SESSIONS)) {
