@@ -2,6 +2,9 @@
 #include "phNxpLogApis_App.h"
 #include <string.h>
 
+// iPhone session constants (defined in session_manager.h)
+#define IPHONE_SESSION_SLOT 0  // iPhone always gets slot 0 (highest priority)
+
 // Global resource manager instance
 static ResourceManager gResourceManager = {0};
 

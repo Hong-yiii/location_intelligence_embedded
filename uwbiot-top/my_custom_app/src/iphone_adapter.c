@@ -1,6 +1,7 @@
 #include "iphone_adapter.h"
 #include "session_manager.h"
 #include "resource_manager.h"
+#include "ble_app.h"  // Includes tlv_manager.h for UWB_HIF_BLE
 #include "phNxpLogApis_App.h"
 #include "phOsalUwb.h"
 #include <string.h>
@@ -114,9 +115,13 @@ void iPhoneAdapter_StopAdvertising(void) {
     }
 }
 
-static bool createIPhoneSession(uint8_t* macAddr) {
+static bool createIPhoneSession(uint8_t deviceId) {
+    // For BLE connections, we don't have the actual MAC address yet
+    // Create a dummy MAC address based on deviceId for now
+    uint8_t dummyMacAddr[IPHONE_MAC_ADDR_LEN] = {0x00, 0x11, 0x22, 0x33, 0x44, 0x55, deviceId, 0xFF};
+
     // Create new session
-    int sessionIndex = SessionManager_CreateSession(DEVICE_TYPE_IPHONE, macAddr, IPHONE_MAC_ADDR_LEN);
+    int sessionIndex = SessionManager_CreateSession(DEVICE_TYPE_IPHONE, dummyMacAddr, IPHONE_MAC_ADDR_LEN);
     if (sessionIndex < 0) {
         NXPLOG_APP_E("Failed to create iPhone session");
         return false;
@@ -125,7 +130,7 @@ static bool createIPhoneSession(uint8_t* macAddr) {
     // Update session context
     gIPhoneSession.sessionIndex = sessionIndex;
     gIPhoneSession.sessionId = IPHONE_SESSION_ID_BASE + sessionIndex;
-    memcpy(gIPhoneSession.macAddr, macAddr, IPHONE_MAC_ADDR_LEN);
+    memcpy(gIPhoneSession.macAddr, dummyMacAddr, IPHONE_MAC_ADDR_LEN);
     gIPhoneSession.state = IPHONE_STATE_BLE_CONNECTED;
     gIPhoneSession.isConnected = true;
     gIPhoneSession.lastConnectAttempt = 0;
@@ -137,7 +142,7 @@ static bool createIPhoneSession(uint8_t* macAddr) {
     return true;
 }
 
-static void handleBLEConnection(uint8_t* macAddr) {
+static void handleBLEConnection(uint8_t deviceId) {
     if (gIPhoneSession.state != IPHONE_STATE_BLE_ADVERTISING) {
         NXPLOG_APP_W("Unexpected BLE connection in state %d", gIPhoneSession.state);
         return;
@@ -145,7 +150,7 @@ static void handleBLEConnection(uint8_t* macAddr) {
 
     // Create session if needed
     if (gIPhoneSession.sessionIndex < 0) {
-        if (!createIPhoneSession(macAddr)) {
+        if (!createIPhoneSession(deviceId)) {
             return;
         }
     }
@@ -226,7 +231,7 @@ void iPhoneAdapter_ProcessBLEEvents(void) {
         switch (event.type) {
         case BLE_EVENT_CONNECTED:
             NXPLOG_APP_I("iPhone BLE connected");
-            handleBLEConnection(event.data.macAddr);
+            handleBLEConnection(event.data.deviceId);
             break;
 
         case BLE_EVENT_DISCONNECTED:
@@ -236,11 +241,15 @@ void iPhoneAdapter_ProcessBLEEvents(void) {
 
         case BLE_EVENT_DATA_RECEIVED:
             // Process TLV messages
-            tlvRecv(event.data.deviceId, 0, event.data.data, event.data.length);
+            tlvRecv(event.data.deviceId, UWB_HIF_BLE, event.data.data, event.data.length);
+            break;
+
+        case BLE_EVENT_ADVERTISE_TIMEOUT:
+            NXPLOG_APP_I("BLE advertising timeout");
             break;
 
         case BLE_EVENT_ERROR:
-            NXPLOG_APP_E("BLE error: 0x%08X", event.error);
+            NXPLOG_APP_E("BLE error occurred");
             break;
         }
     }

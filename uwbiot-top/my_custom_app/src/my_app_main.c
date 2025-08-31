@@ -12,6 +12,10 @@
 #include "UWBIOT_APP_BUILD.h"
 #endif
 
+// Hardware includes (for additional initialization)
+#include "board.h"
+#include "TimersManager.h"
+
 // Application headers
 #include "session_manager.h"
 #include "resource_manager.h"
@@ -19,6 +23,7 @@
 #include "board_adapter.h"
 #include "discovery_manager.h"
 #include "ble_app.h"
+#include "gatt_database.h"
 
 // BLE includes (similar to demo)
 #include "FreeRTOS.h"
@@ -42,8 +47,24 @@ static AppState gAppState = {0};
 
 // Forward declarations
 static bool initializeApplication(void);
-static bool initializeUWBStack(void);
+static tUWBAPI_STATUS configureUwbParams(void);
 static void printApplicationStatus(void);
+
+// UWB configuration parameters
+static const uint8_t UWB_CHANNELS[] = {5, 9};  // iPhone preferred and alternate channels
+static const uint8_t TX_POWER[11] = {
+    0x02,  // Number of parameters
+    0x01,  // TX ID 1
+    0x00, 0x00, 0x00, 0x00,  // TX_POWER settings for ID 1
+    0x02,  // TX ID 2
+    0x00, 0x00, 0x00, 0x00   // TX_POWER settings for ID 2
+};
+static const uint8_t CLK_ACCURACY[7] = {
+    0x03,  // Number of parameters
+    0x00, 0x00,  // CAP1
+    0x00, 0x00,  // CAP2
+    0x00, 0x00   // GM CURRENT CONTROL
+};
 
 // Main application callback
 void MultiSessionAppCallback(eNotificationType opType, void *pData) {
@@ -90,49 +111,72 @@ void MultiSessionAppCallback(eNotificationType opType, void *pData) {
     }
 }
 
-// Main application task - parallel board ranging and iPhone discovery
+// Main application task - proper initialization sequence
 OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
     PRINT_APP_NAME("Multi-Session UWB Application");
     tUWBAPI_STATUS status = UWBAPI_STATUS_FAILED;
 
-    // Initialize UWB stack first for board ranging
+    // 1. Initialize hardware (following demo pattern)
+    hardware_init();
+
+    // Initialize additional hardware components (like demo does)
+    RTOS_AppConfigureTimerForRuntimeStats();
+
+    // 2. Initialize TLV components (required for all communication)
+    NXPLOG_APP_I("Initializing TLV components...");
+    if (!tlvBuilderInit()) {
+        NXPLOG_APP_E("Failed to initialize TLV builder");
+        goto exit_demo;
+    }
+
+    if (!tlvMngInit()) {
+        NXPLOG_APP_E("Failed to initialize TLV manager");
+        goto exit_demo;
+    }
+    NXPLOG_APP_I("TLV components initialized successfully");
+
+    // 3. Initialize UWB stack
     NXPLOG_APP_I("Initializing UWB stack...");
     status = UwbApi_Init(MultiSessionAppCallback);
     if (status != UWBAPI_STATUS_OK) {
         NXPLOG_APP_E("UwbApi_Init failed: 0x%02X", status);
         goto exit_demo;
     }
-    gAppState.isInitialized = true;
 
-    // Initialize core components
+    // 4. Configure UWB parameters
+    status = configureUwbParams();
+    if (status != UWBAPI_STATUS_OK) {
+        NXPLOG_APP_E("UWB configuration failed: 0x%02X", status);
+        goto exit_demo;
+    }
+    gAppState.isInitialized = true;
+    NXPLOG_APP_I("UWB stack initialized successfully");
+
+    // 5. Initialize application components
     if (!initializeApplication()) {
         NXPLOG_APP_E("Failed to initialize application components");
         status = UWBAPI_STATUS_FAILED;
         goto exit_demo;
     }
 
-    // Start board discovery immediately
+    // 6. Initialize GATT database (bootstrapped from demo)
+    GattDb_Init();
+    NXPLOG_APP_I("GATT database initialized");
+
+    // 7. Initialize BLE stack and start advertising
+    BleApp_Init();
+    BleApp_Start();
+    NXPLOG_APP_I("BLE advertising started - ready for iPhone connection");
+
+    // 8. Start board discovery
     if (!BoardAdapter_StartDiscovery(MAX_BOARD_SESSIONS)) {
-        NXPLOG_APP_E("Failed to start board discovery");
-        status = UWBAPI_STATUS_FAILED;
-        goto exit_demo;
+        NXPLOG_APP_W("Failed to start board discovery - continuing with iPhone-only mode");
     }
     
-    // Initialize iPhone-related components in parallel
-    if (!tlvBuilderInit()) {
-        NXPLOG_APP_W("Failed to initialize TLV builder - iPhone features disabled");
-    } else if (!tlvMngInit()) {
-        NXPLOG_APP_W("Failed to initialize TLV manager - iPhone features disabled");
-    } else {
-        // Initialize and start BLE stack for continuous iPhone discovery
-        BleApp_Init();
-        BleApp_Start();
-        NXPLOG_APP_I("BLE advertising started - ready for iPhone connection");
-    }
-    
-    NXPLOG_APP_I("Multi-session operation started:");
-    NXPLOG_APP_I("- UWB active and ranging with boards");
-    NXPLOG_APP_I("- BLE advertising for iPhone connection");
+    NXPLOG_APP_I("System initialization complete:");
+    NXPLOG_APP_I("- UWB stack ready for ranging");
+    NXPLOG_APP_I("- TLV components ready for iPhone communication");
+    NXPLOG_APP_I("- BLE advertising active for iPhone discovery");
     
     // Main application loop
     gAppState.isRunning = true;
@@ -149,7 +193,7 @@ OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
             
             // Restart advertising if needed
             if (!BleApp_IsAdvertising()) {
-                BleApp_StartAdvertising();
+                BleApp_Start();
             }
         }
         
@@ -217,6 +261,66 @@ static bool initializeApplication(void) {
 }
 
 
+
+static tUWBAPI_STATUS configureUwbParams(void) {
+    tUWBAPI_STATUS status = UWBAPI_STATUS_OK;
+    uint16_t bitmask;
+    phCalibPayload_t calib;
+
+    // Configure TX power for each channel
+    bitmask = (1<<1);  // TX_POWER_ID
+    uint8_t numChannels = sizeof(UWB_CHANNELS) / sizeof(UWB_CHANNELS[0]);
+    for (int i = 0; i < numChannels; i++) {
+        uint8_t channel = UWB_CHANNELS[i];
+        uint8_t txPower[sizeof(TX_POWER)];
+        memcpy(txPower, TX_POWER, sizeof(TX_POWER));
+
+        // Read calibration data
+        status = UwbApi_ReadOtpCalibDataCmd(channel, bitmask, &calib);
+        if (status != UWBAPI_STATUS_OK) {
+            NXPLOG_APP_E("Failed to read calibration data for channel %d", channel);
+            return status;
+        }
+
+        // Apply calibration
+        txPower[4] = calib.TX_POWER_ID[0] + (2.1-0.6+0.5)*4;
+        txPower[2] = calib.TX_POWER_ID[1];
+
+        // Set TX power
+        status = UwbApi_SetCalibration(channel, TX_POWER_PER_ANTENNA, txPower, sizeof(txPower));
+        if (status != UWBAPI_STATUS_OK) {
+            NXPLOG_APP_E("Failed to set TX power for channel %d", channel);
+            return status;
+        }
+    }
+
+    // Configure clock accuracy
+    bitmask = (1<<2);  // XTAL_CAP
+    uint8_t clkAccuracy[sizeof(CLK_ACCURACY)];
+    memcpy(clkAccuracy, CLK_ACCURACY, sizeof(CLK_ACCURACY));
+
+    // Read calibration data (channel 9 is dummy for XTAL_CAP)
+    status = UwbApi_ReadOtpCalibDataCmd(9, bitmask, &calib);
+    if (status != UWBAPI_STATUS_OK) {
+        NXPLOG_APP_E("Failed to read XTAL calibration data");
+        return status;
+    }
+
+    // Apply calibration
+    clkAccuracy[1] = calib.XTAL_CAP_VALUES[0];
+    clkAccuracy[3] = calib.XTAL_CAP_VALUES[1];
+    clkAccuracy[5] = calib.XTAL_CAP_VALUES[2];
+
+    // Set clock accuracy
+    status = UwbApi_SetCalibration(9, RF_CLK_ACCURACY_CALIB, clkAccuracy, sizeof(clkAccuracy));
+    if (status != UWBAPI_STATUS_OK) {
+        NXPLOG_APP_E("Failed to set clock accuracy");
+        return status;
+    }
+
+    NXPLOG_APP_I("UWB parameters configured successfully");
+    return status;
+}
 
 static void printApplicationStatus(void) {
     uint32_t currentTime;

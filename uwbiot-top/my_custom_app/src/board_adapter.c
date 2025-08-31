@@ -18,9 +18,6 @@ static BoardDiscoveryContext gBoardDiscovery = {0};
 static BoardEventCallback gBoardEventCallback = NULL;
 
 // Forward declarations of internal functions
-static void updateBoardState(int sessionIndex, BoardState newState);
-static void handleDiscoveryTimeout(void);
-static void cleanupBoardSession(int sessionIndex);
 
 bool BoardAdapter_Init(void) {
     if (gBoardDiscovery.isActive) {
@@ -212,54 +209,11 @@ void BoardAdapter_OnDiscoveryMatch(const uint8_t* peerMacAddr, bool isController
     }
 }
 
-// Callback for discovery manager (internal)
-static void onBoardDiscovered(uint16_t macAddr, BoardRole role) {
-    uint8_t macBytes[2];
-    macBytes[0] = (macAddr >> 8) & 0xFF;
-    macBytes[1] = macAddr & 0xFF;
-    
-    BoardAdapter_OnDiscoveryMatch(macBytes, role == BOARD_ROLE_CONTROLLER);
-}
+// Callback removed - unused function
 
-static void handleBoardSessionEvent(uint32_t sessionId, int eventType, void* pData) {
-    // Find the board session
-    for (int i = 0; i < MAX_BOARD_SESSIONS; i++) {
-        if (gBoardDiscovery.boards[i].sessionId == sessionId) {
-            switch (eventType) {
-                case UWB_EVENT_SESSION_STARTED:
-                    gBoardDiscovery.boards[i].state = BOARD_STATE_ACTIVE;
-                    NXPLOG_APP_I("Board session %d started", i);
-                    break;
-                case UWB_EVENT_SESSION_STOPPED:
-                    gBoardDiscovery.boards[i].state = BOARD_STATE_DISCOVERED;
-                    NXPLOG_APP_I("Board session %d stopped", i);
-                    break;
-                case UWB_EVENT_RANGING_DATA:
-                                         // Handle ranging data
-                     if (pData) {
-                         phRangingData_t* rangingData = (phRangingData_t*)pData;
-                         if (rangingData->no_of_measurements > 0) {
-                             gBoardDiscovery.boards[i].lastDistance = rangingData->ranging_meas.range_meas_twr[0].distance / 100.0f;
-                             phOsalUwb_GetTickCount((unsigned long*)&gBoardDiscovery.boards[i].lastRangingTime);
-                             NXPLOG_APP_I("Board %d ranging: %.2f meters", i, gBoardDiscovery.boards[i].lastDistance);
-                         }
-                     }
-                    break;
-            }
-            break;
-        }
-    }
-}
+// Function removed - unused
 
-static void initializeBoardSession(int sessionIndex, uint16_t macAddr, BoardRole role) {
-    BoardContext* board = &gBoardDiscovery.boards[sessionIndex];
-    
-    *(uint16_t*)board->macAddr = macAddr;
-    board->currentRole = role;
-    
-    // Set basic configuration for DS-TWR
-    // Note: Actual UWB configuration would be done through UWB API calls
-}
+// Function removed - unused
 
 // Utility functions
 const char* BoardAdapter_GetStateString(BoardState state) {

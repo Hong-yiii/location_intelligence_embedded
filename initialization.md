@@ -7,6 +7,32 @@ This guide details the initialization process for a multi-session UWB implementa
 2. iPhone Nearby Interaction
 3. Simultaneous operation of multiple sessions
 
+## ⚠️ Critical Bug Fixes
+
+### Array Size Calculation Bug (FIXED)
+**Issue**: `sizeof(UWB_CHANNELS)` returned bytes instead of element count
+**Impact**: Buffer overflow and undefined behavior during UWB parameter configuration
+**Fix**: Used `sizeof(UWB_CHANNELS)/sizeof(UWB_CHANNELS[0])`
+
+### BLE Implementation Bug (FIXED)
+**Issue**: `tlvSendRaw()` had placeholder implementation that didn't send data
+**Impact**: iPhone Nearby Interaction would fail completely
+**Fix**: Implemented proper BLE send using `Qpp_SendData()` with error handling
+
+### GATT Database Bootstrap (FIXED)
+**Issue**: Missing GATT database causing compilation errors
+**Impact**: BLE functionality completely broken, no services/characteristics defined
+**Fix**: Bootstrapped complete GATT database from demo_nearby_interaction using **direct symbol definitions in gatt_database.c** to resolve X-macro compilation order dependencies
+
+#### **Why X-Macros Are Problematic**
+X-macros are a powerful but fragile compile-time code generation technique:
+- **Compilation Order Sensitivity**: Symbols must be defined before X-macro expansion occurs
+- **Single Definition Rule**: Each symbol can only be defined once across the entire build
+- **Hidden Dependencies**: X-macros create implicit timing dependencies that aren't visible in the code
+- **Build System Interference**: MCUExpresso's auto-generated build files can disrupt the required sequence
+
+**The Fix**: Define GATT symbols directly in `gatt_database.c` BEFORE the X-macro includes to ensure proper compilation order.
+
 ## 🔧 Core Components Initialization
 
 ### 1. Task Configuration
@@ -58,15 +84,28 @@ if (status != UWBAPI_STATUS_OK) {
     return false;
 }
 
+// Configure UWB parameters (FIXED: proper array size calculation)
+status = configureUwbParams();
+if (status != UWBAPI_STATUS_OK) {
+    NXPLOG_APP_E("UWB configuration failed: 0x%02X", status);
+    return false;
+}
+
 // Initialize TLV builder for iPhone communication
 if (!tlvBuilderInit() || !tlvMngInit()) {
     NXPLOG_APP_E("Failed to initialize TLV components");
     return false;
 }
 
+// Initialize GATT database (FIXED: bootstrapped from demo)
+GattDb_Init();  // Initialize BLE GATT database with services and characteristics
+
 // Initialize BLE stack for continuous iPhone discovery
 BleApp_Init();
-BleApp_Start();  // Start advertising immediately
+BleApp_Start();  // Start advertising immediately (FIXED: proper BLE send implementation)
+
+// Start board discovery
+BoardAdapter_StartDiscovery(MAX_BOARD_SESSIONS);
 ```
 
 ### 3. Hardware Configuration

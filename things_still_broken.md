@@ -26,6 +26,59 @@
 - [x] Auto-reconnect support
 - [x] Error recovery mechanisms
 
+### 5. TLV Implementation Fixes
+- [x] Fixed MAX_SESSIONS definition (was missing)
+- [x] Fixed ResourceManager function calls (wrong API usage)
+- [x] Fixed UwbApi_ConfigureData_iOS signature (missing session handle)
+- [x] Added proper error handling and cleanup
+- [x] Added shareable_data_t structure definition
+- [x] Fixed BLE send function integration
+- [x] Corrected hardware initialization (don't modify middleware)
+
+### 6. Middleware Integrity
+- [x] Reverted unnecessary changes to hardware_init.c
+- [x] Moved additional initialization to application layer
+- [x] Follow demo patterns - don't modify middleware unless necessary
+
+### 9. GATT Database Bootstrap (FIXED)
+- [x] Bootstrapped complete GATT database from demo_nearby_interaction
+- [x] Adapted build guards for custom app (UWBIOT_APP_BUILD__MY_CUSTOM_APP)
+- [x] **X-MACRO FIX**: Moved GATT symbol definitions to gatt_database.c before X-macro includes
+- [x] Resolved X-macro compilation order dependencies
+- [x] Created proper app_config.h header file (removed GATT symbol externs)
+- [x] Updated device name to "NXP_SR150"
+- [x] Added GattDb_Init() call in proper initialization sequence
+- [x] **ROOT CAUSE**: X-macros require symbols to be defined before macro expansion
+
+#### **Why X-Macros Are a Recurring Problem**
+X-macros are a compile-time code generation technique that relies on:
+- **Precise compilation order**: Symbols must be defined before X-macro includes
+- **Single definition rule**: Each symbol can only be defined once
+- **Macro expansion timing**: Macros expand at specific points in compilation
+- **Build system dependencies**: MCUExpresso auto-generation can interfere with timing
+
+The recurring issues occur because:
+1. **Timing sensitivity**: Small changes can break the compilation sequence
+2. **Hidden dependencies**: X-macros create implicit dependencies that aren't obvious
+3. **Build system interaction**: IDE auto-generation can disrupt the required order
+4. **Symbol conflicts**: Multiple definitions from different sources cause linker errors
+
+### 7. Critical Bug Fixes (Priority 1)
+- [x] **FIXED**: Array size calculation bug in `configureUwbParams()`
+  - **Issue**: `sizeof(UWB_CHANNELS)` returned bytes (6) instead of elements (2)
+  - **Fix**: Used `sizeof(UWB_CHANNELS)/sizeof(UWB_CHANNELS[0])`
+  - **Impact**: Prevented buffer overflow and undefined behavior
+- [x] **FIXED**: Incomplete BLE implementation in `tlvSendRaw()`
+  - **Issue**: Placeholder function that didn't send data
+  - **Fix**: Implemented proper BLE send using `Qpp_SendData()`
+  - **Impact**: iPhone Nearby Interaction now functional
+
+### 8. BLE Integration (Priority 2)
+- [ ] Add proper iPhone TLV message handling
+- [ ] Implement session state synchronization
+- [ ] Add BLE error recovery mechanisms
+- [ ] Test BLE reconnection logic
+
 ## 🔄 In Progress
 
 ### 1. Error Recovery

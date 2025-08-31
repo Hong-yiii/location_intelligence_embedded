@@ -12,13 +12,8 @@ static SessionEventCallback gSessionCallback = NULL;
 static uint32_t generateSessionId(DeviceType deviceType, int sessionIndex);
 static bool SessionManager_ValidateSessionIndex(int sessionIndex);
 static const char* SessionManager_GetSessionTypeString(SessionType type);
-static const char* SessionManager_GetSessionStateString(SessionState state);
 static bool SessionManager_AllocateResources(int sessionIndex);
 static void SessionManager_ReleaseResources(int sessionIndex);
-// Forward declarations of static functions
-static uint32_t generateSessionId(DeviceType deviceType, int sessionIndex);
-static const char* SessionManager_GetSessionTypeString(SessionType type);
-static const char* SessionManager_GetSessionStateString(SessionState state);
 
 // Session ID generation
 static uint32_t generateSessionId(DeviceType deviceType, int sessionIndex) {
@@ -47,7 +42,7 @@ bool SessionManager_Init(void) {
         gSessionManager.sessions[i].lastDistance = 0.0f;
         
         NXPLOG_APP_I("  Slot %d: Reserved=%s", i, 
-                     i == IPHONE_SESSION_RESERVED_SLOT ? "iPhone" : "Board");
+                     i == IPHONE_SESSION_SLOT ? "iPhone" : "Board");
     
     }
     
@@ -452,17 +447,7 @@ static const char* SessionManager_GetSessionTypeString(SessionType type) {
     }
 }
 
-static const char* SessionManager_GetSessionStateString(SessionState state) {
-    switch (state) {
-    case SESSION_STATE_IDLE: return "Idle";
-    case SESSION_STATE_DISCOVERING: return "Discovering";
-    case SESSION_STATE_INITIALIZING: return "Initializing";
-    case SESSION_STATE_ACTIVE: return "Active";
-    case SESSION_STATE_ERROR: return "Error";
-    case SESSION_STATE_TERMINATED: return "Terminated";
-    default: return "Unknown";
-    }
-}
+
 
 void SessionManager_RegisterCallback(SessionEventCallback callback) {
     gSessionCallback = callback;

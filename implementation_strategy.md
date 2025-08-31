@@ -153,6 +153,17 @@ typedef struct {
    - Will force other sessions to move if needed
    - Board sessions cannot use iPhone's preferred channel
    - Channel 9 as iPhone fallback
+
+   // TLV Configuration
+   - TLV Builder initialized before UWB stack
+   - TLV Manager task for message processing
+   - Proper error handling and cleanup
+   - BLE send/receive integration
+
+   // Hardware Initialization
+   - Use standard hardware_init() without modification
+   - Add additional hardware setup in application code
+   - Follow demo patterns - don't modify middleware
    ```
 
 4. **Session Context**

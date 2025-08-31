@@ -4,6 +4,9 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+// Include tlv_manager.h to get UWB_Hif_t definition
+#include "tlv_manager.h"
+
 // BLE stack return codes
 #define BLE_SUCCESS 0
 #define BLE_ERROR_NOT_INITIALIZED 1
@@ -39,6 +42,7 @@ int BLE_StartAdvertising(uint8_t *data, uint16_t length, uint32_t interval);
 int BLE_StopAdvertising(void);
 int BLE_GetNextEvent(BLE_Event_t *event);
 int BLE_QueueEvent(BLE_Event_t *event);
+int BLE_SendData(uint8_t deviceId, uint8_t *data, uint16_t length);
 
 // BLE application initialization and management
 void BleApp_Init(void);
@@ -53,7 +57,7 @@ void BleApp_GenericCallback(void *pGenericEvent);
 bool tlvBuilderInit(void);
 bool tlvMngInit(void);
 bool tlvSendRaw(uint8_t deviceId, uint8_t *data, uint16_t length);
-void tlvRecv(uint8_t deviceId, uint8_t hif, uint8_t *data, uint16_t length);
+void tlvRecv(uint8_t deviceId, UWB_Hif_t interface, uint8_t *tlv, uint8_t tlvSize);
 
 // Device initialization (similar to demo)
 bool handleDeviceInit(void);
