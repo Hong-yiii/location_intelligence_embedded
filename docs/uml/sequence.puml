@@ -19,11 +19,37 @@ participant "BLE Stack" as BLE
 
 ' System Initialization
 group System Initialization
+    MT -> HW: hardware_init()
+    activate HW
+    HW --> MT: Hardware Ready
+    deactivate HW
+
+    note right: Standard hardware init (no middleware modification)
+
+    MT -> HW: BOARD_InitClocks()
+    MT -> HW: RTOS_AppConfigureTimerForRuntimeStats()
+    note right: Additional hardware setup in application (demo pattern)
+
+    MT -> TLV: tlvBuilderInit()
+    activate TLV
+    TLV --> MT: TLV Builder Ready
+    deactivate TLV
+
+    MT -> TLV: tlvMngInit()
+    activate TLV
+    TLV --> MT: TLV Manager Ready
+    deactivate TLV
+
     MT -> UWB: UwbApi_Init(MultiSessionAppCallback)
     activate UWB
     UWB --> MT: UWB Stack Ready
     deactivate UWB
-    
+
+    MT -> UWB: configureUwbParams()
+    activate UWB
+    UWB --> MT: UWB Parameters Configured
+    deactivate UWB
+
     MT -> SM: SessionManager_Init()
     activate SM
     SM -> RM: ResourceManager_Init()
@@ -32,9 +58,11 @@ group System Initialization
     deactivate RM
     SM --> MT: Session Manager Ready
     deactivate SM
-    
+
     MT -> BLE: BleApp_Init()
     BLE --> MT: BLE Ready
+    MT -> BLE: BleApp_Start()
+    note right: Start continuous advertising
 end
 
 ' iPhone Connection

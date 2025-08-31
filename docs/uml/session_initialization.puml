@@ -1,4 +1,4 @@
-@startuml "UWB Session Initialization"
+@startuml "Current UWB Session Initialization"
 
 ' Style and theme
 !theme plain
@@ -7,69 +7,160 @@ skinparam monochrome true
 skinparam shadowing false
 
 ' Participants
-participant "Application" as App
+participant "Main Task" as MT
 participant "UWB API" as API
 participant "Session Manager" as SM
+participant "Resource Manager" as RM
 participant "UWB Core" as Core
 participant "Hardware" as HW
 
-' Initialize UWB Stack
+' Initialize System
+group Hardware Initialization
+    MT -> HW: hardware_init()
+    activate HW
+    HW -> HW: BOARD_common_hw_init()
+    HW -> HW: GPIOExtenderInit()
+    HW --> MT: Hardware Ready
+    deactivate HW
+
+    MT -> HW: BOARD_InitClocks()
+    MT -> HW: RTOS_AppConfigureTimerForRuntimeStats()
+    note right of MT
+        Additional hardware initialization
+        (following demo pattern - not modifying middleware)
+    end note
+end
+
+group TLV Component Initialization
+    MT -> TLV: tlvBuilderInit()
+    activate TLV
+    TLV -> TLV: Create semaphore for send/receive
+    TLV --> MT: TLV Builder Ready
+    deactivate TLV
+
+    MT -> TLV: tlvMngInit()
+    activate TLV
+    TLV -> TLV: Create message queue
+    TLV -> TLV: Create mutex
+    TLV -> TLV: Create TLV manager task
+    TLV --> MT: TLV Manager Ready
+    deactivate TLV
+end
+
 group UWB Stack Initialization
-    App -> API: UwbApi_Init_New()
+    MT -> API: UwbApi_Init(MultiSessionAppCallback)
     activate API
     API -> Core: Initialize Core
     Core -> HW: Configure Hardware
     HW --> Core: Hardware Ready
     Core --> API: Core Initialized
-    API --> App: Stack Ready
+    API --> MT: Stack Ready
     deactivate API
+
+    MT -> API: configureUwbParams()
+    activate API
+    API -> API: Set TX power for channels 5 & 9
+    API -> API: Configure clock accuracy
+    API -> API: Read calibration data
+    API --> MT: UWB Parameters Ready
+    deactivate API
+
+    note right of MT
+        Initialization sequence:
+        1. Hardware setup
+        2. TLV components
+        3. UWB stack
+        4. Parameter configuration
+        5. Application managers
+    end note
+end
+
+' Initialize Managers
+group Manager Initialization
+    MT -> SM: SessionManager_Init()
+    activate SM
+    SM -> RM: ResourceManager_Init()
+    activate RM
+    RM -> RM: Initialize Data Structures
+    RM --> SM: Resources Ready
+    deactivate RM
+    SM --> MT: Session Manager Ready
+    deactivate SM
+end
+
+' Session Creation
+group Dynamic Session Creation
+    MT -> SM: SessionManager_CreateSession(deviceType)
+    activate SM
+    SM -> SM: Find Available Slot
+    SM -> SM: Generate Session ID
+    SM -> RM: Check Resource Availability
+    activate RM
+    RM --> SM: Resources Available
+    deactivate RM
+    SM --> MT: Session Index
+    deactivate SM
 end
 
 ' Session Initialization
-group Session Creation
-    App -> API: UwbApi_SessionInit(sessionId, type)
-    activate API
-    API -> SM: Create Session
+group Session Initialization
+    MT -> SM: SessionManager_StartSession(index)
     activate SM
-    SM -> Core: Allocate Session Resources
-    Core --> SM: Resources Allocated
-    SM -> SM: Initialize Session State
-    SM --> API: Session Handle
-    API --> App: Session Handle
-    deactivate API
-    deactivate SM
-end
-
-' Configure Session
-group Session Configuration
-    App -> API: UwbApi_SetRangingParams()
-    activate API
-    API -> SM: Configure Session
-    activate SM
-    SM -> Core: Set Parameters
+    SM -> API: UwbApi_SessionInit()
+    API -> Core: Create Session
+    Core --> API: Session Handle
+    API --> SM: Session Handle
+    
+    SM -> RM: ResourceManager_AllocateChannel()
+    activate RM
+    RM -> RM: Check Channel Conflicts
+    RM --> SM: Channel Assigned
+    deactivate RM
+    
+    SM -> RM: ResourceManager_AllocateTimeSlot()
+    activate RM
+    RM -> RM: Schedule Time Slot
+    RM --> SM: Time Slot Assigned
+    deactivate RM
+    
+    SM -> API: UwbApi_SetRangingParams()
+    API -> Core: Configure Session
     Core -> HW: Apply Configuration
     HW --> Core: Configuration Applied
-    Core --> SM: Parameters Set
-    SM --> API: Configuration Complete
-    API --> App: Status OK
-    deactivate API
-    deactivate SM
-end
-
-' Start Session
-group Session Start
-    App -> API: UwbApi_StartRangingSession()
-    activate API
-    API -> SM: Start Session
-    activate SM
-    SM -> Core: Initialize Hardware
+    Core --> API: Parameters Set
+    API --> SM: Configuration Complete
+    
+    SM -> API: UwbApi_StartRangingSession()
+    API -> Core: Start Session
     Core -> HW: Start UWB Engine
     HW --> Core: Engine Started
-    Core --> SM: Session Active
-    SM --> API: Session Started
-    API --> App: Status OK
-    deactivate API
+    Core --> API: Session Active
+    API --> SM: Session Started
+    
+    SM --> MT: Session Ready
     deactivate SM
 end
 
-@enduml 
+' Error Recovery
+group Error Recovery
+    Core -> MT: Error Notification
+    MT -> SM: HandleSessionError()
+    activate SM
+    SM -> RM: Release Resources
+    SM -> API: Stop Session
+    
+    alt Recovery Possible
+        SM -> API: Reset Session
+        API -> Core: Reset Hardware
+        Core --> API: Hardware Reset
+        API --> SM: Session Reset
+        SM -> RM: Reallocate Resources
+        RM --> SM: Resources Reallocated
+    else Recovery Failed
+        SM -> MT: Session Terminated
+        MT -> SM: Cleanup Session
+    end
+    deactivate SM
+end
+
+@enduml

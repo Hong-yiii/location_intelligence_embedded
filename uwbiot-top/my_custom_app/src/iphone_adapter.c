@@ -225,34 +225,14 @@ void iPhoneAdapter_ProcessBLEEvents(void) {
     uint32_t currentTime;
     phOsalUwb_GetTickCount((unsigned long*)&currentTime);
 
-    // Process BLE events
-    BLE_Event_t event;
-    while (BLE_GetNextEvent(&event) == BLE_SUCCESS) {
-        switch (event.type) {
-        case BLE_EVENT_CONNECTED:
-            NXPLOG_APP_I("iPhone BLE connected");
-            handleBLEConnection(event.data.deviceId);
-            break;
-
-        case BLE_EVENT_DISCONNECTED:
-            NXPLOG_APP_I("iPhone BLE disconnected");
-            handleBLEDisconnection();
-            break;
-
-        case BLE_EVENT_DATA_RECEIVED:
-            // Process TLV messages
-            tlvRecv(event.data.deviceId, UWB_HIF_BLE, event.data.data, event.data.length);
-            break;
-
-        case BLE_EVENT_ADVERTISE_TIMEOUT:
-            NXPLOG_APP_I("BLE advertising timeout");
-            break;
-
-        case BLE_EVENT_ERROR:
-            NXPLOG_APP_E("BLE error occurred");
-            break;
-        }
-    }
+    // BLE events are handled through callbacks in ble_app.c
+    // No need to poll for events - they're delivered via BleApp_ConnectionCallback
+    // and BleApp_GattServerCallback in the BLE stack
+    //
+    // The actual event handling is done in:
+    // - BleApp_ConnectionCallback() for connection/disconnection events
+    // - BleApp_GattServerCallback() for data received events
+    // - BleApp_AdvertisingCallback() for advertising events
 
     // State machine processing
     switch (gIPhoneSession.state) {

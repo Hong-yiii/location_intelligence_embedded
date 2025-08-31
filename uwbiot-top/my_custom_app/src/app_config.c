@@ -13,7 +13,7 @@
 *
 * SPDX-License-Identifier: BSD-3-Clause
 ********************************************************************************** */
-#ifdef UWBIOT_APP_BUILD__MY_CUSTOM_APP
+#if defined(UWBIOT_APP_BUILD__MY_CUSTOM_APP) || defined(UWBIOT_APP_BUILD__DEMO_NEARBY_INTERACTION)
 /************************************************************************************
 *************************************************************************************
 * Include
@@ -126,4 +126,4 @@ gapDeviceSecurityRequirements_t deviceSecurityRequirements = {.pMasterSecurityRe
     .cNumServices                                                                          = 3,
     .aServiceSecurityRequirements                                                          = (void *)serviceSecurity};
 
-#endif /* UWBIOT_APP_BUILD__MY_CUSTOM_APP */
+#endif /* UWBIOT_APP_BUILD__MY_CUSTOM_APP || UWBIOT_APP_BUILD__DEMO_NEARBY_INTERACTION */

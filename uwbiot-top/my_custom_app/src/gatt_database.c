@@ -50,12 +50,10 @@
 
 /************************************************************************************
 *************************************************************************************
-* GATT Database Symbol Definitions - Required by X-macros
-* These must be defined BEFORE the X-macro includes
+* GATT Database Configuration
+* UUID arrays defined here for proper compilation
 *************************************************************************************
 ************************************************************************************/
-// GATT characteristic properties
-uint8_t char_qpps_rx_prop = 0x08; // gGattCharPropWrite_c equivalent
 
 // UUID definitions - must match gatt_uuid128_uwb_ble.h
 uint8_t uuid_service_qpps[16] = {0x9E, 0xCA, 0xDC, 0x24, 0x0E, 0xE5, 0xA9, 0xE0, 0x93, 0xF3, 0xA3, 0xB5, 0x01, 0x00, 0x40, 0x6E};
@@ -63,6 +61,9 @@ uint8_t uuid_qpps_characteristics_rx[16] = {0x9E, 0xCA, 0xDC, 0x24, 0x0E, 0xE5, 
 uint8_t uuid_qpps_characteristics_tx[16] = {0x9E, 0xCA, 0xDC, 0x24, 0x0E, 0xE5, 0xA9, 0xE0, 0x93, 0xF3, 0xA3, 0xB5, 0x03, 0x00, 0x40, 0x6E};
 uint8_t uuid_service_nearby[16] = {0xba, 0x2d, 0x9c, 0x68, 0x73, 0x30, 0x33, 0x86, 0xb2, 0x4b, 0x17, 0x08, 0x40, 0x3e, 0xfe, 0x48};
 uint8_t uuid_nearby_AccessoryData[16] = {0x28, 0x33, 0xf5, 0x75, 0x73, 0x80, 0x4e, 0x9a, 0x21, 0x47, 0xef, 0xd8, 0xd5, 0xd9, 0xe8, 0x95};
+
+// GATT characteristic properties
+uint8_t char_qpps_rx_prop = 0x08; // gGattCharPropWrite_c equivalent
 
 #if !defined(SOTA_BLOB_BLE_HOST)
 #include "board.h"

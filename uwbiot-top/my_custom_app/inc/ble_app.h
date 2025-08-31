@@ -7,42 +7,25 @@
 // Include tlv_manager.h to get UWB_Hif_t definition
 #include "tlv_manager.h"
 
-// BLE stack return codes
-#define BLE_SUCCESS 0
-#define BLE_ERROR_NOT_INITIALIZED 1
-#define BLE_ERROR_ALREADY_INITIALIZED 2
-#define BLE_ERROR_INVALID_PARAM 3
-#define BLE_ERROR_BUSY 4
+// BLE stack includes and types
+#include "ble_general.h"
 
-// BLE event types
-typedef enum {
-    BLE_EVENT_CONNECTED,
-    BLE_EVENT_DISCONNECTED,
-    BLE_EVENT_ADVERTISE_TIMEOUT,
-    BLE_EVENT_DATA_RECEIVED,
-    BLE_EVENT_ERROR
-} BleEventType;
+// Use the proper BLE stack types (already defined in ble_general.h)
+// gapGenericEvent_t is already defined in the BLE stack
 
-// BLE event structure
-typedef struct {
-    BleEventType type;
-    union {
-        struct {
-            uint8_t deviceId;
-            uint8_t *data;
-            uint16_t length;
-        } data;
-        uint32_t error;
-    };
-} BLE_Event_t;
+// BLE constants for compatibility
+#ifndef BLE_SUCCESS
+#define BLE_SUCCESS gBleSuccess_c
+#endif
 
-// BLE stack functions (implemented by platform)
-int BLE_Init(void);
-int BLE_StartAdvertising(uint8_t *data, uint16_t length, uint32_t interval);
-int BLE_StopAdvertising(void);
-int BLE_GetNextEvent(BLE_Event_t *event);
-int BLE_QueueEvent(BLE_Event_t *event);
-int BLE_SendData(uint8_t deviceId, uint8_t *data, uint16_t length);
+#ifndef BLE_ERROR_NOT_INITIALIZED
+#define BLE_ERROR_NOT_INITIALIZED gBleUnavailable_c
+#endif
+
+// BLE configuration variables are defined in ble_app.c with fallbacks
+
+// GATT database initialization
+bleResult_t GattDb_Init(void);
 
 // BLE application initialization and management
 void BleApp_Init(void);
@@ -51,7 +34,7 @@ void BleApp_Stop(void);
 void BleApp_ProcessEvents(void);
 bool BleApp_IsInitialized(void);
 bool BleApp_IsAdvertising(void);
-void BleApp_GenericCallback(void *pGenericEvent);
+void BleApp_GenericCallback(gapGenericEvent_t *pGenericEvent);
 
 // TLV management (similar to demo)
 bool tlvBuilderInit(void);

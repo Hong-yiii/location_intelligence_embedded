@@ -111,6 +111,12 @@
 /* Enable/Disable FSCI Low Power Commands*/
 #define gFSCI_IncludeLpmCommands_c 0
 
+/*! *********************************************************************************
+ *  UWB Transport Layer Configuration
+ ********************************************************************************** */
+/* HBCI Header Size Definition for UWB transport layer communication */
+#define HBCI_HEADER_SIZE 4
+
 /*! ADV interval in Slots : 1600 matches to 1s  */
 #define gAppAdvertisingInterval 1600
 

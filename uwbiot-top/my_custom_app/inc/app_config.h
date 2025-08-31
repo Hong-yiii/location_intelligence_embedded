@@ -16,7 +16,9 @@
 ************************************************************************************/
 // Note: GATT symbols are defined in gatt_database.c to avoid X-macro conflicts
 extern gapAdvertisingParameters_t gAdvParams;
-extern uint8_t localName[16];
+extern gapAdvertisingData_t gAppAdvertisingData;
+extern gapScanResponseData_t gAppScanRspData;
+extern uint8_t localName[24];  // Match LOCAL_NAME_SIZE in app_config.c
 
 /************************************************************************************
 *************************************************************************************

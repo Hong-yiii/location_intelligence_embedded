@@ -137,9 +137,15 @@ OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
 
     // 3. Initialize UWB stack
     NXPLOG_APP_I("Initializing UWB stack...");
-    status = UwbApi_Init(MultiSessionAppCallback);
+    phUwbappContext_t appCtx = {0};
+    appCtx.pCallback = MultiSessionAppCallback;
+    appCtx.pCdcCallback = NULL;
+    appCtx.pMcttCallback = NULL;
+    appCtx.seHandle = NULL;
+
+    status = UwbApi_Init_New(&appCtx);
     if (status != UWBAPI_STATUS_OK) {
-        NXPLOG_APP_E("UwbApi_Init failed: 0x%02X", status);
+        NXPLOG_APP_E("UwbApi_Init_New failed: 0x%02X", status);
         goto exit_demo;
     }
 
