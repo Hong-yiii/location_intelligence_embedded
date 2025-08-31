@@ -8,7 +8,7 @@
 // Maximum sessions supported (1 iPhone + 4 boards)
 #define MAX_SESSIONS 5
 #define MAX_BOARD_SESSIONS 4
-#define IPHONE_SESSION_RESERVED_SLOT 0
+#define IPHONE_SESSION_SLOT 0  // iPhone always gets slot 0 (highest priority)
 
 // Session types
 typedef enum {

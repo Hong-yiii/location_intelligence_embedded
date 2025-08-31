@@ -82,19 +82,50 @@ uint8_t ResourceManager_AllocateChannel(int sessionIndex, uint32_t sessionId, bo
     
     uint8_t selectedChannel = 0;
     
-    if (preferredForIPhone) {
-        // iPhone prefers channel 5, then 9
+    if (sessionIndex == IPHONE_SESSION_SLOT) {
+        // iPhone must get its preferred channel
         if (ResourceManager_IsChannelAvailable(IPHONE_PREFERRED_CHANNEL)) {
             selectedChannel = IPHONE_PREFERRED_CHANNEL;
-        } else if (ResourceManager_IsChannelAvailable(UWB_CHANNEL_9)) {
-            selectedChannel = UWB_CHANNEL_9;
+        } else {
+            // If preferred channel is in use, force reallocation
+            for (int i = 0; i < MAX_CHANNELS; i++) {
+                if (gResourceManager.channels[i].channel == IPHONE_PREFERRED_CHANNEL) {
+                    // Move the current user to another channel
+                    int otherSession = gResourceManager.channels[i].sessionIndex;
+                    NXPLOG_APP_I("Moving session %d from iPhone preferred channel", otherSession);
+                    
+                    // Find another channel for the displaced session
+                    for (int j = 0; j < MAX_CHANNELS; j++) {
+                        if (!gResourceManager.channels[j].inUse && 
+                            gResourceManager.channels[j].channel != IPHONE_PREFERRED_CHANNEL) {
+                            // Move the session
+                            gResourceManager.channels[j].inUse = true;
+                            gResourceManager.channels[j].sessionIndex = otherSession;
+                            gResourceManager.channels[j].sessionId = gResourceManager.channels[i].sessionId;
+                            
+                            // Free up the preferred channel
+                            gResourceManager.channels[i].inUse = false;
+                            gResourceManager.channels[i].sessionIndex = -1;
+                            gResourceManager.channels[i].sessionId = 0;
+                            
+                            selectedChannel = IPHONE_PREFERRED_CHANNEL;
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+            
+            // If still no channel, try alternate iPhone channel
+            if (selectedChannel == 0 && ResourceManager_IsChannelAvailable(UWB_CHANNEL_9)) {
+                selectedChannel = UWB_CHANNEL_9;
+            }
         }
-    }
-    
-    // If no preferred channel available, find any available channel
-    if (selectedChannel == 0) {
+    } else {
+        // Board sessions get remaining channels
         for (int i = 0; i < MAX_CHANNELS; i++) {
-            if (!gResourceManager.channels[i].inUse) {
+            if (!gResourceManager.channels[i].inUse && 
+                gResourceManager.channels[i].channel != IPHONE_PREFERRED_CHANNEL) {
                 selectedChannel = gResourceManager.channels[i].channel;
                 break;
             }

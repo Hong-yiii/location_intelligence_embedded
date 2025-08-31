@@ -9,40 +9,64 @@ This guide details the initialization process for a multi-session UWB implementa
 
 ## 🔧 Core Components Initialization
 
-### 1. Task Creation and Management
+### 1. Task Configuration
 ```c
-// Task parameters for each session type
-#define TASK_STACK_SIZE 400
-#define TASK_PRIORITY 4
+// Main task configuration
+#define MULTI_SESSION_TASK_SIZE 4096  // Increased for multi-session operations
+#define MULTI_SESSION_TASK_NAME "MultiSessionUWB"
+#define MULTI_SESSION_TASK_PRIO 4
 
+// BLE advertising task (continuous iPhone discovery)
+#define BLE_ADV_TASK_SIZE 400
+#define BLE_ADV_TASK_NAME "BleAdv"
+#define BLE_ADV_TASK_PRIO 3
+#define BLE_ADV_INTERVAL 100  // 100ms advertising interval
+#define BLE_ADV_TIMEOUT 30000 // 30s timeout before retry
+
+// Task parameters
 typedef struct {
+    phOsalUwb_ThreadCreationParams_t threadParams;
     UWBOSAL_TASK_HANDLE taskHandle;
-    char* taskName;
-    uint32_t stackSize;
-    uint8_t priority;
-    void* context;
-} TaskConfig;
-
-// Initialize different tasks for different session types
-TaskConfig taskConfigs[] = {
-    { NULL, "BoardRanging", TASK_STACK_SIZE, TASK_PRIORITY, NULL },
-    { NULL, "NearbyInt", TASK_STACK_SIZE, TASK_PRIORITY, NULL },
-};
+    bool isRunning;
+} TaskContext;
 ```
 
-### 2. UWB Context Initialization
+### 2. Session Configuration
 ```c
-phUwbappContext_t appCtx = {0};
+// Session slots
+#define MAX_SESSIONS 5
+#define MAX_BOARD_SESSIONS 4
+#define IPHONE_SESSION_SLOT 0  // Fixed iPhone slot
 
-// Set firmware mode and callbacks
-appCtx.fwImageCtx.fwMode = MAINLINE_FW;
-appCtx.pCallback = AppCallback;         // Main ranging callback
-appCtx.pCdcCallback = NULL;            // CDC mode callback (if needed)
-appCtx.pMcttCallback = NULL;           // MCTT mode callback (if needed)
-appCtx.seHandle = NULL;                // Secure element handle
+// Session priorities
+typedef enum {
+    SESSION_PRIORITY_HIGH = 0,  // iPhone session
+    SESSION_PRIORITY_NORMAL,    // Board sessions
+} SessionPriority;
 
-// Initialize UWB stack
-status = UwbApi_Init_New(&appCtx);
+// Channel configuration
+#define IPHONE_PREFERRED_CHANNEL 5  // Primary iPhone channel
+#define IPHONE_ALTERNATE_CHANNEL 9  // Fallback iPhone channel
+```
+
+### 3. UWB Stack Initialization
+```c
+// Initialize UWB stack with callback
+status = UwbApi_Init(MultiSessionAppCallback);
+if (status != UWBAPI_STATUS_OK) {
+    NXPLOG_APP_E("UwbApi_Init failed: 0x%02X", status);
+    return false;
+}
+
+// Initialize TLV builder for iPhone communication
+if (!tlvBuilderInit() || !tlvMngInit()) {
+    NXPLOG_APP_E("Failed to initialize TLV components");
+    return false;
+}
+
+// Initialize BLE stack for continuous iPhone discovery
+BleApp_Init();
+BleApp_Start();  // Start advertising immediately
 ```
 
 ### 3. Hardware Configuration

@@ -120,46 +120,71 @@ typedef struct {
 
 ### 4. Session Management Strategy
 
-1. **Session Allocation**
+1. **Session Types and Priority**
    ```c
    typedef enum {
-       SESSION_TYPE_DS_TWR = 0,      // Single bidirectional session
-       SESSION_TYPE_CONTROLLER = 1,   // Separate controller session
-       SESSION_TYPE_CONTROLEE = 2,    // Separate controlee session
-       SESSION_TYPE_IPHONE_NI = 3     // iPhone Nearby Interaction
+       SESSION_TYPE_NONE = 0,
+       SESSION_TYPE_IPHONE_NI,      // iPhone Nearby Interaction (Highest Priority)
+       SESSION_TYPE_BOARD_DS_TWR    // Board-to-board DS-TWR
    } SessionType;
    ```
 
-2. **Session Priority Management**
-   - Out of the 5 sessions, 1 will always be reserved for the iPhone NI session (refer to the Sample code on how this is implemented) 
-   - Medium Priority: DS-TWR sessions
+2. **Fixed Session Allocation**
+   ```c
+   #define MAX_SESSIONS 5
+   #define MAX_BOARD_SESSIONS 4
+   #define IPHONE_SESSION_SLOT 0  // iPhone always gets slot 0 (highest priority)
+   ```
 
 3. **Resource Allocation Strategy**
    ```c
+   // Session Manager Structure
    typedef struct {
+       SessionContext sessions[MAX_SESSIONS];
+       uint8_t activeSessions;
        uint8_t totalSessions;
-       uint8_t availableSessions;
-       SessionType sessionTypes[MAXIMUM_SESSION_COUNT];
-       uint8_t channelAssignment[MAXIMUM_SESSION_COUNT];
-       bool isActive[MAXIMUM_SESSION_COUNT];
+       bool isInitialized;
+       UWBOSAL_TASK_HANDLE managerTaskHandle;
+       void* rangingMutex;
    } SessionManager;
+
+   // Channel Allocation Rules
+   - iPhone gets priority for Channel 5
+   - Will force other sessions to move if needed
+   - Board sessions cannot use iPhone's preferred channel
+   - Channel 9 as iPhone fallback
    ```
 
-4. **Session Creation Rules**
-   - Reserve one slot for iPhone NI
-   - Prefer DS-TWR for board-to-board when possible
-   - Max 5 sessions
-
-5. **Dynamic Session Management**
+4. **Session Context**
    ```c
    typedef struct {
        uint32_t sessionId;
+       uint32_t sessionHandle;
        SessionType type;
+       SessionState state;
+       DeviceType deviceType;
+       uint8_t macAddr[8];
+       uint8_t macAddrLen;
        uint8_t channel;
-       uint16_t interval;
-       uint8_t priority;
-       SessionConfig config;
+       uint16_t rangingInterval;
+       bool isActive;
+       uint32_t lastRangingTime;
+       float lastDistance;
    } SessionContext;
+   ```
+
+5. **iPhone Session States**
+   ```c
+   typedef enum {
+       IPHONE_STATE_DISCONNECTED = 0,
+       IPHONE_STATE_BLE_ADVERTISING,
+       IPHONE_STATE_BLE_CONNECTING,
+       IPHONE_STATE_BLE_CONNECTED,
+       IPHONE_STATE_UWB_INITIALIZING,
+       IPHONE_STATE_UWB_ACTIVE,
+       IPHONE_STATE_ERROR,
+       IPHONE_STATE_RECOVERY
+   } iPhoneState;
    ```
 
 ### 5. Resource Management

@@ -98,19 +98,33 @@ int SessionManager_CreateSession(DeviceType deviceType, const uint8_t* macAddr, 
         return -1;
     }
     
+    // Count board sessions and check iPhone slot
+    int boardSessions = 0;
+    bool iPhoneSlotOccupied = (gSessionManager.sessions[IPHONE_SESSION_SLOT].type != SESSION_TYPE_NONE);
+    
+    for (int i = 1; i < MAX_SESSIONS; i++) {  // Start from 1 since slot 0 is for iPhone
+        if (gSessionManager.sessions[i].type == SESSION_TYPE_BOARD_DS_TWR) {
+            boardSessions++;
+        }
+    }
+    
     // Find available session slot
     int sessionIndex = -1;
     
-    // Reserve slot 0 for iPhone if this is an iPhone session
     if (deviceType == DEVICE_TYPE_IPHONE) {
-        if (gSessionManager.sessions[IPHONE_SESSION_RESERVED_SLOT].type == SESSION_TYPE_NONE) {
-            sessionIndex = IPHONE_SESSION_RESERVED_SLOT;
-        } else {
-            NXPLOG_APP_E("iPhone session slot already occupied");
+        // iPhone must use slot 0
+        if (iPhoneSlotOccupied) {
+            NXPLOG_APP_E("iPhone session already exists in slot %d", IPHONE_SESSION_SLOT);
             return -1;
         }
+        sessionIndex = IPHONE_SESSION_SLOT;
     } else {
-        // Find next available slot for board sessions (skip slot 0)
+        if (boardSessions >= MAX_BOARD_SESSIONS) {
+            NXPLOG_APP_E("Maximum board sessions exceeded (%d)", MAX_BOARD_SESSIONS);
+            return -1;
+        }
+        
+        // Find available slot for board (skip slot 0)
         for (int i = 1; i < MAX_SESSIONS; i++) {
             if (gSessionManager.sessions[i].type == SESSION_TYPE_NONE) {
                 sessionIndex = i;

@@ -33,25 +33,156 @@ static uint16_t mMacAddr[MAX_CONNECTIONS];
 static void tlvMngTask(void *args);
 static void handleTLV(uint8_t deviceId, uint8_t *data);
 
+// BLE state management
+static struct {
+    bool isInitialized;
+    bool isAdvertising;
+    uint32_t lastAdvertiseTime;
+    uint32_t advertiseInterval;
+    UWBOSAL_TASK_HANDLE advertiseTaskHandle;
+} gBleState = {
+    .isInitialized = false,
+    .isAdvertising = false,
+    .lastAdvertiseTime = 0,
+    .advertiseInterval = 100,  // 100ms advertising interval
+    .advertiseTaskHandle = NULL
+};
+
+// Forward declaration
+static void BleApp_AdvertiseTask(void *args);
+
 void BleApp_Init(void) {
-    // Initialize BLE-related components
-    // For now, this is a placeholder - full BLE stack initialization
-    // would require more complex setup similar to the demo
+    if (gBleState.isInitialized) {
+        return;
+    }
+
+    // Initialize BLE stack
+    if (BLE_Init() != BLE_SUCCESS) {
+        NXPLOG_APP_E("Failed to initialize BLE stack");
+        return;
+    }
+
+    // Create advertising task
+    phOsalUwb_ThreadCreationParams_t threadParams;
+    threadParams.stackdepth = 400;
+    PHOSALUWB_SET_TASKNAME(threadParams, "BleAdv");
+    threadParams.pContext = NULL;
+    threadParams.priority = tskIDLE_PRIORITY + 3;
+
+    if (phOsalUwb_Thread_Create((void **)&gBleState.advertiseTaskHandle, 
+                               &BleApp_AdvertiseTask, &threadParams) != 0) {
+        NXPLOG_APP_E("Failed to create BLE advertising task");
+        return;
+    }
+
+    gBleState.isInitialized = true;
+    NXPLOG_APP_I("BLE stack initialized");
 }
 
 void BleApp_Start(void) {
-    // Start BLE advertising
-    // Placeholder for BLE advertising start
+    if (!gBleState.isInitialized) {
+        NXPLOG_APP_E("BLE not initialized");
+        return;
+    }
+
+    // Configure advertising data
+    uint8_t advData[] = {
+        0x02, 0x01, 0x06,  // General discoverable
+        0x03, 0x03, 0xFF, 0x00,  // Complete list of 16-bit UUIDs
+        0x0A, 0x09, 'N', 'X', 'P', '_', 'U', 'W', 'B', 0x00, 0x00  // Complete local name
+    };
+
+    // Start advertising
+    if (BLE_StartAdvertising(advData, sizeof(advData), gBleState.advertiseInterval) != BLE_SUCCESS) {
+        NXPLOG_APP_E("Failed to start BLE advertising");
+        return;
+    }
+
+    gBleState.isAdvertising = true;
+    phOsalUwb_GetTickCount((unsigned long*)&gBleState.lastAdvertiseTime);
+    NXPLOG_APP_I("BLE advertising started");
 }
 
 void BleApp_Stop(void) {
-    // Stop BLE advertising
-    // Placeholder for BLE advertising stop
+    if (!gBleState.isInitialized || !gBleState.isAdvertising) {
+        return;
+    }
+
+    if (BLE_StopAdvertising() != BLE_SUCCESS) {
+        NXPLOG_APP_E("Failed to stop BLE advertising");
+        return;
+    }
+
+    gBleState.isAdvertising = false;
+    NXPLOG_APP_I("BLE advertising stopped");
+}
+
+void BleApp_ProcessEvents(void) {
+    if (!gBleState.isInitialized) {
+        return;
+    }
+
+    // Process BLE events
+    BLE_Event_t event;
+    while (BLE_GetNextEvent(&event) == BLE_SUCCESS) {
+        switch (event.type) {
+        case BLE_EVENT_CONNECTED:
+            NXPLOG_APP_I("BLE device connected");
+            gBleState.isAdvertising = false;
+            break;
+
+        case BLE_EVENT_DISCONNECTED:
+            NXPLOG_APP_I("BLE device disconnected - restarting advertising");
+            BleApp_Start();  // Restart advertising
+            break;
+
+        case BLE_EVENT_ADVERTISE_TIMEOUT:
+            NXPLOG_APP_D("BLE advertising timeout - restarting");
+            BleApp_Start();  // Restart advertising
+            break;
+
+        default:
+            break;
+        }
+    }
+}
+
+bool BleApp_IsInitialized(void) {
+    return gBleState.isInitialized;
+}
+
+bool BleApp_IsAdvertising(void) {
+    return gBleState.isAdvertising;
+}
+
+static void BleApp_AdvertiseTask(void *args) {
+    while (1) {
+        if (gBleState.isInitialized && !gBleState.isAdvertising) {
+            // Check if it's time to restart advertising
+            uint32_t currentTime;
+            phOsalUwb_GetTickCount((unsigned long*)&currentTime);
+            
+            if ((currentTime - gBleState.lastAdvertiseTime) > 1000) {  // 1 second timeout
+                NXPLOG_APP_D("Auto-restarting BLE advertising");
+                BleApp_Start();
+            }
+        }
+        phOsalUwb_Delay(100);  // Check every 100ms
+    }
 }
 
 void BleApp_GenericCallback(void *pGenericEvent) {
-    // Handle BLE generic events
-    // Placeholder for BLE event handling
+    if (!gBleState.isInitialized) {
+        return;
+    }
+
+    BLE_Event_t *event = (BLE_Event_t *)pGenericEvent;
+    if (!event) {
+        return;
+    }
+
+    // Process event in the BLE task context
+    BLE_QueueEvent(event);
 }
 
 bool tlvBuilderInit(void) {

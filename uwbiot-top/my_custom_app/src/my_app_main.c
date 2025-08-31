@@ -90,24 +90,12 @@ void MultiSessionAppCallback(eNotificationType opType, void *pData) {
     }
 }
 
-// Main application task - simplified initialization matching demo pattern
+// Main application task - parallel board ranging and iPhone discovery
 OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
     PRINT_APP_NAME("Multi-Session UWB Application");
     tUWBAPI_STATUS status = UWBAPI_STATUS_FAILED;
 
-    // Initialize TLV builder for iPhone communication
-    if (!tlvBuilderInit()) {
-        NXPLOG_APP_E("Failed to initialize TLV builder");
-        goto exit_demo;
-    }
-
-    // Initialize TLV manager for iPhone communication
-    if (!tlvMngInit()) {
-        NXPLOG_APP_E("Failed to initialize TLV manager");
-        goto exit_demo;
-    }
-
-    // Initialize UWB stack first (like demo)
+    // Initialize UWB stack first for board ranging
     NXPLOG_APP_I("Initializing UWB stack...");
     status = UwbApi_Init(MultiSessionAppCallback);
     if (status != UWBAPI_STATUS_OK) {
@@ -116,37 +104,60 @@ OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
     }
     gAppState.isInitialized = true;
 
-    // Initialize application components after UWB stack
+    // Initialize core components
     if (!initializeApplication()) {
         NXPLOG_APP_E("Failed to initialize application components");
         status = UWBAPI_STATUS_FAILED;
         goto exit_demo;
     }
-    
-    // Initialize BLE stack for iPhone communication
-    BleApp_Init();
-    BleApp_Start();
-    
-    NXPLOG_APP_I("Both UWB and BLE initialized - ready for multi-session operation");
-    NXPLOG_APP_I("- UWB active for board discovery");
-    NXPLOG_APP_I("- BLE advertising for iPhone connection");
-    
-    // Start board discovery only after everything is initialized
+
+    // Start board discovery immediately
     if (!BoardAdapter_StartDiscovery(MAX_BOARD_SESSIONS)) {
-        NXPLOG_APP_W("Failed to start board discovery - continuing with iPhone-only mode");
+        NXPLOG_APP_E("Failed to start board discovery");
+        status = UWBAPI_STATUS_FAILED;
+        goto exit_demo;
     }
+    
+    // Initialize iPhone-related components in parallel
+    if (!tlvBuilderInit()) {
+        NXPLOG_APP_W("Failed to initialize TLV builder - iPhone features disabled");
+    } else if (!tlvMngInit()) {
+        NXPLOG_APP_W("Failed to initialize TLV manager - iPhone features disabled");
+    } else {
+        // Initialize and start BLE stack for continuous iPhone discovery
+        BleApp_Init();
+        BleApp_Start();
+        NXPLOG_APP_I("BLE advertising started - ready for iPhone connection");
+    }
+    
+    NXPLOG_APP_I("Multi-session operation started:");
+    NXPLOG_APP_I("- UWB active and ranging with boards");
+    NXPLOG_APP_I("- BLE advertising for iPhone connection");
     
     // Main application loop
     gAppState.isRunning = true;
     phOsalUwb_GetTickCount((unsigned long*)&gAppState.startTime);
 
     while (gAppState.isRunning) {
-        // Process both iPhone and board sessions
+        // Process board sessions and discovery
         SessionManager_ProcessEvents();
         BoardAdapter_ProcessDiscoveryEvents();
         
+        // Process iPhone connection attempts (if BLE available)
+        if (BleApp_IsInitialized()) {
+            BleApp_ProcessEvents();
+            
+            // Restart advertising if needed
+            if (!BleApp_IsAdvertising()) {
+                BleApp_StartAdvertising();
+            }
+        }
+        
+        // Optimize resource allocation
+        ResourceManager_OptimizeResourceAllocation();
+        
         // Small delay to prevent busy waiting
-        phOsalUwb_Delay(100); // 100ms for responsive processing
+        phOsalUwb_Delay(50); // Reduced for more responsive iPhone discovery
         
         // Print status occasionally
         static uint32_t lastStatusTime = 0;
