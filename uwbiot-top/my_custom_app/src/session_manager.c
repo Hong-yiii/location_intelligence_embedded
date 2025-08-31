@@ -166,17 +166,18 @@ bool SessionManager_StartSession(int sessionIndex) {
         return true;
     }
     
-    // Allocate resources
-    if (!SessionManager_AllocateResources(sessionIndex)) {
-        NXPLOG_APP_E("Failed to allocate resources for session %d", sessionIndex);
-        return false;
-    }
-    
-    // Initialize UWB session
+    // Initialize UWB session first (like demo)
     tUWBAPI_STATUS status = UwbApi_SessionInit(session->sessionId, UWBD_RANGING_SESSION, &session->sessionHandle);
     if (status != UWBAPI_STATUS_OK) {
         NXPLOG_APP_E("UwbApi_SessionInit failed for session %d: 0x%02X", sessionIndex, status);
-        SessionManager_ReleaseResources(sessionIndex);
+        return false;
+    }
+    
+    // Only allocate resources after successful UWB session initialization
+    if (!SessionManager_AllocateResources(sessionIndex)) {
+        NXPLOG_APP_E("Failed to allocate resources for session %d", sessionIndex);
+        UwbApi_SessionDeinit(session->sessionHandle);
+        session->sessionHandle = 0;
         return false;
     }
     

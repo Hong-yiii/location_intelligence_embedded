@@ -7,7 +7,10 @@
 #include "UwbApi.h"
 #include "AppInternal.h"
 #include "phOsalUwb.h"
-#include "my_app_config.h"
+
+#ifndef UWBIOT_APP_BUILD__MY_CUSTOM_APP
+#include "UWBIOT_APP_BUILD.h"
+#endif
 
 // Application headers
 #include "session_manager.h"
@@ -15,9 +18,15 @@
 #include "iphone_adapter.h"
 #include "board_adapter.h"
 #include "discovery_manager.h"
+#include "ble_app.h"
 
-// Task configuration
-#define MULTI_SESSION_TASK_SIZE 2048  /* Increased for high baud rate logging */
+// BLE includes (similar to demo)
+#include "FreeRTOS.h"
+#include "task.h"
+#include "semphr.h"
+
+// Task configuration - reduced size to avoid demo skip condition
+#define MULTI_SESSION_TASK_SIZE 4096  // Increased for firmware download + multi-session operations  /* Reduced to 1024 to match demo pattern */
 #define MULTI_SESSION_TASK_NAME "MultiSessionUWB"
 #define MULTI_SESSION_TASK_PRIO 4
 
@@ -33,8 +42,7 @@ static AppState gAppState = {0};
 
 // Forward declarations
 static bool initializeApplication(void);
-static void shutdownApplication(void);
-static void handleApplicationError(const char* error);
+static bool initializeUWBStack(void);
 static void printApplicationStatus(void);
 
 // Main application callback
@@ -70,9 +78,9 @@ void MultiSessionAppCallback(eNotificationType opType, void *pData) {
         break;
     }
     case UWBD_DEVICE_RESET: {
-        NXPLOG_APP_W("Device reset detected - reinitializing...");
+        NXPLOG_APP_W("Device reset detected - stopping application...");
         // Handle device reset recovery
-        handleApplicationError("Device reset");
+        gAppState.isRunning = false;
         break;
     }
     default:
@@ -82,53 +90,65 @@ void MultiSessionAppCallback(eNotificationType opType, void *pData) {
     }
 }
 
-// Main application task
+// Main application task - simplified initialization matching demo pattern
 OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
-    tUWBAPI_STATUS status = UWBAPI_STATUS_FAILED;
-    
     PRINT_APP_NAME("Multi-Session UWB Application");
-    NXPLOG_APP_I("Starting multi-session UWB application...");
-    
-    // Initialize application
+    tUWBAPI_STATUS status = UWBAPI_STATUS_FAILED;
+
+    // Initialize TLV builder for iPhone communication
+    if (!tlvBuilderInit()) {
+        NXPLOG_APP_E("Failed to initialize TLV builder");
+        goto exit_demo;
+    }
+
+    // Initialize TLV manager for iPhone communication
+    if (!tlvMngInit()) {
+        NXPLOG_APP_E("Failed to initialize TLV manager");
+        goto exit_demo;
+    }
+
+    // Initialize UWB stack first (like demo)
+    NXPLOG_APP_I("Initializing UWB stack...");
+    status = UwbApi_Init(MultiSessionAppCallback);
+    if (status != UWBAPI_STATUS_OK) {
+        NXPLOG_APP_E("UwbApi_Init failed: 0x%02X", status);
+        goto exit_demo;
+    }
+    gAppState.isInitialized = true;
+
+    // Initialize application components after UWB stack
     if (!initializeApplication()) {
-        NXPLOG_APP_E("Failed to initialize application");
-        goto exit;
+        NXPLOG_APP_E("Failed to initialize application components");
+        status = UWBAPI_STATUS_FAILED;
+        goto exit_demo;
     }
     
-    NXPLOG_APP_I("Application initialized successfully");
-    NXPLOG_APP_I("Starting discovery and ranging operations...");
+    // Initialize BLE stack for iPhone communication
+    BleApp_Init();
+    BleApp_Start();
     
-    gAppState.isRunning = true;
-    phOsalUwb_GetTickCount((unsigned long*)&gAppState.startTime);
+    NXPLOG_APP_I("Both UWB and BLE initialized - ready for multi-session operation");
+    NXPLOG_APP_I("- UWB active for board discovery");
+    NXPLOG_APP_I("- BLE advertising for iPhone connection");
     
-    // Start iPhone discovery (parallel)
-    if (!iPhoneAdapter_StartAdvertising()) {
-        NXPLOG_APP_W("Failed to start iPhone advertising - continuing without iPhone support");
-    }
-    
-    // Start board discovery (sequential)
+    // Start board discovery only after everything is initialized
     if (!BoardAdapter_StartDiscovery(MAX_BOARD_SESSIONS)) {
-        NXPLOG_APP_E("Failed to start board discovery");
-        goto exit;
+        NXPLOG_APP_W("Failed to start board discovery - continuing with iPhone-only mode");
     }
-    
-    NXPLOG_APP_I("Entering main application loop...");
     
     // Main application loop
+    gAppState.isRunning = true;
+    phOsalUwb_GetTickCount((unsigned long*)&gAppState.startTime);
+
     while (gAppState.isRunning) {
-        // Process session manager events
-        NXPLOG_APP_D("Processing session manager events...");
+        // Process both iPhone and board sessions
         SessionManager_ProcessEvents();
-        
-        // Process iPhone adapter events
-        NXPLOG_APP_D("Processing iPhone adapter events...");
-        iPhoneAdapter_ProcessBLEEvents();
-        
-        // Process board adapter events
-        NXPLOG_APP_D("Processing board adapter events...");
         BoardAdapter_ProcessDiscoveryEvents();
         
-        // Print status periodically (every 10 seconds)
+        // Small delay to prevent busy waiting
+        phOsalUwb_Delay(100); // 100ms for responsive processing
+        
+        // Print status occasionally
         static uint32_t lastStatusTime = 0;
         uint32_t currentTime;
         phOsalUwb_GetTickCount((unsigned long*)&currentTime);
@@ -136,134 +156,56 @@ OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
             printApplicationStatus();
             lastStatusTime = currentTime;
         }
-        
-        // Small delay to prevent busy waiting
-        phOsalUwb_Delay(100);
     }
     
     status = UWBAPI_STATUS_OK;
-    
-exit:
-    NXPLOG_APP_I("Shutting down application...");
-    shutdownApplication();
-    
-    if (status == UWBAPI_STATUS_OK) {
-        NXPLOG_APP_I("Application completed successfully");
-    } else {
-        NXPLOG_APP_E("Application completed with errors");
-    }
-    
+
+exit_demo:
     UWBIOT_EXAMPLE_END(status);
 }
 
+
+
+// Lightweight initialization - only for essential components
 static bool initializeApplication(void) {
-    phUwbappContext_t appCtx = {0};
-    tUWBAPI_STATUS status;
+    NXPLOG_APP_I("Initializing application components...");
     
-    NXPLOG_APP_I("Initializing UWB stack...");
-    
-    // Initialize UWB stack
-#if UWB_BLD_CFG_FW_DNLD_DIRECTLY_FROM_HOST
-    appCtx.fwImageCtx.fwImage = (uint8_t *)&heliosEncryptedMainlineFwImage[0];
-    appCtx.fwImageCtx.fwImgSize = heliosEncryptedMainlineFwImageLen;
-#endif
-    appCtx.fwImageCtx.fwMode = MAINLINE_FW;
-    appCtx.pCallback = MultiSessionAppCallback;
-    appCtx.pCdcCallback = NULL;
-    appCtx.pMcttCallback = NULL;
-    appCtx.seHandle = NULL;
-    
-    NXPLOG_APP_I("UWB stack configuration complete, calling UwbApi_Init_New...");
-    
-    status = UwbApi_Init_New(&appCtx);
-    if (status != UWBAPI_STATUS_OK) {
-        NXPLOG_APP_E("UwbApi_Init_New failed: 0x%02X", status);
-        return false;
-    }
-    
-    NXPLOG_APP_I("UWB stack initialized successfully");
+    // Initialize only lightweight components
+    // UWB initialization will be triggered by BLE connection
     
     // Initialize resource manager
-    NXPLOG_APP_I("Initializing resource manager...");
     if (!ResourceManager_Init()) {
         NXPLOG_APP_E("ResourceManager_Init failed");
         return false;
     }
-    NXPLOG_APP_I("Resource manager initialized successfully");
     
     // Initialize session manager
-    NXPLOG_APP_I("Initializing session manager...");
     if (!SessionManager_Init()) {
         NXPLOG_APP_E("SessionManager_Init failed");
         return false;
     }
-    NXPLOG_APP_I("Session manager initialized successfully");
     
-    // Initialize iPhone adapter
-    NXPLOG_APP_I("Initializing iPhone adapter...");
+    // Initialize iPhone adapter (lightweight)
     if (!iPhoneAdapter_Init()) {
         NXPLOG_APP_E("iPhoneAdapter_Init failed");
         return false;
     }
-    NXPLOG_APP_I("iPhone adapter initialized successfully");
     
-    // Initialize board adapter
-    NXPLOG_APP_I("Initializing board adapter...");
+    // Initialize board adapter (lightweight)
     if (!BoardAdapter_Init()) {
         NXPLOG_APP_E("BoardAdapter_Init failed");
         return false;
     }
-    NXPLOG_APP_I("Board adapter initialized successfully");
     
     // Initialize discovery manager
-    NXPLOG_APP_I("Initializing discovery manager...");
     DiscoveryManager_Init();
-    
-    // Register callbacks
     DiscoveryManager_RegisterCallback(BoardAdapter_OnDiscoveryMatch);
-    NXPLOG_APP_I("Discovery manager initialized successfully");
     
-    gAppState.isInitialized = true;
+    NXPLOG_APP_I("Application components initialized successfully");
     return true;
 }
 
-static void shutdownApplication(void) {
-    if (!gAppState.isInitialized) {
-        return;
-    }
-    
-    gAppState.isRunning = false;
-    
-    // Stop all discovery and ranging
-    BoardAdapter_StopDiscovery();
-    iPhoneAdapter_StopAdvertising();
-    DiscoveryManager_Stop();
-    
-    // Shutdown adapters
-    BoardAdapter_Deinit();
-    iPhoneAdapter_Deinit();
-    
-    // Shutdown managers
-    SessionManager_Deinit();
-    ResourceManager_Deinit();
-    
-    // Shutdown UWB stack
-    if (UwbApi_ShutDown() != UWBAPI_STATUS_OK) {
-        NXPLOG_APP_E("UwbApi_ShutDown failed");
-    }
-    
-    gAppState.isInitialized = false;
-}
 
-static void handleApplicationError(const char* error) {
-    NXPLOG_APP_E("Application error: %s", error);
-    
-    // Stop current operations
-    gAppState.isRunning = false;
-    
-    // TODO: Implement recovery logic if needed
-    // For now, just shutdown gracefully
-}
 
 static void printApplicationStatus(void) {
     uint32_t currentTime;

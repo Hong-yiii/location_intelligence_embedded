@@ -21,20 +21,14 @@ bool ResourceManager_Init(void) {
     NXPLOG_APP_I("Initializing resource manager context...");
     memset(&gResourceManager, 0, sizeof(ResourceManager));
     
-    NXPLOG_APP_I("Initializing %d UWB channels...", MAX_CHANNELS);
+    // Just initialize the data structures, don't allocate anything yet
     for (int i = 0; i < MAX_CHANNELS; i++) {
         gResourceManager.channels[i].channel = availableChannels[i];
         gResourceManager.channels[i].inUse = false;
         gResourceManager.channels[i].sessionIndex = -1;
         gResourceManager.channels[i].sessionId = 0;
-        
-        NXPLOG_APP_I("  Channel %d: UWB Channel %d (%s)", 
-                     i, availableChannels[i],
-                     availableChannels[i] == IPHONE_PREFERRED_CHANNEL ? "iPhone Preferred" :
-                     availableChannels[i] == UWB_CHANNEL_9 ? "iPhone Alternate" : "Board Channel");
     }
     
-    NXPLOG_APP_I("Initializing %d time slots...", MAX_TIME_SLOTS);
     for (int i = 0; i < MAX_TIME_SLOTS; i++) {
         gResourceManager.timeSlots[i].startTime = 0;
         gResourceManager.timeSlots[i].duration = 0;
@@ -380,7 +374,8 @@ void ResourceManager_OptimizeResourceAllocation(void) {
     
     // Update current time
     uint32_t oldTime = gResourceManager.currentTime;
-    phOsalUwb_GetTickCount((unsigned long*)&gResourceManager.currentTime);
+    // Get current time for resource optimization
+    gResourceManager.currentTime = xTaskGetTickCount();
     
     NXPLOG_APP_I("Time delta: %lu ms", gResourceManager.currentTime - oldTime);
     
