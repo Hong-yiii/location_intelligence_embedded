@@ -1,5 +1,5 @@
 @startuml
-title UWB Multi-Session Architecture
+title Current UWB Multi-Session Implementation Architecture
 allowmixing
 
 ' Style and theme
@@ -10,18 +10,18 @@ skinparam shadowing false
 
 ' Components
 package "Application Layer" {
+    component "Main Task" as MT
     component "Session Manager" as SM
-    component "Task Scheduler" as TS
     component "Resource Manager" as RM
     
-    package "Session Handlers" {
-        component "iPhone Handler" as IH
-        component "NXP Board Handler" as NH
+    package "Device Adapters" {
+        component "iPhone Adapter" as IA
+        component "Board Adapter" as BA
+        component "BLE App" as BLEAPP
     }
     
-    package "Protocol Adapters" {
-        component "Nearby Interaction Adapter" as NIA
-        component "Direct UWB Adapter" as DUA
+    package "Discovery" {
+        component "Discovery Manager" as DM
     }
 }
 
@@ -29,71 +29,85 @@ package "Middleware Layer" {
     component "UWB Core API" as UWBAPI
     component "BLE Stack" as BLE
     component "OSAL" as OSAL
-    component "Event Manager" as EM
+    component "TLV Builder" as TLV
 }
 
 package "Hardware Abstraction Layer" {
     component "UWB HAL" as UWBHAL
     component "BLE HAL" as BLEHAL
-    component "Timer HAL" as TIMER
+    component "Board HAL" as BOARDHAL
 }
 
 ' Class definitions
-class SessionManager {
-    -sessions: Map<SessionId, SessionContext>
-    -resourceManager: ResourceManager
-    +createSession(deviceType: DeviceType): SessionId
-    +terminateSession(sessionId: SessionId)
-    +getSessionState(sessionId: SessionId): SessionState
+class MainTask {
+    -appState: AppState
+    +MultiSessionTask(): void
+    +MultiSessionAppCallback(): void
+    -initializeApplication(): bool
+    -printApplicationStatus(): void
 }
 
-class SessionContext {
-    -sessionId: uint32_t
-    -deviceType: DeviceType
-    -state: SessionState
-    -config: SessionConfig
-    +updateState(newState: SessionState)
-    +getConfiguration(): SessionConfig
+class SessionManager {
+    -sessions: SessionContext[MAX_SESSIONS]
+    -activeSessions: uint8_t
+    -rangingMutex: OSAL_MUTEX
+    +Init(): bool
+    +CreateSession(deviceType: DeviceType): int
+    +StartSession(sessionIndex: int): bool
+    +HandleRangingData(sessionIndex: int): void
 }
 
 class ResourceManager {
-    -channelAllocation: Map<Channel, SessionId>
-    -timingSchedule: TimingSchedule
-    +allocateChannel(sessionId: SessionId): Channel
-    +scheduleRanging(sessionId: SessionId): TimeSlot
+    -channels: ChannelAllocation[MAX_CHANNELS]
+    -timeSlots: TimeSlot[MAX_TIME_SLOTS]
+    -isInitialized: bool
+    +AllocateChannel(sessionIndex: int): uint8_t
+    +AllocateTimeSlot(sessionIndex: int): bool
+    +OptimizeResourceAllocation(): void
 }
 
-class TaskScheduler {
-    -tasks: List<TaskContext>
-    +scheduleTask(task: TaskContext)
-    +suspendTask(taskId: TaskId)
-    +resumeTask(taskId: TaskId)
+class BoardAdapter {
+    -discoveryActive: bool
+    -discoveredBoards: uint8_t
+    +Init(): bool
+    +StartDiscovery(maxBoards: uint8_t): bool
+    +ProcessDiscoveryEvents(): void
+}
+
+class iPhoneAdapter {
+    -sessionContext: iPhoneSessionContext
+    -bleParams: BleParams
+    +Init(): bool
+    +HandleConnection(): void
+    +ProcessRangingData(): void
 }
 
 ' Relationships
-SM ..> SessionManager
-RM ..> ResourceManager
-TS ..> TaskScheduler
+MT --> SM : manages
+MT --> RM : manages
+MT --> BA : controls
+MT --> IA : controls
+MT --> BLEAPP : initializes
 
-IH --> NIA
-NH --> DUA
+SM --> RM : allocates resources
+SM --> UWBAPI : initializes sessions
 
-SM --> IH
-SM --> NH
-SM --> RM
-SM --> TS
+BA --> DM : uses
+BA --> SM : creates sessions
+IA --> SM : creates sessions
 
-NIA --> UWBAPI
-DUA --> UWBAPI
-NIA --> BLE
+BLEAPP --> BLE : configures
+IA --> BLE : uses
+BA --> UWBAPI : uses
+IA --> UWBAPI : uses
 
-UWBAPI --> UWBHAL
-BLE --> BLEHAL
-OSAL --> TIMER
+DM --> UWBAPI : monitors
 
 ' Dependencies
-SessionManager --> SessionContext
+MainTask --> SessionManager
+MainTask --> ResourceManager
 SessionManager --> ResourceManager
-TaskScheduler --> OSAL
+BoardAdapter --> DiscoveryManager
+iPhoneAdapter --> TLV
 
 @enduml

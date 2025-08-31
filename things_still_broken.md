@@ -1,57 +1,78 @@
 # Serial Output Issues - Troubleshooting List
 
-## 1. UART/Serial Configuration Issues
-- [x] Check if UART pins are correctly configured in `board.c` or `pin_mux.c` - **VERIFIED**: UART0 pins 8 (TX) and 9 (RX) are correctly configured
-- [x] Verify UART baud rate matches terminal settings (3000000 baud) - **VERIFIED**: Both code and terminal should be set to 3Mbps
-- [ ] Check if VCOM port is correctly enumerated on host PC
-- [x] Verify UART is initialized before any logging calls - **VERIFIED**: `BOARD_InitDebugConsole()` is called in `BOARD_common_hw_init()`
-- [x] **CRITICAL**: `gUartDebugConsole_d` is set to 1 in `board.h` - **VERIFIED**
-- [x] **CRITICAL**: Hardware flow control is enabled for high baud rate - **VERIFIED**: `HW_FLOW_CONTROL_SUPPORT` is set to 1
+# UWB Initialization Issues - Troubleshooting List
 
-## 2. Logging Configuration
-- [x] **CRITICAL**: `gLoggingActive_d` is set to 1 in `app_preinclude.h` - **VERIFIED**
-- [x] Add early logging in `main()` using `PRINT_APP_NAME` macro - **ADDED**
-- [x] Check if `NXPLOG_APP_*` macros are enabled in build - **VERIFIED**
-- [x] Verify `phNxpLogApis_App.h` is included in files using logging - **VERIFIED**
-- [x] Check if log level is set correctly (ERROR, INFO, DEBUG) - **VERIFIED**
-- [x] Ensure logging is not disabled by compiler flags - **VERIFIED**
-- [x] **CRITICAL**: Power management settings are correct for high baud rate:
-  - `cPWR_UsePowerDownMode` = 0
-  - `cPWR_FullPowerDownMode` = 0
-  - `HW_FLOW_CONTROL_SUPPORT` = 1
+## 1. Firmware Loading Issues
+- [ ] **CRITICAL**: Firmware loading fails with error "uwb_fwdl_getFwImage failed"
+  - Error occurs during UwbApi_Init_New() call
+  - Firmware loading mode is set to "Directly from host"
+  - Error code 0x02 indicates firmware image access failure
+- [ ] Check firmware image paths and availability:
+  - Expected location: /firmware_images/SR1XX/
+  - Verify firmware files are present and accessible
+- [ ] Verify firmware loading configuration:
+  - Check UWB_BLD_CFG_FW_DNLD_DIRECTLY_FROM_HOST setting
+  - Verify firmware version compatibility
+  - Check firmware image format and integrity
 
-## 3. FreeRTOS Task Issues
-- [ ] Verify `MultiSessionTask` is actually being created and scheduled
-- [ ] Check task priority - might be too low to get CPU time
-- [ ] Verify stack size is sufficient (no stack overflow)
-- [ ] Check if task is stuck in a loop or blocked
+## 2. Initialization Flow Issues
+- [ ] **CRITICAL**: Initialization sequence differs from demo code
+  - Demo uses simple UwbApi_Init() call
+  - Our code has more complex initialization flow
+  - Resource allocation may be happening too early
+- [ ] Verify initialization order:
+  1. Hardware initialization
+  2. Task creation
+  3. Resource manager initialization
+  4. Session manager initialization
+  5. UWB stack initialization
+- [ ] Check callback registration:
+  - Verify MultiSessionAppCallback is properly registered
+  - Check callback function signature matches demo
 
-## 4. Hardware Flow Control
-- [ ] **CRITICAL**: Verify RTS/CTS pins are correctly connected:
-  - RTS: Pin 6 (PIO0_6)
-  - CTS: Pin 7 (PIO0_7)
-- [ ] Check if terminal program has hardware flow control enabled
-- [ ] Verify RTS/CTS signal levels with oscilloscope if possible
+## 3. Resource Management Issues
+- [ ] Check resource allocation timing:
+  - Channel allocation may be too early
+  - Time slot allocation may conflict
+  - Resource manager state during initialization
+- [ ] Verify resource limits:
+  - Maximum channels (4)
+  - Maximum time slots (10)
+  - Session slot availability
 
-## 5. Terminal Program Settings
-- [ ] Verify terminal program settings:
-  - Baud rate: 3000000
-  - Data bits: 8
-  - Stop bits: 1
-  - Parity: None
-  - Flow control: Hardware (RTS/CTS)
-- [ ] Try different terminal programs (PuTTY, TeraTerm, etc.)
-- [ ] Check if terminal buffer size is sufficient for high baud rate
+## 4. Session Management Issues
+- [ ] Session initialization sequence:
+  - Session creation timing
+  - Resource allocation order
+  - UWB session parameters
+- [ ] Session state transitions:
+  - Verify state machine logic
+  - Check error handling
+  - Recovery mechanisms
 
-## 6. Early Boot Issues
-- [ ] Add more early boot logging to track initialization sequence
-- [ ] Check if system clock is correctly configured for UART operation
-- [ ] Verify UART clock source is stable and correct frequency
-- [ ] Check if any watchdog resets are occurring
+## 5. Task Management
+- [x] Task creation verified (from logs)
+- [x] Task priority set to 4 (matches demo)
+- [x] Stack size set to 4096 bytes
+- [ ] Check task execution flow:
+  - Initialization sequence
+  - Event processing
+  - Resource management
 
-## 7. Next Steps
-1. Connect logic analyzer to TX/RX pins to verify UART activity
-2. Add more early boot logging to track initialization
-3. Try lower baud rate temporarily (115200) to verify basic UART operation
-4. Check power supply stability at high baud rate
-5. Verify all jumper settings on board are correct for UART operation
+## 6. Next Steps
+1. Simplify initialization to match demo pattern:
+   - Use UwbApi_Init() instead of UwbApi_Init_New()
+   - Remove custom firmware loading logic
+   - Follow demo initialization sequence
+2. Add detailed logging for firmware loading:
+   - Log firmware paths
+   - Log loading attempts
+   - Log error details
+3. Verify resource initialization:
+   - Log resource allocation
+   - Check timing of allocations
+   - Monitor resource states
+4. Review session management:
+   - Simplify session creation
+   - Improve error handling
+   - Add state transition logging

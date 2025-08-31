@@ -1,4 +1,4 @@
-@startuml "UWB Multi-Session Sequence"
+@startuml "UWB Multi-Session Implementation"
 
 ' Style and theme
 !theme plain
@@ -7,93 +7,140 @@ skinparam monochrome true
 skinparam shadowing false
 
 ' Participants
+participant "Main Task" as MT
 participant "iPhone" as iPhone
 participant "NXP Board" as NXPBoard
 participant "Session Manager" as SM
-participant "iPhone Handler" as IH
-participant "NXP Handler" as NH
+participant "iPhone Adapter" as IA
+participant "Board Adapter" as BA
 participant "Resource Manager" as RM
 participant "UWB Core" as UWB
 participant "BLE Stack" as BLE
 
-' Initial iPhone Connection
+' System Initialization
+group System Initialization
+    MT -> UWB: UwbApi_Init(MultiSessionAppCallback)
+    activate UWB
+    UWB --> MT: UWB Stack Ready
+    deactivate UWB
+    
+    MT -> SM: SessionManager_Init()
+    activate SM
+    SM -> RM: ResourceManager_Init()
+    activate RM
+    RM --> SM: Resources Ready (but not allocated)
+    deactivate RM
+    SM --> MT: Session Manager Ready
+    deactivate SM
+    
+    MT -> BLE: BleApp_Init()
+    BLE --> MT: BLE Ready
+end
+
+' iPhone Connection
 group iPhone Session Establishment
     iPhone -> BLE: BLE Advertisement
-    BLE -> IH: Connection Request
-    activate IH
-    IH -> SM: Create Session Request
+    BLE -> IA: Connection Request
+    activate IA
+    IA -> SM: SessionManager_CreateSession(DEVICE_TYPE_IPHONE)
     activate SM
-    SM -> RM: Allocate Resources
-    activate RM
-    RM --> SM: Resources Allocated
-    deactivate RM
-    SM --> IH: Session Created
+    SM --> IA: Session Created (slot 0)
     deactivate SM
-    IH -> UWB: Initialize UWB Session
-    UWB --> IH: Session Ready
-    IH --> iPhone: Connection Established
-    deactivate IH
+    
+    IA -> SM: SessionManager_StartSession()
+    activate SM
+    SM -> UWB: UwbApi_SessionInit()
+    UWB --> SM: Session Handle
+    SM -> RM: ResourceManager_AllocateChannel()
+    activate RM
+    RM --> SM: Channel 5 (iPhone Preferred)
+    deactivate RM
+    SM -> RM: ResourceManager_AllocateTimeSlot()
+    activate RM
+    RM --> SM: Time Slot Allocated
+    deactivate RM
+    SM --> IA: Session Started
+    deactivate SM
+    IA --> iPhone: Connection Established
+    deactivate IA
 end
 
-' NXP Board Connection (while iPhone session active)
-group NXP Board Session Establishment
-    NXPBoard -> NH: Direct UWB Discovery
-    activate NH
-    NH -> SM: Create Session Request
+' Board Discovery and Connection
+group Board Session Establishment
+    MT -> BA: BoardAdapter_StartDiscovery()
+    activate BA
+    NXPBoard -> BA: Discovery Response
+    BA -> SM: SessionManager_CreateSession(DEVICE_TYPE_BOARD)
     activate SM
-    SM -> RM: Allocate Resources
-    activate RM
-    RM -> RM: Check Channel Conflicts
-    RM -> RM: Assign Different Channel
-    RM --> SM: Resources Allocated
-    deactivate RM
-    SM --> NH: Session Created
+    SM --> BA: Session Created (slot 1-4)
     deactivate SM
-    NH -> UWB: Initialize UWB Session
-    UWB --> NH: Session Ready
-    NH --> NXPBoard: Connection Established
-    deactivate NH
+    
+    BA -> SM: SessionManager_StartSession()
+    activate SM
+    SM -> UWB: UwbApi_SessionInit()
+    UWB --> SM: Session Handle
+    SM -> RM: ResourceManager_AllocateChannel()
+    activate RM
+    RM -> RM: Check Channel Availability
+    RM --> SM: Channel 6/8 (Board Channel)
+    deactivate RM
+    SM -> RM: ResourceManager_AllocateTimeSlot()
+    activate RM
+    RM --> SM: Time Slot Allocated
+    deactivate RM
+    SM --> BA: Session Started
+    deactivate SM
+    BA --> NXPBoard: Connection Established
+    deactivate BA
 end
 
-' Simultaneous Ranging
-group Simultaneous Ranging Operations
-    loop Continuous Ranging
-        ' iPhone Ranging
-        iPhone -> IH: Ranging Request
-        activate IH
-        IH -> RM: Request Time Slot
+' Ranging Operations
+group Multi-Session Ranging
+    loop Continuous Operation
+        ' Process Events
+        MT -> SM: SessionManager_ProcessEvents()
+        activate SM
+        SM -> RM: Check Resource Status
+        RM --> SM: Resource Status
+        SM --> MT: Events Processed
+        deactivate SM
+        
+        ' Board Discovery Events
+        MT -> BA: BoardAdapter_ProcessDiscoveryEvents()
+        activate BA
+        BA -> SM: Update Session States
+        BA --> MT: Discovery Events Processed
+        deactivate BA
+        
+        ' Resource Optimization
+        MT -> RM: ResourceManager_OptimizeResourceAllocation()
         activate RM
-        RM --> IH: Time Slot Allocated
+        RM -> RM: Rebalance Resources
+        RM --> MT: Resources Optimized
         deactivate RM
-        IH -> UWB: Execute Ranging
-        UWB --> IH: Ranging Result
-        IH --> iPhone: Distance Update
-        deactivate IH
-
-        ' NXP Board Ranging (interleaved)
-        NXPBoard -> NH: Ranging Request
-        activate NH
-        NH -> RM: Request Time Slot
-        activate RM
-        RM --> NH: Time Slot Allocated
-        deactivate RM
-        NH -> UWB: Execute Ranging
-        UWB --> NH: Ranging Result
-        NH --> NXPBoard: Distance Update
-        deactivate NH
     end
 end
 
-' Error Handling
-group Error Recovery
-    UWB -> SM: Session Error
+' Error Recovery
+group Error Recovery (Distributed)
+    UWB -> MT: Error Notification
+    MT -> SM: SessionManager_HandleSessionError()
     activate SM
     SM -> RM: Release Resources
-    SM -> IH: Notify Error
-    SM -> NH: Notify Error
-    SM -> SM: Attempt Recovery
-    SM --> UWB: Reset Session
+    SM -> BA: Notify Error
+    SM -> IA: Notify Error
+    
+    alt Recovery Possible
+        SM -> UWB: Reset Session
+        UWB --> SM: Session Reset
+        SM -> RM: Reallocate Resources
+        RM --> SM: Resources Reallocated
+    else Recovery Failed
+        SM -> MT: Session Terminated
+        MT -> BA: Stop Discovery
+        MT -> IA: Stop Advertising
+    end
     deactivate SM
 end
 
-@enduml 
+@enduml
