@@ -30,6 +30,9 @@
 #include "task.h"
 #include "semphr.h"
 
+// Main task include (for main_task function)
+#include "ApplMain.h"
+
 // Task configuration - reduced size to avoid demo skip condition
 #define MULTI_SESSION_TASK_SIZE 4096  // Increased for firmware download + multi-session operations  /* Reduced to 1024 to match demo pattern */
 #define MULTI_SESSION_TASK_NAME "MultiSessionUWB"
@@ -116,11 +119,18 @@ OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
     PRINT_APP_NAME("Multi-Session UWB Application");
     tUWBAPI_STATUS status = UWBAPI_STATUS_FAILED;
 
-    // 1. Initialize hardware (following demo pattern)
-    hardware_init();
+    // 1. Initialize platform and BLE stack (following demo pattern exactly)
+    NXPLOG_APP_I("About to call main_task(0) for BLE initialization...");
 
-    // Initialize additional hardware components (like demo does)
-    RTOS_AppConfigureTimerForRuntimeStats();
+    // Ensure gSmpKeys is accessible before BLE init
+    extern gapSmpKeys_t gSmpKeys;
+    NXPLOG_APP_I("gSmpKeys.cLtkSize = %d", gSmpKeys.cLtkSize);
+
+    main_task(0);  // This initializes BLE stack like demo_nearby_interaction
+    NXPLOG_APP_I("main_task(0) returned - BLE stack should be initialized");
+
+    // Small delay to let BLE initialization complete
+    vTaskDelay(100);
 
     // 2. Initialize TLV components FIRST (required for BLE communication)
     NXPLOG_APP_I("Initializing TLV components...");
@@ -139,12 +149,17 @@ OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
     GattDb_Init();
     NXPLOG_APP_I("GATT database initialized");
 
-    // 4. Initialize BLE stack and start advertising FIRST (CRITICAL)
+    // 4. Initialize BLE application components (hardware setup only, like demo)
     BleApp_Init();
+    NXPLOG_APP_I("BLE application initialized");
+
+    // 5. Start BLE advertising (BLE stack already initialized by main_task)
+    NXPLOG_APP_I("About to start BLE advertising...");
     BleApp_Start();
+    NXPLOG_APP_I("BleApp_Start() returned - BLE advertising should be active");
     NXPLOG_APP_I("BLE advertising started - ready for iPhone connection");
 
-    // 5. Initialize UWB stack AFTER BLE
+    // 6. Initialize UWB stack AFTER BLE
     NXPLOG_APP_I("Initializing UWB stack...");
     phUwbappContext_t appCtx = {0};
     appCtx.pCallback = MultiSessionAppCallback;

@@ -7,8 +7,14 @@
 // Include tlv_manager.h to get UWB_Hif_t definition
 #include "tlv_manager.h"
 
+// Prevent LOG macro redefinition warnings
+#ifdef LOG
+#undef LOG
+#endif
+
 // BLE stack includes and types
 #include "ble_general.h"
+#include "gap_types.h"  /* For gapSmpKeys_t definition */
 
 // Use the proper BLE stack types (already defined in ble_general.h)
 // gapGenericEvent_t is already defined in the BLE stack
@@ -26,6 +32,8 @@
 
 // GATT database initialization
 bleResult_t GattDb_Init(void);
+
+// Note: gSmpKeys is declared extern in ble_conn_manager.h (included via BLE stack)
 
 // BLE application initialization and management
 void BleApp_Init(void);

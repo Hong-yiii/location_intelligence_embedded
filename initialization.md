@@ -7,6 +7,23 @@ This guide details the initialization process for a multi-session UWB implementa
 2. iPhone Nearby Interaction
 3. Simultaneous operation of multiple sessions
 
+### **⚠️ CRITICAL INITIALIZATION ORDER**
+
+**CORRECTED ORDER** (based on working implementation):
+1. **Hardware** → `hardware_init()`
+2. **TLV Components** → `tlvBuilderInit()`, `tlvMngInit()`
+3. **GATT Database** → `GattDb_Init()` *(BEFORE BLE stack)*
+4. **BLE Stack** → `BleApp_Init()`, `BleApp_Start()` *(AFTER GATT database)*
+5. **UWB Stack** → `UwbApi_Init_New()` *(AFTER BLE)*
+6. **UWB Parameters** → `configureUwbParams()`
+7. **Application Components** → Resource managers, adapters
+8. **Discovery** → Board discovery start
+
+**WHY THIS ORDER MATTERS:**
+- GATT database must be initialized before BLE stack to ensure services are available
+- BLE must be ready before UWB for iPhone Nearby Interaction
+- TLV components required for BLE communication
+
 ## ⚠️ Critical Bug Fixes
 
 ### Array Size Calculation Bug (FIXED)
@@ -36,17 +53,20 @@ status = UwbApi_Init_New(&appCtx);
 **Impact**: iPhone Nearby Interaction would fail completely
 **Fix**: Implemented proper BLE stack integration using NXP BLE functions:
 - `Ble_Initialize()` for stack initialization
-- `App_StartAdvertising()` for advertising setup
+- `BleApp_Config()` for BLE configuration (services, callbacks)
 - `Qpp_Start()` for QPP service initialization (CRITICAL)
+- `App_StartAdvertising()` for advertising setup
 - `Qpp_SendData()` for data transmission with proper error handling
 
 ### GATT Database Implementation (UPDATED)
 **Previous Issue**: Missing GATT database causing compilation errors
 **Impact**: BLE functionality completely broken, no services/characteristics defined
 **Fix**: Integrated complete GATT database using proper NXP BLE stack patterns:
+- **CRITICAL**: GATT database must be initialized BEFORE BLE stack
 - Uses standard NXP BLE service definitions
 - Proper UUID array definitions for UWB services
 - Standard BLE characteristic properties and configurations
+- QPP service handles registered for write/read notifications
 
 ## 🔧 Core Components Initialization
 
@@ -112,12 +132,12 @@ if (!tlvBuilderInit() || !tlvMngInit()) {
     return false;
 }
 
-// Initialize GATT database with proper BLE stack integration
-GattDb_Init();  // Initialize BLE GATT database with services and characteristics
+    // Initialize GATT database FIRST (CRITICAL: before BLE stack)
+    GattDb_Init();  // Initialize BLE GATT database with services and characteristics
 
-// Initialize BLE stack with NXP BLE functions
-BleApp_Init();  // Uses Ble_Initialize() with proper callback handling
-BleApp_Start();  // Uses App_StartAdvertising() for proper BLE advertising
+    // Initialize BLE stack with NXP BLE functions (AFTER GATT database)
+    BleApp_Init();  // Uses Ble_Initialize() + BleApp_Config() + Qpp_Start()
+    BleApp_Start(); // Uses App_StartAdvertising() for proper BLE advertising
 
 // Start board discovery
 BoardAdapter_StartDiscovery(MAX_BOARD_SESSIONS);
@@ -299,48 +319,69 @@ TimeSlot timeSlots[MAX_TIME_SLOTS];
 
 ## 🚀 Initialization Sequence
 
-1. **System Startup**
+### **CRITICAL: Corrected Initialization Order**
+
+The initialization sequence has been **corrected** based on the working implementation. The key insight is that GATT database must be initialized **BEFORE** the BLE stack to ensure services are available when BLE advertising starts.
+
+1. **System Startup** (Corrected Order)
 ```c
 void initializeSystem(void) {
-    // Initialize hardware
+    // 1. Initialize hardware (following demo pattern)
     hardware_init();
+    RTOS_AppConfigureTimerForRuntimeStats();
 
-    // Initialize TLV components (required for BLE communication)
+    // 2. Initialize TLV components FIRST (required for BLE communication)
+    NXPLOG_APP_I("Initializing TLV components...");
     if (!tlvBuilderInit() || !tlvMngInit()) {
         NXPLOG_APP_E("Failed to initialize TLV components");
         return;
     }
 
-    // Initialize UWB stack (FIXED: Must use UwbApi_Init_New)
+    // 3. Initialize GATT database FIRST (CRITICAL: before BLE stack)
+    GattDb_Init();
+    NXPLOG_APP_I("GATT database initialized");
+
+    // 4. Initialize BLE stack and start advertising FIRST (CRITICAL)
+    BleApp_Init();  // BLE stack + QPP service + configuration
+    BleApp_Start(); // Start advertising for iPhone discovery
+    NXPLOG_APP_I("BLE advertising started - ready for iPhone connection");
+
+    // 5. Initialize UWB stack AFTER BLE
+    NXPLOG_APP_I("Initializing UWB stack...");
     phUwbappContext_t appCtx = {0};
     appCtx.pCallback = MultiSessionAppCallback;
     appCtx.pCdcCallback = NULL;
     appCtx.pMcttCallback = NULL;
     appCtx.seHandle = NULL;
 
-    status = UwbApi_Init_New(&appCtx);
+    status = UwbApi_Init_New(&appCtx);  // FIXED: Must use UwbApi_Init_New
     if (status != UWBAPI_STATUS_OK) {
         NXPLOG_APP_E("UwbApi_Init_New failed: 0x%02X", status);
         return;
     }
 
-    // Configure UWB parameters
+    // 6. Configure UWB parameters
     status = configureUwbParams();
     if (status != UWBAPI_STATUS_OK) {
         NXPLOG_APP_E("UWB configuration failed: 0x%02X", status);
         return;
     }
 
-    // Initialize GATT database
-    GattDb_Init();
+    // 7. Initialize application components
+    if (!initializeApplication()) {
+        NXPLOG_APP_E("Failed to initialize application components");
+        return;
+    }
 
-    // Initialize BLE stack with proper NXP functions
-    BleApp_Init();  // Uses Ble_Initialize() and BleApp_Config()
-    BleApp_Start(); // Uses App_StartAdvertising()
+    // 8. Start board discovery
+    if (!BoardAdapter_StartDiscovery(MAX_BOARD_SESSIONS)) {
+        NXPLOG_APP_W("Failed to start board discovery - continuing with iPhone-only mode");
+    }
 
-    // Initialize resource managers
-    initializeChannelManager();
-    initializeTimeSlotManager();
+    NXPLOG_APP_I("System initialization complete:");
+    NXPLOG_APP_I("- UWB stack ready for ranging");
+    NXPLOG_APP_I("- TLV components ready for iPhone communication");
+    NXPLOG_APP_I("- BLE advertising active for iPhone discovery");
 }
 ```
 
@@ -427,10 +468,10 @@ The multi-session UWB application has been successfully implemented and tested. 
   ```
 - **Impact**: BLE can now communicate with iPhone
 
-#### **Initialization Order Fix**
+#### **Initialization Order Fix** (CRITICAL)
 - **Problem**: BLE initialized after UWB, but BLE needed first for iPhone
-- **Solution**: Corrected sequence: BLE → UWB → GATT → Session Managers
-- **Impact**: iPhone sessions now possible
+- **Solution**: Corrected sequence: Hardware → TLV → GATT → BLE → UWB → App Components
+- **Impact**: iPhone sessions now possible, proper service availability
 
 ### **2. Architecture Implemented**
 

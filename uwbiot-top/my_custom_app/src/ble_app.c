@@ -7,6 +7,40 @@
 #include "UwbApi.h"
 #include "AppInternal.h"
 #include "UwbApi_Utility.h"
+#include "ApplMain.h"  /* For App_StartAdvertising */
+
+/* BLE Host Stack includes are now in ble_app.h */
+
+/* SMP Keys data - moved from app_config.c for proper linking */
+#define smpEdiv 0x1F99
+#define mcEncryptionKeySize_c 16
+
+/* BLE initialization state */
+static bool bleStackInitialized = FALSE;
+
+static uint8_t smpLtk[gcSmpMaxLtkSize_c] = {
+    0xD6, 0x93, 0xE8, 0xA4, 0x23, 0x55, 0x48, 0x99, 0x1D, 0x77, 0x61, 0xE6, 0x63, 0x2B, 0x10, 0x8E};
+
+static uint8_t smpRand[gcSmpMaxRandSize_c] = {0x26, 0x1E, 0xF6, 0x09, 0x97, 0x2E, 0xAD, 0x7E};
+
+static uint8_t smpIrk[gcSmpIrkSize_c] = {
+    0x0A, 0x2D, 0xF4, 0x65, 0xE3, 0xBD, 0x7B, 0x49, 0x1E, 0xB4, 0xC0, 0x95, 0x95, 0x13, 0x46, 0x73};
+
+static uint8_t smpCsrk[gcSmpCsrkSize_c] = {
+    0x90, 0xD5, 0x06, 0x95, 0x92, 0xED, 0x91, 0xD7, 0xA8, 0x9E, 0x2C, 0xDC, 0x4A, 0x93, 0x5B, 0xF9};
+
+/* SMP Keys definition - override weak definition in BLE stack */
+#pragma GCC visibility push(default)
+__attribute__((used)) gapSmpKeys_t gSmpKeys = {
+    .cLtkSize  = mcEncryptionKeySize_c,
+    .aLtk      = (void *)smpLtk,
+    .aIrk      = (void *)smpIrk,
+    .aCsrk     = (void *)smpCsrk,
+    .aRand     = (void *)smpRand,
+    .cRandSize = gcSmpMaxRandSize_c,
+    .ediv      = smpEdiv,
+};
+#pragma GCC visibility pop
 
 /* BLE Host Stack */
 #include "gatt_server_interface.h"
@@ -65,6 +99,9 @@ typedef struct appPeerInfo_tag
     uint8_t ntf_cfg;
 } appPeerInfo_t;
 
+/* Forward declarations for functions */
+void UWB_Interrupt_ISR(void);
+
 /* BLE configuration variables - fallback definitions in case app_config.c is not compiled */
 #ifndef gAdvParams
 gapAdvertisingParameters_t gAdvParams = {
@@ -101,20 +138,7 @@ gapScanResponseData_t gAppScanRspData = {NumberOfElements(advScanRspStruct), (vo
 
 // BLE-specific global variables
 
-// BLE state management
-static struct {
-    bool isInitialized;
-    bool isAdvertising;
-    uint32_t lastAdvertiseTime;
-    uint32_t advertiseInterval;
-    UWBOSAL_TASK_HANDLE advertiseTaskHandle;
-} gBleState = {
-    .isInitialized = false,
-    .isAdvertising = false,
-    .lastAdvertiseTime = 0,
-    .advertiseInterval = 100,  // 100ms advertising interval
-    .advertiseTaskHandle = NULL
-};
+// BLE state management (removed - not needed like demo)
 
 // BLE connection state (similar to demo)
 static advState_t mAdvState;
@@ -125,7 +149,6 @@ static appPeerInfo_t mPeerInformation[gAppMaxConnections_c];
 static uint32_t mAdvTimeout;  // Missing variable declaration
 
 // Forward declarations
-static void BleApp_AdvertiseTask(void *args);
 static void BleApp_AdvertisingCallback(gapAdvertisingEvent_t *pAdvertisingEvent);
 static void BleApp_ConnectionCallback(deviceId_t peerDeviceId, gapConnectionEvent_t *pConnectionEvent);
 static void BleApp_GattServerCallback(deviceId_t deviceId, gattServerEvent_t *pServerEvent);
@@ -134,68 +157,74 @@ static void BleApp_Advertise(void);
 static void BleApp_ReceivedDataHandler(deviceId_t deviceId, uint8_t *aValue, uint16_t valueLength);
 static uint8_t BleApp_GetConnectedPeerCount(void);
 
-void BleApp_Init(void) {
-    if (gBleState.isInitialized) {
-        return;
-    }
+void BleApp_Init(void)
+{
+#if gBtnSupported_d && (gBtn_Count_c > 0)
+    Btn_Init(App_ButtonCallBack);
+#endif
+    UWB_Interrupt_ISR_Init();
 
-    NXPLOG_APP_I("Initializing BLE stack...");
+#if defined(CPU_JN518X) && (cPWR_UsePowerDownMode)
+    TMR_TimeStampInit();
+    PWR_RegisterLowPowerExitCallback(UWBT_ExitPowerDownCb);
+    PWR_RegisterLowPowerEnterCallback(UWBT_EnterLowPowerCb);
+#endif
 
-    // Initialize BLE stack with NXP BLE functions (like demo)
-    if (Ble_Initialize(BleApp_GenericCallback) != gBleSuccess_c) {
-        NXPLOG_APP_E("Failed to initialize BLE stack");
-        return;
-    }
-
-    // Configure BLE stack (like nearby_interaction demo)
-    BleApp_Config();
-
-    // Initialize QPP service (required for BLE communication)
-    if (Qpp_Start(&qppServiceConfig) != gBleSuccess_c) {
-        NXPLOG_APP_E("Failed to start QPP service");
-        return;
-    }
-
-    gBleState.isInitialized = true;
-    NXPLOG_APP_I("BLE stack initialized successfully");
+    // gSmpKeys is defined in this file, no need to force link
 }
 
-void BleApp_Start(void) {
-    if (!gBleState.isInitialized) {
-        NXPLOG_APP_E("BLE not initialized");
+
+
+void BleApp_Start(void)
+{
+    NXPLOG_APP_I("BleApp_Start: Called, bleStackInitialized=%d", bleStackInitialized);
+
+    if (!bleStackInitialized) {
+        NXPLOG_APP_E("BleApp_Start: BLE stack not initialized, cannot start advertising");
         return;
     }
 
-    NXPLOG_APP_I("Starting BLE advertising...");
+#if gAppUseBonding_d
+#if defined(gAppUsePrivacy_d) && (gAppUsePrivacy_d > 0)
+    if (gcBondedDevices > 0) {
+        mAdvState.advType = fastWhiteListAdvState_c;
+    }
+    else
+#endif
+    {
+#endif
+        mAdvState.advType = defaultAdvState_c;
+#if gAppUseBonding_d
+    }
+#endif
 
-    // Set advertising type to default (like nearby_interaction demo)
-    mAdvState.advType = defaultAdvState_c;
+#if (gAppNtagSupported_d)
+    NtagApp_NdefPairingWr(PERIPHERAL_AND_CENTRAL_ROLE, NTAG_LOCAL_DEV_NAME, strlen(NTAG_LOCAL_DEV_NAME));
+#endif
 
-    // Start advertising (like demo pattern)
+    /* Actually start the advertising */
+    NXPLOG_APP_I("BleApp_Start: Calling App_StartAdvertising...");
+    if (App_StartAdvertising(BleApp_AdvertisingCallback, BleApp_ConnectionCallback) != gBleSuccess_c) {
+        NXPLOG_APP_E("BleApp_Start: Failed to start advertising!");
+        return;
+    }
+    NXPLOG_APP_I("BleApp_Start: App_StartAdvertising returned success");
+
     BleApp_Advertise();
-
-    gBleState.isAdvertising = true;
-    phOsalUwb_GetTickCount((unsigned long*)&gBleState.lastAdvertiseTime);
-    NXPLOG_APP_I("BLE advertising started - ready for iPhone connection");
 }
 
-void BleApp_Stop(void) {
-    if (!gBleState.isInitialized || !gBleState.isAdvertising) {
+void BleApp_Stop(void)
+{
+    if (!bleStackInitialized) {
         return;
     }
 
-    // Stop advertising using GAP interface
-    if (Gap_StopAdvertising() != gBleSuccess_c) {
-        NXPLOG_APP_E("Failed to stop BLE advertising");
-        return;
-    }
-
-    gBleState.isAdvertising = false;
-    NXPLOG_APP_I("BLE advertising stopped");
+    (void)Gap_StopAdvertising();
 }
 
-void BleApp_ProcessEvents(void) {
-    if (!gBleState.isInitialized) {
+void BleApp_ProcessEvents(void)
+{
+    if (!bleStackInitialized) {
         return;
     }
 
@@ -204,42 +233,39 @@ void BleApp_ProcessEvents(void) {
     // This function can be used for any periodic BLE-related tasks
 }
 
-bool BleApp_IsInitialized(void) {
-    return gBleState.isInitialized;
+bool BleApp_IsInitialized(void)
+{
+    return bleStackInitialized;
 }
 
-bool BleApp_IsAdvertising(void) {
+bool BleApp_IsAdvertising(void)
+{
     return mAdvState.advOn;
 }
 
-static void BleApp_AdvertiseTask(void *args) {
-    while (1) {
-        if (gBleState.isInitialized && !mAdvState.advOn) {
-            // Check if it's time to restart advertising
-            uint32_t currentTime;
-            phOsalUwb_GetTickCount((unsigned long*)&currentTime);
 
-            if ((currentTime - gBleState.lastAdvertiseTime) > 1000) {  // 1 second timeout
-                NXPLOG_APP_D("Auto-restarting BLE advertising");
-                BleApp_Start();
-            }
-        }
-        phOsalUwb_Delay(100);  // Check every 100ms
-    }
-}
-
-void BleApp_GenericCallback(gapGenericEvent_t *pGenericEvent) {
-    if (!gBleState.isInitialized) {
+void BleApp_GenericCallback(gapGenericEvent_t *pGenericEvent)
+{
+    /* Safety check - make sure we have a valid event */
+    if (pGenericEvent == NULL) {
         return;
     }
 
-    if (!pGenericEvent) {
-        return;
-    }
+    /* Debug: Log that we received a BLE event */
+    NXPLOG_APP_I("BleApp_GenericCallback: eventType=0x%X", pGenericEvent->eventType);
+
+    /* Call BLE Conn Manager */
+    BleConnManager_GenericEvent(pGenericEvent);
 
     switch (pGenericEvent->eventType) {
     case gInitializationComplete_c: {
-        BleApp_Config();
+        /* Only configure if we haven't already */
+        static bool bleConfigured = FALSE;
+        if (!bleConfigured) {
+            BleApp_Config();
+            bleConfigured = TRUE;
+            bleStackInitialized = TRUE;
+        }
     } break;
 
     case gAdvertisingParametersSetupComplete_c: {
@@ -255,8 +281,8 @@ void BleApp_GenericCallback(gapGenericEvent_t *pGenericEvent) {
     } break;
 
     case gAdvertisingSetupFailed_c: {
-        NXPLOG_APP_E("BLE advertising setup failed");
-    } break;
+        break;
+    }
 
     default:
         break;
@@ -292,6 +318,8 @@ void BleApp_GenericCallback(gapGenericEvent_t *pGenericEvent) {
 ********************************************************************************** */
 static void BleApp_Config()
 {
+    NXPLOG_APP_I("BleApp_Config: Starting BLE configuration");
+
     /* Common GAP configuration */
     BleConnManager_GapCommonConfig();
 
@@ -309,6 +337,8 @@ static void BleApp_Config()
 
     Qpp_Start(&qppServiceConfig);
     mAdvState.advType = defaultAdvState_c;
+
+    NXPLOG_APP_I("BleApp_Config: BLE configuration completed");
 }
 
 /*! *********************************************************************************
@@ -318,6 +348,10 @@ static void BleApp_Config()
 ********************************************************************************** */
 static void BleApp_Advertise(void)
 {
+    NXPLOG_APP_I("BleApp_Advertise: Starting advertising with type=%d", mAdvState.advType);
+    NXPLOG_APP_I("BleApp_Advertise: Current adv params - minInterval=0x%X, maxInterval=0x%X",
+                 gAdvParams.minInterval, gAdvParams.maxInterval);
+
     switch (mAdvState.advType) {
     case defaultAdvState_c: {
         gAdvParams.minInterval  = UWBT_CfgReadBleInterval();
@@ -367,6 +401,8 @@ static void BleApp_Advertise(void)
 ********************************************************************************** */
 static void BleApp_AdvertisingCallback(gapAdvertisingEvent_t *pAdvertisingEvent)
 {
+    NXPLOG_APP_I("BleApp_AdvertisingCallback: eventType=0x%X", pAdvertisingEvent->eventType);
+
     switch (pAdvertisingEvent->eventType) {
     case gAdvertisingStateChanged_c: {
         mAdvState.advOn = !mAdvState.advOn;
@@ -394,6 +430,9 @@ static void BleApp_AdvertisingCallback(gapAdvertisingEvent_t *pAdvertisingEvent)
 ********************************************************************************** */
 static void BleApp_ConnectionCallback(deviceId_t peerDeviceId, gapConnectionEvent_t *pConnectionEvent)
 {
+    NXPLOG_APP_I("BleApp_ConnectionCallback: peerId=%d, eventType=0x%X",
+                 peerDeviceId, pConnectionEvent->eventType);
+
     /* Connection Manager to handle Host Stack interactions */
     BleConnManager_GapPeripheralEvent(peerDeviceId, pConnectionEvent);
 
@@ -495,3 +534,42 @@ static uint8_t BleApp_GetConnectedPeerCount(void)
     }
     return nb_peer;
 }
+
+/* Hardware callback stubs */
+#if gBtnSupported_d && (gBtn_Count_c > 0)
+void App_ButtonCallBack(uint8_t events)
+{
+    // Button callback implementation
+}
+#endif
+
+/* UWB interrupt functions */
+void UWB_Interrupt_ISR_Init(void)
+{
+    UWBT_InterruptISRInit(UWB_Interrupt_ISR);
+}
+
+void UWB_Interrupt_ISR(void)
+{
+    /** these re-initialization is not required here,
+     * when device wakes up from Low Power Mode.
+     *
+     * When device wakes up from Low Power Mode,
+     * the Low Power Mode task will do the required
+     * re-initialization.
+     */
+}
+
+
+
+#if defined(CPU_JN518X) && (cPWR_UsePowerDownMode)
+void UWBT_ExitPowerDownCb(void)
+{
+    // Power down exit callback
+}
+
+void UWBT_EnterLowPowerCb(void)
+{
+    // Power down enter callback
+}
+#endif

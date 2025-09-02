@@ -115,6 +115,7 @@ void iPhoneAdapter_StopAdvertising(void) {
     }
 }
 
+/*
 static bool createIPhoneSession(uint8_t deviceId) {
     // For BLE connections, we don't have the actual MAC address yet
     // Create a dummy MAC address based on deviceId for now
@@ -137,11 +138,13 @@ static bool createIPhoneSession(uint8_t deviceId) {
     gIPhoneSession.connectRetries = 0;
     gIPhoneSession.errorCount = 0;
 
-    NXPLOG_APP_I("Created iPhone session %d with ID 0x%08X", 
+    NXPLOG_APP_I("Created iPhone session %d with ID 0x%08X",
                  sessionIndex, gIPhoneSession.sessionId);
     return true;
 }
+*/
 
+/*
 static void handleBLEConnection(uint8_t deviceId) {
     if (gIPhoneSession.state != IPHONE_STATE_BLE_ADVERTISING) {
         NXPLOG_APP_W("Unexpected BLE connection in state %d", gIPhoneSession.state);
@@ -165,7 +168,9 @@ static void handleBLEConnection(uint8_t deviceId) {
     gIPhoneSession.state = IPHONE_STATE_UWB_INITIALIZING;
     NXPLOG_APP_I("iPhone UWB session initializing...");
 }
+*/
 
+/*
 static void handleBLEDisconnection(void) {
     if (!gIPhoneSession.isConnected) {
         return;
@@ -191,6 +196,7 @@ static void handleBLEDisconnection(void) {
         iPhoneAdapter_StartAdvertising();
     }
 }
+*/
 
 static void handleUWBError(void) {
     gIPhoneSession.errorCount++;
