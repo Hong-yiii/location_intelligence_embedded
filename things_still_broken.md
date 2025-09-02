@@ -74,7 +74,11 @@ The recurring issues occur because:
   - **Impact**: iPhone Nearby Interaction now functional
 
 ### 8. BLE Integration (Priority 2)
-- [ ] Add proper iPhone TLV message handling
+- [x] **FIXED**: Correct initialization order (TLV → main_task → BleApp_Start)
+- [x] **VERIFIED**: BLE stack initialization follows demo_nearby_interaction pattern
+- [x] **IMPLEMENTED**: Proper BLE advertising with App_StartAdvertising()
+- [x] **TESTED**: BLE discoverability confirmed working
+- [ ] Add proper iPhone TLV message handling (next priority)
 - [ ] Implement session state synchronization
 - [ ] Add BLE error recovery mechanisms
 - [ ] Test BLE reconnection logic

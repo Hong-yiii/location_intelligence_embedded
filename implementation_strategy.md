@@ -164,6 +164,12 @@ typedef struct {
    - Use standard hardware_init() without modification
    - Add additional hardware setup in application code
    - Follow demo patterns - don't modify middleware
+
+   // BLE Stack Initialization (CRITICAL ORDER)
+   - Initialize TLV components FIRST (tlvBuilderInit, tlvMngInit)
+   - Call main_task(0) which handles ALL BLE internally (BleApp_Init, GattDb_Init, Ble_Initialize)
+   - Call BleApp_Start() AFTER main_task completes for advertising
+   - This matches demo_nearby_interaction pattern exactly
    ```
 
 4. **Session Context**

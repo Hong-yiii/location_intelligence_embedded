@@ -30,6 +30,9 @@ bool tlvMngInit(void);
 bool tlvBuilderInit(void);
 void tlvManagerDeinit(void);
 
+// Getter functions for internal resources
+void* tlvGetMutex(void);
+
 // TLV communication functions
 bool tlvSendRaw(uint8_t deviceId, uint8_t* buf, uint16_t size);
 void tlvSendDoneCb(void);

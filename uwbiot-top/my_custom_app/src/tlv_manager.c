@@ -65,6 +65,11 @@ bool tlvBuilderInit(void) {
     return true;
 }
 
+// Getter function for TLV mutex (needed by BLE app)
+void* tlvGetMutex(void) {
+    return gTlvMutex;
+}
+
 void tlvManagerTask(void* args) {
     uint8_t data[TLV_MAX_DATA_SIZE] = {0};
     phLibUwb_Message_t evt = {0};

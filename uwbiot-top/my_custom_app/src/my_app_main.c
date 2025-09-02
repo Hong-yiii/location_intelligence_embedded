@@ -119,21 +119,8 @@ OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
     PRINT_APP_NAME("Multi-Session UWB Application");
     tUWBAPI_STATUS status = UWBAPI_STATUS_FAILED;
 
-    // 1. Initialize platform and BLE stack (following demo pattern exactly)
-    NXPLOG_APP_I("About to call main_task(0) for BLE initialization...");
-
-    // Ensure gSmpKeys is accessible before BLE init
-    extern gapSmpKeys_t gSmpKeys;
-    NXPLOG_APP_I("gSmpKeys.cLtkSize = %d", gSmpKeys.cLtkSize);
-
-    main_task(0);  // This initializes BLE stack like demo_nearby_interaction
-    NXPLOG_APP_I("main_task(0) returned - BLE stack should be initialized");
-
-    // Small delay to let BLE initialization complete
-    vTaskDelay(100);
-
-    // 2. Initialize TLV components FIRST (required for BLE communication)
-    NXPLOG_APP_I("Initializing TLV components...");
+    // 1. Initialize TLV components FIRST (following demo pattern exactly!)
+    NXPLOG_APP_I("Initializing TLV components (required before BLE)...");
     if (!tlvBuilderInit()) {
         NXPLOG_APP_E("Failed to initialize TLV builder");
         goto exit_demo;
@@ -145,21 +132,20 @@ OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
     }
     NXPLOG_APP_I("TLV components initialized successfully");
 
-    // 3. Initialize GATT database FIRST (required before BLE stack)
-    GattDb_Init();
-    NXPLOG_APP_I("GATT database initialized");
+    // 2. Initialize platform and BLE stack (AFTER TLV!)
+    NXPLOG_APP_I("About to call main_task(0) for BLE initialization...");
 
-    // 4. Initialize BLE application components (hardware setup only, like demo)
-    BleApp_Init();
-    NXPLOG_APP_I("BLE application initialized");
+    // Ensure gSmpKeys is accessible before BLE init
+    extern gapSmpKeys_t gSmpKeys;
+    NXPLOG_APP_I("gSmpKeys.cLtkSize = %d", gSmpKeys.cLtkSize);
 
-    // 5. Start BLE advertising (BLE stack already initialized by main_task)
-    NXPLOG_APP_I("About to start BLE advertising...");
-    BleApp_Start();
-    NXPLOG_APP_I("BleApp_Start() returned - BLE advertising should be active");
-    NXPLOG_APP_I("BLE advertising started - ready for iPhone connection");
+    main_task(0);  // This handles ALL BLE initialization (BleApp_Init + Ble_Initialize + GattDb_Init)
+    NXPLOG_APP_I("main_task(0) returned - BLE stack fully initialized");
 
-    // 6. Initialize UWB stack AFTER BLE
+    // BLE advertising is already started by BleApp_Config() during initialization
+    NXPLOG_APP_I("BLE advertising should already be active from BLE initialization");
+
+    // 3. Initialize UWB stack AFTER BLE is fully ready
     NXPLOG_APP_I("Initializing UWB stack...");
     phUwbappContext_t appCtx = {0};
     appCtx.pCallback = MultiSessionAppCallback;
@@ -202,8 +188,12 @@ OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
     // Main application loop
     gAppState.isRunning = true;
     phOsalUwb_GetTickCount((unsigned long*)&gAppState.startTime);
+    NXPLOG_APP_I("Entering main application loop - system should be fully operational");
 
     while (gAppState.isRunning) {
+        // Debug: Log that we're in the main loop
+        static uint32_t loopCount = 0;
+        loopCount++;
         // Process board sessions and discovery
         SessionManager_ProcessEvents();
         BoardAdapter_ProcessDiscoveryEvents();
@@ -226,8 +216,16 @@ OSAL_TASK_RETURN_TYPE MultiSessionTask(void *args) {
         
         // Print status occasionally
         static uint32_t lastStatusTime = 0;
+        static uint32_t lastDebugTime = 0;
         uint32_t currentTime;
         phOsalUwb_GetTickCount((unsigned long*)&currentTime);
+
+        // Debug: Log every 2 seconds that main loop is active
+        if (currentTime - lastDebugTime > 2000) {
+            NXPLOG_APP_I("Main loop active (loop count: %lu)", loopCount);
+            lastDebugTime = currentTime;
+        }
+
         if (currentTime - lastStatusTime > 10000) {
             printApplicationStatus();
             lastStatusTime = currentTime;

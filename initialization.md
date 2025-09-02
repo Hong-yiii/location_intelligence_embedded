@@ -7,22 +7,23 @@ This guide details the initialization process for a multi-session UWB implementa
 2. iPhone Nearby Interaction
 3. Simultaneous operation of multiple sessions
 
-### **⚠️ CRITICAL INITIALIZATION ORDER**
+### **⚠️ CRITICAL INITIALIZATION ORDER (VERIFIED FROM DEMO)**
 
-**CORRECTED ORDER** (based on working implementation):
+**CORRECT ORDER** (based on demo_nearby_interaction):
 1. **Hardware** → `hardware_init()`
-2. **TLV Components** → `tlvBuilderInit()`, `tlvMngInit()`
-3. **GATT Database** → `GattDb_Init()` *(BEFORE BLE stack)*
-4. **BLE Stack** → `BleApp_Init()`, `BleApp_Start()` *(AFTER GATT database)*
-5. **UWB Stack** → `UwbApi_Init_New()` *(AFTER BLE)*
+2. **TLV Components** → `tlvBuilderInit()`, `tlvMngInit()` *(FIRST)*
+3. **BLE Stack** → `main_task(0)` *(AFTER TLV - handles ALL BLE internally)*
+4. **BLE Advertising** → `BleApp_Start()` *(AFTER main_task completes)*
+5. **UWB Stack** → `UwbApi_Init_New()` *(AFTER BLE is fully ready)*
 6. **UWB Parameters** → `configureUwbParams()`
 7. **Application Components** → Resource managers, adapters
 8. **Discovery** → Board discovery start
 
 **WHY THIS ORDER MATTERS:**
-- GATT database must be initialized before BLE stack to ensure services are available
-- BLE must be ready before UWB for iPhone Nearby Interaction
-- TLV components required for BLE communication
+- **TLV must be first** - BLE events need TLV for iPhone communication
+- **main_task(0) is ALL-IN-ONE** - handles BleApp_Init(), GattDb_Init(), Ble_Initialize()
+- **BLE advertising after main_task** - BLE stack must be fully ready
+- **UWB after BLE** - ensures proper resource allocation and timing
 
 ## ⚠️ Critical Bug Fixes
 
@@ -323,30 +324,40 @@ TimeSlot timeSlots[MAX_TIME_SLOTS];
 
 The initialization sequence has been **corrected** based on the working implementation. The key insight is that GATT database must be initialized **BEFORE** the BLE stack to ensure services are available when BLE advertising starts.
 
-1. **System Startup** (Corrected Order)
+1. **System Startup** (Demo-Verified Order)
 ```c
 void initializeSystem(void) {
     // 1. Initialize hardware (following demo pattern)
     hardware_init();
     RTOS_AppConfigureTimerForRuntimeStats();
 
-    // 2. Initialize TLV components FIRST (required for BLE communication)
-    NXPLOG_APP_I("Initializing TLV components...");
-    if (!tlvBuilderInit() || !tlvMngInit()) {
-        NXPLOG_APP_E("Failed to initialize TLV components");
-        return;
+    // 2. Initialize TLV components FIRST (CRITICAL: demo does this first!)
+    NXPLOG_APP_I("Initializing TLV components (required before BLE)...");
+    if (!tlvBuilderInit()) {
+        NXPLOG_APP_E("Failed to initialize TLV builder");
+        goto exit_demo;
     }
 
-    // 3. Initialize GATT database FIRST (CRITICAL: before BLE stack)
-    GattDb_Init();
-    NXPLOG_APP_I("GATT database initialized");
+    if (!tlvMngInit()) {
+        NXPLOG_APP_E("Failed to initialize TLV manager");
+        goto exit_demo;
+    }
+    NXPLOG_APP_I("TLV components initialized successfully");
 
-    // 4. Initialize BLE stack and start advertising FIRST (CRITICAL)
-    BleApp_Init();  // BLE stack + QPP service + configuration
-    BleApp_Start(); // Start advertising for iPhone discovery
+    // 3. Initialize BLE stack (demo pattern: TLV first, then main_task)
+    NXPLOG_APP_I("About to call main_task(0) for BLE initialization...");
+    extern gapSmpKeys_t gSmpKeys;
+    NXPLOG_APP_I("gSmpKeys.cLtkSize = %d", gSmpKeys.cLtkSize);
+
+    main_task(0);  // CRITICAL: This handles BleApp_Init + GattDb_Init + Ble_Initialize
+    NXPLOG_APP_I("main_task(0) returned - BLE stack fully initialized");
+
+    // 4. Start BLE advertising (AFTER main_task completes)
+    NXPLOG_APP_I("About to start BLE advertising...");
+    BleApp_Start();
     NXPLOG_APP_I("BLE advertising started - ready for iPhone connection");
 
-    // 5. Initialize UWB stack AFTER BLE
+    // 5. Initialize UWB stack AFTER BLE is fully ready
     NXPLOG_APP_I("Initializing UWB stack...");
     phUwbappContext_t appCtx = {0};
     appCtx.pCallback = MultiSessionAppCallback;
@@ -357,20 +368,20 @@ void initializeSystem(void) {
     status = UwbApi_Init_New(&appCtx);  // FIXED: Must use UwbApi_Init_New
     if (status != UWBAPI_STATUS_OK) {
         NXPLOG_APP_E("UwbApi_Init_New failed: 0x%02X", status);
-        return;
+        goto exit_demo;
     }
 
     // 6. Configure UWB parameters
     status = configureUwbParams();
     if (status != UWBAPI_STATUS_OK) {
         NXPLOG_APP_E("UWB configuration failed: 0x%02X", status);
-        return;
+        goto exit_demo;
     }
 
     // 7. Initialize application components
     if (!initializeApplication()) {
         NXPLOG_APP_E("Failed to initialize application components");
-        return;
+        goto exit_demo;
     }
 
     // 8. Start board discovery

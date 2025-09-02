@@ -2,6 +2,11 @@
  * Based on demo_nearby_interaction implementation
  */
 
+// Prevent LOG macro redefinition conflicts
+#ifdef LOG
+#undef LOG
+#endif
+
 #include "ble_app.h"
 #include "phOsalUwb.h"
 #include "UwbApi.h"
@@ -55,12 +60,23 @@ __attribute__((used)) gapSmpKeys_t gSmpKeys = {
 #include "ble_conn_manager.h"
 
 #include "board.h"
+#include "tlv_manager.h"
+
+/* Timeout for BLE connection callback reentrancy protection */
+#define BLE_CONN_CB_MAX_REENTRANCE_TIMEOUT (0x2000)
+
+/* No external declarations needed - using getter function */
 #include "ApplMain.h"
 #include "demo_ble_server.h"
+
+#include "PWR_Configuration.h"
+#include "PWRLib.h"
 
 #include "UWBT_PowerMode.h"
 #include "UWBT_Config.h"
 #include "uwb_types.h"
+
+// LOG macro undef moved to top of file
 
 #include "phTmlUwb_transport.h"
 #include "phOsalUwb.h"
@@ -157,6 +173,12 @@ static void BleApp_Advertise(void);
 static void BleApp_ReceivedDataHandler(deviceId_t deviceId, uint8_t *aValue, uint16_t valueLength);
 static uint8_t BleApp_GetConnectedPeerCount(void);
 
+/* UWB interrupt functions */
+void UWB_Interrupt_ISR_Init(void)
+{
+    UWBT_InterruptISRInit(UWB_Interrupt_ISR);
+}
+
 void BleApp_Init(void)
 {
 #if gBtnSupported_d && (gBtn_Count_c > 0)
@@ -202,15 +224,10 @@ void BleApp_Start(void)
     NtagApp_NdefPairingWr(PERIPHERAL_AND_CENTRAL_ROLE, NTAG_LOCAL_DEV_NAME, strlen(NTAG_LOCAL_DEV_NAME));
 #endif
 
-    /* Actually start the advertising */
-    NXPLOG_APP_I("BleApp_Start: Calling App_StartAdvertising...");
-    if (App_StartAdvertising(BleApp_AdvertisingCallback, BleApp_ConnectionCallback) != gBleSuccess_c) {
-        NXPLOG_APP_E("BleApp_Start: Failed to start advertising!");
-        return;
-    }
-    NXPLOG_APP_I("BleApp_Start: App_StartAdvertising returned success");
-
+    /* Start advertising - this will be called if advertising needs to be restarted */
+    NXPLOG_APP_I("BleApp_Start: Calling BleApp_Advertise...");
     BleApp_Advertise();
+    NXPLOG_APP_I("BleApp_Start: Advertising setup initiated");
 }
 
 void BleApp_Stop(void)
@@ -274,17 +291,44 @@ void BleApp_GenericCallback(gapGenericEvent_t *pGenericEvent)
 
     case gAdvertisingDataSetupComplete_c: {
         (void)Gap_SetTxPowerLevel(gAdvertisingPowerLeveldBm_c, gTxPowerAdvChannel_c);
-    } break;
+        break;
+    }
 
     case gTxPowerLevelSetComplete_c: {
         (void)App_StartAdvertising(BleApp_AdvertisingCallback, BleApp_ConnectionCallback);
-    } break;
+        break;
+    }
 
     case gAdvertisingSetupFailed_c: {
         break;
     }
 
+    case gLePhyEvent_c: {
+        NXPLOG_APP_I("BLE PHY event received - PHY mode updated by controller");
+        // PHY event indicates the controller has updated the physical layer mode
+        // This is informational and typically doesn't require action
+        // The event data would contain details about the new PHY mode if needed
+        break;
+    }
+
+    case gBondCreatedEvent_c: {
+        NXPLOG_APP_I("BLE bonding completed");
+        break;
+    }
+
+    case gConnEvtEncryptionChanged_c: {
+        NXPLOG_APP_I("BLE encryption state changed");
+        break;
+    }
+
+    case gConnEvtPairingComplete_c: {
+        NXPLOG_APP_I("BLE pairing completed");
+        break;
+    }
+
     default:
+        // Log unknown events for debugging
+        NXPLOG_APP_W("Unhandled BLE event: 0x%X", pGenericEvent->eventType);
         break;
     }
 }
@@ -337,6 +381,13 @@ static void BleApp_Config()
 
     Qpp_Start(&qppServiceConfig);
     mAdvState.advType = defaultAdvState_c;
+
+    /* Start BLE advertising */
+    BleApp_Advertise();
+
+    /* Configure power management */
+    PWR_ChangeDeepSleepMode(cPWR_DeepSleepMode);
+    PWR_AllowDeviceToSleep();
 
     NXPLOG_APP_I("BleApp_Config: BLE configuration completed");
 }
@@ -440,10 +491,28 @@ static void BleApp_ConnectionCallback(deviceId_t peerDeviceId, gapConnectionEven
     case gConnEvtConnected_c: {
         mPeerInformation[peerDeviceId].deviceId = peerDeviceId;
 
+        /* Power mode management for UWB */
+#if defined(CPU_JN518X) && (cPWR_UsePowerDownMode)
+        UWBT_PowerModeEnter(UWBT_RUN_MODE);
+#endif
+
+        /* Thread-safe UWB device initialization */
+        void* tlvMutex = tlvGetMutex();
+        if (tlvMutex == NULL) {
+            NXPLOG_APP_E("BleApp_ConnectionCallback: TLV mutex not available");
+        } else if (phOsalUwb_ConsumeSemaphore_WithTimeout(tlvMutex, BLE_CONN_CB_MAX_REENTRANCE_TIMEOUT) != UWBSTATUS_SUCCESS) {
+            NXPLOG_APP_E("BleApp_ConnectionCallback: semaphore timeout");
+        } else {
+            if (!handleDeviceInit()) {
+                NXPLOG_APP_E("UWB device initialization failed");
+            }
+            phOsalUwb_ProduceSemaphore(tlvMutex);
+        }
+
         /* Subscribe client*/
         (void)Qpp_Subscribe(peerDeviceId);
 
-        LOG_I("BLE Connected to peer #%d\r\n", peerDeviceId + 1);
+        LOG_I("BLE Connected to peer #%d, %d peers connected\r\n", peerDeviceId + 1, BleApp_GetConnectedPeerCount());
 
         /* Restart Advertising while max connection is not reached */
         if (BleApp_GetConnectedPeerCount() < gAppMaxConnections_c) {
@@ -457,7 +526,23 @@ static void BleApp_ConnectionCallback(deviceId_t peerDeviceId, gapConnectionEven
         Qpp_Unsubscribe();
         mPeerInformation[peerDeviceId].ntf_cfg  = QPPS_VALUE_NTF_OFF;
         mPeerInformation[peerDeviceId].deviceId = gInvalidDeviceId_c;
-        PRINTF("BLE Disconnected\r\n");
+
+        /* Stop UWB session for this specific peer only */
+        void* tlvMutex = tlvGetMutex();
+        if (tlvMutex == NULL) {
+            NXPLOG_APP_E("BleApp_ConnectionCallback: TLV mutex not available on disconnect");
+        } else if (phOsalUwb_ConsumeSemaphore_WithTimeout(tlvMutex, BLE_CONN_CB_MAX_REENTRANCE_TIMEOUT) != UWBSTATUS_SUCCESS) {
+            NXPLOG_APP_E("BleApp_ConnectionCallback: semaphore timeout on disconnect");
+        } else {
+            if (!handleStopSession((uint8_t)peerDeviceId)) {
+                NXPLOG_APP_E("Failed to stop UWB session for peer %d", peerDeviceId);
+            }
+            phOsalUwb_ProduceSemaphore(tlvMutex);
+        }
+
+        NXPLOG_APP_I("iPhone disconnected - UWB stack remains active for other potential connections");
+
+        PRINTF("BLE Disconnected peer #%d, %d peers remaining\r\n", peerDeviceId + 1, BleApp_GetConnectedPeerCount());
 
         /* in any case restart advertising since a connection has been released */
         BleApp_Start();
@@ -514,6 +599,11 @@ static void BleApp_GattServerCallback(deviceId_t deviceId, gattServerEvent_t *pS
         GattServer_SendAttributeReadStatus(deviceId, handle, gAttErrCodeNoError_c);
     } break;
 
+    case gEvtMtuChanged_c: {
+        // MTU has changed - could update max payload size if needed
+        NXPLOG_APP_I("BLE MTU changed for device %d", deviceId);
+    } break;
+
     default:
         break;
     }
@@ -542,12 +632,6 @@ void App_ButtonCallBack(uint8_t events)
     // Button callback implementation
 }
 #endif
-
-/* UWB interrupt functions */
-void UWB_Interrupt_ISR_Init(void)
-{
-    UWBT_InterruptISRInit(UWB_Interrupt_ISR);
-}
 
 void UWB_Interrupt_ISR(void)
 {
